@@ -10,7 +10,7 @@ export default function PricingPage() {
     <Section
       eyebrow="Árak"
       title="Átlátható csomagok"
-      description="A cél: gyors döntés és gyors eredmény. Pár kérdés után pontos ajánlatot adok."
+      description="Gyors döntés és eredmény. Pár kérdés után pontos ajánlatot adok."
     >
       <PricingGrid />
     </Section>

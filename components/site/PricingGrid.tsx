@@ -70,13 +70,16 @@ const pc: Plan[] = [
 function PlanCard({ plan }: { plan: Plan }) {
   return (
     <Card className="relative p-6">
-      {plan.popular && (
-        <div className="absolute right-4 top-4 rounded-full bg-slate-900 px-3 py-1 text-xs font-bold text-white">
-          Legnépszerűbb
+      <div className="flex items-center justify-between">
+        <div className="text-base font-extrabold text-slate-900">
+          {plan.name}
         </div>
-      )}
-
-      <div className="text-base font-extrabold text-slate-900">{plan.name}</div>
+        {plan.popular && (
+          <div className="ml-2 rounded-full bg-slate-900 px-3 py-1 text-xs font-bold text-white">
+            Legnépszerűbb
+          </div>
+        )}
+      </div>
 
       <div className="mt-2 text-3xl font-extrabold tracking-tight text-slate-900">
         {plan.price}

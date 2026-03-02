@@ -21,10 +21,10 @@ export const metadata: Metadata = {
     "szoftverfejlesztő Siófok",
   ],
   openGraph: {
-    title: `${site.name} – Belső rendszer fejlesztés KKV-knak`,
+    title: `${site.name} – Átlátható működés, kevesebb adminisztráció`,
     description:
-      "Excel helyett átlátható belső rendszerek. Automatizálás és riport megoldások KKV-knak.",
-    url: `${site.url}`,
+      "Egyedi webes rendszerek, automatizált riportok és workflow cégeknek és magánszemélyeknek. Excel helyett modern megoldások.",
+    url: site.url,
     siteName: site.name,
     locale: "hu_HU",
     type: "website",
