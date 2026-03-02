@@ -50,7 +50,7 @@ export function Navbar() {
           )}
         </nav>
 
-        <div className="flex items-center gap-3">
+        {/* <div className="flex items-center gap-3">
           {disabled ? (
             <>
               <span className="hidden sm:inline-flex rounded-xl bg-slate-200 px-4 py-2 text-sm font-semibold text-slate-400 cursor-not-allowed">
@@ -72,7 +72,7 @@ export function Navbar() {
               <Button href="/contact">Ingyenes konzultáció</Button>
             </>
           )}
-        </div>
+        </div> */}
       </Container>
     </header>
   );

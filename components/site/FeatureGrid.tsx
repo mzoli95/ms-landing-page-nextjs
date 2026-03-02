@@ -2,28 +2,28 @@ import { Card } from "@/components/ui/Card";
 
 const features = [
   {
-    title: "Határidők & riasztások",
-    desc: "Email értesítés, feladatlista, automatikus követés. Pl. szerviz esedékesség, garancia lejárat.",
+    title: "Határidők és automatikus emlékeztetők",
+    desc: "Email értesítések, feladatlista és követés, hogy semmi ne csússzon el (szerviz, garancia, projekt).",
   },
   {
-    title: "Riportok & dashboard",
-    desc: "Bevétel–kiadás, kintlévőség, trendek, top ügyfelek/szolgáltatások. Minden egy helyen.",
+    title: "Átlátható kimutatások és felületek",
+    desc: "Bevétel, kiadás, trendek egy közös nézetben, hogy gyorsabb döntéseket hozhass.",
   },
   {
-    title: "Raktár & készlet",
-    desc: "Minimum készlet riasztás, kiadás/beérkezés, gyors leltár, rendelési lista.",
+    title: "Készlet és erőforrás követés",
+    desc: "Minimum készlet riasztás, mozgások nyomon követése, rendelési javaslatok.",
   },
   {
-    title: "Adatbázis rendbetétel",
-    desc: "Normalizálás, duplikációk megszüntetése, gyors lekérdezések, stabil alap a növekedéshez.",
+    title: "Tiszta, stabil adatbázis alap",
+    desc: "Rendbetett adatok, duplikációk nélkül. Gyors lekérdezések és növekedésre kész rendszer.",
   },
   {
-    title: "Biztonság & jogosultság",
-    desc: "Szerepkörök, naplózás, alap védelem – hogy ne lásson mindenki mindent.",
+    title: "Jogosultság és adatvédelem",
+    desc: "Szerepkörök, naplózás és alap védelem, hogy mindenki csak azt lássa, amit kell.",
   },
   {
-    title: "Üzemeltetés & support",
-    desc: "Havi karbantartás, kisebb fejlesztések, mentések – kiszámítható működés.",
+    title: "Folyamatos működés és támogatás",
+    desc: "Karbantartás, mentések és kisebb fejlesztések, kiszámítható, stabil rendszer.",
   },
 ];
 

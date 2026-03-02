@@ -3,10 +3,20 @@ import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
 import { site } from "../lib/site";
 
+const badges = [
+  "Adminisztráció csökkentés",
+  "Excel kiváltása",
+  "Valós idejű riportok",
+  "Egyedi rendszerfejlesztés",
+];
+
 const bullets = [
-  "Belső webappok és automatizálás (határidők, értesítések, workflow)",
-  "Adatbázis építés, normalizálás, riportok és dashboardok",
-  "PC karbantartás, bővítés, újratelepítés (kiegészítő szolgáltatás)",
+  "Belső rendszerek és workflow automatizálás",
+  "Adatbázis alapú működés, riportokkal és exporttal",
+  "Integráció meglévő rendszerekkel és eszközökkel",
+  "Pénzügyi és működési adatok egy közös dashboardon",
+  "Excel kiváltása stabil, testre szabott webes rendszerrel",
+  "PC szerviz és IT támogatás (helyi kiegészítő szolgáltatás, online is elérhető)",
 ];
 
 export function Hero() {
@@ -15,15 +25,23 @@ export function Hero() {
       <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-900" />
       <div className="absolute -top-24 left-1/2 h-[480px] w-[480px] -translate-x-1/2 rounded-full bg-white/10 blur-3xl" />
       <Container className="relative py-16 sm:py-24">
-        <Badge>Gyors szállítás • Átlátható csomagok • Mérhető eredmény</Badge>
+        <div className="flex flex-wrap gap-2">
+          {badges.map((b) => (
+            <Badge key={b}>{b}</Badge>
+          ))}
+        </div>
 
         <h1 className="mt-6 max-w-3xl text-4xl font-extrabold tracking-tight text-white sm:text-5xl">
           {site.tagline}
         </h1>
 
+        <p className="mt-3 text-sm text-white/60">
+          Molnár Systems • Siófok és Somogy megye • Országosan online
+        </p>
+
         <p className="mt-6 max-w-2xl text-base leading-7 text-white/80">
-          Ha eleged van a kézi adminból és az elfelejtett határidőkből: építek
-          egy rendszert, ami{" "}
+          Ha eleged van abból, hogy Excelben és jegyzetekben kell keresgélned:
+          készítek egy egyszerű, testre szabott rendszert, ami{" "}
           <span className="font-semibold text-white">időt spórol</span>,{" "}
           <span className="font-semibold text-white">hibát csökkent</span>, és{" "}
           <span className="font-semibold text-white">láthatóvá teszi</span> a
@@ -37,7 +55,10 @@ export function Hero() {
           </Button>
         </div>
 
-        <div className="mt-12 grid gap-4 sm:grid-cols-3">
+        <p className="mt-3 text-xs text-white/60">
+          15 perces előszűrés – megmondom, érdemes-e fejleszteni.
+        </p>
+        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {bullets.map((b) => (
             <div
               key={b}

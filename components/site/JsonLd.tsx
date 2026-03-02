@@ -5,7 +5,7 @@ export function JsonLd() {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     name: site.name,
-    url: `https://${site.domain}`,
+    url: `${site.url}`,
     email: site.email,
     telephone: site.phone,
     areaServed: "Hungary",

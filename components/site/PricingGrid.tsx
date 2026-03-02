@@ -11,55 +11,59 @@ type Plan = {
 
 const plans: Plan[] = [
   {
-    name: "Audit + Gyorsnyereség",
-    price: "149.000 Ft-tól",
-    hint: "1–2 hét • 1 konkrét automatizálás / mini app",
+    name: "Felmérés + gyorsnyereség",
+    price: "149 000 Ft-tól",
+    hint: "Gyors indulás • 1 fókuszált automatizálás vagy mini megoldás",
     features: [
-      "Folyamat felmérés és javaslat",
-      "Gyors, mérhető javítás (pl. emlékeztető/riasztó)",
+      "Rövid folyamatfelmérés + javaslatlista",
+      "1 konkrét probléma gyors rendbetétele (pl. emlékeztető / státusz / riport)",
       "Átadás + rövid betanítás",
     ],
   },
   {
-    name: "Belső rendszer",
-    price: "450.000 Ft-tól",
-    hint: "3–6 hét • webapp + adatbázis + alap riportok",
+    name: "Belső rendszer (modulárisan)",
+    price: "450 000 Ft-tól",
+    hint: "Első verzió (MVP) • utána lépésenként bővíthető",
     popular: true,
     features: [
-      "Ügyfél/munkafolyamat nyilvántartás",
-      "Jogosultságok, naplózás (alapszint)",
-      "Riportok és dashboard",
+      "Ügyfél / munka / státusz követés egy helyen",
+      "Jogosultságok és naplózás (alapszint)",
+      "Riportok és dashboard (a döntéshez szükséges mutatókkal)",
       "Átadás + dokumentáció",
     ],
   },
   {
-    name: "Havi support",
-    price: "49.000 Ft / hó-tól",
-    hint: "Karbantartás • kisebb fejlesztések • nyugalom",
+    name: "Havi support / üzemeltetés",
+    price: "49 000 Ft / hó-tól",
+    hint: "Karbantartás • kisebb fejlesztések • kiszámítható működés",
     features: [
-      "Frissítések, mentés, alap monitor",
-      "1–2 kisebb fejlesztés havonta",
-      "Gyors hibajavítás",
+      "Frissítések, mentések, alap ellenőrzések",
+      "Havi keret kisebb módosításokra / fejlesztésekre",
+      "Gyors hibajavítás és tanácsadás",
     ],
   },
 ];
 
-const pc = [
+const pc: Plan[] = [
   {
-    name: "PC Gyorsszerviz",
-    price: "19.900 Ft",
-    hint: "90 perc • diagnosztika + gyors optimalizálás",
+    name: "PC gyors átvizsgálás + optimalizálás",
+    price: "9 900 Ft-tól",
+    hint: "Állapottól függ • diagnosztika + gyors rendbetétel",
     features: [
-      "Lassulás okainak feltárása",
-      "Takarítás, startup rend",
-      "Alap javaslatok",
+      "Lassulás okainak feltárása (szoftver/hardver)",
+      "Alap karbantartás (startup, takarítás, beállítások)",
+      "Javaslat: mit érdemes javítani / bővíteni",
     ],
   },
   {
-    name: "Újratelepítés + adatmentés",
-    price: "29.900–59.900 Ft",
-    hint: "típustól függ • tiszta, gyors rendszer",
-    features: ["Adatmentés", "Telepítés, driverek", "Alap programcsomag"],
+    name: "Windows újratelepítés + adatmentés",
+    price: "24 900–59 900 Ft",
+    hint: "Géptípustól és mentési igénytől függ",
+    features: [
+      "Adatmentés (megbeszélt mappák szerint)",
+      "Tiszta telepítés + driverek + alap beállítás",
+      "Alap programcsomag (böngésző, PDF, stb.)",
+    ],
   },
 ];
 
@@ -71,11 +75,15 @@ function PlanCard({ plan }: { plan: Plan }) {
           Legnépszerűbb
         </div>
       )}
+
       <div className="text-base font-extrabold text-slate-900">{plan.name}</div>
+
       <div className="mt-2 text-3xl font-extrabold tracking-tight text-slate-900">
         {plan.price}
       </div>
+
       <div className="mt-2 text-sm text-slate-600">{plan.hint}</div>
+
       <ul className="mt-5 space-y-2 text-sm text-slate-600">
         {plan.features.map((f) => (
           <li key={f} className="flex gap-2">
@@ -84,6 +92,7 @@ function PlanCard({ plan }: { plan: Plan }) {
           </li>
         ))}
       </ul>
+
       <div className="mt-6">
         <Button href="/contact" className="w-full">
           Ajánlatkérés
@@ -118,8 +127,8 @@ export function PricingGrid() {
 
       <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6 text-sm text-slate-600">
         <span className="font-semibold text-slate-900">Megjegyzés:</span> a
-        fenti árak irányárak. Pontos ajánlatot egy rövid felmérés után adok
-        (általában 15–30 perc).
+        fenti árak irányárak. A pontos ajánlatot egy rövid egyeztetés után adom,
+        az igények és az összetettség alapján.
       </div>
     </div>
   );

@@ -8,6 +8,7 @@ import { FAQ } from "@/components/site/FAQ";
 import { UseCases } from "@/components/site/UseCases";
 import { ComingSoon } from "@/components/site/ComingSoon";
 import { flags } from "@/components/lib/site";
+import { PcServiceSection } from "@/components/site/PcServiceSection";
 
 export default function HomePage() {
   if (flags.comingSoon) return <ComingSoon />;
@@ -17,15 +18,15 @@ export default function HomePage() {
       <Hero />
       <Section
         eyebrow="Miért működik?"
-        title="Kevesebb kézi munka. Kevesebb hiba. Több átláthatóság."
+        title="Kevesebb kézi munka. Kevesebb hiba. Nagyobb átláthatóság."
         description="A cél nem az, hogy „készüljön valami”, hanem hogy a céged gyorsabban és nyugodtabban működjön."
       >
         <FeatureGrid />
       </Section>
       <Section
         eyebrow="Így néz ki a gyakorlatban"
-        title="Tipikus problémák → gyors, működő megoldások"
-        description="Név nélkül, de valós helyzetek alapján: rövid indulás, tiszta folyamat, mérhető eredmény."
+        title="A pontos megoldás mindig a folyamatodhoz igazodik"
+        description="Konkrét példák, ilyen helyzetekből szokott gyorsan kézzelfogható eredmény lenni."
         className="bg-slate-50"
       >
         <UseCases />
@@ -42,10 +43,11 @@ export default function HomePage() {
       <Section
         eyebrow="Hogyan dolgozunk?"
         title="Átlátható folyamat, heti kis szállítások"
-        description="Így tudsz heti 10–12 órával is szépen építkezni: rövid egyeztetés, gyors prototípus, stabil átadás."
+        description="Rövid egyeztetés, gyors prototípus, stabil átadás."
       >
         <Steps />
       </Section>
+      <PcServiceSection />
 
       <Section
         eyebrow="Árak"
@@ -56,13 +58,13 @@ export default function HomePage() {
         <PricingGrid />
       </Section>
 
-      <Section
+      {/* <Section
         eyebrow="GYIK"
         title="Gyakori kérdések"
         description="Ha maradt kérdésed, írj – gyorsan válaszolok."
       >
         <FAQ />
-      </Section>
+      </Section> */}
     </>
   );
 }

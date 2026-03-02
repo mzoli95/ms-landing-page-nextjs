@@ -1,73 +1,77 @@
 import { Card } from "@/components/ui/Card";
 
 type UseCase = {
+  id: string;
   title: string;
   who: string;
+  timeframeLabel: string;
   problem: string[];
   solution: string[];
   why: string[];
-  timeframe: string;
 };
 
 const useCases: UseCase[] = [
   {
-    title: "Határidők + ügyfél-emlékeztető rendszer",
+    id: "reminders",
+    title: "Határidők és ügyfél-emlékeztetés rendbetétele",
     who: "Szervizek / rendszeres karbantartást végző cégek",
-    timeframe: "Gyors induló csomag: kb. 1 hét",
+    timeframeLabel: "Gyors indulás • igény alapján ütemezve",
     problem: [
       "Az ügyféladatok több helyen vannak (Excel, jegyzet, email).",
-      "A rendszeres visszahívás vagy esedékesség követése manuális.",
-      "A visszatérő ügyfelek kezelése nem tudatos, inkább alkalomszerű.",
+      "A visszahívások és esedékességek manuálisak, könnyű elfelejteni.",
+      "A visszatérő ügyfelek kezelése esetleges.",
     ],
     solution: [
-      "Egységes ügyfél- és eszköznyilvántartás (időpontokkal, státuszokkal).",
-      "Szabály-alapú emlékeztetők (idő / státusz / egyedi logika alapján).",
-      "Átlátható admin felület: mikor ment ki értesítés, mi a következő lépés.",
+      "Egységes ügyfél- és eszköznyilvántartás.",
+      "Automatikus emlékeztetők előre beállított szabályok alapján.",
+      "Átlátható felület a státuszok és határidők követéséhez.",
     ],
     why: [
-      "Kevesebb elfelejtett utánkövetés, több visszatérő ügyfél.",
+      "Kevesebb elmaradt utánkövetés.",
+      "Több visszatérő ügyfél.",
       "A határidők nem fejben vagy külön fájlokban élnek.",
-      "Később bővíthető további értesítési csatornákkal vagy riportokkal.",
     ],
   },
   {
-    title: "Vezetői áttekintő (bevétel, költség, kintlévőség)",
-    who: "Admin-heavy KKV-k / kisebb irodák",
-    timeframe: "Első működő verzió: 1–2 hét",
+    id: "dashboard",
+    title: "Vezetői rálátás egy helyen",
+    who: "Adminisztrációval terhelt KKV-k / kisebb irodák",
+    timeframeLabel: "Első működő verzió • lépésenként bővíthető",
     problem: [
-      "A pénzügyi adatok több forrásból állnak össze.",
-      "Nincs gyors, napi szintű rálátás a kintlévőségekre.",
-      "A havi riport manuális összeszedést igényel.",
+      "A pénzügyi és működési adatok szétszórtan vannak.",
+      "Nincs napi szintű, gyors áttekintés.",
+      "A havi riport manuális gyűjtést igényel.",
     ],
     solution: [
-      "Egységes adatstruktúra a bevétel- és költségadatokhoz.",
-      "Letisztult dashboard: trendek, kategóriák, státusz szerinti bontás.",
-      "Testreszabott export / riport nézetek a könyvelés előkészítéséhez.",
+      "Egységes adatkezelés a fő mutatókhoz.",
+      "Letisztult dashboard a legfontosabb számokkal.",
+      "Exportálható riport nézetek.",
     ],
     why: [
-      "Gyorsabb döntéshozatal valós adatok alapján.",
-      "Kevesebb manuális riportkészítés és hiba.",
-      "Átláthatóbb működés a tulajdonos vagy vezető számára.",
+      "Gyorsabb, megalapozottabb döntések.",
+      "Kevesebb manuális adminisztráció.",
+      "Átláthatóbb működés.",
     ],
   },
   {
-    title: "Készletfigyelés + rendelési javaslat",
+    id: "inventory",
+    title: "Készletfigyelés, hogy ne álljon meg a munka",
     who: "Anyaggal dolgozó vállalkozások / kisebb kereskedések",
-    timeframe: "Stabil alap: 2–3 hét",
+    timeframeLabel: "Stabil alap • később bővíthető",
     problem: [
-      "A készletinformáció nem mindig naprakész.",
-      "Kritikus tételek hiánya munka- vagy bevételkiesést okoz.",
-      "A beszerzés inkább reakció, mint tudatos tervezés.",
+      "A készlet nem mindig naprakész.",
+      "Hiányzó tételek munka- vagy bevételkiesést okoznak.",
+      "A beszerzés inkább reakció, mint tervezés.",
     ],
     solution: [
-      "Egyszerű készletmozgás-kezelés (beérkezés, kiadás, állapot).",
-      "Minimum szint figyelés + automatikus jelzés.",
-      "Rendelési javaslat lista a tényleges igények alapján.",
+      "Egyszerű készletmozgás-kezelés.",
+      "Minimum készletszint figyelés és jelzés.",
+      "Automatikus rendelési javaslat.",
     ],
     why: [
-      "Kisebb eséllyel áll meg a munka alapanyaghiány miatt.",
-      "Tervezhetőbb beszerzés és pénzmozgás.",
-      "Később több felhasználós, jogosultsági rendszerrel bővíthető.",
+      "Kevesebb leállás alapanyaghiány miatt.",
+      "Tervezhetőbb beszerzés.",
+      "Kiszámíthatóbb működés.",
     ],
   },
 ];
@@ -75,10 +79,10 @@ const useCases: UseCase[] = [
 function BulletList({ items }: { items: string[] }) {
   return (
     <ul className="mt-3 space-y-2 text-sm text-slate-600">
-      {items.map((i) => (
-        <li key={i} className="flex gap-2">
+      {items.map((text) => (
+        <li key={text} className="flex gap-2">
           <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-slate-900" />
-          <span>{i}</span>
+          <span>{text}</span>
         </li>
       ))}
     </ul>
@@ -89,7 +93,7 @@ export function UseCases() {
   return (
     <div className="grid gap-5 lg:grid-cols-3">
       {useCases.map((u) => (
-        <Card key={u.title} className="p-6">
+        <Card key={u.id} className="p-6">
           <div className="flex items-start justify-between gap-3">
             <div>
               <div className="text-base font-extrabold text-slate-900">
@@ -100,7 +104,7 @@ export function UseCases() {
               </div>
             </div>
             <div className="rounded-full bg-slate-900/5 px-3 py-1 text-xs font-semibold text-slate-700">
-              {u.timeframe}
+              {u.timeframeLabel}
             </div>
           </div>
 
