@@ -16,6 +16,25 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## Contact form email setup
+
+The contact form sends emails through SMTP to `info@molnarsystems.hu`.
+
+1. Copy `.env.example` to `.env.local`
+2. Fill in SMTP credentials:
+
+```bash
+SMTP_HOST=
+SMTP_PORT=
+SMTP_SECURE=
+SMTP_USER=
+SMTP_PASS=your-app-password
+SMTP_FROM="Molnár Systems <info@molnarsystems.hu>"
+CONTACT_TO=info@molnarsystems.hu
+```
+
+3. Restart the dev server
+
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.

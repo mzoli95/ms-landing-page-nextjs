@@ -157,9 +157,13 @@ export type Dictionary = {
   contactForm: {
     name: string;
     namePlaceholder: string;
+    emailLabel: string;
+    emailPlaceholder: string;
     helpLabel: string;
     helpTooltip: string;
     detailsPlaceholder: string;
+    validationRequired: string;
+    validationEmail: string;
     sending: string;
     send: string;
     success: string;
@@ -586,11 +590,15 @@ const hu: Dictionary = {
   contactForm: {
     name: "Név",
     namePlaceholder: "Pl. Kiss Péter",
+    emailLabel: "Email",
+    emailPlaceholder: "pl. kiss.peter@ceg.hu",
     helpLabel: "Miben segíthetek?",
     helpTooltip:
       "Írd le, mi a probléma és mi a cél, kb. hány felhasználó érintett, van-e határidő. Minél több infó, annál jobb javaslatot tudok adni!",
     detailsPlaceholder:
       "Írd le röviden a helyzetet: mi a probléma, mi a cél, kb. mennyi felhasználó, van-e határidő.",
+    validationRequired: "Kérlek töltsd ki ezt a mezőt.",
+    validationEmail: "Kérlek adj meg egy érvényes email címet.",
     sending: "Küldés...",
     send: "Üzenet küldése",
     success: "Köszi! Megkaptam az üzenetet, hamarosan válaszolok.",
@@ -1021,11 +1029,15 @@ const en: Dictionary = {
   contactForm: {
     name: "Name",
     namePlaceholder: "e.g. John Smith",
+    emailLabel: "Email",
+    emailPlaceholder: "e.g. john@company.com",
     helpLabel: "How can I help?",
     helpTooltip:
       "Describe the challenge and the goal, approx. user count, and any deadline. The more detail you share, the better suggestion I can give.",
     detailsPlaceholder:
       "Briefly describe your situation: what is the problem, what is the goal, approx. user count, and any deadline.",
+    validationRequired: "Please fill out this field.",
+    validationEmail: "Please enter a valid email address.",
     sending: "Sending...",
     send: "Send message",
     success: "Thanks! I received your message and will reply soon.",

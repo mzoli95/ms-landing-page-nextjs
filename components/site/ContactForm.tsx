@@ -12,15 +12,49 @@ type State = "idle" | "sending" | "sent" | "error";
 export function ContactForm({ lang = "hu" }: { lang?: Lang }) {
   const t = getDictionary(lang);
   const [state, setState] = useState<State>("idle");
-  const [message, setMessage] = useState<string>("");
+  const [errorReason, setErrorReason] = useState<string>("");
   const [detailsLength, setDetailsLength] = useState<number>(0);
+
+  const message =
+    state === "sent"
+      ? t.contactForm.success
+      : state === "error"
+        ? errorReason
+          ? `${t.contactForm.error} (${errorReason})`
+          : t.contactForm.error
+        : "";
+
+  function onInvalidField(
+    e: React.InvalidEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) {
+    const field = e.currentTarget;
+
+    if (field.validity.valueMissing) {
+      field.setCustomValidity(t.contactForm.validationRequired);
+      return;
+    }
+
+    if (field instanceof HTMLInputElement && field.validity.typeMismatch) {
+      field.setCustomValidity(t.contactForm.validationEmail);
+      return;
+    }
+
+    field.setCustomValidity("");
+  }
+
+  function onInputField(
+    e: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) {
+    e.currentTarget.setCustomValidity("");
+  }
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setState("sending");
-    setMessage("");
+    setErrorReason("");
+    const formElement = e.currentTarget;
 
-    const form = new FormData(e.currentTarget);
+    const form = new FormData(formElement);
     const payload = Object.fromEntries(form.entries());
 
     try {
@@ -30,14 +64,21 @@ export function ContactForm({ lang = "hu" }: { lang?: Lang }) {
         body: JSON.stringify(payload),
       });
 
-      if (!res.ok) throw new Error("Request failed");
+      const result = (await res.json().catch(() => null)) as {
+        ok?: boolean;
+        error?: string;
+      } | null;
+
+      if (!res.ok || !result?.ok) {
+        throw new Error(result?.error || "Request failed");
+      }
 
       setState("sent");
-      setMessage(t.contactForm.success);
-      e.currentTarget.reset();
-    } catch {
+      formElement.reset();
+      setDetailsLength(0);
+    } catch (error) {
       setState("error");
-      setMessage(t.contactForm.error);
+      setErrorReason(error instanceof Error ? error.message : "");
     }
   }
 
@@ -54,17 +95,23 @@ export function ContactForm({ lang = "hu" }: { lang?: Lang }) {
               required
               className="w-full rounded-xl border border-slate-200 px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-slate-300"
               placeholder={t.contactForm.namePlaceholder}
+              onInvalid={onInvalidField}
+              onInput={onInputField}
             />
           </label>
 
           <label className="space-y-1">
-            <div className="text-sm font-semibold text-slate-900">Email</div>
+            <div className="text-sm font-semibold text-slate-900">
+              {t.contactForm.emailLabel}
+            </div>
             <input
               type="email"
               name="email"
               required
               className="w-full rounded-xl border border-slate-200 px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-slate-300"
-              placeholder="peter@ceg.hu"
+              placeholder={t.contactForm.emailPlaceholder}
+              onInvalid={onInvalidField}
+              onInput={onInputField}
             />
           </label>
         </div>
@@ -90,6 +137,8 @@ export function ContactForm({ lang = "hu" }: { lang?: Lang }) {
               className="w-full rounded-xl border border-slate-200 px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-slate-300 resize-none"
               placeholder={t.contactForm.detailsPlaceholder}
               onChange={(e) => setDetailsLength(e.target.value.length)}
+              onInvalid={onInvalidField}
+              onInput={onInputField}
             />
             <div className="absolute right-3 bottom-2 text-xs text-slate-400 select-none pointer-events-none">
               {detailsLength}/500
