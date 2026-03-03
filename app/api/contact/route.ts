@@ -56,7 +56,14 @@ function getSmtpConfig() {
   const user = process.env.SMTP_USER;
   const pass = process.env.SMTP_PASS;
 
-  if (!host || !portRaw || !user || !pass) {
+  const missingKeys: string[] = [];
+  if (!host) missingKeys.push("SMTP_HOST");
+  if (!portRaw) missingKeys.push("SMTP_PORT");
+  if (!user) missingKeys.push("SMTP_USER");
+  if (!pass) missingKeys.push("SMTP_PASS");
+
+  if (missingKeys.length > 0) {
+    console.error("CONTACT_EMAIL_CONFIG_MISSING_KEYS", missingKeys.join(","));
     return null;
   }
 
