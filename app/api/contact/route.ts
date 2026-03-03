@@ -21,6 +21,35 @@ function isValidEmail(email: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
+const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
+const RATE_LIMIT_MAX_REQUESTS = 5;
+const requestStore = new Map<string, number[]>();
+
+function getClientIp(req: Request) {
+  const forwardedFor = req.headers.get("x-forwarded-for");
+  if (forwardedFor) {
+    return forwardedFor.split(",")[0]?.trim() || "unknown";
+  }
+
+  return req.headers.get("x-real-ip") || "unknown";
+}
+
+function isRateLimited(ip: string) {
+  const now = Date.now();
+  const windowStart = now - RATE_LIMIT_WINDOW_MS;
+  const existing = requestStore.get(ip) ?? [];
+  const recent = existing.filter((timestamp) => timestamp >= windowStart);
+
+  if (recent.length >= RATE_LIMIT_MAX_REQUESTS) {
+    requestStore.set(ip, recent);
+    return true;
+  }
+
+  recent.push(now);
+  requestStore.set(ip, recent);
+  return false;
+}
+
 function getSmtpConfig() {
   const host = process.env.SMTP_HOST;
   const portRaw = process.env.SMTP_PORT;
@@ -45,13 +74,16 @@ function getSmtpConfig() {
 }
 
 export async function POST(req: Request) {
-  const body = (await req.json().catch(() => null)) as ContactBody | null;
+  const ip = getClientIp(req);
+  if (isRateLimited(ip)) {
+    return NextResponse.json({ ok: false, error: "Too many requests." }, { status: 429 });
+  }
 
-  console.log("CONTACT_FORM", body);
+  const body = (await req.json().catch(() => null)) as ContactBody | null;
 
   if (!body?.email || !body?.details) {
     return NextResponse.json(
-      { ok: false, error: "Missing required fields." },
+      { ok: false, error: "Invalid request." },
       { status: 400 },
     );
   }
@@ -60,21 +92,32 @@ export async function POST(req: Request) {
   const email = String(body.email).trim();
   const details = String(body.details).trim();
 
+  if (name.length < 2 || name.length > 120) {
+    return NextResponse.json(
+      { ok: false, error: "Invalid request." },
+      { status: 400 },
+    );
+  }
+
+  if (details.length < 2 || details.length > 500) {
+    return NextResponse.json(
+      { ok: false, error: "Invalid request." },
+      { status: 400 },
+    );
+  }
+
   if (!isValidEmail(email)) {
     return NextResponse.json(
-      { ok: false, error: "Invalid email address." },
+      { ok: false, error: "Invalid request." },
       { status: 400 },
     );
   }
 
   const smtpConfig = getSmtpConfig();
   if (!smtpConfig) {
+    console.error("CONTACT_EMAIL_CONFIG_ERROR");
     return NextResponse.json(
-      {
-        ok: false,
-        error:
-          "Email service is not configured. Set SMTP_HOST, SMTP_PORT, SMTP_USER and SMTP_PASS.",
-      },
+      { ok: false, error: "Service unavailable." },
       { status: 500 },
     );
   }
@@ -119,11 +162,9 @@ export async function POST(req: Request) {
       `,
     });
   } catch (error) {
-    console.error("CONTACT_EMAIL_ERROR", error);
-    const errorMessage =
-      error instanceof Error ? error.message : "Unknown email transport error";
+    console.error("CONTACT_EMAIL_ERROR", error instanceof Error ? error.message : error);
     return NextResponse.json(
-      { ok: false, error: `Could not send email. ${errorMessage}` },
+      { ok: false, error: "Could not send email." },
       { status: 500 },
     );
   }

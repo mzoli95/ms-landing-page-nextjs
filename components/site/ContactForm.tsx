@@ -12,16 +12,13 @@ type State = "idle" | "sending" | "sent" | "error";
 export function ContactForm({ lang = "hu" }: { lang?: Lang }) {
   const t = getDictionary(lang);
   const [state, setState] = useState<State>("idle");
-  const [errorReason, setErrorReason] = useState<string>("");
   const [detailsLength, setDetailsLength] = useState<number>(0);
 
   const message =
     state === "sent"
       ? t.contactForm.success
       : state === "error"
-        ? errorReason
-          ? `${t.contactForm.error} (${errorReason})`
-          : t.contactForm.error
+        ? t.contactForm.error
         : "";
 
   function onInvalidField(
@@ -51,7 +48,6 @@ export function ContactForm({ lang = "hu" }: { lang?: Lang }) {
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setState("sending");
-    setErrorReason("");
     const formElement = e.currentTarget;
 
     const form = new FormData(formElement);
@@ -76,9 +72,8 @@ export function ContactForm({ lang = "hu" }: { lang?: Lang }) {
       setState("sent");
       formElement.reset();
       setDetailsLength(0);
-    } catch (error) {
+    } catch {
       setState("error");
-      setErrorReason(error instanceof Error ? error.message : "");
     }
   }
 
