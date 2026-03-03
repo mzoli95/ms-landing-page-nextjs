@@ -76,7 +76,10 @@ function getSmtpConfig() {
 export async function POST(req: Request) {
   const ip = getClientIp(req);
   if (isRateLimited(ip)) {
-    return NextResponse.json({ ok: false, error: "Too many requests." }, { status: 429 });
+    return NextResponse.json(
+      { ok: false, error: "Too many requests." },
+      { status: 429 },
+    );
   }
 
   const body = (await req.json().catch(() => null)) as ContactBody | null;
@@ -162,7 +165,10 @@ export async function POST(req: Request) {
       `,
     });
   } catch (error) {
-    console.error("CONTACT_EMAIL_ERROR", error instanceof Error ? error.message : error);
+    console.error(
+      "CONTACT_EMAIL_ERROR",
+      error instanceof Error ? error.message : error,
+    );
     return NextResponse.json(
       { ok: false, error: "Could not send email." },
       { status: 500 },
