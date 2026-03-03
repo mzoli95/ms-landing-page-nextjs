@@ -4,58 +4,62 @@ import { FeatureGrid } from "@/components/site/FeatureGrid";
 import { ServicesPreview } from "@/components/site/ServicesPreview";
 import { PricingGrid } from "@/components/site/PricingGrid";
 import { Steps } from "@/components/site/Steps";
-import { FAQ } from "@/components/site/FAQ";
 import { UseCases } from "@/components/site/UseCases";
 import { ComingSoon } from "@/components/site/ComingSoon";
 import { flags } from "@/components/lib/site";
 import { PcServiceSection } from "@/components/site/PcServiceSection";
+import { getLangFromCookies } from "@/components/lib/i18n";
+import { getDictionary } from "@/components/lib/dictionary";
 
-export default function HomePage() {
-  if (flags.comingSoon) return <ComingSoon />;
+export default async function HomePage() {
+  const lang = await getLangFromCookies();
+  const t = getDictionary(lang);
+
+  if (flags.comingSoon) return <ComingSoon lang={lang} />;
 
   return (
     <>
-      <Hero />
+      <Hero lang={lang} />
       <Section
-        eyebrow="Miért működik?"
-        title="Kevesebb kézi munka. Kevesebb hiba. Nagyobb átláthatóság."
-        description="A cél nem az, hogy „készüljön valami”, hanem hogy a céged gyorsabban és nyugodtabban működjön."
+        eyebrow={t.home.why.eyebrow}
+        title={t.home.why.title}
+        description={t.home.why.description}
       >
-        <FeatureGrid />
+        <FeatureGrid lang={lang} />
       </Section>
       <Section
-        eyebrow="Így néz ki a gyakorlatban"
-        title="A pontos megoldás mindig a folyamatodhoz igazodik"
-        description="Konkrét példák, ilyen helyzetekből szokott gyorsan kézzelfogható eredmény lenni."
+        eyebrow={t.home.useCases.eyebrow}
+        title={t.home.useCases.title}
+        description={t.home.useCases.description}
         className="bg-slate-50"
       >
-        <UseCases />
+        <UseCases lang={lang} />
       </Section>
       <Section
-        eyebrow="Szolgáltatások"
-        title="Belső appok és automatizálás – a cégedre szabva"
-        description="Nem kell mindent egyszerre. Kezdjük egy gyorsnyereséggel, és építjük tovább modulárisan."
+        eyebrow={t.home.services.eyebrow}
+        title={t.home.services.title}
+        description={t.home.services.description}
         className="bg-slate-50"
       >
-        <ServicesPreview />
+        <ServicesPreview lang={lang} />
       </Section>
 
       <Section
-        eyebrow="Hogyan dolgozunk?"
-        title="Átlátható folyamat, heti kis szállítások"
-        description="Rövid egyeztetés, gyors prototípus, stabil átadás."
+        eyebrow={t.home.process.eyebrow}
+        title={t.home.process.title}
+        description={t.home.process.description}
       >
-        <Steps />
+        <Steps lang={lang} />
       </Section>
-      <PcServiceSection />
+      <PcServiceSection lang={lang} />
 
       <Section
-        eyebrow="Árak"
-        title="Csomagok, hogy könnyű legyen dönteni"
-        description="Fix keretek, tiszta elvárások. Irányárak: felmérés után pontosítjuk."
+        eyebrow={t.home.pricing.eyebrow}
+        title={t.home.pricing.title}
+        description={t.home.pricing.description}
         className="bg-slate-50"
       >
-        <PricingGrid />
+        <PricingGrid lang={lang} />
       </Section>
 
       {/* <Section

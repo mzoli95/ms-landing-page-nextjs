@@ -1,18 +1,23 @@
 import { Section } from "@/components/ui/Section";
 import { ServicesPreview } from "@/components/site/ServicesPreview";
+import { getLangFromCookies } from "@/components/lib/i18n";
+import { getDictionary } from "@/components/lib/dictionary";
 
 export const metadata = {
   title: "Szolgáltatások",
 };
 
-export default function ServicesPage() {
+export default async function ServicesPage() {
+  const lang = await getLangFromCookies();
+  const t = getDictionary(lang);
+
   return (
     <Section
-      eyebrow="Szolgáltatások"
-      title="Amit a leggyakrabban építek KKV-knak"
-      description="Belső rendszerek, automatizálás, adatbázis és riportok – plusz kiegészítő PC szerviz."
+      eyebrow={t.servicesPage.eyebrow}
+      title={t.servicesPage.title}
+      description={t.servicesPage.description}
     >
-      <ServicesPreview />
+      <ServicesPreview lang={lang} />
     </Section>
   );
 }

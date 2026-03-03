@@ -24,9 +24,9 @@ export function Button({
     primary:
       "bg-slate-900 text-white hover:bg-slate-800 focus-visible:ring-slate-400",
     secondary:
-      "bg-white/10 text-white hover:bg-white/15 focus-visible:ring-white/40",
+      "border border-white/20 bg-white/10 text-white hover:bg-white/15 focus-visible:ring-white/40",
     ghost:
-      "bg-transparent text-slate-900 hover:bg-slate-900/5 focus-visible:ring-slate-300",
+      "bg-transparent text-slate-900 hover:bg-slate-900/5 focus-visible:ring-slate-300 dark:text-slate-100 dark:hover:bg-slate-100/10",
   };
 
   const cls = cn(base, styles[variant], className);

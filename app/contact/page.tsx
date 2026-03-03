@@ -2,26 +2,31 @@ import { Section } from "@/components/ui/Section";
 import { ContactForm } from "@/components/site/ContactForm";
 import { Card } from "@/components/ui/Card";
 import { flags, site } from "@/components/lib/site";
+import { getLangFromCookies } from "@/components/lib/i18n";
+import { getDictionary } from "@/components/lib/dictionary";
 
 export const metadata = {
   title: "Kapcsolat",
 };
 
-export default function ContactPage() {
+export default async function ContactPage() {
+  const lang = await getLangFromCookies();
+  const t = getDictionary(lang);
+
   return (
     <Section
-      eyebrow="Kapcsolat"
-      title="Van egy ötleted vagy problémád?"
-      description="Írd meg, mit szeretnél megvalósítani, és megnézzük, hogyan lehet belőle működő rendszer. Nincs kötelezettség."
+      eyebrow={t.contactPage.eyebrow}
+      title={t.contactPage.title}
+      description={t.contactPage.description}
     >
       <div className="grid gap-5 lg:grid-cols-3">
         <div className="lg:col-span-2">
-          <ContactForm />
+          <ContactForm lang={lang} />
         </div>
 
         <Card className="p-6">
           <div className="text-sm font-extrabold text-slate-900">
-            Elérhetőségek
+            {t.contactPage.contactDetails}
           </div>
           <div className="mt-3 space-y-2 text-sm text-slate-600">
             <div>
@@ -30,13 +35,13 @@ export default function ContactPage() {
             </div>
             {flags.showPhone && (
               <div>
-                <span className="font-semibold text-slate-900">Telefon:</span>{" "}
+                <span className="font-semibold text-slate-900">{t.contactPage.phone}</span>{" "}
                 {site.phone}
               </div>
             )}
             <div>
-              <span className="font-semibold text-slate-900">Terület:</span>{" "}
-              {site.location}
+              <span className="font-semibold text-slate-900">{t.contactPage.coverage}</span>{" "}
+              {t.contactPage.coverageValue}
             </div>
           </div>
         </Card>

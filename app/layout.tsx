@@ -4,6 +4,8 @@ import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
 import { JsonLd } from "@/components/site/JsonLd";
 import { site } from "@/components/lib/site";
+import { getLangFromCookies } from "@/components/lib/i18n";
+import { getThemeFromCookies } from "@/components/lib/theme.server";
 
 export const metadata: Metadata = {
   title: {
@@ -31,18 +33,21 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const lang = await getLangFromCookies();
+  const theme = await getThemeFromCookies();
+
   return (
-    <html lang="hu">
-      <body className="min-h-dvh bg-white text-slate-900 antialiased">
+    <html lang={lang} className={theme === "dark" ? "dark" : ""}>
+      <body className="flex min-h-dvh flex-col bg-(--app-bg) text-(--text-1) antialiased">
         <JsonLd />
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
+        <Navbar lang={lang} initialTheme={theme} />
+        <main className="flex-1">{children}</main>
+        <Footer lang={lang} />
       </body>
     </html>
   );

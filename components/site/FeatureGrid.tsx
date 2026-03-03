@@ -1,33 +1,11 @@
 import { Card } from "@/components/ui/Card";
+import type { Lang } from "@/components/lib/i18n";
+import { getDictionary } from "@/components/lib/dictionary";
 
-const features = [
-  {
-    title: "Határidők és automatikus emlékeztetők",
-    desc: "Email értesítések, feladatlista és követés, hogy semmi ne csússzon el (szerviz, garancia, projekt).",
-  },
-  {
-    title: "Átlátható kimutatások és felületek",
-    desc: "Bevétel, kiadás, trendek egy közös nézetben, hogy gyorsabb döntéseket hozhass.",
-  },
-  {
-    title: "Készlet és erőforrás követés",
-    desc: "Minimum készlet riasztás, mozgások nyomon követése, rendelési javaslatok.",
-  },
-  {
-    title: "Tiszta, stabil adatbázis alap",
-    desc: "Rendbetett adatok, duplikációk nélkül. Gyors lekérdezések és növekedésre kész rendszer.",
-  },
-  {
-    title: "Jogosultság és adatvédelem",
-    desc: "Szerepkörök, naplózás és alap védelem, hogy mindenki csak azt lássa, amit kell.",
-  },
-  {
-    title: "Folyamatos működés és támogatás",
-    desc: "Karbantartás, mentések és kisebb fejlesztések, kiszámítható, stabil rendszer.",
-  },
-];
+export function FeatureGrid({ lang = "hu" }: { lang?: Lang }) {
+  const t = getDictionary(lang);
+  const features = t.featureGrid;
 
-export function FeatureGrid() {
   return (
     <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
       {features.map((f) => (
