@@ -26,7 +26,9 @@ export function Hero({ lang = "hu" }: { lang?: Lang }) {
 
         <p className="mt-3 text-sm text-white/60">{t.hero.locationLine}</p>
 
-        <p className="mt-6 max-w-2xl text-base leading-7 text-white/80">{t.hero.intro}</p>
+        <p className="mt-6 max-w-2xl text-base leading-7 text-white/80">
+          {t.hero.intro}
+        </p>
 
         <div className="mt-10 flex flex-col gap-3 sm:flex-row">
           <Button href="/contact">{t.hero.ctaPrimary}</Button>

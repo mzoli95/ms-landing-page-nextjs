@@ -24,10 +24,14 @@ export function ComingSoon({ lang = "hu" }: { lang?: Lang }) {
             {t.comingSoon.title}
           </h1>
 
-          <p className="mt-6 text-base leading-7 text-white/80">{t.comingSoon.description}</p>
+          <p className="mt-6 text-base leading-7 text-white/80">
+            {t.comingSoon.description}
+          </p>
 
           <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:justify-center">
-            <Button href={`mailto:${site.email}`}>{t.comingSoon.sendEmail}</Button>
+            <Button href={`mailto:${site.email}`}>
+              {t.comingSoon.sendEmail}
+            </Button>
 
             {showPhone ? (
               <Button
@@ -41,13 +45,21 @@ export function ComingSoon({ lang = "hu" }: { lang?: Lang }) {
 
           <div className="mt-12 grid gap-4 text-left sm:grid-cols-2">
             <div className="rounded-2xl border border-white/10 bg-white/5 p-5 text-sm text-white/85">
-              <div className="font-semibold text-white">{t.comingSoon.discoveryTitle}</div>
-              <div className="mt-1 text-white/75">{t.comingSoon.discoveryText}</div>
+              <div className="font-semibold text-white">
+                {t.comingSoon.discoveryTitle}
+              </div>
+              <div className="mt-1 text-white/75">
+                {t.comingSoon.discoveryText}
+              </div>
             </div>
 
             <div className="rounded-2xl border border-white/10 bg-white/5 p-5 text-sm text-white/85">
-              <div className="font-semibold text-white">{t.comingSoon.fastStartTitle}</div>
-              <div className="mt-1 text-white/75">{t.comingSoon.fastStartText}</div>
+              <div className="font-semibold text-white">
+                {t.comingSoon.fastStartTitle}
+              </div>
+              <div className="mt-1 text-white/75">
+                {t.comingSoon.fastStartText}
+              </div>
             </div>
           </div>
 
@@ -56,7 +68,8 @@ export function ComingSoon({ lang = "hu" }: { lang?: Lang }) {
             <span className="font-semibold text-white/85">{site.email}</span>
             {showPhone ? (
               <>
-                {" "}• {t.comingSoon.phoneLabel}{" "}
+                {" "}
+                • {t.comingSoon.phoneLabel}{" "}
                 <span className="font-semibold text-white/85">
                   {site.phone}
                 </span>

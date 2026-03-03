@@ -31,7 +31,9 @@ export function AboutSection({ lang = "hu" }: { lang?: Lang }) {
       </div>
 
       <div className="rounded-2xl border border-slate-200 bg-slate-50 px-8 py-7">
-        <p className="text-base font-semibold text-slate-900">{t.aboutSection.ctaTitle}</p>
+        <p className="text-base font-semibold text-slate-900">
+          {t.aboutSection.ctaTitle}
+        </p>
         <p className="mt-1 text-sm text-slate-600">{t.aboutSection.ctaDesc}</p>
         <a
           href="/contact"

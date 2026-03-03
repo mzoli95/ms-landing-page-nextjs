@@ -35,12 +35,16 @@ export default async function ContactPage() {
             </div>
             {flags.showPhone && (
               <div>
-                <span className="font-semibold text-slate-900">{t.contactPage.phone}</span>{" "}
+                <span className="font-semibold text-slate-900">
+                  {t.contactPage.phone}
+                </span>{" "}
                 {site.phone}
               </div>
             )}
             <div>
-              <span className="font-semibold text-slate-900">{t.contactPage.coverage}</span>{" "}
+              <span className="font-semibold text-slate-900">
+                {t.contactPage.coverage}
+              </span>{" "}
               {t.contactPage.coverageValue}
             </div>
           </div>

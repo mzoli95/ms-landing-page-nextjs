@@ -58,7 +58,9 @@ export function ThemeToggle({
           ? t.nav.themeToggle.switchToLight
           : t.nav.themeToggle.switchToDark
       }
-      title={theme === "dark" ? t.nav.themeToggle.light : t.nav.themeToggle.dark}
+      title={
+        theme === "dark" ? t.nav.themeToggle.light : t.nav.themeToggle.dark
+      }
     >
       {theme === "dark" ? (
         <Sun className="h-4 w-4" />

@@ -492,8 +492,7 @@ const hu: Dictionary = {
   pcService: {
     eyebrow: "Kiegészítő szolgáltatás",
     title: "Eseti PC szerviz és IT támogatás",
-    description:
-      "Magánszemélyeknek és vállalkozásoknak Somogy megyében.",
+    description: "Magánszemélyeknek és vállalkozásoknak Somogy megyében.",
     availability: "Elérhetőség",
     area: [
       "📍 Gépleadás: Siófok vagy környéke",
@@ -606,7 +605,8 @@ const hu: Dictionary = {
   pricingPage: {
     eyebrow: "Árak",
     title: "Átlátható csomagok",
-    description: "Gyors döntés és eredmény. Pár kérdés után pontos ajánlatot adok.",
+    description:
+      "Gyors döntés és eredmény. Pár kérdés után pontos ajánlatot adok.",
   },
   notFound: {
     eyebrow: "404",
@@ -685,7 +685,8 @@ const en: Dictionary = {
     ],
     title:
       "Still running your business in Excel, notes or paper? See your money and deadlines in one place.",
-    locationLine: "Molnár Systems • Siófok and Somogy county • Online across Hungary",
+    locationLine:
+      "Molnár Systems • Siófok and Somogy county • Online across Hungary",
     intro:
       "If you are tired of searching through spreadsheets and notes, I build a simple custom system that saves time, reduces errors, and makes operations visible.",
     ctaPrimary: "Book a free consultation",

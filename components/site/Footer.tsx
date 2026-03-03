@@ -13,9 +13,7 @@ export function Footer({ lang }: { lang: Lang }) {
       <Container className="py-10">
         <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <div className="text-sm font-bold text-slate-900">
-              {site.name}
-            </div>
+            <div className="text-sm font-bold text-slate-900">{site.name}</div>
             <div className="mt-1 text-sm text-slate-600">
               {t.footer.location}
             </div>

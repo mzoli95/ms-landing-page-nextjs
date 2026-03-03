@@ -72,7 +72,9 @@ export function PcServiceSection({ lang = "hu" }: { lang?: Lang }) {
               </div>
 
               <div className="mt-6 rounded-2xl bg-slate-50 p-4 text-sm text-slate-700">
-                <div className="font-semibold text-slate-900">{t.pcService.tipTitle}</div>
+                <div className="font-semibold text-slate-900">
+                  {t.pcService.tipTitle}
+                </div>
                 <div className="mt-1">{t.pcService.tipText}</div>
               </div>
             </div>

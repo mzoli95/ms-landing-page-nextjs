@@ -30,9 +30,7 @@ export function Navbar({
               <div className="text-sm font-extrabold text-slate-900">
                 {site.name}
               </div>
-              <div className="text-xs text-slate-500">
-                {t.nav.subtitle}
-              </div>
+              <div className="text-xs text-slate-500">{t.nav.subtitle}</div>
             </div>
           </Link>
 
@@ -62,7 +60,10 @@ export function Navbar({
             <ThemeToggle lang={lang} initialTheme={initialTheme} />
           </div>
         </div>
-        <nav aria-label={t.nav.mobileMenuLabel} className="flex gap-3 pb-3 md:hidden">
+        <nav
+          aria-label={t.nav.mobileMenuLabel}
+          className="flex gap-3 pb-3 md:hidden"
+        >
           {nav.map((i) =>
             disabled ? (
               <span
