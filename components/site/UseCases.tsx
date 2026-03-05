@@ -1,4 +1,7 @@
+"use client";
+
 import { Card } from "@/components/ui/Card";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import type { Lang } from "@/components/lib/i18n";
 import { getDictionary } from "@/components/lib/dictionary";
 
@@ -21,43 +24,45 @@ export function UseCases({ lang = "hu" }: { lang?: Lang }) {
 
   return (
     <div className="grid gap-5 lg:grid-cols-3">
-      {useCases.map((u) => (
-        <Card key={u.id} className="p-6">
-          <div className="flex items-start justify-between gap-3">
-            <div>
-              <div className="text-base font-extrabold text-slate-900">
-                {u.title}
+      {useCases.map((u, index) => (
+        <ScrollReveal key={u.id} delayMs={index * 90} yOffset="md">
+          <Card className="p-6">
+            <div className="flex items-start justify-between gap-3">
+              <div>
+                <div className="text-base font-extrabold text-slate-900">
+                  {u.title}
+                </div>
+                <div className="mt-1 text-xs font-semibold text-slate-500">
+                  {u.who}
+                </div>
               </div>
-              <div className="mt-1 text-xs font-semibold text-slate-500">
-                {u.who}
+              <div className="rounded-full bg-slate-900/5 px-3 py-1 text-xs font-semibold text-slate-700">
+                {u.timeframeLabel}
               </div>
             </div>
-            <div className="rounded-full bg-slate-900/5 px-3 py-1 text-xs font-semibold text-slate-700">
-              {u.timeframeLabel}
-            </div>
-          </div>
 
-          <div className="mt-5">
-            <div className="text-xs font-bold tracking-wider text-slate-900 uppercase">
-              {t.useCases.labels.problem}
+            <div className="mt-5">
+              <div className="text-xs font-bold tracking-wider text-slate-900 uppercase">
+                {t.useCases.labels.problem}
+              </div>
+              <BulletList items={u.problem} />
             </div>
-            <BulletList items={u.problem} />
-          </div>
 
-          <div className="mt-5">
-            <div className="text-xs font-bold tracking-wider text-slate-900 uppercase">
-              {t.useCases.labels.solution}
+            <div className="mt-5">
+              <div className="text-xs font-bold tracking-wider text-slate-900 uppercase">
+                {t.useCases.labels.solution}
+              </div>
+              <BulletList items={u.solution} />
             </div>
-            <BulletList items={u.solution} />
-          </div>
 
-          <div className="mt-5">
-            <div className="text-xs font-bold tracking-wider text-slate-900 uppercase">
-              {t.useCases.labels.why}
+            <div className="mt-5">
+              <div className="text-xs font-bold tracking-wider text-slate-900 uppercase">
+                {t.useCases.labels.why}
+              </div>
+              <BulletList items={u.why} />
             </div>
-            <BulletList items={u.why} />
-          </div>
-        </Card>
+          </Card>
+        </ScrollReveal>
       ))}
     </div>
   );

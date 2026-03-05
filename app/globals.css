@@ -24,3 +24,37 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(18px);
+  transition-property: opacity, transform;
+  transition-duration: 680ms;
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-offset-sm {
+  transform: translateY(12px);
+}
+
+.reveal-offset-md {
+  transform: translateY(18px);
+}
+
+.reveal-offset-lg {
+  transform: translateY(26px);
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-on-scroll {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

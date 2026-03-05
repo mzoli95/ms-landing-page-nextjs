@@ -19,7 +19,7 @@ export function Button({
   type?: "button" | "submit";
 }) {
   const base =
-    "inline-flex items-center justify-center rounded-xl px-4 py-2 text-sm font-semibold transition focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent";
+    "inline-flex items-center justify-center rounded-xl px-4 py-2 text-sm font-semibold transition duration-200 ease-out focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98]";
   const styles: Record<Variant, string> = {
     primary:
       "bg-slate-900 text-white hover:bg-slate-800 focus-visible:ring-slate-400",

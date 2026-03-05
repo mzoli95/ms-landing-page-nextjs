@@ -192,6 +192,7 @@ const hu: Dictionary = {
   nav: {
     subtitle: "digitalizálás • rendszerek",
     items: [
+      { href: "/", label: "Főoldal" },
       { href: "/services", label: "Szolgáltatások" },
       { href: "/pricing", label: "Árak" },
       { href: "/about", label: "Rólam" },
@@ -630,6 +631,7 @@ const en: Dictionary = {
   nav: {
     subtitle: "digitalization • systems",
     items: [
+      { href: "/", label: "Home" },
       { href: "/services", label: "Services" },
       { href: "/pricing", label: "Pricing" },
       { href: "/about", label: "About" },

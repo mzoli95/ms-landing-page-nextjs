@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
@@ -8,11 +11,28 @@ export function Hero({ lang = "hu" }: { lang?: Lang }) {
   const t = getDictionary(lang);
   const badges = t.hero.badges;
   const bullets = t.hero.bullets;
+  const [offset, setOffset] = useState(0);
+
+  useEffect(() => {
+    const onScroll = () => {
+      setOffset(Math.min(56, window.scrollY * 0.12));
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <section className="relative overflow-hidden">
       <div className="absolute inset-0 bg-linear-to-b from-slate-950 via-slate-900 to-slate-900" />
-      <div className="absolute -top-24 left-1/2 h-120 w-120 -translate-x-1/2 rounded-full bg-white/10 blur-3xl" />
+      <div
+        className="absolute -top-24 left-1/2 h-120 w-120 -translate-x-1/2 rounded-full bg-white/10 blur-3xl"
+        style={{ transform: `translate3d(-50%, ${offset}px, 0)` }}
+      />
+      <div
+        className="absolute top-28 right-12 h-56 w-56 rounded-full bg-blue-300/10 blur-3xl"
+        style={{ transform: `translate3d(0, ${offset * -0.45}px, 0)` }}
+      />
       <Container className="relative py-16 sm:py-24">
         <div className="flex flex-wrap gap-2">
           {badges.map((badge) => (

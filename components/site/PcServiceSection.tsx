@@ -1,3 +1,5 @@
+"use client";
+
 import { Container } from "@/components/ui/Container";
 import { site, flags } from "@/components/lib/site";
 import type { Lang } from "@/components/lib/i18n";

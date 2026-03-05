@@ -43,6 +43,10 @@ body {
   background-color: var(--app-bg);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .bg-white {
   background-color: var(--surface-1);
 }
@@ -116,4 +120,40 @@ body {
 .dark .text-slate-600,
 .dark .text-slate-500 {
   color: var(--text-2);
+}
+
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translate3d(0, 40px, 0) scale(0.985);
+  filter: blur(8px);
+  transition-property: opacity, transform, filter;
+  transition-duration: 760ms, 900ms, 820ms;
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform, filter;
+}
+
+.reveal-offset-sm {
+  transform: translate3d(0, 24px, 0) scale(0.99);
+}
+
+.reveal-offset-md {
+  transform: translate3d(0, 40px, 0) scale(0.985);
+}
+
+.reveal-offset-lg {
+  transform: translate3d(0, 56px, 0) scale(0.98);
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+  filter: blur(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-on-scroll {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }

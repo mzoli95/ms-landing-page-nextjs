@@ -1,5 +1,8 @@
+"use client";
+
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import type { Lang } from "@/components/lib/i18n";
 import { getDictionary } from "@/components/lib/dictionary";
 
@@ -9,28 +12,34 @@ export function ServicesPreview({ lang = "hu" }: { lang?: Lang }) {
 
   return (
     <div className="grid gap-5 lg:grid-cols-2">
-      {services.map((s) => (
-        <Card key={s.title} className="p-6">
-          <div className="flex items-start justify-between gap-4">
-            <div className="text-base font-bold text-slate-900">{s.title}</div>
-          </div>
-          <ul className="mt-3 space-y-2 text-sm text-slate-600">
-            {s.items.map((i) => (
-              <li key={i} className="flex gap-2">
-                <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-slate-900" />
-                <span>{i}</span>
-              </li>
-            ))}
-          </ul>
-        </Card>
+      {services.map((s, index) => (
+        <ScrollReveal key={s.title} delayMs={index * 80} yOffset="sm">
+          <Card className="p-6">
+            <div className="flex items-start justify-between gap-4">
+              <div className="text-base font-bold text-slate-900">
+                {s.title}
+              </div>
+            </div>
+            <ul className="mt-3 space-y-2 text-sm text-slate-600">
+              {s.items.map((i) => (
+                <li key={i} className="flex gap-2">
+                  <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-slate-900" />
+                  <span>{i}</span>
+                </li>
+              ))}
+            </ul>
+          </Card>
+        </ScrollReveal>
       ))}
-      <div className="lg:col-span-2 flex flex-col items-start gap-3 rounded-2xl border border-slate-200 bg-slate-50 p-6">
-        <div className="text-base font-bold text-slate-900">
-          {t.servicesPreview.ctaTitle}
+      <ScrollReveal delayMs={180} yOffset="sm" className="lg:col-span-2">
+        <div className="flex flex-col items-start gap-3 rounded-2xl border border-slate-200 bg-slate-50 p-6">
+          <div className="text-base font-bold text-slate-900">
+            {t.servicesPreview.ctaTitle}
+          </div>
+          <p className="text-sm text-slate-600">{t.servicesPreview.ctaDesc}</p>
+          <Button href="/contact">{t.servicesPreview.ctaButton}</Button>
         </div>
-        <p className="text-sm text-slate-600">{t.servicesPreview.ctaDesc}</p>
-        <Button href="/contact">{t.servicesPreview.ctaButton}</Button>
-      </div>
+      </ScrollReveal>
     </div>
   );
 }
