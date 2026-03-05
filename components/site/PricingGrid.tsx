@@ -51,10 +51,46 @@ function PlanCard({ plan, lang }: { plan: Plan; lang: Lang }) {
   );
 }
 
-export function PricingGrid({ lang = "hu" }: { lang?: Lang }) {
+export function PricingGrid({
+  lang = "hu",
+  mode = "full",
+}: {
+  lang?: Lang;
+  mode?: "full" | "teaser" | "link-only";
+}) {
   const t = getDictionary(lang);
-  const plans = t.pricingGrid.plans;
-  const pc = t.pricingGrid.pcPlans;
+  const isTeaser = mode === "teaser";
+  const isLinkOnly = mode === "link-only";
+  const plans = isTeaser
+    ? t.pricingGrid.plans.slice(0, 2)
+    : t.pricingGrid.plans;
+  const pc = isTeaser
+    ? t.pricingGrid.pcPlans.slice(0, 1)
+    : t.pricingGrid.pcPlans;
+  const fullPricingLabel =
+    lang === "en" ? "Go to pricing" : "Tovább az árakhoz";
+
+  if (isLinkOnly) {
+    return (
+      <div className="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8">
+        <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+          <p className="max-w-2xl text-sm leading-7 text-slate-600">
+            {lang === "en"
+              ? "You can start with a package, or request a fully custom quote. Full details are on the Pricing page."
+              : "Indulhatsz csomaggal, de teljesen egyedi ajánlatot is kérhetsz. A teljes részletek az Ár oldalon vannak."}
+          </p>
+          <div className="flex flex-wrap items-center gap-3 sm:justify-end">
+            <Button href="/pricing">{fullPricingLabel}</Button>
+            <Button href="/contact" variant="ghost">
+              {lang === "en"
+                ? "Request a custom quote"
+                : "Egyedi ajánlatot kérek"}
+            </Button>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-10">
@@ -80,12 +116,46 @@ export function PricingGrid({ lang = "hu" }: { lang?: Lang }) {
         </div>
       </div>
 
-      <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6 text-sm text-slate-600">
-        <span className="font-semibold text-slate-900">
-          {t.pricingGrid.labels.noteTitle}
-        </span>{" "}
-        {t.pricingGrid.labels.noteText}
-      </div>
+      {isTeaser && (
+        <div className="rounded-2xl border border-slate-200 bg-white p-6">
+          <p className="text-sm text-slate-600">
+            {lang === "en"
+              ? "You can find all package scopes, add-ons, and notes on the dedicated pricing page."
+              : "Az összes csomag tartalma, kiegészítő opció és megjegyzés a külön Ár oldalra került."}
+          </p>
+          <div className="mt-4">
+            <Button href="/pricing" variant="ghost">
+              {fullPricingLabel}
+            </Button>
+          </div>
+        </div>
+      )}
+
+      {!isTeaser && (
+        <>
+          <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6 text-sm text-slate-600">
+            <span className="font-semibold text-slate-900">
+              {t.pricingGrid.labels.noteTitle}
+            </span>{" "}
+            {t.pricingGrid.labels.noteText}
+          </div>
+
+          <div className="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8">
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+              <p className="max-w-2xl text-sm leading-7 text-slate-600">
+                {lang === "en"
+                  ? "Need a custom scope? Send a short brief and I will prepare a tailored quote."
+                  : "Nem illik rád egyik csomag sem? Írj pár sort az igényedről, és küldök egyedi ajánlatot."}
+              </p>
+              <Button href="/contact">
+                {lang === "en"
+                  ? "Request a custom quote"
+                  : "Egyedi ajánlatot kérek"}
+              </Button>
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 }

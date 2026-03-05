@@ -41,7 +41,7 @@ export function Hero({ lang = "hu" }: { lang?: Lang }) {
           },
           b: {
             title:
-              "Excel és jegyzetek helyett kezeld egyetlen tiszta dashboardon a folyamataid.",
+              "Excel és jegyzetek helyett kezeld a folyamataid egyetlen átlátható felületen.",
             ctaPrimary: "Foglalj ingyenes 15 perces hívást",
             valueProp:
               "Kevesebb manuális admin, gyorsabb döntések, nyugodtabb napi működés.",
@@ -114,6 +114,7 @@ export function Hero({ lang = "hu" }: { lang?: Lang }) {
         <div className="mt-10 flex flex-col gap-3 sm:flex-row">
           <Button
             href="/contact"
+            variant="secondary"
             onClick={() =>
               trackEvent("cta_click", {
                 location: "hero",

@@ -53,7 +53,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: `${site.name} – Egyedi rendszerek, kevesebb admin, jobb átláthatóság`,
     description:
-      "Siófok, Ságvár és Somogy megye: webfejlesztés, programozás, automatizálás és IT/PC támogatás KKV-knak.",
+      "Siófok, Ságvár és Somogy megye: webfejlesztés, programozás, automatizálás és számítógépes/PC segítség KKV-knak.",
     url: site.url,
     siteName: site.name,
     locale: "hu_HU",

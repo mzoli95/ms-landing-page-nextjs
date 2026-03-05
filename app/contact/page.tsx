@@ -8,7 +8,7 @@ import { getDictionary } from "@/components/lib/dictionary";
 export const metadata = {
   title: "Kapcsolat",
   description:
-    "Kapcsolatfelvétel Siófok, Ságvár és Somogy megye területéről: webfejlesztés, programozás, automatizálás és IT támogatás.",
+    "Kapcsolatfelvétel Siófok, Ságvár és Somogy megye területéről: webfejlesztés, programozás, automatizálás és számítógépes segítség.",
   keywords: [
     "siófok programozó kapcsolat",
     "somogy webfejlesztő kapcsolat",

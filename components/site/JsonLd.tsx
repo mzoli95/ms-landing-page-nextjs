@@ -27,8 +27,8 @@ export function JsonLd() {
           "Molnár Systems egy független magyar digitális szolgáltatói márka belső rendszerekhez és automatizáláshoz. Nem azonos más hasonló nevű vállalkozásokkal.",
         knowsAbout: [
           "Egyedi belső rendszerek",
-          "Workflow automatizálás",
-          "Riportok és dashboardok",
+          "Munkafolyamatok automatizálása",
+          "Összefoglalók és áttekintő felületek",
           "Excel kiváltása",
           "Webfejlesztés Siófok",
           "Programozás Somogy megye",
@@ -56,10 +56,10 @@ export function JsonLd() {
         serviceType: [
           "Egyedi webes belső rendszerek",
           "Automatizálás",
-          "Riportok és adatvizualizáció",
+          "Összefoglalók és adatmegjelenítés",
           "Webfejlesztés",
           "Programozás",
-          "PC karbantartás és IT támogatás",
+          "PC karbantartás és számítógépes segítség",
         ],
       },
     ],

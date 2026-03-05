@@ -15,6 +15,37 @@ import { getLangFromCookies } from "@/components/lib/i18n";
 import { getDictionary } from "@/components/lib/dictionary";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 
+function HomeContentSection({
+  id,
+  delayMs,
+  eyebrow,
+  title,
+  description,
+  className,
+  children,
+}: {
+  id: string;
+  delayMs: number;
+  eyebrow: string;
+  title: string;
+  description: string;
+  className?: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <ScrollReveal id={id} delayMs={delayMs} className="scroll-mt-28">
+      <Section
+        eyebrow={eyebrow}
+        title={title}
+        description={description}
+        className={className}
+      >
+        {children}
+      </Section>
+    </ScrollReveal>
+  );
+}
+
 export default async function HomePage() {
   const lang = await getLangFromCookies();
   const t = getDictionary(lang);
@@ -27,47 +58,47 @@ export default async function HomePage() {
         <Hero lang={lang} />
       </ScrollReveal>
 
-      <ScrollReveal id="why-section" delayMs={40} className="scroll-mt-28">
-        <Section
-          eyebrow={t.home.why.eyebrow}
-          title={t.home.why.title}
-          description={t.home.why.description}
-        >
-          <FeatureGrid lang={lang} />
-        </Section>
-      </ScrollReveal>
+      <HomeContentSection
+        id="usecases-section"
+        delayMs={40}
+        eyebrow={t.home.useCases.eyebrow}
+        title={t.home.useCases.title}
+        description={t.home.useCases.description}
+        className="bg-slate-50"
+      >
+        <UseCases lang={lang} mode="teaser" />
+      </HomeContentSection>
 
-      <ScrollReveal id="usecases-section" delayMs={60} className="scroll-mt-28">
-        <Section
-          eyebrow={t.home.useCases.eyebrow}
-          title={t.home.useCases.title}
-          description={t.home.useCases.description}
-          className="bg-slate-50"
-        >
-          <UseCases lang={lang} />
-        </Section>
-      </ScrollReveal>
+      <HomeContentSection
+        id="why-section"
+        delayMs={60}
+        eyebrow={t.home.why.eyebrow}
+        title={t.home.why.title}
+        description={t.home.why.description}
+      >
+        <FeatureGrid lang={lang} />
+      </HomeContentSection>
 
-      <ScrollReveal id="services-section" delayMs={80} className="scroll-mt-28">
-        <Section
-          eyebrow={t.home.services.eyebrow}
-          title={t.home.services.title}
-          description={t.home.services.description}
-          className="bg-slate-50"
-        >
-          <ServicesPreview lang={lang} />
-        </Section>
-      </ScrollReveal>
+      <HomeContentSection
+        id="services-section"
+        delayMs={80}
+        eyebrow={t.home.services.eyebrow}
+        title={t.home.services.title}
+        description={t.home.services.description}
+        className="bg-slate-50"
+      >
+        <ServicesPreview lang={lang} mode="teaser" />
+      </HomeContentSection>
 
-      <ScrollReveal id="process-section" delayMs={100} className="scroll-mt-28">
-        <Section
-          eyebrow={t.home.process.eyebrow}
-          title={t.home.process.title}
-          description={t.home.process.description}
-        >
-          <Steps lang={lang} />
-        </Section>
-      </ScrollReveal>
+      <HomeContentSection
+        id="process-section"
+        delayMs={100}
+        eyebrow={t.home.process.eyebrow}
+        title={t.home.process.title}
+        description={t.home.process.description}
+      >
+        <Steps lang={lang} />
+      </HomeContentSection>
 
       <ScrollReveal
         id="pc-service-section"
@@ -77,16 +108,16 @@ export default async function HomePage() {
         <PcServiceSection lang={lang} />
       </ScrollReveal>
 
-      <ScrollReveal id="pricing-section" delayMs={140} className="scroll-mt-28">
-        <Section
-          eyebrow={t.home.pricing.eyebrow}
-          title={t.home.pricing.title}
-          description={t.home.pricing.description}
-          className="bg-slate-50"
-        >
-          <PricingGrid lang={lang} />
-        </Section>
-      </ScrollReveal>
+      <HomeContentSection
+        id="pricing-section"
+        delayMs={140}
+        eyebrow={t.home.pricing.eyebrow}
+        title={t.home.pricing.title}
+        description={t.home.pricing.description}
+        className="bg-slate-50"
+      >
+        <PricingGrid lang={lang} mode="link-only" />
+      </HomeContentSection>
 
       <ScrollReveal delayMs={160} className="scroll-mt-28">
         <Section
