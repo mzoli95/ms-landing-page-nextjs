@@ -4,8 +4,7 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     name: "Molnár Systems",
     short_name: "Molnár Systems",
-    description:
-      "Egyedi belső rendszerek és üzleti automatizálás KKV-knak.",
+    description: "Egyedi belső rendszerek és üzleti automatizálás KKV-knak.",
     start_url: "/",
     display: "standalone",
     background_color: "#f8fbff",

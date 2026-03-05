@@ -111,9 +111,7 @@ export default async function HomePage() {
         <Section
           eyebrow={lang === "en" ? "FAQ" : "GYIK"}
           title={
-            lang === "en"
-              ? "Frequently asked questions"
-              : "Gyakori kérdések"
+            lang === "en" ? "Frequently asked questions" : "Gyakori kérdések"
           }
           description={
             lang === "en"

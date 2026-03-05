@@ -21,12 +21,15 @@ export function Hero({ lang = "hu" }: { lang?: Lang }) {
           a: {
             title: t.hero.title,
             ctaPrimary: t.hero.ctaPrimary,
-            valueProp: "From chaos to clear internal operations with one tailored system.",
+            valueProp:
+              "From chaos to clear internal operations with one tailored system.",
           },
           b: {
-            title: "Stop juggling Excel and notes — run your business from one clear dashboard.",
+            title:
+              "Stop juggling Excel and notes — run your business from one clear dashboard.",
             ctaPrimary: "Book a free 15-min call",
-            valueProp: "Less manual admin, faster decisions, and a cleaner daily workflow.",
+            valueProp:
+              "Less manual admin, faster decisions, and a cleaner daily workflow.",
           },
         }
       : {

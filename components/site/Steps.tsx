@@ -17,7 +17,9 @@ export function Steps({ lang = "hu" }: { lang?: Lang }) {
             <div className="text-xs font-semibold tracking-widest text-slate-500 uppercase">
               {lang === "en" ? `Step ${index + 1}` : `${index + 1}. lépés`}
             </div>
-            <div className="mt-2 text-base font-bold text-slate-900">{s.title}</div>
+            <div className="mt-2 text-base font-bold text-slate-900">
+              {s.title}
+            </div>
             <p className="mt-2 text-sm leading-6 text-slate-600">{s.desc}</p>
           </Card>
         </ScrollReveal>
