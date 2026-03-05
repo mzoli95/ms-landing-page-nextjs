@@ -607,7 +607,7 @@ const hu: Dictionary = {
   },
   servicesPage: {
     eyebrow: "Szolgáltatások",
-    title: "Amit a leggyakrabban építek KKV-knak",
+    title: "Gyakori munkák",
     description:
       "Belső rendszerek, automatizálás, adatbázis és riportok – plusz kiegészítő PC szerviz.",
   },
@@ -1047,7 +1047,7 @@ const en: Dictionary = {
   },
   servicesPage: {
     eyebrow: "Services",
-    title: "What I build most often for SMEs",
+    title: "Common projects for SMEs",
     description:
       "Internal systems, automation, database work and reporting – plus optional PC support.",
   },

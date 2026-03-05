@@ -6,6 +6,7 @@ import { Card } from "@/components/ui/Card";
 import { Info } from "lucide-react";
 import type { Lang } from "@/components/lib/i18n";
 import { getDictionary } from "@/components/lib/dictionary";
+import { trackEvent } from "@/components/lib/analytics";
 
 type State = "idle" | "sending" | "sent" | "error";
 
@@ -72,6 +73,7 @@ export function ContactForm({ lang = "hu" }: { lang?: Lang }) {
       setState("sent");
       formElement.reset();
       setDetailsLength(0);
+      trackEvent("form_submit", { form: "contact" });
     } catch {
       setState("error");
     }

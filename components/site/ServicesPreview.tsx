@@ -22,9 +22,9 @@ export function ServicesPreview({ lang = "hu" }: { lang?: Lang }) {
             </div>
             <ul className="mt-3 space-y-2 text-sm text-slate-600">
               {s.items.map((i) => (
-                <li key={i} className="flex gap-2">
-                  <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-slate-900" />
-                  <span>{i}</span>
+                <li key={i} className="flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-slate-900" />
+                  <span className="leading-6">{i}</span>
                 </li>
               ))}
             </ul>

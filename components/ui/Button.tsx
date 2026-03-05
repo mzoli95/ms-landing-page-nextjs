@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { cn } from "../lib/utils";
 
@@ -33,7 +35,7 @@ export function Button({
 
   if (href) {
     return (
-      <Link className={cls} href={href}>
+      <Link className={cls} href={href} onClick={() => onClick?.()}>
         {children}
       </Link>
     );

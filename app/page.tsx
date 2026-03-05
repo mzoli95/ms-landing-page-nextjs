@@ -8,6 +8,9 @@ import { UseCases } from "@/components/site/UseCases";
 import { ComingSoon } from "@/components/site/ComingSoon";
 import { flags } from "@/components/lib/site";
 import { PcServiceSection } from "@/components/site/PcServiceSection";
+import { FAQ } from "@/components/site/FAQ";
+import { RiskReduction } from "@/components/site/RiskReduction";
+import { StickyMobileCta } from "@/components/site/StickyMobileCta";
 import { getLangFromCookies } from "@/components/lib/i18n";
 import { getDictionary } from "@/components/lib/dictionary";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
@@ -85,13 +88,44 @@ export default async function HomePage() {
         </Section>
       </ScrollReveal>
 
-      {/* <Section
-        eyebrow="GYIK"
-        title="Gyakori kérdések"
-        description="Ha maradt kérdésed, írj – gyorsan válaszolok."
-      >
-        <FAQ />
-      </Section> */}
+      <ScrollReveal delayMs={160} className="scroll-mt-28">
+        <Section
+          eyebrow={lang === "en" ? "No Surprises" : "Nincs zsákbamacska"}
+          title={
+            lang === "en"
+              ? "Clear commitments, clear delivery"
+              : "Garancia, transzparens költségek, gyors reakció"
+          }
+          description={
+            lang === "en"
+              ? "No hidden costs and predictable delivery from the start."
+              : "Előre tisztázott scope és árképzés, gyors válaszidővel."
+          }
+          className="bg-slate-50"
+        >
+          <RiskReduction lang={lang} />
+        </Section>
+      </ScrollReveal>
+
+      <ScrollReveal delayMs={180} className="scroll-mt-28">
+        <Section
+          eyebrow={lang === "en" ? "FAQ" : "GYIK"}
+          title={
+            lang === "en"
+              ? "Frequently asked questions"
+              : "Gyakori kérdések"
+          }
+          description={
+            lang === "en"
+              ? "Quick answers before you decide."
+              : "Gyors válaszok a döntés előtt."
+          }
+        >
+          <FAQ lang={lang} />
+        </Section>
+      </ScrollReveal>
+
+      <StickyMobileCta lang={lang} />
     </>
   );
 }
