@@ -1,3 +1,5 @@
+"use client";
+
 import { Card } from "@/components/ui/Card";
 import type { Lang } from "@/components/lib/i18n";
 import { getDictionary } from "@/components/lib/dictionary";

@@ -1,18 +1,16 @@
 import { Hero } from "@/components/site/Hero";
 import { Section } from "@/components/ui/Section";
+import { FeatureGrid } from "@/components/site/FeatureGrid";
+import { ServicesPreview } from "@/components/site/ServicesPreview";
+import { PricingGrid } from "@/components/site/PricingGrid";
+import { Steps } from "@/components/site/Steps";
+import { UseCases } from "@/components/site/UseCases";
 import { ComingSoon } from "@/components/site/ComingSoon";
 import { flags } from "@/components/lib/site";
+import { PcServiceSection } from "@/components/site/PcServiceSection";
 import { getLangFromCookies } from "@/components/lib/i18n";
 import { getDictionary } from "@/components/lib/dictionary";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
-import {
-  LazyFeatureGrid,
-  LazyPcServiceSection,
-  LazyPricingGrid,
-  LazyServicesPreview,
-  LazySteps,
-  LazyUseCases,
-} from "@/components/site/LazySections";
 
 export default async function HomePage() {
   const lang = await getLangFromCookies();
@@ -32,7 +30,7 @@ export default async function HomePage() {
           title={t.home.why.title}
           description={t.home.why.description}
         >
-          <LazyFeatureGrid lang={lang} />
+          <FeatureGrid lang={lang} />
         </Section>
       </ScrollReveal>
 
@@ -43,7 +41,7 @@ export default async function HomePage() {
           description={t.home.useCases.description}
           className="bg-slate-50"
         >
-          <LazyUseCases lang={lang} />
+          <UseCases lang={lang} />
         </Section>
       </ScrollReveal>
 
@@ -54,7 +52,7 @@ export default async function HomePage() {
           description={t.home.services.description}
           className="bg-slate-50"
         >
-          <LazyServicesPreview lang={lang} />
+          <ServicesPreview lang={lang} />
         </Section>
       </ScrollReveal>
 
@@ -64,7 +62,7 @@ export default async function HomePage() {
           title={t.home.process.title}
           description={t.home.process.description}
         >
-          <LazySteps lang={lang} />
+          <Steps lang={lang} />
         </Section>
       </ScrollReveal>
 
@@ -73,7 +71,7 @@ export default async function HomePage() {
         delayMs={120}
         className="scroll-mt-28"
       >
-        <LazyPcServiceSection lang={lang} />
+        <PcServiceSection lang={lang} />
       </ScrollReveal>
 
       <ScrollReveal id="pricing-section" delayMs={140} className="scroll-mt-28">
@@ -83,7 +81,7 @@ export default async function HomePage() {
           description={t.home.pricing.description}
           className="bg-slate-50"
         >
-          <LazyPricingGrid lang={lang} />
+          <PricingGrid lang={lang} />
         </Section>
       </ScrollReveal>
 

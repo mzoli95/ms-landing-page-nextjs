@@ -1,5 +1,5 @@
 import { Section } from "@/components/ui/Section";
-import { AboutSection } from "@/components/site/AboutSection";
+import { LazyAboutSection } from "@/components/site/LazyPageSections";
 import { getLangFromCookies } from "@/components/lib/i18n";
 import { getDictionary } from "@/components/lib/dictionary";
 
@@ -19,7 +19,7 @@ export default async function AboutPage() {
       title={t.aboutPage.title}
       description={t.aboutPage.description}
     >
-      <AboutSection lang={lang} />
+      <LazyAboutSection lang={lang} />
     </Section>
   );
 }

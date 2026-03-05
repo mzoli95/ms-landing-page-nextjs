@@ -1,5 +1,5 @@
 import { Section } from "@/components/ui/Section";
-import { ContactForm } from "@/components/site/ContactForm";
+import { LazyContactFormSection } from "@/components/site/LazyPageSections";
 import { Card } from "@/components/ui/Card";
 import { flags, site } from "@/components/lib/site";
 import { getLangFromCookies } from "@/components/lib/i18n";
@@ -21,7 +21,7 @@ export default async function ContactPage() {
     >
       <div className="grid gap-5 lg:grid-cols-3">
         <div className="lg:col-span-2">
-          <ContactForm lang={lang} />
+          <LazyContactFormSection lang={lang} />
         </div>
 
         <Card className="p-6">

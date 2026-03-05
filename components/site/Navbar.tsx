@@ -104,17 +104,17 @@ export function Navbar({
   }, [pathname, activeSection]);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-slate-200 bg-white backdrop-blur">
+    <header className="sticky top-0 z-50 border-b border-slate-200 bg-white backdrop-blur-md">
       <Container>
         <div className="flex h-16 items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
-            <div className="grid h-16 w-16 place-items-center overflow-hidden">
+            <div className="grid h-14 w-14 place-items-center overflow-hidden">
               <Image
                 src="/ms_logo.png.png"
                 alt="MS logo"
                 width={64}
                 height={64}
-                className="h-16 w-16 object-contain"
+                className="h-11 w-11 object-contain"
                 priority
               />
             </div>

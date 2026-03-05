@@ -12,8 +12,17 @@ export const metadata: Metadata = {
     default: `${site.name} – Belső rendszerek, automatizálás, riportok`,
     template: `%s – ${site.name}`,
   },
-  description: site.metaDescription,
+  description:
+    "Egyedi belső rendszerek és üzleti automatizálás KKV-knak: kevesebb admin, tisztább folyamatok, gyorsabb döntések.",
   metadataBase: new URL(`${site.url}`),
+  icons: {
+    icon: [
+      { url: "/favicon.ico", type: "image/x-icon", sizes: "any" },
+      { url: "/ms_logo.png.png", type: "image/png", sizes: "192x192" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: "/ms_logo.png.png",
+  },
   keywords: [
     "belső rendszer fejlesztés",
     "excel automatizálás",
@@ -23,13 +32,28 @@ export const metadata: Metadata = {
     "szoftverfejlesztő Siófok",
   ],
   openGraph: {
-    title: `${site.name} – Átlátható működés, kevesebb adminisztráció`,
+    title: `${site.name} – Egyedi rendszerek, kevesebb admin, jobb átláthatóság`,
     description:
-      "Egyedi webes rendszerek, automatizált riportok és workflow cégeknek és magánszemélyeknek. Excel helyett modern megoldások.",
+      "Átlátható belső appok, automatizált riportok és workflow-k KKV-knak. Excel helyett stabil, modern működés.",
     url: site.url,
     siteName: site.name,
     locale: "hu_HU",
     type: "website",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Molnár Systems – Egyedi rendszerek és automatizálás",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${site.name} – Egyedi rendszerek, kevesebb admin`,
+    description:
+      "Egyedi belső rendszerek, workflow automatizálás és riportok KKV-knak.",
+    images: ["/twitter-image.png"],
   },
 };
 
