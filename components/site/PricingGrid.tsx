@@ -1,8 +1,5 @@
-"use client";
-
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
-import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import type { Lang } from "@/components/lib/i18n";
 import { getDictionary } from "@/components/lib/dictionary";
 
@@ -66,10 +63,8 @@ export function PricingGrid({ lang = "hu" }: { lang?: Lang }) {
           {t.pricingGrid.labels.development}
         </div>
         <div className="mt-4 grid gap-5 lg:grid-cols-3">
-          {plans.map((p, index) => (
-            <ScrollReveal key={p.name} delayMs={index * 90} yOffset="sm">
-              <PlanCard plan={p} lang={lang} />
-            </ScrollReveal>
+          {plans.map((p) => (
+            <PlanCard key={p.name} plan={p} lang={lang} />
           ))}
         </div>
       </div>
@@ -79,22 +74,18 @@ export function PricingGrid({ lang = "hu" }: { lang?: Lang }) {
           {t.pricingGrid.labels.pcAddon}
         </div>
         <div className="mt-4 grid gap-5 lg:grid-cols-2">
-          {pc.map((p, index) => (
-            <ScrollReveal key={p.name} delayMs={index * 100} yOffset="sm">
-              <PlanCard plan={p} lang={lang} />
-            </ScrollReveal>
+          {pc.map((p) => (
+            <PlanCard key={p.name} plan={p} lang={lang} />
           ))}
         </div>
       </div>
 
-      <ScrollReveal delayMs={140} yOffset="sm">
-        <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6 text-sm text-slate-600">
-          <span className="font-semibold text-slate-900">
-            {t.pricingGrid.labels.noteTitle}
-          </span>{" "}
-          {t.pricingGrid.labels.noteText}
-        </div>
-      </ScrollReveal>
+      <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6 text-sm text-slate-600">
+        <span className="font-semibold text-slate-900">
+          {t.pricingGrid.labels.noteTitle}
+        </span>{" "}
+        {t.pricingGrid.labels.noteText}
+      </div>
     </div>
   );
 }

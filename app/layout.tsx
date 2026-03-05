@@ -15,14 +15,17 @@ export const metadata: Metadata = {
     template: `%s – ${site.name}`,
   },
   description:
-    "Egyedi belső rendszerek és üzleti automatizálás KKV-knak: kevesebb admin, tisztább folyamatok, gyorsabb döntések.",
+    "Siófoki és Somogy megyei webfejlesztés, programozás, automatizálás és PC karbantartás: egyedi belső rendszerek KKV-knak, országos online együttműködéssel.",
   metadataBase: new URL(`${site.url}`),
+  alternates: {
+    canonical: "/",
+  },
   icons: {
     icon: [
-      { url: "/favicon.ico", type: "image/x-icon", sizes: "any" },
       { url: "/favicon-16.png", type: "image/png", sizes: "16x16" },
       { url: "/favicon-32.png", type: "image/png", sizes: "32x32" },
       { url: "/favicon-48.png", type: "image/png", sizes: "48x48" },
+      { url: "/favicon.ico", type: "image/x-icon", sizes: "any" },
       { url: "/icon-192.png", type: "image/png", sizes: "192x192" },
       { url: "/icon-256.png", type: "image/png", sizes: "256x256" },
       { url: "/icon-512.png", type: "image/png", sizes: "512x512" },
@@ -32,6 +35,15 @@ export const metadata: Metadata = {
   },
   keywords: [
     "belső rendszer fejlesztés",
+    "siófok fejlesztés",
+    "siófok webfejlesztés",
+    "siófoki programozó",
+    "ságvár programozó",
+    "somogy megye webfejlesztő",
+    "somogy megye programozó",
+    "siófok pc szerviz",
+    "siófok gépszerelő",
+    "somogy megye gépszerelő",
     "excel automatizálás",
     "kkv digitalizálás",
     "riport dashboard",
@@ -41,7 +53,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: `${site.name} – Egyedi rendszerek, kevesebb admin, jobb átláthatóság`,
     description:
-      "Átlátható belső appok, automatizált riportok és workflow-k KKV-knak. Excel helyett stabil, modern működés.",
+      "Siófok, Ságvár és Somogy megye: webfejlesztés, programozás, automatizálás és IT/PC támogatás KKV-knak.",
     url: site.url,
     siteName: site.name,
     locale: "hu_HU",
@@ -59,7 +71,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${site.name} – Egyedi rendszerek, kevesebb admin`,
     description:
-      "Egyedi belső rendszerek, workflow automatizálás és riportok KKV-knak.",
+      "Siófoki webfejlesztés és programozás KKV-knak, automatizálással és riportokkal.",
     images: ["/twitter-image.png"],
   },
   manifest: "/manifest.webmanifest",

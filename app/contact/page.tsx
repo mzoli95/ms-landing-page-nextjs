@@ -7,6 +7,13 @@ import { getDictionary } from "@/components/lib/dictionary";
 
 export const metadata = {
   title: "Kapcsolat",
+  description:
+    "Kapcsolatfelvétel Siófok, Ságvár és Somogy megye területéről: webfejlesztés, programozás, automatizálás és IT támogatás.",
+  keywords: [
+    "siófok programozó kapcsolat",
+    "somogy webfejlesztő kapcsolat",
+    "ságvár fejlesztés",
+  ],
 };
 
 export default async function ContactPage() {

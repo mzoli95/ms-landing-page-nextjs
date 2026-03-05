@@ -348,7 +348,7 @@ const hu: Dictionary = {
         id: "reminders",
         title: "Határidők és ügyfél-emlékeztetés rendbetétele",
         who: "Szervizek / rendszeres karbantartást végző cégek",
-        timeframeLabel: "Gyors indulás • igény alapján ütemezve",
+        timeframeLabel: "Gyors indulás, rugalmas ütemezéssel",
         problem: [
           "Az ügyféladatok több helyen vannak (Excel, jegyzet, email).",
           "A visszahívások és esedékességek manuálisak, könnyű elfelejteni.",
@@ -369,7 +369,7 @@ const hu: Dictionary = {
         id: "dashboard",
         title: "Vezetői rálátás egy helyen",
         who: "Adminisztrációval terhelt KKV-k / kisebb irodák",
-        timeframeLabel: "Első működő verzió • lépésenként bővíthető",
+        timeframeLabel: "Első működő verzió, fokozatos bővítéssel",
         problem: [
           "A pénzügyi és működési adatok szétszórtan vannak.",
           "Nincs napi szintű, gyors áttekintés.",
@@ -390,7 +390,7 @@ const hu: Dictionary = {
         id: "inventory",
         title: "Készletfigyelés, hogy ne álljon meg a munka",
         who: "Anyaggal dolgozó vállalkozások / kisebb kereskedések",
-        timeframeLabel: "Stabil alap • később bővíthető",
+        timeframeLabel: "Stabil alap, később bővíthető",
         problem: [
           "A készlet nem mindig naprakész.",
           "Hiányzó tételek munka- vagy bevételkiesést okoznak.",
@@ -788,7 +788,7 @@ const en: Dictionary = {
         id: "reminders",
         title: "Fixing deadlines and client follow-ups",
         who: "Service teams and recurring maintenance businesses",
-        timeframeLabel: "Quick start • scheduled to your needs",
+        timeframeLabel: "Quick start with flexible scheduling",
         problem: [
           "Client data is scattered across Excel, notes and email.",
           "Callbacks and due dates are manual and easy to miss.",
@@ -809,7 +809,7 @@ const en: Dictionary = {
         id: "dashboard",
         title: "Management visibility in one place",
         who: "SMEs and small offices with heavy administration",
-        timeframeLabel: "First working version • expandable step by step",
+        timeframeLabel: "First working version with phased expansion",
         problem: [
           "Financial and operational data is fragmented.",
           "No fast daily overview is available.",

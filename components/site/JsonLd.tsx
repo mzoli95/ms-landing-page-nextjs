@@ -3,12 +3,66 @@ import { site } from "../lib/site";
 export function JsonLd() {
   const data = {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    name: site.name,
-    url: `${site.url}`,
-    email: site.email,
-    telephone: site.phone,
-    areaServed: "Hungary",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": `${site.url}#org`,
+        name: site.name,
+        url: `${site.url}`,
+        logo: `${site.url}/icon-512.png`,
+        image: `${site.url}/og-image.png`,
+        email: site.email,
+        telephone: site.phone,
+        areaServed: [
+          "Siófok",
+          "Ságvár",
+          "Somogy megye",
+          "Magyarország",
+          "Remote",
+          "Hungary",
+        ],
+        keywords:
+          "siófok fejlesztés, siófok webfejlesztés, siófoki programozó, ságvár programozó, somogy megye webfejlesztő, siófok gépszerelő",
+        disambiguatingDescription:
+          "Molnár Systems egy független magyar digitális szolgáltatói márka belső rendszerekhez és automatizáláshoz. Nem azonos más hasonló nevű vállalkozásokkal.",
+        knowsAbout: [
+          "Egyedi belső rendszerek",
+          "Workflow automatizálás",
+          "Riportok és dashboardok",
+          "Excel kiváltása",
+          "Webfejlesztés Siófok",
+          "Programozás Somogy megye",
+          "PC karbantartás",
+        ],
+      },
+      {
+        "@type": "WebSite",
+        "@id": `${site.url}#website`,
+        url: `${site.url}`,
+        name: site.name,
+        inLanguage: "hu-HU",
+        publisher: {
+          "@id": `${site.url}#org`,
+        },
+      },
+      {
+        "@type": "ProfessionalService",
+        "@id": `${site.url}#service`,
+        name: site.name,
+        provider: {
+          "@id": `${site.url}#org`,
+        },
+        areaServed: ["Siófok", "Ságvár", "Somogy megye", "Hungary"],
+        serviceType: [
+          "Egyedi webes belső rendszerek",
+          "Automatizálás",
+          "Riportok és adatvizualizáció",
+          "Webfejlesztés",
+          "Programozás",
+          "PC karbantartás és IT támogatás",
+        ],
+      },
+    ],
   };
 
   return (

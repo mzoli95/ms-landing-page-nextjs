@@ -5,6 +5,14 @@ import { getDictionary } from "@/components/lib/dictionary";
 
 export const metadata = {
   title: "Szolgáltatások",
+  description:
+    "Siófoki és Somogy megyei webfejlesztés, programozás, automatizálás és PC támogatás vállalkozásoknak.",
+  keywords: [
+    "siófok webfejlesztés",
+    "siófoki programozó",
+    "somogy megye fejlesztő",
+    "siófok gépszerelő",
+  ],
 };
 
 export default async function ServicesPage() {
