@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { flags, site } from "../lib/site";
 import type { Lang } from "@/components/lib/i18n";
@@ -23,8 +24,15 @@ export function Navbar({
       <Container>
         <div className="flex h-16 items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
-            <div className="grid h-9 w-9 place-items-center rounded-xl bg-slate-900 font-bold text-white">
-              MS
+            <div className="grid h-16 w-16 place-items-center overflow-hidden">
+              <Image
+                src="/ms_logo.png.png"
+                alt="MS logo"
+                width={64}
+                height={64}
+                className="h-16 w-16 object-contain"
+                priority
+              />
             </div>
             <div className="leading-tight">
               <div className="text-sm font-extrabold text-slate-900">
