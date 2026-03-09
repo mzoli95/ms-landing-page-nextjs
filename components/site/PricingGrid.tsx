@@ -95,11 +95,7 @@ function PlanCard({ plan, lang }: { plan: Plan; lang: Lang }) {
         </div>
 
         {/* button */}
-        <div className="mt-6 pt-2">
-          <Button href="/contact" className="w-full">
-            {t.pricingGrid.labels.requestOffer}
-          </Button>
-        </div>
+        {/* button removed for mobile view as requested */}
       </div>
     </Card>
   );
