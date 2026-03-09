@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     "szoftverfejlesztő Siófok",
   ],
   openGraph: {
-    title: `${site.name} – Egyedi rendszerek, kevesebb admin, jobb átláthatóság`,
+    title: `${site.name} – Egyedi rendszerek, kevesebb adminisztráció, jobb átláthatóság`,
     description:
       "Egyedi belső rendszerek, automatizálás, riportok és PC szerviz Siófokon, Ságváron, Somogy megyében és országos online támogatással.",
     url: site.url,
@@ -69,7 +69,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${site.name} – Egyedi rendszerek, kevesebb admin`,
+    title: `${site.name} – Egyedi rendszerek, kevesebb adminisztráció`,
     description:
       "Excel helyett belső rendszerek, automatizálás és riportok KKV-knak Siófokon és Somogy megyében.",
     images: ["/twitter-image.png"],
