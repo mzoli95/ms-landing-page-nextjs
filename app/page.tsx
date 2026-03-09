@@ -5,11 +5,13 @@ import { ServicesPreview } from "@/components/site/ServicesPreview";
 import { PricingGrid } from "@/components/site/PricingGrid";
 import { Steps } from "@/components/site/Steps";
 import { UseCases } from "@/components/site/UseCases";
+import { MiniCaseStudies } from "@/components/site/MiniCaseStudies";
 import { ComingSoon } from "@/components/site/ComingSoon";
 import { flags } from "@/components/lib/site";
 import { PcServiceSection } from "@/components/site/PcServiceSection";
 import { FAQ } from "@/components/site/FAQ";
 import { RiskReduction } from "@/components/site/RiskReduction";
+import { SeoContentHub } from "@/components/site/SeoContentHub";
 import { StickyMobileCta } from "@/components/site/StickyMobileCta";
 import { getLangFromCookies } from "@/components/lib/i18n";
 import { getDictionary } from "@/components/lib/dictionary";
@@ -58,6 +60,25 @@ export default async function HomePage() {
         <Hero lang={lang} />
       </ScrollReveal>
 
+      {/* <ScrollReveal delayMs={24} className="scroll-mt-28">
+        <Section
+          eyebrow={lang === "en" ? "Before and After" : "Előtte és utána"}
+          title={
+            lang === "en"
+              ? "Three quick examples of what gets better after digital cleanup"
+              : "Három gyors példa arra, mi javul, ha rend kerül a működésbe"
+          }
+          description={
+            lang === "en"
+              ? "These are typical SME situations where manual admin and fragmented information start slowing the business down."
+              : "Tipikus KKV-helyzetek, ahol a kézi adminisztráció és a szétszórt információ már konkrétan lassítja a céget."
+          }
+          className="bg-slate-50"
+        >
+          <MiniCaseStudies lang={lang} />
+        </Section>
+      </ScrollReveal> */}
+
       <HomeContentSection
         id="usecases-section"
         delayMs={40}
@@ -90,6 +111,14 @@ export default async function HomePage() {
         <ServicesPreview lang={lang} mode="teaser" />
       </HomeContentSection>
 
+      <ScrollReveal
+        id="pc-service-section"
+        delayMs={120}
+        className="scroll-mt-28"
+      >
+        <PcServiceSection lang={lang} />
+      </ScrollReveal>
+
       <HomeContentSection
         id="process-section"
         delayMs={100}
@@ -100,15 +129,7 @@ export default async function HomePage() {
         <Steps lang={lang} />
       </HomeContentSection>
 
-      <ScrollReveal
-        id="pc-service-section"
-        delayMs={120}
-        className="scroll-mt-28"
-      >
-        <PcServiceSection lang={lang} />
-      </ScrollReveal>
-
-      <HomeContentSection
+      {/* <HomeContentSection
         id="pricing-section"
         delayMs={140}
         eyebrow={t.home.pricing.eyebrow}
@@ -117,7 +138,27 @@ export default async function HomePage() {
         className="bg-slate-50"
       >
         <PricingGrid lang={lang} mode="link-only" />
-      </HomeContentSection>
+      </HomeContentSection> */}
+      {/* 
+      <ScrollReveal delayMs={150} className="scroll-mt-28">
+        <Section
+          eyebrow={
+            lang === "en" ? "Knowledge base" : "Tudástár és külön oldalak"
+          }
+          title={
+            lang === "en"
+              ? "Detailed service pages and expert articles"
+              : "Külön SEO-oldalak és szakmai tartalom"
+          }
+          description={
+            lang === "en"
+              ? "Dedicated landing pages and articles create more focused entry points for search and internal navigation."
+              : "Az automatizálás, belső rendszerek, riportok és lokális PC szerviz témák külön oldalt kaptak, emellett szakmai cikkek is készültek a gyakori keresésekre."
+          }
+        >
+          <SeoContentHub />
+        </Section>
+      </ScrollReveal> */}
 
       <ScrollReveal delayMs={160} className="scroll-mt-28">
         <Section

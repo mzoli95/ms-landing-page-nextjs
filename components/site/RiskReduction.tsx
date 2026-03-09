@@ -5,21 +5,21 @@ export function RiskReduction({ lang = "hu" }: { lang?: Lang }) {
   const content =
     lang === "en"
       ? {
-          eyebrow: "Risk reduction",
-          title: "Transparent terms from day one",
+          eyebrow: "Clarity first",
+          title: "Clear terms from the beginning",
           points: [
-            "No hidden costs, clear scope and pricing before implementation.",
-            "Fast response time on business days.",
-            "Predictable delivery with clearly agreed milestones.",
+            "No hidden costs. We agree scope and pricing before work starts.",
+            "Fast reply on business days, without long silence.",
+            "Step-by-step delivery, so you always know what comes next.",
           ],
         }
       : {
-          eyebrow: "Kockázatcsökkentés",
-          title: "Átlátható feltételek már az első naptól",
+          eyebrow: "Tiszta helyzet",
+          title: "Átlátható feltételek már az elején",
           points: [
-            "Nincs rejtett költség, indulás előtt tiszta scope és árképzés.",
-            "Gyors válaszidő munkanapokon.",
-            "Kiszámítható szállítás, előre egyeztetett mérföldkövekkel.",
+            "Nincs rejtett költség. Indulás előtt tisztázzuk a keretet és az árat.",
+            "Munkanapokon gyors válasz, hosszú eltűnések nélkül.",
+            "Lépésenkénti haladás, hogy mindig tudd, mi jön most.",
           ],
         };
 

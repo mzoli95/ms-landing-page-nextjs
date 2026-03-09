@@ -1,0 +1,66 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="900" rx="48" fill="#07111F"/>
+  <g opacity="0.9">
+    <circle cx="202" cy="160" r="140" fill="url(#paint0_radial)"/>
+    <circle cx="1022" cy="726" r="180" fill="url(#paint1_radial)"/>
+  </g>
+  <rect x="68" y="72" width="1064" height="756" rx="36" fill="#0B1729" stroke="#21334A" stroke-width="2"/>
+  <rect x="108" y="118" width="416" height="258" rx="28" fill="#0F2238" stroke="#29425E" stroke-width="2"/>
+  <text x="144" y="164" fill="#CDE7FF" font-family="Arial, sans-serif" font-size="28" font-weight="700">Digital workflow</text>
+  <rect x="144" y="196" width="344" height="54" rx="18" fill="#132B46"/>
+  <circle cx="182" cy="223" r="14" fill="#79E2F2"/>
+  <text x="212" y="230" fill="#EAF6FF" font-family="Arial, sans-serif" font-size="20">Új érdeklődő rögzítve</text>
+  <rect x="144" y="266" width="344" height="54" rx="18" fill="#132B46"/>
+  <circle cx="182" cy="293" r="14" fill="#93C5FD"/>
+  <text x="212" y="300" fill="#EAF6FF" font-family="Arial, sans-serif" font-size="20">Automatikus státuszváltás</text>
+  <rect x="144" y="336" width="344" height="54" rx="18" fill="#132B46"/>
+  <circle cx="182" cy="363" r="14" fill="#86EFAC"/>
+  <text x="212" y="370" fill="#EAF6FF" font-family="Arial, sans-serif" font-size="20">Heti riport elküldve</text>
+  <path d="M544 246C595 246 612 246 654 246C697 246 724 276 724 322" stroke="#6EE7F9" stroke-width="6" stroke-linecap="round" stroke-dasharray="14 18"/>
+  <path d="M724 322L705 305" stroke="#6EE7F9" stroke-width="6" stroke-linecap="round"/>
+  <path d="M724 322L744 304" stroke="#6EE7F9" stroke-width="6" stroke-linecap="round"/>
+  <rect x="752" y="118" width="340" height="258" rx="28" fill="#0F2238" stroke="#29425E" stroke-width="2"/>
+  <text x="788" y="164" fill="#CDE7FF" font-family="Arial, sans-serif" font-size="28" font-weight="700">Dashboard</text>
+  <rect x="788" y="202" width="116" height="92" rx="18" fill="#132B46"/>
+  <text x="816" y="235" fill="#7DD3FC" font-family="Arial, sans-serif" font-size="16">Admin idő</text>
+  <text x="818" y="275" fill="#F8FAFC" font-family="Arial, sans-serif" font-size="34" font-weight="700">-32%</text>
+  <rect x="920" y="202" width="136" height="92" rx="18" fill="#132B46"/>
+  <text x="948" y="235" fill="#86EFAC" font-family="Arial, sans-serif" font-size="16">Átláthatóság</text>
+  <text x="972" y="275" fill="#F8FAFC" font-family="Arial, sans-serif" font-size="34" font-weight="700">+1</text>
+  <rect x="788" y="314" width="268" height="24" rx="12" fill="#11253C"/>
+  <rect x="788" y="314" width="206" height="24" rx="12" fill="url(#paint2_linear)"/>
+  <rect x="788" y="354" width="268" height="24" rx="12" fill="#11253C"/>
+  <rect x="788" y="354" width="238" height="24" rx="12" fill="url(#paint3_linear)"/>
+  <rect x="108" y="430" width="984" height="320" rx="28" fill="#0D1E31" stroke="#29425E" stroke-width="2"/>
+  <text x="144" y="478" fill="#EAF6FF" font-family="Arial, sans-serif" font-size="30" font-weight="700">Probléma → megoldás</text>
+  <rect x="144" y="522" width="286" height="176" rx="24" fill="#2A1220" stroke="#5D243B" stroke-width="2"/>
+  <text x="176" y="566" fill="#FECACA" font-family="Arial, sans-serif" font-size="22" font-weight="700">Excel káosz</text>
+  <text x="176" y="606" fill="#FDE2E2" font-family="Arial, sans-serif" font-size="18">Több fájl, eltérő verziók,</text>
+  <text x="176" y="634" fill="#FDE2E2" font-family="Arial, sans-serif" font-size="18">keresgélés és hibás adatok.</text>
+  <rect x="458" y="522" width="286" height="176" rx="24" fill="#15283A" stroke="#2A4861" stroke-width="2"/>
+  <text x="490" y="566" fill="#BAE6FD" font-family="Arial, sans-serif" font-size="22" font-weight="700">Automatizálás</text>
+  <text x="490" y="606" fill="#E0F2FE" font-family="Arial, sans-serif" font-size="18">Kevesebb kézi admin,</text>
+  <text x="490" y="634" fill="#E0F2FE" font-family="Arial, sans-serif" font-size="18">gyorsabb folyamatok.</text>
+  <rect x="772" y="522" width="286" height="176" rx="24" fill="#112E29" stroke="#24534B" stroke-width="2"/>
+  <text x="804" y="566" fill="#BBF7D0" font-family="Arial, sans-serif" font-size="22" font-weight="700">Dashboardok</text>
+  <text x="804" y="606" fill="#DCFCE7" font-family="Arial, sans-serif" font-size="18">Átlátható riportok,</text>
+  <text x="804" y="634" fill="#DCFCE7" font-family="Arial, sans-serif" font-size="18">gyorsabb döntések.</text>
+  <defs>
+    <radialGradient id="paint0_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(202 160) rotate(90) scale(140)">
+      <stop stop-color="#22D3EE" stop-opacity="0.34"/>
+      <stop offset="1" stop-color="#22D3EE" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="paint1_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1022 726) rotate(90) scale(180)">
+      <stop stop-color="#3B82F6" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#3B82F6" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="paint2_linear" x1="788" y1="326" x2="994" y2="326" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#67E8F9"/>
+      <stop offset="1" stop-color="#3B82F6"/>
+    </linearGradient>
+    <linearGradient id="paint3_linear" x1="788" y1="366" x2="1026" y2="366" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#34D399"/>
+      <stop offset="1" stop-color="#22D3EE"/>
+    </linearGradient>
+  </defs>
+</svg>

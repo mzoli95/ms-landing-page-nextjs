@@ -6,46 +6,46 @@ export function FAQ({ lang = "hu" }: { lang?: Lang }) {
     lang === "en"
       ? [
           {
-            q: "How long does a custom internal system take?",
-            a: "Quick wins usually arrive in 1–2 weeks, while a compact internal app typically takes 3–6 weeks.",
+            q: "How long does it take to get something useful?",
+            a: "A first useful result often appears within 1–2 weeks. A small internal tool usually takes around 3–6 weeks, depending on what it needs to do.",
           },
           {
-            q: "How much of my time is needed?",
-            a: "A short weekly sync is enough. The process is built to reduce your overhead.",
+            q: "How much of my time will this need?",
+            a: "Usually a short weekly check-in is enough. The aim is to reduce your load, not create extra meetings.",
           },
           {
-            q: "Can we extend it later?",
-            a: "Yes, the architecture is modular and ready for future features.",
+            q: "Can we start small and extend it later?",
+            a: "Yes. In most cases that is the best approach: start with one important problem, then build further only if it proves useful.",
           },
           {
             q: "Will there be hidden costs?",
-            a: "No. Scope and pricing are clear before development starts.",
+            a: "No. Scope and pricing are discussed clearly before implementation starts.",
           },
           {
-            q: "Do you provide support after launch?",
-            a: "Yes, ongoing support and maintenance are available.",
+            q: "Do you help after handover too?",
+            a: "Yes. Support, maintenance and smaller follow-up improvements are available if needed.",
           },
         ]
       : [
           {
-            q: "Mennyi idő alatt készül el egy belső rendszer?",
-            a: "Az első kézzelfogható eredmények általában 1–2 héten belül látszanak, egy mini belső webapp pedig tipikusan 3–6 hét. A pontos idő a funkcióktól függ.",
+            q: "Mennyi idő alatt lesz valami használható?",
+            a: "Az első hasznos eredmény sokszor már 1–2 héten belül látszik. Egy kisebb belső rendszer általában 3–6 hét, attól függően, mire van szükség.",
           },
           {
-            q: "Hogy néz ki a közös munka, ha nincs sok időm?",
-            a: "Rövid heti egyeztetés elég. A cél: minél kevesebb terhelés neked, mégis gyors haladás.",
+            q: "Mi van, ha nincs sok időm a projektre?",
+            a: "Általában elég egy rövid heti egyeztetés. A cél az, hogy ez tehermentesítsen, ne még több plusz feladatot hozzon.",
           },
           {
-            q: "Lehet később bővíteni?",
-            a: "Igen – úgy építem, hogy legyen adatbázis alap, jogosultság, és bővíthető modulok.",
+            q: "Lehet először kicsiben kezdeni, és később bővíteni?",
+            a: "Igen, sőt sokszor ez a legjobb út. Először rendbe tesszük a legfontosabb részt, és utána csak azt bővítjük, ami tényleg hasznos.",
           },
           {
             q: "Lesznek rejtett költségek?",
-            a: "Nem. A scope és az árképzés fejlesztés előtt tisztán rögzítve van.",
+            a: "Nem. Indulás előtt tisztán átbeszéljük, mi fér bele, mennyibe kerül, és mi lesz a következő lépés.",
           },
           {
-            q: "Van támogatás átadás után is?",
-            a: "Igen, folyamatos támogatás és karbantartás is kérhető.",
+            q: "Átadás után is tudsz segíteni?",
+            a: "Igen. Ha kell, utána is maradok supporttal, karbantartással és kisebb továbbfejlesztésekkel.",
           },
         ];
 

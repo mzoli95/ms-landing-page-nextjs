@@ -7,10 +7,10 @@ export const site = {
   tagline:
     "Excelben, jegyzetekben vagy papíron vezeted a vállalkozásod? Lásd végre egy helyen a pénzed és a határidőidet.",
   metaDescription:
-    "Egyedi szoftverek és egyszerű digitális megoldások vállalkozásoknak Siófokon és Somogy megyében, országosan online együttműködéssel.",
+    "Egyedi belső rendszerek és automatizálás KKV-knak. Excel helyett átlátható digitális megoldások Siófokon, Somogy megyében és országos online együttműködéssel.",
 };
 
 export const flags = {
-  comingSoon: false, //true,
+  comingSoon: false,
   showPhone: false,
 };

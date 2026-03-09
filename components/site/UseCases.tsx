@@ -138,7 +138,7 @@ export function UseCases({
                 ))}
               </ul>
 
-              <p className="mt-4 text-sm font-semibold text-slate-900">{`> ${card.outcome}`}</p>
+              <p className="mt-4 text-sm font-semibold text-slate-900">{`${card.outcome}`}</p>
             </Card>
           ))}
         </div>
@@ -152,38 +152,52 @@ export function UseCases({
     <div className="space-y-5">
       <div className="grid gap-5 lg:grid-cols-3">
         {useCases.map((u) => (
-          <Card key={u.id} className="p-6">
+          <Card key={u.id} className="p-6 flex flex-col gap-4">
             <div>
-              <div className="text-base font-extrabold text-slate-900 sm:min-h-[3rem] lg:min-h-[3.5rem]">
-                {u.title}
-              </div>
-              <div className="mt-1 text-xs font-semibold text-slate-500">
-                {u.who}
-              </div>
-              <div className="mt-3 inline-flex rounded-full bg-slate-100 px-3 py-1.5 text-xs font-semibold text-slate-800 dark:bg-slate-700/60 dark:text-slate-100">
+              <div className="text-lg font-bold text-slate-900">{u.title}</div>
+              <div className="mt-1 text-xs text-slate-500">{u.who}</div>
+              <div className="mt-2 inline-flex rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-800 dark:bg-slate-700/60 dark:text-slate-100">
                 {u.timeframeLabel}
               </div>
             </div>
-
-            <div className="mt-5">
-              <div className="text-xs font-bold tracking-wider text-slate-900 uppercase">
-                {t.useCases.labels.problem}
-              </div>
-              <BulletList items={u.problem} />
+            <div>
+              <span className="text-xs font-bold text-slate-900">
+                {t.useCases.labels.problem}:
+              </span>
+              <ul className="mt-1 space-y-1 text-sm text-slate-600">
+                {u.problem.slice(0, 2).map((p) => (
+                  <li key={p} className="flex items-center gap-2">
+                    <span className="h-1.5 w-1.5 rounded-full bg-slate-900" />
+                    <span>{p}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
-
-            <div className="mt-5">
-              <div className="text-xs font-bold tracking-wider text-slate-900 uppercase">
-                {t.useCases.labels.solution}
-              </div>
-              <BulletList items={u.solution} />
+            <div>
+              <span className="text-xs font-bold text-slate-900">
+                {t.useCases.labels.solution}:
+              </span>
+              <ul className="mt-1 space-y-1 text-sm text-slate-600">
+                {u.solution.slice(0, 2).map((s) => (
+                  <li key={s} className="flex items-center gap-2">
+                    <span className="h-1.5 w-1.5 rounded-full bg-slate-900" />
+                    <span>{s}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
-
-            <div className="mt-5">
-              <div className="text-xs font-bold tracking-wider text-slate-900 uppercase">
-                {t.useCases.labels.why}
-              </div>
-              <BulletList items={u.why} />
+            <div>
+              <span className="text-xs font-bold text-slate-900">
+                {t.useCases.labels.why}:
+              </span>
+              <ul className="mt-1 space-y-1 text-sm text-slate-600">
+                {u.why.slice(0, 1).map((w) => (
+                  <li key={w} className="flex items-center gap-2">
+                    <span className="h-1.5 w-1.5 rounded-full bg-slate-900" />
+                    <span>{w}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </Card>
         ))}

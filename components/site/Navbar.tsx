@@ -1,7 +1,6 @@
 "use client";
-
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { usePathname } from "next/navigation";
 import { Container } from "@/components/ui/Container";
@@ -24,6 +23,7 @@ export function Navbar({
   const t = getDictionary(lang);
   const nav = t.nav.items;
   const pathname = usePathname();
+  const [logoLoaded, setLogoLoaded] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("home");
   const [scrollProgress, setScrollProgress] = useState(0);
 
@@ -46,45 +46,44 @@ export function Navbar({
     };
   }, []);
 
-  useEffect(() => {
-    if (pathname !== "/") return;
+  // useEffect(() => {
+  //   if (pathname !== "/") return;
 
-    const sectionIds = [
-      "home",
-      "why-section",
-      "usecases-section",
-      "services-section",
-      "process-section",
-      "pc-service-section",
-      "pricing-section",
-    ];
+  //   const sectionIds = [
+  //     "home",
+  //     "why-section",
+  //     "usecases-section",
+  //     "process-section",
+  //     "pc-service-section",
+  //     "pricing-section",
+  //   ];
 
-    const sections = sectionIds
-      .map((id) => document.getElementById(id))
-      .filter((el): el is HTMLElement => Boolean(el));
+  //   const sections = sectionIds
+  //     .map((id) => document.getElementById(id))
+  //     .filter((el): el is HTMLElement => Boolean(el));
 
-    if (!sections.length) return;
+  //   if (!sections.length) return;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const topEntry = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+  //   const observer = new IntersectionObserver(
+  //     (entries) => {
+  //       const topEntry = entries
+  //         .filter((entry) => entry.isIntersecting)
+  //         .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
 
-        if (topEntry?.target?.id) {
-          setActiveSection(topEntry.target.id);
-        }
-      },
-      {
-        root: null,
-        threshold: [0.2, 0.35, 0.5, 0.7],
-        rootMargin: "-30% 0px -45% 0px",
-      },
-    );
+  //       if (topEntry?.target?.id) {
+  //         setActiveSection(topEntry.target.id);
+  //       }
+  //     },
+  //     {
+  //       root: null,
+  //       threshold: [0.2, 0.35, 0.5, 0.7],
+  //       rootMargin: "-30% 0px -45% 0px",
+  //     },
+  //   );
 
-    sections.forEach((section) => observer.observe(section));
-    return () => observer.disconnect();
-  }, [pathname]);
+  //   sections.forEach((section) => observer.observe(section));
+  //   return () => observer.disconnect();
+  // }, [pathname]);
 
   const activeHref = useMemo(() => {
     if (pathname !== "/") return pathname;
@@ -104,28 +103,37 @@ export function Navbar({
   }, [pathname, activeSection]);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-slate-200 bg-white backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b border-slate-200 bg-white shadow-[0_10px_40px_rgba(15,23,42,0.06)]">
       <Container>
         <div className="flex h-16 items-center justify-between">
-          <Link href="/" className="flex items-center gap-2">
-            <div className="grid h-14 w-14 place-items-center overflow-hidden">
+          <Link href="/" className="group flex items-center gap-3">
+            <div className="relative flex h-11 w-24 items-center justify-start overflow-hidden rounded-2xl border border-slate-200 bg-white px-2 shadow-sm">
+              {!logoLoaded && (
+                <div className="absolute inset-1 animate-pulse rounded-xl bg-slate-200/80" />
+              )}
               <Image
                 src="/ms_logo.png.png"
                 alt="MS logo"
-                width={64}
-                height={64}
-                className="h-11 w-11 object-contain"
+                width={255}
+                height={114}
+                sizes="98px"
+                className={cn(
+                  "relative h-auto w-full object-contain transition duration-300",
+                  logoLoaded ? "opacity-100" : "opacity-0",
+                )}
+                onLoad={() => setLogoLoaded(true)}
                 priority
               />
             </div>
-            <div className="leading-tight">
-              <div className="text-sm font-extrabold text-slate-900">
+            <div className="min-w-0 leading-tight">
+              <div className="whitespace-nowrap text-sm font-extrabold tracking-[0.02em] text-slate-900 transition-colors group-hover:text-slate-700 sm:text-[0.95rem]">
                 {site.name}
               </div>
-              <div className="text-xs text-slate-500">{t.nav.subtitle}</div>
+              <div className="whitespace-nowrap text-xs text-amber-600">
+                {t.nav.subtitle}
+              </div>
             </div>
           </Link>
-
           <nav className="hidden items-center gap-6 md:flex">
             {nav.map((i) =>
               disabled ? (
@@ -140,10 +148,10 @@ export function Navbar({
                   key={i.href}
                   href={i.href}
                   className={cn(
-                    "text-sm font-semibold transition-colors",
+                    "rounded-full px-3 py-2 text-sm font-semibold transition-all duration-200",
                     i.href === activeHref
-                      ? "text-slate-900"
-                      : "text-slate-700 hover:text-slate-900",
+                      ? "bg-slate-900 text-white shadow-sm"
+                      : "text-slate-700 hover:bg-slate-900/5 hover:text-slate-900",
                   )}
                 >
                   {i.label}
@@ -151,7 +159,6 @@ export function Navbar({
               ),
             )}
           </nav>
-
           <div className="flex items-center gap-2">
             <LanguageSwitcher lang={lang} />
             <ThemeToggle lang={lang} initialTheme={initialTheme} />
@@ -174,10 +181,10 @@ export function Navbar({
                 key={i.href}
                 href={i.href}
                 className={cn(
-                  "text-xs font-semibold transition-colors",
+                  "rounded-full px-2.5 py-1.5 text-xs font-semibold transition-colors",
                   i.href === activeHref
-                    ? "text-slate-900"
-                    : "text-slate-600 hover:text-slate-900",
+                    ? "bg-slate-900 text-white"
+                    : "text-slate-600 hover:bg-slate-900/5 hover:text-slate-900",
                 )}
               >
                 {i.label}
@@ -185,30 +192,6 @@ export function Navbar({
             ),
           )}
         </nav>
-
-        {/* <div className="flex items-center gap-3">
-          {disabled ? (
-            <>
-              <span className="hidden sm:inline-flex rounded-xl bg-slate-200 px-4 py-2 text-sm font-semibold text-slate-400 cursor-not-allowed">
-                Ajánlatkérés
-              </span>
-              <span className="rounded-xl bg-slate-200 px-4 py-2 text-sm font-semibold text-slate-400 cursor-not-allowed">
-                Ingyenes konzultáció
-              </span>
-            </>
-          ) : (
-            <>
-              <Button
-                href="/contact"
-                variant="ghost"
-                className="hidden sm:inline-flex"
-              >
-                Ajánlatkérés
-              </Button>
-              <Button href="/contact">Ingyenes konzultáció</Button>
-            </>
-          )}
-        </div> */}
       </Container>
       <div className="h-px w-full bg-slate-200/60">
         <div

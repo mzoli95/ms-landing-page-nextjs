@@ -16,13 +16,14 @@ export function JsonLd() {
         areaServed: [
           "Siófok",
           "Ságvár",
+          "Balaton környéke",
           "Somogy megye",
           "Magyarország",
           "Remote",
           "Hungary",
         ],
         keywords:
-          "siófok fejlesztés, siófok webfejlesztés, siófoki programozó, ságvár programozó, somogy megye webfejlesztő, siófok gépszerelő",
+          "siófok fejlesztés, siófok webfejlesztés, siófoki programozó, ságvár programozó, balaton környéke fejlesztés, somogy megye webfejlesztő, siófok gépszerelő, pc szerviz siófok",
         disambiguatingDescription:
           "Molnár Systems egy független magyar digitális szolgáltatói márka belső rendszerekhez és automatizáláshoz. Nem azonos más hasonló nevű vállalkozásokkal.",
         knowsAbout: [
@@ -52,7 +53,13 @@ export function JsonLd() {
         provider: {
           "@id": `${site.url}#org`,
         },
-        areaServed: ["Siófok", "Ságvár", "Somogy megye", "Hungary"],
+        areaServed: [
+          "Siófok",
+          "Ságvár",
+          "Balaton környéke",
+          "Somogy megye",
+          "Hungary",
+        ],
         serviceType: [
           "Egyedi webes belső rendszerek",
           "Automatizálás",
@@ -60,6 +67,7 @@ export function JsonLd() {
           "Webfejlesztés",
           "Programozás",
           "PC karbantartás és számítógépes segítség",
+          "PC szerviz Siófok",
         ],
       },
     ],

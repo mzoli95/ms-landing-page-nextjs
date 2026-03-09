@@ -10,9 +10,9 @@ export function Card({
   return (
     <div
       className={cn(
-        "rounded-2xl border border-slate-200 bg-white shadow-sm shadow-slate-900/5 transition duration-300 ease-out hover:-translate-y-1 hover:shadow-lg hover:shadow-slate-900/10",
-        className,
-      )}
+          "rounded-2xl border border-slate-200 bg-white shadow-sm shadow-slate-900/5 transition duration-300 ease-out hover:-translate-y-1 hover:shadow-lg hover:shadow-slate-900/10 dark:border-slate-700 dark:bg-slate-900",
+          className,
+        )}
     >
       {children}
     </div>

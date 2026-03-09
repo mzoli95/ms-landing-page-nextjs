@@ -141,10 +141,25 @@ export function ContactForm({ lang = "hu" }: { lang?: Lang }) {
               {detailsLength}/500
             </div>
           </div>
+          <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+            <div className="text-xs font-bold uppercase tracking-[0.18em] text-slate-500">
+              {t.contactForm.exampleTitle}
+            </div>
+            <div className="mt-3 grid gap-2 sm:grid-cols-3">
+              {t.contactForm.exampleItems.map((item) => (
+                <div
+                  key={item}
+                  className="rounded-xl bg-white px-3 py-2 text-sm text-slate-600"
+                >
+                  {item}
+                </div>
+              ))}
+            </div>
+          </div>
         </label>
 
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <Button type="submit" className="sm:w-auto w-full">
+          <Button type="submit" className="w-full mt-4 sm:w-auto">
             {state === "sending" ? t.contactForm.sending : t.contactForm.send}
           </Button>
 
@@ -159,6 +174,10 @@ export function ContactForm({ lang = "hu" }: { lang?: Lang }) {
               {message}
             </div>
           )}
+        </div>
+
+        <div className="text-xs text-slate-500">
+          {t.contactForm.privacyNote}
         </div>
       </form>
     </Card>

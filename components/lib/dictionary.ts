@@ -157,6 +157,9 @@ export type Dictionary = {
     title: string;
     description: string;
     contactDetails: string;
+    responseTitle: string;
+    responseItems: string[];
+    directEmailHint: string;
     phone: string;
     coverage: string;
     coverageValue: string;
@@ -169,6 +172,9 @@ export type Dictionary = {
     helpLabel: string;
     helpTooltip: string;
     detailsPlaceholder: string;
+    exampleTitle: string;
+    exampleItems: string[];
+    privacyNote: string;
     validationRequired: string;
     validationEmail: string;
     sending: string;
@@ -180,6 +186,7 @@ export type Dictionary = {
     eyebrow: string;
     title: string;
     description: string;
+    quickPoints: string[];
   };
   pricingPage: {
     eyebrow: string;
@@ -202,6 +209,7 @@ const hu: Dictionary = {
       { href: "/", label: "Főoldal" },
       { href: "/services", label: "Szolgáltatások" },
       { href: "/pricing", label: "Árak" },
+      { href: "/usecases", label: "Példák" },
       { href: "/about", label: "Rólam" },
       { href: "/contact", label: "Kapcsolat" },
     ],
@@ -226,57 +234,61 @@ const hu: Dictionary = {
   home: {
     why: {
       eyebrow: "Miért működik?",
-      title: "Kevesebb kézi munka. Kevesebb hiba. Tisztább működés.",
+      title: "Kevesebb kézi munka, kevesebb hiba, nyugodtabb működés",
       description:
-        "A cél egy olyan megoldás, amit a csapatod tényleg használ, és ami gyorsítja a napi munkát.",
+        "Olyan megoldást készítek, amit a csapatod tényleg használni fog, és ami nem bonyolítja, hanem egyszerűsíti a napi munkát.",
     },
     useCases: {
       eyebrow: "Így néz ki a gyakorlatban",
-      title: "Egyszerűbb működés, kevesebb káosz a napi munkában",
+      title: "Valós példák arra, hogyan lesz kevesebb a káosz",
       description:
-        "Segítek a vállalkozásoknak egyszerűbbé tenni a működésüket automatizálással, egyedi fejlesztéssel és megbízható számítógépes háttérrel.",
+        "Ilyen helyzetekben szokott sokat segíteni egy egyszerűbb belső rendszer, egy jól eltalált automatizálás vagy egy átláthatóbb riport.",
     },
     services: {
       eyebrow: "Szolgáltatások",
-      title: "Megoldások, amik tényleg gyorsítják a napi működést",
+      title: "Megoldások, amik tényleg levesznek terhet a válladról",
       description:
-        "Néhány erős példa röviden. A teljes szolgáltatási lista a Szolgáltatások oldalon található.",
+        "Röviden mutatom a leggyakoribb irányokat. Nem kell előre tudnod, pontosan mire van szükséged.",
     },
     process: {
       eyebrow: "Hogyan dolgozunk?",
-      title: "Gyors indulás, tiszta lépések, biztos haladás",
+      title: "Egyszerű indulás, tiszta lépések, biztos haladás",
       description:
-        "Rövid egyeztetés után lépésről lépésre haladunk, és a feladatokat közös felületen követheted.",
+        "Rövid egyeztetéssel indulunk, utána lépésről lépésre haladunk, hogy végig lásd, mi készül és hol tartunk.",
     },
     pricing: {
       eyebrow: "Árak",
       title: "Csomagok és egyedi ajánlatok",
       description:
-        "Itt röviden látod az irányokat, a teljes árlista és minden részlet az Ár oldalon van.",
+        "Itt az induló irányokat látod. Ha a helyzeted más, egyedi ajánlatot is kérhetsz.",
     },
   },
   hero: {
     badges: [
-      "Adminisztráció csökkentés",
+      "Kevesebb adminisztráció",
       "Excel kiváltása",
-      "Valós idejű összefoglalók",
-      "Egyedi rendszerfejlesztés",
+      "Átláthatóbb működés",
+      "Egyedi belső rendszer",
+      "Valós idejű riportok",
+      "Automatizálás",
+      "Emlékeztetők és határidők",
+      "PC szerviz",
     ],
     title:
       "Excelben, jegyzetekben vagy papíron vezeted a vállalkozásod? Lásd végre egy helyen a pénzed és a határidőidet.",
     locationLine: "Molnár Systems • Siófok és Somogy megye • Országosan online",
     intro:
       "Ha eleged van abból, hogy Excelben és jegyzetekben kell keresgélned: készítek egy egyszerű, testre szabott rendszert, ami időt spórol, hibát csökkent, és láthatóvá teszi a céged működését.",
-    ctaPrimary: "Kérek ingyenes konzultációt",
+    ctaPrimary: "Megnézem, mi segíthet",
     ctaSecondary: "Árak és csomagok",
-    note: "15 perces előszűrés – megmondom, érdemes-e fejleszteni.",
+    note: "15 perces első egyeztetésben megmondom, érdemes-e ezzel most foglalkozni.",
     bullets: [
-      "Belső rendszerek és munkafolyamatok automatizálása",
-      "Rendezett adatkezelés, összefoglalókkal és exporttal",
-      "Integráció meglévő rendszerekkel és eszközökkel",
-      "Pénzügyi és működési adatok egy közös, átlátható felületen",
-      "Excel kiváltása stabil, testre szabott webes rendszerrel",
-      "PC szerviz és számítógépes segítség (helyi kiegészítő szolgáltatás, online is elérhető)",
+      "Belső rendszerek és ismétlődő feladatok egyszerűsítése",
+      "Rendezett adatok, összefoglalók és exportok egy helyen",
+      "Kapcsolódás a most használt eszközeidhez, ahol érdemes",
+      "Pénzügyi és működési adatok átlátható, közös nézetben",
+      "Excel kiváltása egy egyszerűbb, saját webes rendszerrel",
+      "PC szerviz és számítógépes segítség helyben vagy online",
     ],
   },
   featureGrid: [
@@ -320,10 +332,10 @@ const hu: Dictionary = {
   servicesPreview: {
     cards: [
       {
-        title: "Belső rendszerek és webappok",
+        title: "Belső rendszerek és egyszerű webes felületek",
         items: [
           {
-            text: "Ügyfél- és munkanyilvántartás (egyszerű rendszer)",
+            text: "Ügyfél- és munkanyilvántartás egy helyen",
             benefit:
               "Minden adat egy helyen, nincs keresgélés több app között.",
           },
@@ -351,7 +363,7 @@ const hu: Dictionary = {
         title: "Automatizálás és értesítések",
         items: [
           {
-            text: "Határidő riasztó emailben",
+            text: "Határidő emlékeztető e-mailben",
             benefit: "Kevesebb elfelejtett feladat és biztosabb teljesítés.",
           },
           {
@@ -373,7 +385,7 @@ const hu: Dictionary = {
         ],
       },
       {
-        title: "Adatkezelés, összefoglalók, döntéstámogatás",
+        title: "Adatok rendbetétele és átlátható összefoglalók",
         items: [
           {
             text: "Bevétel-kiadás, be nem fizetett számlák, eredmény",
@@ -430,14 +442,14 @@ const hu: Dictionary = {
         ],
       },
       {
-        title: "Kisvállalkozói kisebb programok és weboldalak",
+        title: "Kisebb üzleti programok és weboldalak",
         items: [
           {
             text: "Árkalkuláció mini app munkadíjjal és anyagköltséggel",
             benefit: "Gyorsabb és egységesebb árajánlatadás helyszínen is.",
           },
           {
-            text: "Landing page szolgáltatás bemutatására és ajánlatkérésre",
+            text: "Érdeklődőszerző oldal szolgáltatás bemutatására",
             benefit:
               "Több érdeklődő érkezik, és egyszerűbb a kapcsolatfelvétel.",
           },
@@ -571,7 +583,7 @@ const hu: Dictionary = {
         ],
       },
       {
-        title: "Infrastruktúra kialakítása és tanácsadás (SEO-val)",
+        title: "Technikai alapok és online jelenlét rendbetétele",
         items: [
           {
             text: "Alap technikai környezet kialakítása (domain, tárhely, e-mail)",
@@ -582,7 +594,7 @@ const hu: Dictionary = {
             benefit: "Nem fizetsz feleslegesen rossz eszközökre.",
           },
           {
-            text: "SEO tanácsadás: kereshetőség javítása technikai és tartalmi oldalon",
+            text: "SEO tanácsadás: hogy könnyebben rád találjanak a Google-ben",
             benefit: "Könnyebben rád találnak a potenciális ügyfelek.",
           },
           {
@@ -592,10 +604,10 @@ const hu: Dictionary = {
         ],
       },
     ],
-    ctaTitle: "Nem találod, amit keresel?",
+    ctaTitle: "Nem vagy biztos benne, mire van szükséged?",
     ctaDesc:
-      "Ha nem tudod pontosan, mit szeretnél, írj 3 mondatot a problémáról, és javaslok egy gyors, költséghatékony megoldást.",
-    ctaButton: "Kérek javaslatot",
+      "Írj pár mondatot arról, mi akadozik most a munkában, és javaslok egy egyszerű, reális első lépést.",
+    ctaButton: "Kérek egy első javaslatot",
   },
   useCases: {
     labels: {
@@ -606,15 +618,15 @@ const hu: Dictionary = {
     cards: [
       {
         id: "internal-dev",
-        title: "Saját belső fejlesztés, kiszámíthatóan",
-        who: "KKV tulajdonosok, csapatvezetők",
+        title: "Saját belső fejlesztés, kiszámítható lépésekben",
+        who: "KKV tulajdonosoknak és csapatvezetőknek",
         timeframeLabel: "Lépésenként indulás",
         problem: [
-          "Sok apró belső igény gyűlik össze, de nincs rá dedikált ember.",
+          "Sok apró belső igény gyűlik össze, de nincs rá külön ember.",
           "Nehéz előre látni, mennyi idő és pénz kell a fejlesztésekre.",
         ],
         solution: [
-          "Egy közös belső felület a napi feladatokra.",
+          "Egy közös belső felület a napi feladatokra és állapotokra.",
           "Státuszok, jogosultságok és kimutatások egy helyen.",
           "Fokozatos bővítés, mindig a legfontosabb lépéssel.",
         ],
@@ -663,16 +675,16 @@ const hu: Dictionary = {
       },
       {
         id: "crm-sales",
-        title: "Ajánlatok és utánkövetések nem veszhetnek el",
-        who: "Szolgáltató cégek / értékesítési csapatok",
+        title: "Az ajánlatok és a visszahívások ne vesszenek el",
+        who: "Szolgáltató cégeknek és értékesítési csapatoknak",
         timeframeLabel: "Gyors alapverzió, későbbi bővítéssel",
         problem: [
-          "Az ajánlatok e-mailben, jegyzetben és táblázatban szóródnak szét.",
+          "Az ajánlatok e-mailben, jegyzetben és táblázatban szétcsúsznak.",
           "Nincs tiszta kép arról, kinél mi a következő lépés.",
           "Az utánkövetés könnyen késik vagy elmarad.",
         ],
         solution: [
-          "Egyszerű folyamat: érdeklődő -> ajánlat -> utánkövetés -> lezárás.",
+          "Egyszerű folyamat: érdeklődő -> ajánlat -> visszahívás -> lezárás.",
           "Automatikus emlékeztetők a következő teendőkhöz.",
           "Átlátható nézet a teljes csapatnak.",
         ],
@@ -684,8 +696,8 @@ const hu: Dictionary = {
       },
       {
         id: "admin-automation",
-        title: "Adminisztráció automatizálása, hogy ne vigye el a napot",
-        who: "Irodai adminisztrációt végző KKV-k",
+        title: "Adminisztráció egyszerűsítése, hogy ne vigye el a napot",
+        who: "Olyan KKV-knak, ahol sok a visszatérő adminisztráció",
         timeframeLabel: "1-2 kulcslépéssel induló automatizálás",
         problem: [
           "Sok ismétlődő manuális adatbevitel terheli a csapatot.",
@@ -705,8 +717,8 @@ const hu: Dictionary = {
       },
       {
         id: "pc-service",
-        title: "Lassú a gép? Sokszor RAM vagy SSD bővítéssel gyorsan javítható",
-        who: "Magánszemélyek és helyi vállalkozások",
+        title: "Lassú a gép? Sokszor gyorsan rendbe hozható",
+        who: "Magánszemélyeknek és helyi vállalkozásoknak",
         timeframeLabel: "Gyors hibaelhárítás és karbantartás",
         problem: [
           "Lassú vagy bizonytalanul működő gép akadályozza a munkát.",
@@ -732,7 +744,7 @@ const hu: Dictionary = {
       desc: "15-30 percben feltérképezzük, hol megy el idő és hol csúszik a munka.",
     },
     {
-      title: "Javaslat + prototípus",
+      title: "Javaslat és első verzió",
       desc: "Kapsz 1-2 tiszta opciót, és egy gyorsan kipróbálható első verziót.",
     },
     {
@@ -740,107 +752,107 @@ const hu: Dictionary = {
       desc: "Lépésenként építünk, heti haladással. Átadáskor betanítás és rövid útmutató is jár.",
     },
     {
-      title: "Support",
-      desc: "Havi csomagban karbantartás és kisebb fejlesztések. Stabil működés.",
+      title: "További támogatás",
+      desc: "Ha kell, utána is segítek karbantartással, javításokkal és kisebb fejlesztésekkel.",
     },
   ],
   pricingGrid: {
     labels: {
       mostPopular: "Legnépszerűbb",
-      requestOffer: "Ajánlatkérés",
-      development: "Fejlesztés",
-      pcAddon: "PC / számítógépes segítség (kiegészítő)",
+      requestOffer: "Ajánlatot kérek",
+      development: "Fejlesztési csomagok",
+      pcAddon: "PC segítség külön is kérhető",
       noteTitle: "Megjegyzés:",
       noteText:
-        "a fenti árak irányárak. A pontos ajánlatot egy rövid egyeztetés után adom, az igények és az összetettség alapján.",
+        "A fenti árak tájékoztató jellegűek. Rövid egyeztetés után pontos árat és terjedelmet mondok.",
     },
     plans: [
       {
-        name: "Felmérés + gyorsnyereség",
+        name: "Első rendbetétel",
         price: "149 000 Ft-tól",
-        hint: "Gyors indulás • 1 fókuszált automatizálás vagy mini megoldás",
+        hint: "Gyors kezdés • 1 konkrét problémára",
         features: [
-          "Rövid folyamatfelmérés + javaslatlista",
-          "1 konkrét probléma gyors rendbetétele (pl. emlékeztető / státusz / összefoglaló)",
-          "Átadás + rövid betanítás",
+          "Rövid áttekintés arról, hol megy el az idő",
+          "1 kézzelfogható javítás vagy egyszerű automatizálás",
+          "Átadás rövid magyarázattal",
         ],
       },
       {
-        name: "Mini automatizálás sprint",
+        name: "Admin könnyítés",
         price: "229 000 Ft-tól",
-        hint: "2-3 hét • kézi admin csökkentése gyors eredménnyel",
+        hint: "2-3 hét • kevesebb kézi ismétlődő munka",
         features: [
           "Űrlapok és visszatérő admin lépések egyszerűsítése",
           "Automatikus emlékeztetők és alap státuszkövetés",
-          "Rövid videós átadás + használati leírás",
+          "Rövid videós átadás és használati leírás",
         ],
       },
       {
-        name: "Ajánlat- és utánkövetés alapcsomag",
+        name: "Ajánlatok és utánkövetés rendben",
         price: "329 000 Ft-tól",
-        hint: "Értékesítési folyamat tisztítása • elvesző leadek helyett átlátható lépések",
+        hint: "Átláthatóbb értékesítési folyamat • kevesebb elvesző érdeklődő",
         features: [
-          "Pipeline: érdeklődő -> ajánlat -> utánkövetés -> lezárás",
-          "Feladat és határidő emlékeztetők",
-          "Csapat szintű áttekintés, hogy lásd hol akad el a folyamat",
+          "Érdeklődő -> ajánlat -> utánkövetés -> lezárás folyamat egy helyen",
+          "Feladat- és határidőemlékeztetők",
+          "Áttekintés arról, hol akad el a folyamat",
         ],
       },
       {
-        name: "Belső rendszer (modulárisan)",
+        name: "Egyszerű belső rendszer",
         price: "450 000 Ft-tól",
-        hint: "Első verzió (MVP) • utána lépésenként bővíthető",
+        hint: "Első működő verzió • később bővíthető",
         popular: true,
         features: [
-          "Ügyfél / munka / státusz követés egy helyen",
-          "Jogosultságok és naplózás (alapszint)",
-          "Összefoglalók és áttekintő felület (a döntéshez szükséges mutatókkal)",
-          "Átadás + dokumentáció",
+          "Ügyfelek, feladatok és állapotok követése egy helyen",
+          "Alap jogosultságkezelés és naplózás",
+          "Áttekintő felület a fontos számokkal és státuszokkal",
+          "Átadás és rövid dokumentáció",
         ],
       },
       {
-        name: "Weboldal + ajánlatkérés induló csomag",
+        name: "Bemutatkozó weboldal + kapcsolatfelvétel",
         price: "290 000 Ft-tól",
-        hint: "Bemutatkozás + lead gyűjtés • gyors online induláshoz",
+        hint: "Ha gyorsan kell egy letisztult online jelenlét",
         features: [
           "Reszponzív weboldal alap szerkezettel",
-          "Kapcsolati vagy ajánlatkérő űrlap beállítással",
+          "Kapcsolati vagy ajánlatkérő űrlap",
           "Sebesség és alap SEO beállítások",
         ],
       },
       {
-        name: "Landing page kampánycsomag",
+        name: "Kampány landing oldal",
         price: "199 000 Ft-tól",
         hint: "1 fókuszált oldal • hirdetéshez vagy ajánlatkéréshez",
         features: [
-          "Konverzióra optimalizált, mobilbarát landing oldal",
-          "Űrlap, köszönőoldal és alap mérés (pl. Analytics / események)",
-          "Gyors átadás rövid módosítási körrel",
+          "Mobilbarát, célra kihegyezett landing oldal",
+          "Űrlap, köszönőoldal és alap mérés",
+          "Gyors átadás egy rövid módosítási körrel",
         ],
       },
       {
-        name: "Landing page + hirdetésindítás",
+        name: "Landing oldal + hirdetés indulás",
         price: "279 000 Ft-tól",
-        hint: "Landing + alap kampány setup • mérhető indulás",
+        hint: "Landing oldal mellé alap kampányindítás",
         features: [
-          "Landing oldal + konverziós űrlap és köszönőoldal",
-          "Google/Meta alap kampánybeállítás és eseménymérés",
-          "30 napos finomhangolási javaslat rövid riporttal",
+          "Landing oldal űrlappal és köszönőoldallal",
+          "Google vagy Meta alap kampánybeállítás és eseménymérés",
+          "30 napos finomhangolási javaslat rövid összefoglalóval",
         ],
       },
       {
-        name: "Adatbázis rendbetétel + riportok",
+        name: "Adatrendrakás + összefoglalók",
         price: "390 000 Ft-tól",
-        hint: "Szétszórt adatokból tiszta alap • gyorsabb döntésekhez",
+        hint: "Ha sok helyen vannak az adatok és nehéz átlátni őket",
         features: [
           "Adattisztítás és ismétlődések csökkentése",
           "Közös adatstruktúra kialakítása",
-          "Vezetői összefoglaló nézet és export",
+          "Egyszerű vezetői összefoglaló és export",
         ],
       },
       {
         name: "Weboldal karbantartás (havidíjas)",
         price: "39 000 Ft / hó-tól",
-        hint: "Frissítés + hibajavítás + tartalmi módosítások havi keretben",
+        hint: "Frissítések és kisebb módosítások havi keretben",
         features: [
           "Rendszeres frissítések, mentések, biztonsági ellenőrzések",
           "Kisebb tartalmi és funkcionális módosítások havi kerettel",
@@ -850,7 +862,7 @@ const hu: Dictionary = {
       {
         name: "Program / belső rendszer karbantartás",
         price: "69 000 Ft / hó-tól",
-        hint: "Meglévő egyedi rendszered stabil működéséhez",
+        hint: "Ha a meglévő rendszeredet stabilan működtetnéd",
         features: [
           "Hibajavítás és verziókövetés",
           "Kisebb fejlesztési igények priorizált kezelése",
@@ -858,9 +870,9 @@ const hu: Dictionary = {
         ],
       },
       {
-        name: "SEO alapcsomag (lokális + technikai)",
+        name: "SEO alapcsomag",
         price: "79 000 Ft / hó-tól",
-        hint: "Láthatóság javítása alapoktól, kisvállalkozói fókuszban",
+        hint: "Jobb láthatóság helyi és technikai alapokkal",
         features: [
           "Technikai SEO alapjavítások (sebesség, meta, indexelés)",
           "Lokális SEO beállítások és kulcsszó fókusz",
@@ -868,9 +880,9 @@ const hu: Dictionary = {
         ],
       },
       {
-        name: "SEO + tartalomfrissítés (havi)",
+        name: "SEO + tartalomfrissítés",
         price: "119 000 Ft / hó-tól",
-        hint: "Technikai SEO + tartalom + publikálási ritmus",
+        hint: "SEO mellé folyamatos szöveg- és oldalfeljavítás",
         features: [
           "SEO alapcsomag + havi tartalmi frissítések",
           "Kulcsszófókuszú oldal- és szövegfrissítés",
@@ -878,9 +890,9 @@ const hu: Dictionary = {
         ],
       },
       {
-        name: "Tanácsadás és tervezés (óradíjas)",
+        name: "Átbeszélés és tervezés",
         price: "18 000 Ft / óra",
-        hint: "Elakadás esetén gyors szakmai döntéstámogatás",
+        hint: "Ha előbb tisztán szeretnél látni, mit érdemes megcsinálni",
         features: [
           "Rendszer- és folyamatátvilágítás megbeszélés alapján",
           "Konkrét javaslatlista priorizálva",
@@ -888,9 +900,9 @@ const hu: Dictionary = {
         ],
       },
       {
-        name: "Fejlesztési keret 5 óra",
+        name: "5 órás fejlesztési keret",
         price: "85 000 Ft / csomag",
-        hint: "Kisebb backlog, gyors javítások és mini fejlesztések",
+        hint: "Kisebb javításokra és rövidebb feladatokra",
         features: [
           "5 óra fejlesztési keret 60 napon belüli felhasználással",
           "Prioritás szerinti feladatsorrend és státuszfrissítés",
@@ -898,9 +910,9 @@ const hu: Dictionary = {
         ],
       },
       {
-        name: "Fejlesztési keret 10 óra",
+        name: "10 órás fejlesztési keret",
         price: "165 000 Ft / csomag",
-        hint: "Folyamatos kisebb igényekhez kedvezőbb óradíjjal",
+        hint: "Ha rendszeresen vannak kisebb feladataid",
         features: [
           "10 óra fejlesztési keret 90 napon belüli felhasználással",
           "Gyorsabb reakció több párhuzamos kisebb feladatra",
@@ -908,9 +920,9 @@ const hu: Dictionary = {
         ],
       },
       {
-        name: "Egyedi fejlesztés (óradíjas)",
+        name: "Egyedi fejlesztés óradíjjal",
         price: "18 000 Ft / óra",
-        hint: "Kisebb, egyedi feladatokhoz rugalmas elszámolás",
+        hint: "Ha egy konkrét kisebb feladatot kell megoldani",
         features: [
           "Konkrét fejlesztés a megbeszélt feladatra (nem csak konzultáció)",
           "Átlátható elszámolás időráfordítás szerint",
@@ -920,7 +932,7 @@ const hu: Dictionary = {
       {
         name: "Sürgős hibajavítás (24-48 óra)",
         price: "24 000 Ft / óra",
-        hint: "Kiemelt prioritású, gyors beavatkozást igénylő hibákra",
+        hint: "Ha üzletileg fontos hibát kell gyorsan javítani",
         features: [
           "Hibaanalízis és javítás 24-48 órás célidővel",
           "Kommunikáció és állapotfrissítés rövid ciklusokban",
@@ -930,7 +942,7 @@ const hu: Dictionary = {
       {
         name: "Havi support / üzemeltetés",
         price: "49 000 Ft / hó-tól",
-        hint: "Karbantartás • kisebb fejlesztések • kiszámítható működés",
+        hint: "Karbantartás és kisebb fejlesztések kiszámítható keretben",
         features: [
           "Frissítések, mentések, alap ellenőrzések",
           "Havi keret kisebb módosításokra / fejlesztésekre",
@@ -940,9 +952,9 @@ const hu: Dictionary = {
     ],
     pcPlans: [
       {
-        name: "PC gyors átvizsgálás + optimalizálás",
+        name: "PC átvizsgálás + gyorsítás",
         price: "9 900 Ft-tól",
-        hint: "Állapottól függ • diagnosztika + gyors rendbetétel",
+        hint: "Ha lassú a gép és szeretnéd tudni, miért",
         features: [
           "Lassulás okainak feltárása (szoftver/hardver)",
           "Alap karbantartás (startup, takarítás, beállítások)",
@@ -952,7 +964,7 @@ const hu: Dictionary = {
       {
         name: "Windows újratelepítés + adatmentés",
         price: "24 900–59 900 Ft",
-        hint: "Géptípustól és mentési igénytől függ",
+        hint: "Géptípustól és mentési igénytől függően",
         features: [
           "Adatmentés (megbeszélt mappák szerint)",
           "Tiszta telepítés + driverek + alap beállítás",
@@ -960,9 +972,9 @@ const hu: Dictionary = {
         ],
       },
       {
-        name: "SSD vagy RAM bővítés (munkadíj)",
+        name: "SSD vagy RAM bővítés",
         price: "14 900 Ft-tól",
-        hint: "Alkatrész külön • gyorsulás célzott bővítéssel",
+        hint: "Alkatrész külön • célzott gyorsítás meglévő gépre",
         features: [
           "Kompatibilitás ellenőrzés vásárlás előtt",
           "Szakszerű beépítés és alap teszt",
@@ -970,9 +982,9 @@ const hu: Dictionary = {
         ],
       },
       {
-        name: "Új gép beüzemelés + átköltöztetés",
+        name: "Új gép beüzemelés + költöztetés",
         price: "19 900 Ft-tól",
-        hint: "Régi gépről újra • kisebb leállással",
+        hint: "Régi gépről újra, a fontos dolgok áthozásával",
         features: [
           "Felhasználói beállítások és alap programok telepítése",
           "Fontos fájlok és mappák átmásolása",
@@ -982,7 +994,7 @@ const hu: Dictionary = {
       {
         name: "Kisvállalati géppark havi karbantartás",
         price: "39 900 Ft / hó-tól",
-        hint: "2-5 géphez • megelőző karbantartás és gyors reakció",
+        hint: "2-5 gépre • megelőző karbantartás és gyors segítség",
         features: [
           "Havi állapotellenőrzés és frissítések",
           "Alap biztonsági és mentési ellenőrzés",
@@ -990,9 +1002,9 @@ const hu: Dictionary = {
         ],
       },
       {
-        name: "Egyedi PC összerakás + beüzemelés",
+        name: "Egyedi PC összerakás",
         price: "34 900 Ft-tól",
-        hint: "Munkadíj • alkatrészek külön, igényre szabott konfigurációval",
+        hint: "Munkadíj • alkatrészek külön, igényre szabva",
         features: [
           "Konfiguráció tervezés költségkeret és felhasználás alapján",
           "Összeszerelés, kábelmenedzsment és terheléses teszt",
@@ -1089,8 +1101,15 @@ const hu: Dictionary = {
     eyebrow: "Kapcsolat",
     title: "Van egy ötleted vagy problémád?",
     description:
-      "Írd meg, mit szeretnél megvalósítani, és megnézzük, hogyan lehet belőle működő rendszer. Nincs kötelezettség.",
+      "Írd meg röviden, mi akadozik most a munkában vagy min szeretnél javítani. Nem kell műszaki leírás: elég, ha a helyzetet leírod.",
     contactDetails: "Elérhetőségek",
+    responseTitle: "Mire számíthatsz?",
+    responseItems: [
+      "Átnézem, amit írtál, és visszajelzek, hogy látok-e benne jó első lépést.",
+      "Ha kell, felteszek 2-3 rövid pontosító kérdést.",
+      "Ha van értelme, kapsz egy egyszerű javaslatot és egy induló irányárat.",
+    ],
+    directEmailHint: "Ha kényelmesebb, közvetlenül emailben is írhatsz.",
     phone: "Telefon:",
     coverage: "Terület:",
     coverageValue: "Siófok - Somogy megye - Magyarország egész területén",
@@ -1102,27 +1121,40 @@ const hu: Dictionary = {
     emailPlaceholder: "pl. kiss.peter@ceg.hu",
     helpLabel: "Miben segíthetek?",
     helpTooltip:
-      "Írd le, mi a probléma és mi a cél, kb. hány felhasználó érintett, van-e határidő. Minél több infó, annál jobb javaslatot tudok adni!",
+      "Írd le röviden, mi nem működik jól most, mi lenne a cél, és van-e határidő. Nem kell technikai nyelven fogalmaznod.",
     detailsPlaceholder:
-      "Írd le röviden a helyzetet: mi a probléma, mi a cél, kb. mennyi felhasználó, van-e határidő.",
+      "Például: ajánlatok és visszahívások elvesznek, sok az Excel, vagy lassú a gép. Írd le röviden, mi a gond és min javítanál.",
+    exampleTitle: "Ez bőven elég az induláshoz:",
+    exampleItems: [
+      "mi akadozik most a napi munkában",
+      "mi lenne a jó eredmény",
+      "van-e határidő vagy sürgősség",
+    ],
+    privacyNote: "Az üzenetedet csak a kapcsolatfelvételhez használom fel.",
     validationRequired: "Kérlek töltsd ki ezt a mezőt.",
     validationEmail: "Kérlek adj meg egy érvényes email címet.",
     sending: "Küldés...",
-    send: "Üzenet küldése",
-    success: "Köszi! Megkaptam az üzenetet, hamarosan válaszolok.",
-    error: "Hopp, valami nem ment át. Írj emailt, vagy próbáld újra.",
+    send: "Küldöm az üzenetet",
+    success: "Köszi, megkaptam. Hamarosan válaszolok.",
+    error:
+      "Most valami nem ment át. Írhatsz közvetlenül emailt is, vagy próbáld újra.",
   },
   servicesPage: {
     eyebrow: "Szolgáltatások",
     title: "Gyakori munkák",
     description:
-      "Belső rendszerek, automatizálás, rendezett adatkezelés és összefoglalók – plusz PC szerviz.",
+      "Itt látod, miben tudok a leggyakrabban segíteni. Nem kell pontosan tudnod a megoldást, elég ha a problémát felismered.",
+    quickPoints: [
+      "ha sok a kézi admin és az Exceles kerülőút",
+      "ha nem látod át egy helyen a státuszokat és számokat",
+      "ha gyors, reális első lépéssel indulnál",
+    ],
   },
   pricingPage: {
     eyebrow: "Árak",
-    title: "Átlátható csomagok",
+    title: "Egyszerű, átlátható csomagok",
     description:
-      "Gyors döntés és eredmény. Pár kérdés után pontos ajánlatot adok.",
+      "Nem kell előre mindent pontosan tudnod. Válassz kiinduló csomagot, vagy írj, és segítek belőni, mi éri meg.",
   },
   notFound: {
     eyebrow: "404",
@@ -1141,6 +1173,7 @@ const en: Dictionary = {
       { href: "/", label: "Home" },
       { href: "/services", label: "Services" },
       { href: "/pricing", label: "Pricing" },
+      { href: "/usecases", label: "Use Cases" },
       { href: "/about", label: "About" },
       { href: "/contact", label: "Contact" },
     ],
@@ -1165,40 +1198,44 @@ const en: Dictionary = {
   home: {
     why: {
       eyebrow: "Why it works",
-      title: "Less manual work. Fewer mistakes. Better visibility.",
+      title: "Less manual work, fewer mistakes, clearer day-to-day operations",
       description:
-        "The goal is not just to build something, but to help your company run faster and calmer.",
+        "The goal is to build something your team will actually use and that makes daily work easier, not heavier.",
     },
     useCases: {
       eyebrow: "How it looks in practice",
-      title: "Simpler day-to-day operations with less chaos",
+      title: "Real examples of how daily work becomes simpler",
       description:
-        "I help businesses simplify operations with automation, tailored development, and reliable computer support.",
+        "These are typical situations where a simple internal tool, automation or clearer reporting makes a real difference.",
     },
     services: {
       eyebrow: "Services",
-      title: "Focused solutions here, full list on a dedicated page",
+      title: "Solutions that remove everyday friction",
       description:
-        "This section gives a quick overview. Full service details are on the Services page.",
+        "Here is a quick overview of the most common directions. You do not need to know the exact solution in advance.",
     },
     process: {
       eyebrow: "How we work",
-      title: "Transparent process, weekly small deliveries",
-      description: "Short check-ins, fast prototype, stable handover.",
+      title: "Simple process, clear next steps",
+      description: "Short check-ins, quick first version, and clear handover.",
     },
     pricing: {
       eyebrow: "Pricing",
       title: "Packages and custom offers",
       description:
-        "Quick overview here, full pricing details are on the Pricing page.",
+        "You can start with a package or ask for a custom quote if your case is different.",
     },
   },
   hero: {
     badges: [
-      "Less administration",
+      "Less admin work",
       "Replace Excel",
+      "Clearer overview",
+      "Custom internal tools",
       "Real-time reporting",
-      "Custom software",
+      "Automation",
+      "Reminders & deadlines",
+      "PC support",
     ],
     title:
       "Still running your business in Excel, notes or paper? See your money and deadlines in one place.",
@@ -1208,14 +1245,14 @@ const en: Dictionary = {
       "If you are tired of searching through spreadsheets and notes, I build a simple custom system that saves time, reduces errors, and makes operations visible.",
     ctaPrimary: "Book a free consultation",
     ctaSecondary: "Pricing & packages",
-    note: "15-minute pre-check – I will tell you if development is worth it.",
+    note: "In a short first call, I can tell you if this is worth doing now.",
     bullets: [
-      "Internal systems and workflow automation",
-      "Database-first operation with reports and exports",
-      "Integrations with existing tools and systems",
-      "Financial and operational metrics in one dashboard",
-      "Replace Excel with a stable custom web system",
-      "PC service and computer support (local add-on, online available)",
+      "Internal tools and simpler repeatable workflows",
+      "Organized data, summaries and exports in one place",
+      "Connection to your existing tools where it makes sense",
+      "Financial and operational numbers in one clear view",
+      "Replace spreadsheet chaos with a simple custom system",
+      "PC service and computer support locally or online",
     ],
   },
   featureGrid: [
@@ -1259,10 +1296,10 @@ const en: Dictionary = {
   servicesPreview: {
     cards: [
       {
-        title: "Internal systems and web apps",
+        title: "Internal systems and simple web tools",
         items: [
           {
-            text: "Client/job tracking (simple system)",
+            text: "Client and job tracking in one place",
             benefit: "All key information stays in one place.",
           },
           {
@@ -1287,7 +1324,7 @@ const en: Dictionary = {
         title: "Automation and notifications",
         items: [
           {
-            text: "Deadline alerts by email",
+            text: "Deadline reminders by email",
             benefit: "Fewer missed tasks and tighter execution.",
           },
           {
@@ -1309,7 +1346,7 @@ const en: Dictionary = {
         ],
       },
       {
-        title: "Database, reports and decision support",
+        title: "Clean data and easy-to-read summaries",
         items: [
           {
             text: "Revenue-costs, unpaid invoices and profit overview",
@@ -1503,7 +1540,7 @@ const en: Dictionary = {
         ],
       },
       {
-        title: "Infrastructure setup and consulting (with SEO)",
+        title: "Technical setup and online visibility",
         items: [
           {
             text: "Basic technical setup (domain, hosting, email)",
@@ -1514,7 +1551,7 @@ const en: Dictionary = {
             benefit: "Avoid spending on the wrong tools.",
           },
           {
-            text: "SEO consulting for technical and content improvements",
+            text: "SEO guidance so more potential clients can find you",
             benefit: "Potential clients can find you more easily.",
           },
           {
@@ -1524,10 +1561,10 @@ const en: Dictionary = {
         ],
       },
     ],
-    ctaTitle: "Cannot find what you need?",
+    ctaTitle: "Not sure what you need yet?",
     ctaDesc:
-      "If you are not sure what you want yet, send me 3 sentences about your challenge and I will suggest a fast, cost-effective approach.",
-    ctaButton: "Request recommendation",
+      "Send a few sentences about what is slowing you down and I will suggest a practical first step.",
+    ctaButton: "Get a first recommendation",
   },
   useCases: {
     labels: {
@@ -1538,12 +1575,11 @@ const en: Dictionary = {
     cards: [
       {
         id: "internal-dev",
-        title:
-          "You want internal development capacity without hiring full-time",
-        who: "SME owners and team leads",
+        title: "You need internal development help without hiring full-time",
+        who: "For SME owners and team leads",
         timeframeLabel: "Start module by module after discovery",
         problem: [
-          "Many internal requests pile up with no dedicated developer.",
+          "Many small internal requests pile up, but nobody owns them.",
           "Ad-hoc implementation makes budgeting hard.",
           "It is difficult to see team operations end-to-end.",
         ],
@@ -1602,7 +1638,7 @@ const en: Dictionary = {
       },
       {
         id: "crm-sales",
-        title: "Quotes and follow-ups should never get lost",
+        title: "Quotes and follow-ups should not get lost",
         who: "Service businesses and sales teams",
         timeframeLabel: "Fast baseline, then phased expansion",
         problem: [
@@ -1623,7 +1659,7 @@ const en: Dictionary = {
       },
       {
         id: "admin-automation",
-        title: "Automate admin tasks so they do not consume your day",
+        title: "Simplify admin work so it does not consume your day",
         who: "SMEs with office-heavy administration",
         timeframeLabel: "Start with 1-2 critical automation steps",
         problem: [
@@ -1644,7 +1680,8 @@ const en: Dictionary = {
       },
       {
         id: "pc-service",
-        title: "Slow computer? In many cases RAM or SSD upgrades solve it fast",
+        title:
+          "Slow computer? In many cases it can be fixed faster than you think",
         who: "Individuals and local businesses",
         timeframeLabel: "Fast troubleshooting and maintenance",
         problem: [
@@ -1673,43 +1710,43 @@ const en: Dictionary = {
       desc: "Where does it hurt today? Where do delays and mistakes happen? 15–30 min call.",
     },
     {
-      title: "2) Proposal + prototype",
-      desc: "You get 1–2 options: quick win or system build. Step by step.",
+      title: "2) Proposal + first version",
+      desc: "You get 1–2 clear options and, if it makes sense, a quick first version to react to.",
     },
     {
       title: "3) Build & handover",
       desc: "Weekly sync, small deliveries. Handover includes onboarding and docs.",
     },
     {
-      title: "4) Support",
-      desc: "Monthly maintenance and minor improvements for stable operation.",
+      title: "4) Ongoing support",
+      desc: "If needed, I stay involved with maintenance, fixes and small improvements.",
     },
   ],
   pricingGrid: {
     labels: {
       mostPopular: "Most popular",
-      requestOffer: "Request offer",
-      development: "Development",
-      pcAddon: "PC / computer support (add-on)",
+      requestOffer: "Ask for quote",
+      development: "Development packages",
+      pcAddon: "PC help is also available separately",
       noteTitle: "Note:",
       noteText:
-        "prices above are indicative. I provide an exact quote after a short discovery call based on your requirements and complexity.",
+        "These prices are indicative. After a short call, I can give you a precise scope and quote.",
     },
     plans: [
       {
-        name: "Assessment + quick win",
+        name: "First cleanup step",
         price: "from 149,000 HUF",
-        hint: "Fast start • 1 focused automation or mini solution",
+        hint: "Fast start for 1 specific problem",
         features: [
-          "Short process assessment + recommendation list",
-          "Quick fix for 1 concrete issue (reminder / status / report)",
-          "Handover + short onboarding",
+          "Short review of where time is being lost",
+          "1 practical fix or simple automation",
+          "Handover with short explanation",
         ],
       },
       {
-        name: "Mini automation sprint",
+        name: "Admin relief",
         price: "from 229,000 HUF",
-        hint: "2-3 weeks • cut manual admin with quick practical gains",
+        hint: "2-3 weeks to reduce repetitive manual work",
         features: [
           "Simplify forms and recurring admin steps",
           "Automatic reminders and basic status tracking",
@@ -1717,71 +1754,71 @@ const en: Dictionary = {
         ],
       },
       {
-        name: "Quote and follow-up starter package",
+        name: "Quotes and follow-up organized",
         price: "from 329,000 HUF",
-        hint: "Cleaner sales flow • fewer lost leads and clearer next steps",
+        hint: "Cleaner sales flow with fewer lost leads",
         features: [
-          "Pipeline: lead -> quote -> follow-up -> close",
+          "Lead -> quote -> follow-up -> close flow in one place",
           "Reminders for tasks and deadlines",
-          "Team-level overview to spot bottlenecks quickly",
+          "Overview of where the process gets stuck",
         ],
       },
       {
-        name: "Internal system (modular)",
+        name: "Simple internal system",
         price: "from 450,000 HUF",
-        hint: "First version (MVP) • expandable in steps",
+        hint: "A first working version that can grow later",
         popular: true,
         features: [
-          "Client / work / status tracking in one place",
-          "Permissions and logging (baseline)",
-          "Reports and dashboard with key decision metrics",
-          "Handover + documentation",
+          "Clients, tasks and statuses tracked in one place",
+          "Baseline permissions and logging",
+          "Simple overview with key numbers and statuses",
+          "Handover and short documentation",
         ],
       },
       {
-        name: "Website + quote request starter package",
+        name: "Website + contact capture",
         price: "from 290,000 HUF",
-        hint: "Company presence + lead capture for fast online launch",
+        hint: "A clear online presence you can launch quickly",
         features: [
           "Responsive website with core structure",
-          "Contact or quote-request form setup",
+          "Contact or quote request form",
           "Speed optimization and baseline SEO setup",
         ],
       },
       {
-        name: "Landing page campaign package",
+        name: "Campaign landing page",
         price: "from 199,000 HUF",
         hint: "One focused page for ads or lead generation",
         features: [
-          "Conversion-focused, mobile-friendly landing page",
-          "Form, thank-you page and baseline tracking setup",
+          "Mobile-friendly landing page built around one goal",
+          "Form, thank-you page and baseline tracking",
           "Fast delivery with one short revision round",
         ],
       },
       {
-        name: "Landing page + ad launch package",
+        name: "Landing page + ad launch",
         price: "from 279,000 HUF",
-        hint: "Landing + baseline campaign setup for measurable start",
+        hint: "Landing page plus basic campaign setup",
         features: [
-          "Landing page with conversion form and thank-you page",
-          "Baseline Google/Meta campaign setup with event tracking",
-          "30-day optimization recommendations with short report",
+          "Landing page with form and thank-you page",
+          "Baseline Google or Meta campaign setup with event tracking",
+          "30-day optimization suggestions with a short summary",
         ],
       },
       {
-        name: "Database cleanup + reporting",
+        name: "Data cleanup + summaries",
         price: "from 390,000 HUF",
-        hint: "Turn scattered data into clean structure for faster decisions",
+        hint: "For scattered data that is hard to see through",
         features: [
           "Data cleanup and duplicate reduction",
           "Shared data model aligned with real workflows",
-          "Management summary view and exports",
+          "Simple management summary and exports",
         ],
       },
       {
         name: "Website maintenance (monthly)",
         price: "from 39,000 HUF / month",
-        hint: "Updates, fixes and content tweaks in a monthly scope",
+        hint: "Updates and small changes in a monthly scope",
         features: [
           "Regular updates, backups and security checks",
           "Small content and feature changes within monthly scope",
@@ -1791,7 +1828,7 @@ const en: Dictionary = {
       {
         name: "App / internal system maintenance",
         price: "from 69,000 HUF / month",
-        hint: "Keep your custom system stable and maintainable",
+        hint: "Keep your existing system stable and usable",
         features: [
           "Bug fixing and version maintenance",
           "Priority handling of small improvement requests",
@@ -1799,9 +1836,9 @@ const en: Dictionary = {
         ],
       },
       {
-        name: "SEO starter package (local + technical)",
+        name: "SEO starter package",
         price: "from 79,000 HUF / month",
-        hint: "Improve visibility from solid basics for small businesses",
+        hint: "Better visibility through local and technical basics",
         features: [
           "Technical SEO baseline fixes (speed, meta, indexing)",
           "Local SEO setup and keyword focus",
@@ -1809,9 +1846,9 @@ const en: Dictionary = {
         ],
       },
       {
-        name: "SEO + content updates (monthly)",
+        name: "SEO + content updates",
         price: "from 119,000 HUF / month",
-        hint: "Technical SEO plus ongoing content update rhythm",
+        hint: "SEO with ongoing page and copy improvements",
         features: [
           "SEO starter package + monthly content updates",
           "Keyword-focused page and copy optimization",
@@ -1819,9 +1856,9 @@ const en: Dictionary = {
         ],
       },
       {
-        name: "Consulting and planning (hourly)",
+        name: "Review and planning",
         price: "18,000 HUF / hour",
-        hint: "Fast expert input when you are blocked",
+        hint: "If you first want clarity on what is worth building",
         features: [
           "Workflow and system review based on your current setup",
           "Prioritized action list with practical next steps",
@@ -1831,7 +1868,7 @@ const en: Dictionary = {
       {
         name: "5-hour development block",
         price: "85,000 HUF / package",
-        hint: "For small backlog items, fixes and mini improvements",
+        hint: "For fixes and smaller tasks",
         features: [
           "5 development hours usable within 60 days",
           "Priority-based task queue with status updates",
@@ -1841,7 +1878,7 @@ const en: Dictionary = {
       {
         name: "10-hour development block",
         price: "165,000 HUF / package",
-        hint: "Better effective hourly rate for recurring small requests",
+        hint: "For recurring smaller requests",
         features: [
           "10 development hours usable within 90 days",
           "Faster handling for multiple parallel small tasks",
@@ -1849,9 +1886,9 @@ const en: Dictionary = {
         ],
       },
       {
-        name: "Custom development (hourly)",
+        name: "Custom development hourly",
         price: "18,000 HUF / hour",
-        hint: "Flexible billing for smaller custom requests",
+        hint: "For one specific smaller task",
         features: [
           "Actual implementation for the agreed custom task (not only consulting)",
           "Transparent time-based billing",
@@ -1861,7 +1898,7 @@ const en: Dictionary = {
       {
         name: "Urgent bug fix (24-48h)",
         price: "24,000 HUF / hour",
-        hint: "Priority handling for business-critical issues",
+        hint: "For business-critical issues that need a quick fix",
         features: [
           "Issue analysis and fix with 24-48h target window",
           "Short-cycle communication and status updates",
@@ -1871,7 +1908,7 @@ const en: Dictionary = {
       {
         name: "Monthly support / operations",
         price: "from 49,000 HUF / month",
-        hint: "Maintenance • small improvements • predictable operation",
+        hint: "Maintenance and smaller improvements in a predictable scope",
         features: [
           "Updates, backups and basic checks",
           "Monthly scope for minor changes and improvements",
@@ -1881,9 +1918,9 @@ const en: Dictionary = {
     ],
     pcPlans: [
       {
-        name: "PC quick audit + optimization",
+        name: "PC checkup + speed-up",
         price: "from 9,900 HUF",
-        hint: "Depends on condition • diagnostics + quick tuning",
+        hint: "If your computer feels slow and you want to know why",
         features: [
           "Identify causes of slowdown (software/hardware)",
           "Basic maintenance (startup, cleanup, settings)",
@@ -1893,7 +1930,7 @@ const en: Dictionary = {
       {
         name: "Windows reinstall + data backup",
         price: "24,900–59,900 HUF",
-        hint: "Depends on device type and backup needs",
+        hint: "Depends on the device and backup needs",
         features: [
           "Data backup (as agreed folders)",
           "Clean install + drivers + baseline setup",
@@ -1901,9 +1938,9 @@ const en: Dictionary = {
         ],
       },
       {
-        name: "SSD or RAM upgrade (labor)",
+        name: "SSD or RAM upgrade",
         price: "from 14,900 HUF",
-        hint: "Parts are separate • targeted upgrade for real speed gain",
+        hint: "Parts are separate, for a targeted speed improvement",
         features: [
           "Compatibility check before purchase",
           "Professional installation and baseline test",
@@ -1911,9 +1948,9 @@ const en: Dictionary = {
         ],
       },
       {
-        name: "New device setup + migration",
+        name: "New device setup + transfer",
         price: "from 19,900 HUF",
-        hint: "From old machine to new one with minimal interruption",
+        hint: "Move from the old machine to the new one with less hassle",
         features: [
           "User setup and essential software installation",
           "Transfer of important files and folders",
@@ -1923,7 +1960,7 @@ const en: Dictionary = {
       {
         name: "Small business device maintenance (monthly)",
         price: "from 39,900 HUF / month",
-        hint: "For 2-5 devices • preventive maintenance and faster response",
+        hint: "For 2-5 devices with preventive maintenance and faster help",
         features: [
           "Monthly health check and updates",
           "Baseline security and backup checks",
@@ -1931,9 +1968,9 @@ const en: Dictionary = {
         ],
       },
       {
-        name: "Custom PC build and setup",
+        name: "Custom PC build",
         price: "from 34,900 HUF",
-        hint: "Labor only • parts and configuration depend on needs",
+        hint: "Labor only, parts are separate and chosen for your needs",
         features: [
           "Hardware planning based on budget and use case",
           "Assembly, cable management and stress testing",
@@ -2030,8 +2067,15 @@ const en: Dictionary = {
     eyebrow: "Contact",
     title: "Do you have an idea or a challenge?",
     description:
-      "Tell me what you want to build, and we can map it into a working system. No obligations.",
+      "Write a few lines about what is slowing you down or what you want to improve. You do not need a technical brief, just describe the situation in plain language.",
     contactDetails: "Contact details",
+    responseTitle: "What happens next?",
+    responseItems: [
+      "I review your message and tell you whether I see a sensible first step.",
+      "If needed, I ask 2-3 short clarifying questions.",
+      "If it makes sense, you get a simple proposal and a starting price range.",
+    ],
+    directEmailHint: "If it is easier, you can also write directly by email.",
     phone: "Phone:",
     coverage: "Coverage:",
     coverageValue: "Siófok - Somogy county - Across Hungary",
@@ -2043,27 +2087,39 @@ const en: Dictionary = {
     emailPlaceholder: "e.g. john@company.com",
     helpLabel: "How can I help?",
     helpTooltip:
-      "Describe the challenge and the goal, approx. user count, and any deadline. The more detail you share, the better suggestion I can give.",
+      "Briefly describe what is not working well today, what outcome you want, and whether there is a deadline. No technical wording needed.",
     detailsPlaceholder:
-      "Briefly describe your situation: what is the problem, what is the goal, approx. user count, and any deadline.",
+      "For example: quotes and follow-ups get lost, there is too much Excel work, or a computer is too slow. Briefly describe the problem and what you want to improve.",
+    exampleTitle: "This is enough to get started:",
+    exampleItems: [
+      "what is slowing down daily work",
+      "what a good result would look like",
+      "whether there is a deadline or urgency",
+    ],
+    privacyNote: "Your message is only used for getting back to you.",
     validationRequired: "Please fill out this field.",
     validationEmail: "Please enter a valid email address.",
     sending: "Sending...",
     send: "Send message",
-    success: "Thanks! I received your message and will reply soon.",
-    error: "Something went wrong. Please email me or try again.",
+    success: "Thanks, I got your message. I will reply soon.",
+    error: "Something went wrong. You can also email me directly or try again.",
   },
   servicesPage: {
     eyebrow: "Services",
     title: "Common projects for SMEs",
     description:
-      "Internal systems, automation, database work and reporting – plus optional PC support.",
+      "This page shows the most common ways I can help. You do not need to know the exact solution yet, it is enough to recognize your problem here.",
+    quickPoints: [
+      "when too much work still happens manually or in spreadsheets",
+      "when statuses, numbers and tasks are hard to see in one place",
+      "when you want a fast, realistic first step instead of a huge project",
+    ],
   },
   pricingPage: {
     eyebrow: "Pricing",
-    title: "Transparent packages",
+    title: "Simple, transparent packages",
     description:
-      "Fast decisions and practical outcomes. After a few questions, you get a precise offer.",
+      "You do not need a perfect specification upfront. Pick a starting package, or send a message and I will help you find what makes sense.",
   },
   notFound: {
     eyebrow: "404",

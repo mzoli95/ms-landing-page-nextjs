@@ -31,31 +31,49 @@ export default async function ContactPage() {
           <LazyContactFormSection lang={lang} />
         </div>
 
-        <Card className="p-6">
-          <div className="text-sm font-extrabold text-slate-900">
-            {t.contactPage.contactDetails}
-          </div>
-          <div className="mt-3 space-y-2 text-sm text-slate-600">
-            <div>
-              <span className="font-semibold text-slate-900">Email:</span>{" "}
-              {site.email}
+        <div className="space-y-5">
+          <Card className="p-6">
+            <div className="text-sm font-extrabold text-slate-900">
+              {t.contactPage.contactDetails}
             </div>
-            {flags.showPhone && (
+            <div className="mt-3 space-y-2 text-sm text-slate-600">
+              <div>
+                <span className="font-semibold text-slate-900">Email:</span>{" "}
+                {site.email}
+              </div>
+              {flags.showPhone && (
+                <div>
+                  <span className="font-semibold text-slate-900">
+                    {t.contactPage.phone}
+                  </span>{" "}
+                  {site.phone}
+                </div>
+              )}
               <div>
                 <span className="font-semibold text-slate-900">
-                  {t.contactPage.phone}
+                  {t.contactPage.coverage}
                 </span>{" "}
-                {site.phone}
+                {t.contactPage.coverageValue}
               </div>
-            )}
-            <div>
-              <span className="font-semibold text-slate-900">
-                {t.contactPage.coverage}
-              </span>{" "}
-              {t.contactPage.coverageValue}
             </div>
-          </div>
-        </Card>
+            <div className="mt-4 rounded-2xl bg-slate-50 p-4 text-sm text-slate-600">
+              {t.contactPage.directEmailHint}
+            </div>
+          </Card>
+
+          <Card className="p-6">
+            <div className="text-sm font-extrabold text-slate-900">
+              {t.contactPage.responseTitle}
+            </div>
+            <div className="mt-4 space-y-3 text-sm text-slate-600">
+              {t.contactPage.responseItems.map((item) => (
+                <div key={item} className="rounded-2xl bg-slate-50 p-4">
+                  {item}
+                </div>
+              ))}
+            </div>
+          </Card>
+        </div>
       </div>
     </Section>
   );

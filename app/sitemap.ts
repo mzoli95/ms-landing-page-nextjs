@@ -13,6 +13,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/pricing",
     "/about",
     "/contact",
+    "/automatizalas",
+    "/belso-rendszerek",
+    "/dashboardok",
+    "/pc-szerviz",
+    "/blog",
+    "/blog/hogyan-digitalizalj-egy-kkv-t",
+    "/blog/excel-helyett-belso-rendszer",
+    "/blog/hogyan-automatizalhato-az-adminisztracio",
   ];
 
   const now = new Date();

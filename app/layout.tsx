@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     template: `%s – ${site.name}`,
   },
   description:
-    "Siófoki és Somogy megyei webfejlesztés, programozás, automatizálás és PC karbantartás: egyedi belső rendszerek KKV-knak, országos online együttműködéssel.",
+    "Egyedi belső rendszerek és automatizálás KKV-knak. Időt spóroló digitális megoldások Excel helyett Siófokon, Somogy megyében és országos online együttműködéssel.",
   metadataBase: new URL(`${site.url}`),
   alternates: {
     canonical: "/",
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: `${site.name} – Egyedi rendszerek, kevesebb admin, jobb átláthatóság`,
     description:
-      "Siófok, Ságvár és Somogy megye: webfejlesztés, programozás, automatizálás és számítógépes/PC segítség KKV-knak.",
+      "Egyedi belső rendszerek, automatizálás, riportok és PC szerviz Siófokon, Ságváron, Somogy megyében és országos online támogatással.",
     url: site.url,
     siteName: site.name,
     locale: "hu_HU",
@@ -71,7 +71,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${site.name} – Egyedi rendszerek, kevesebb admin`,
     description:
-      "Siófoki webfejlesztés és programozás KKV-knak, automatizálással és riportokkal.",
+      "Excel helyett belső rendszerek, automatizálás és riportok KKV-knak Siófokon és Somogy megyében.",
     images: ["/twitter-image.png"],
   },
   manifest: "/manifest.webmanifest",
