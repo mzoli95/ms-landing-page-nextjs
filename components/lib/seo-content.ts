@@ -432,11 +432,3 @@ export const articlePages: SeoPageEntry[] = [
       "Megmutatom, mely admin lépések automatizálhatók gyorsan és melyikből lesz valódi megtakarítás.",
   },
 ];
-
-export function getServiceLandingPage(slug: string) {
-  return serviceLandingPages.find((entry) => entry.slug === slug);
-}
-
-export function getArticlePage(slug: string) {
-  return articlePages.find((entry) => entry.slug === slug);
-}

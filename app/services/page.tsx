@@ -1,6 +1,5 @@
 import { Section } from "@/components/ui/Section";
 import { ServicesPreview } from "@/components/site/ServicesPreview";
-import { SeoContentHub } from "@/components/site/SeoContentHub";
 import { getLangFromCookies } from "@/components/lib/i18n";
 import { getDictionary } from "@/components/lib/dictionary";
 
