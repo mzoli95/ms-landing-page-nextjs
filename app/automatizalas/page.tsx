@@ -27,7 +27,9 @@ export default function AutomatizalasPage() {
       .filter((entry) => entry.slug !== page.slug)
       .slice(0, 2)
       .map((entry) => ({ href: `/${entry.slug}`, label: entry.title })),
-    ...articlePages.slice(0, 2).map((entry) => ({ href: `/blog/${entry.slug}`, label: entry.title })),
+    ...articlePages
+      .slice(0, 2)
+      .map((entry) => ({ href: `/blog/${entry.slug}`, label: entry.title })),
   ];
 
   return <SeoPageContent page={page} relatedLinks={relatedLinks} />;

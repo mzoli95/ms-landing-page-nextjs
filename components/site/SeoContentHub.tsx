@@ -1,6 +1,9 @@
 import Link from "next/link";
 import type { Lang } from "@/components/lib/i18n";
-import { serviceLandingPages, articlePages } from "@/components/lib/seo-content";
+import {
+  serviceLandingPages,
+  articlePages,
+} from "@/components/lib/seo-content";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 
@@ -83,7 +86,10 @@ export function SeoContentHub({ lang = "hu" }: { lang?: Lang }) {
                 {content.articleLabel}
               </div>
               <h4 className="mt-3 text-xl font-bold text-slate-900">
-                <Link href={`/blog/${page.slug}`} className="hover:text-slate-700">
+                <Link
+                  href={`/blog/${page.slug}`}
+                  className="hover:text-slate-700"
+                >
                   {page.title}
                 </Link>
               </h4>
@@ -91,7 +97,11 @@ export function SeoContentHub({ lang = "hu" }: { lang?: Lang }) {
                 {page.description}
               </p>
               <div className="mt-5">
-                <Button href={`/blog/${page.slug}`} variant="ghost" className="px-0">
+                <Button
+                  href={`/blog/${page.slug}`}
+                  variant="ghost"
+                  className="px-0"
+                >
                   {content.articleCta}
                 </Button>
               </div>

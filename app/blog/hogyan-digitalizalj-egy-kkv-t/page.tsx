@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
-import { articlePages, getArticlePage, serviceLandingPages } from "@/components/lib/seo-content";
+import {
+  articlePages,
+  getArticlePage,
+  serviceLandingPages,
+} from "@/components/lib/seo-content";
 import { SeoPageContent } from "@/components/site/SeoPageContent";
 
 const page = getArticlePage("hogyan-digitalizalj-egy-kkv-t");
@@ -19,7 +23,9 @@ export const metadata: Metadata = {
 
 export default function KkvDigitalizalasArticlePage() {
   const relatedLinks = [
-    ...serviceLandingPages.slice(0, 3).map((entry) => ({ href: `/${entry.slug}`, label: entry.title })),
+    ...serviceLandingPages
+      .slice(0, 3)
+      .map((entry) => ({ href: `/${entry.slug}`, label: entry.title })),
     ...articlePages
       .filter((entry) => entry.slug !== page.slug)
       .slice(0, 2)

@@ -74,8 +74,12 @@ export function SeoPageContent({
 
           <div className="space-y-5 lg:sticky lg:top-24">
             <Card className="p-6">
-              <div className="text-sm font-extrabold text-slate-900">Röviden</div>
-              <p className="mt-3 text-sm leading-6 text-slate-600">{page.summary}</p>
+              <div className="text-sm font-extrabold text-slate-900">
+                Röviden
+              </div>
+              <p className="mt-3 text-sm leading-6 text-slate-600">
+                {page.summary}
+              </p>
               <div className="mt-5 text-sm font-extrabold text-slate-900">
                 Kapcsolódó kulcsszavak
               </div>
@@ -109,7 +113,6 @@ export function SeoPageContent({
                 </div>
               </Card>
             )}
-
           </div>
         </div>
 
@@ -125,7 +128,10 @@ export function SeoPageContent({
               {page.ctaText}
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
-              <Button href="/contact" className="bg-white text-slate-900 hover:bg-slate-100">
+              <Button
+                href="/contact"
+                className="bg-white text-slate-900 hover:bg-slate-100"
+              >
                 Kapcsolatfelvétel
               </Button>
               <Button href="/pricing" variant="secondary">

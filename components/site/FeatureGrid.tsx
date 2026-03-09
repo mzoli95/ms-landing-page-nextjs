@@ -34,18 +34,21 @@ export function FeatureGrid({ lang = "hu" }: { lang?: Lang }) {
         const Icon = icons[index % icons.length];
 
         return (
-        <Card key={f.title} className="group p-6">
-          <div className="flex items-start gap-4">
-            <div className="rounded-2xl bg-slate-100 p-3 text-slate-900 transition group-hover:bg-slate-900 group-hover:text-white">
-              <Icon className="h-5 w-5" />
+          <Card key={f.title} className="group p-6">
+            <div className="flex items-start gap-4">
+              <div className="rounded-2xl bg-slate-100 p-3 text-slate-900 transition group-hover:bg-slate-900 group-hover:text-white">
+                <Icon className="h-5 w-5" />
+              </div>
+              <div>
+                <div className="text-base font-bold text-slate-900">
+                  {f.title}
+                </div>
+              </div>
             </div>
-            <div>
-              <div className="text-base font-bold text-slate-900">{f.title}</div>
-            </div>
-          </div>
-          <p className="mt-2 text-sm leading-6 text-slate-600">{f.desc}</p>
-        </Card>
-      )})}
+            <p className="mt-2 text-sm leading-6 text-slate-600">{f.desc}</p>
+          </Card>
+        );
+      })}
     </div>
   );
 }

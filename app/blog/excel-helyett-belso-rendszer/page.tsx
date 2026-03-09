@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
-import { articlePages, getArticlePage, serviceLandingPages } from "@/components/lib/seo-content";
+import {
+  articlePages,
+  getArticlePage,
+  serviceLandingPages,
+} from "@/components/lib/seo-content";
 import { SeoPageContent } from "@/components/site/SeoPageContent";
 
 const page = getArticlePage("excel-helyett-belso-rendszer");
@@ -20,7 +24,10 @@ export const metadata: Metadata = {
 export default function ExcelHelyettBelsoRendszerArticlePage() {
   const relatedLinks = [
     ...serviceLandingPages
-      .filter((entry) => entry.slug === "belso-rendszerek" || entry.slug === "automatizalas")
+      .filter(
+        (entry) =>
+          entry.slug === "belso-rendszerek" || entry.slug === "automatizalas",
+      )
       .map((entry) => ({ href: `/${entry.slug}`, label: entry.title })),
     ...articlePages
       .filter((entry) => entry.slug !== page.slug)

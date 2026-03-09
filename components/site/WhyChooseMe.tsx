@@ -77,7 +77,9 @@ export function WhyChooseMe({ lang = "hu" }: { lang?: Lang }) {
           <h3 className="mt-3 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
             {content.title}
           </h3>
-          <p className="mt-3 text-base leading-7 text-slate-600">{content.description}</p>
+          <p className="mt-3 text-base leading-7 text-slate-600">
+            {content.description}
+          </p>
         </div>
 
         <div className="flex flex-wrap items-center gap-2">
@@ -104,8 +106,12 @@ export function WhyChooseMe({ lang = "hu" }: { lang?: Lang }) {
               <div className="w-fit rounded-2xl bg-slate-100 p-3 text-slate-900">
                 <Icon className="h-5 w-5" />
               </div>
-              <div className="mt-4 text-base font-bold text-slate-900">{item.title}</div>
-              <p className="mt-2 text-sm leading-6 text-slate-600">{item.desc}</p>
+              <div className="mt-4 text-base font-bold text-slate-900">
+                {item.title}
+              </div>
+              <p className="mt-2 text-sm leading-6 text-slate-600">
+                {item.desc}
+              </p>
             </Card>
           );
         })}

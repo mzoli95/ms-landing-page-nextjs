@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
-import { articlePages, getServiceLandingPage, serviceLandingPages } from "@/components/lib/seo-content";
+import {
+  articlePages,
+  getServiceLandingPage,
+  serviceLandingPages,
+} from "@/components/lib/seo-content";
 import { SeoPageContent } from "@/components/site/SeoPageContent";
 
 const page = getServiceLandingPage("pc-szerviz");

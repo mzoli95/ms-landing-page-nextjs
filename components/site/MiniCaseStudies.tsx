@@ -1,4 +1,10 @@
-import { ArrowRight, BarChart3, CheckCircle2, Monitor, Workflow } from "lucide-react";
+import {
+  ArrowRight,
+  BarChart3,
+  CheckCircle2,
+  Monitor,
+  Workflow,
+} from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import type { Lang } from "@/components/lib/i18n";
@@ -15,12 +21,14 @@ export function MiniCaseStudies({ lang = "hu" }: { lang?: Lang }) {
     lang === "en"
       ? {
           label: "How the work becomes structured",
-          caption: "A simple visual path from first conversation to usable delivery.",
+          caption:
+            "A simple visual path from first conversation to usable delivery.",
           status: "Built from icons and shapes",
         }
       : {
           label: "Így lesz rendezettebb a munka",
-          caption: "Egyszerű vizuális út az első egyeztetéstől a használható megoldásig.",
+          caption:
+            "Egyszerű vizuális út az első egyeztetéstől a használható megoldásig.",
           status: "Ikonokból és formákból építve",
         };
 
