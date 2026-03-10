@@ -154,7 +154,7 @@ export default async function HomePage() {
         </Section>
       </ScrollReveal>
 
-      <StickyMobileCta lang={lang} />
+      {/* <StickyMobileCta lang={lang} /> */}
     </>
   );
 }
