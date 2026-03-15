@@ -25,6 +25,21 @@ function isDarkFromDom(fallback: Theme) {
   return document.documentElement.classList.contains("dark");
 }
 
+function getNextScrolledState(scrollY: number, current: boolean) {
+  const enterThreshold = 16;
+  const exitThreshold = 6;
+
+  if (!current && scrollY > enterThreshold) {
+    return true;
+  }
+
+  if (current && scrollY < exitThreshold) {
+    return false;
+  }
+
+  return current;
+}
+
 export function Navbar({
   lang,
   initialTheme,
@@ -47,6 +62,7 @@ export function Navbar({
   const targetProgressRef = useRef(0);
   const animatedProgressRef = useRef(0);
   const rafRef = useRef<number | null>(null);
+  const scrolledRef = useRef(false);
 
   useEffect(() => {
     const updateTheme = () => {
@@ -98,7 +114,16 @@ export function Navbar({
 
     const requestAnimate = () => {
       targetProgressRef.current = getScrollProgress();
-      setIsScrolled(window.scrollY > 8);
+
+      const nextScrolled = getNextScrolledState(
+        window.scrollY,
+        scrolledRef.current,
+      );
+
+      if (nextScrolled !== scrolledRef.current) {
+        scrolledRef.current = nextScrolled;
+        setIsScrolled(nextScrolled);
+      }
 
       if (rafRef.current == null) {
         rafRef.current = window.requestAnimationFrame(animate);
@@ -251,7 +276,7 @@ export function Navbar({
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 border-b backdrop-blur-xl transition-all duration-200",
+        "sticky top-0 z-50 relative border-b backdrop-blur-xl transition-all duration-200",
         isDarkVisualTheme
           ? "border-slate-800 bg-slate-950/90"
           : "border-slate-200 bg-[#f1f5f9]/95",
@@ -338,7 +363,7 @@ export function Navbar({
 
         <div
           className={cn(
-            "lg:hidden transition-all duration-200",
+            "transition-all duration-200 lg:hidden",
             isDarkVisualTheme
               ? "border-t border-slate-800/70"
               : "border-t border-slate-200/80",
@@ -369,12 +394,12 @@ export function Navbar({
 
       <div
         className={cn(
-          "h-px w-full overflow-hidden",
-          isDarkVisualTheme ? "bg-slate-800/60" : "bg-slate-200",
+          "pointer-events-none absolute inset-x-0 bottom-0 h-px overflow-hidden",
+          isDarkVisualTheme ? "bg-slate-800/60" : "bg-slate-200/90",
         )}
       >
         <div
-          className="h-px origin-left bg-blue-500 will-change-transform"
+          className="h-full origin-left bg-blue-500 will-change-transform"
           style={{ transform: `scaleX(${scrollProgress})` }}
         />
       </div>
