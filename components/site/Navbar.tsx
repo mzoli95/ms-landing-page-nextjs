@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { Container } from "@/components/ui/Container";
@@ -40,6 +39,7 @@ export function Navbar({
 
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isCompactMobile, setIsCompactMobile] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const [isDarkVisualTheme, setIsDarkVisualTheme] = useState(() =>
     isDarkFromDom(initialTheme),
   );
@@ -98,6 +98,7 @@ export function Navbar({
 
     const requestAnimate = () => {
       targetProgressRef.current = getScrollProgress();
+      setIsScrolled(window.scrollY > 8);
 
       if (rafRef.current == null) {
         rafRef.current = window.requestAnimationFrame(animate);
@@ -165,9 +166,15 @@ export function Navbar({
   }) => {
     const sizeClass = mobile
       ? isCompactMobile
-        ? "px-2 py-1.5 text-[10px]"
-        : "px-2.5 py-1.5 text-[11px]"
-      : "px-3.5 py-2 text-sm";
+        ? isScrolled
+          ? "px-1.5 py-1 text-[10px]"
+          : "px-2 py-1.5 text-[10px]"
+        : isScrolled
+          ? "px-2 py-1 text-[10px]"
+          : "px-2.5 py-1.5 text-[11px]"
+      : isScrolled
+        ? "px-3 py-1.5 text-[13px]"
+        : "px-3.5 py-2 text-sm";
 
     const shapeClass = mobile ? "rounded-lg" : "rounded-xl";
 
@@ -208,10 +215,16 @@ export function Navbar({
             mobile ? "rounded-lg" : "rounded-xl",
             mobile
               ? isCompactMobile
-                ? "px-2 py-1.5 text-[10px]"
-                : "px-2.5 py-1.5 text-[11px]"
-              : "px-3.5 py-2 text-sm",
-            "cursor-not-allowed whitespace-nowrap border border-transparent font-semibold opacity-60",
+                ? isScrolled
+                  ? "px-1.5 py-1 text-[10px]"
+                  : "px-2 py-1.5 text-[10px]"
+                : isScrolled
+                  ? "px-2 py-1 text-[10px]"
+                  : "px-2.5 py-1.5 text-[11px]"
+              : isScrolled
+                ? "px-3 py-1.5 text-[13px]"
+                : "px-3.5 py-2 text-sm",
+            "cursor-not-allowed whitespace-nowrap border border-transparent font-semibold opacity-60 transition-all duration-200 ease-out",
             isDarkVisualTheme ? "text-slate-500" : "text-slate-400",
           )}
         >
@@ -238,34 +251,56 @@ export function Navbar({
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 border-b backdrop-blur-xl",
+        "sticky top-0 z-50 border-b backdrop-blur-xl transition-all duration-200",
         isDarkVisualTheme
           ? "border-slate-800 bg-slate-950/90"
-          : "border-slate-200 bg-[#f1f5f9]",
+          : "border-slate-200 bg-[#f1f5f9]/95",
+        isScrolled &&
+          (isDarkVisualTheme ? "shadow-lg shadow-black/10" : "shadow-sm"),
       )}
     >
       <Container>
-        <div className="grid h-auto min-h-14 grid-cols-[minmax(0,1fr)_auto] items-center gap-3 py-2 sm:min-h-16 lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)]">
+        <div
+          className={cn(
+            "grid h-auto grid-cols-[minmax(0,1fr)_auto] items-center gap-3 transition-all duration-200 lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)]",
+            isScrolled
+              ? "min-h-12 py-1.5 sm:min-h-14"
+              : "min-h-14 py-2 sm:min-h-16",
+          )}
+        >
           <Link
             href="/"
             onClick={(e) => handleSamePageNavigation(e, "/")}
             className="flex min-w-0 items-center gap-2 sm:gap-3"
           >
-            <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-xl sm:h-11 sm:w-11 md:h-14 md:w-14">
-              <Image
+            <div
+              className={cn(
+                "shrink-0 overflow-hidden rounded-xl transition-all duration-200",
+                isScrolled
+                  ? "h-9 w-9 sm:h-10 sm:w-10 md:h-12 md:w-12"
+                  : "h-10 w-10 sm:h-11 sm:w-11 md:h-14 md:w-14",
+              )}
+            >
+              <img
                 src="/ms_logo.png"
                 alt="MS logo"
-                fill
-                sizes="(max-width: 639px) 40px, (max-width: 767px) 44px, 56px"
-                className="object-contain"
-                priority
+                width="56"
+                height="56"
+                loading="eager"
+                decoding="async"
+                fetchPriority="high"
+                className="block h-full w-full object-contain"
+                draggable={false}
               />
             </div>
 
             <div className="min-w-0 flex-1 leading-tight">
               <div
                 className={cn(
-                  "break-words text-[12px] font-bold leading-tight min-[371px]:text-sm lg:whitespace-nowrap",
+                  "truncate font-bold leading-tight transition-all duration-200 lg:whitespace-nowrap",
+                  isScrolled
+                    ? "text-[11px] min-[371px]:text-[13px]"
+                    : "text-[12px] min-[371px]:text-sm",
                   isDarkVisualTheme ? "text-slate-100" : "text-slate-900",
                 )}
               >
@@ -274,7 +309,10 @@ export function Navbar({
 
               <div
                 className={cn(
-                  "break-words text-[10px] leading-tight sm:text-xs lg:whitespace-nowrap",
+                  "truncate leading-tight transition-all duration-200 lg:whitespace-nowrap",
+                  isScrolled
+                    ? "text-[9px] sm:text-[11px]"
+                    : "text-[10px] sm:text-xs",
                   isDarkVisualTheme ? "text-blue-400" : "text-blue-600",
                 )}
               >
@@ -287,7 +325,12 @@ export function Navbar({
             {nav.map((item) => renderNavItem(item, false))}
           </nav>
 
-          <div className="flex items-center justify-end gap-2">
+          <div
+            className={cn(
+              "flex items-center justify-end gap-2 transition-all duration-200",
+              isScrolled && "scale-[0.97]",
+            )}
+          >
             <LanguageSwitcher lang={lang} />
             <ThemeToggle lang={lang} initialTheme={initialTheme} />
           </div>
@@ -295,18 +338,26 @@ export function Navbar({
 
         <div
           className={cn(
-            "pb-2 pt-2 lg:hidden",
+            "lg:hidden transition-all duration-200",
             isDarkVisualTheme
               ? "border-t border-slate-800/70"
               : "border-t border-slate-200/80",
+            isScrolled ? "pb-1.5 pt-1.5" : "pb-2 pt-2",
           )}
         >
           <div className="overflow-hidden">
             <div className="flex justify-center">
               <div
                 className={cn(
-                  "flex w-max min-w-max items-center justify-center whitespace-nowrap gap-1.5 origin-center",
-                  isCompactMobile ? "scale-[0.94]" : "scale-100",
+                  "flex w-max min-w-max items-center justify-center whitespace-nowrap origin-center transition-all duration-200",
+                  isScrolled ? "gap-1" : "gap-1.5",
+                  isCompactMobile
+                    ? isScrolled
+                      ? "scale-[0.9]"
+                      : "scale-[0.94]"
+                    : isScrolled
+                      ? "scale-[0.97]"
+                      : "scale-100",
                 )}
               >
                 {nav.map((item) => renderNavItem(item, true))}
