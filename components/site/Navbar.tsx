@@ -165,14 +165,14 @@ export function Navbar({
   }) => {
     const sizeClass = mobile
       ? isCompactMobile
-        ? "px-2.5 py-1.5 text-[10px]"
-        : "px-3 py-1.5 text-[11px]"
+        ? "px-2 py-1.5 text-[10px]"
+        : "px-2.5 py-1.5 text-[11px]"
       : "px-3.5 py-2 text-sm";
 
     const shapeClass = mobile ? "rounded-lg" : "rounded-xl";
 
     const baseClass =
-      "inline-flex items-center justify-center border font-semibold transition-all duration-200 ease-out";
+      "inline-flex items-center justify-center whitespace-nowrap border font-semibold transition-all duration-200 ease-out";
 
     const darkActiveClass =
       "border-slate-700 bg-slate-800 text-blue-300 shadow-sm";
@@ -208,10 +208,10 @@ export function Navbar({
             mobile ? "rounded-lg" : "rounded-xl",
             mobile
               ? isCompactMobile
-                ? "px-2.5 py-1.5 text-[10px]"
-                : "px-3 py-1.5 text-[11px]"
+                ? "px-2 py-1.5 text-[10px]"
+                : "px-2.5 py-1.5 text-[11px]"
               : "px-3.5 py-2 text-sm",
-            "cursor-not-allowed border border-transparent font-semibold opacity-60",
+            "cursor-not-allowed whitespace-nowrap border border-transparent font-semibold opacity-60",
             isDarkVisualTheme ? "text-slate-500" : "text-slate-400",
           )}
         >
@@ -251,13 +251,13 @@ export function Navbar({
             onClick={(e) => handleSamePageNavigation(e, "/")}
             className="flex min-w-0 items-center gap-2 sm:gap-3"
           >
-            <div className="grid h-10 w-10 shrink-0 place-items-center overflow-hidden rounded-xl sm:h-11 sm:w-11 md:h-14 md:w-14">
+            <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-xl sm:h-11 sm:w-11 md:h-14 md:w-14">
               <Image
                 src="/ms_logo.png"
                 alt="MS logo"
-                width={56}
-                height={56}
-                className="h-10 w-10 object-contain sm:h-11 sm:w-11 md:h-14 md:w-14"
+                fill
+                sizes="(max-width: 639px) 40px, (max-width: 767px) 44px, 56px"
+                className="object-contain"
                 priority
               />
             </div>
@@ -283,24 +283,13 @@ export function Navbar({
             </div>
           </Link>
 
-          <nav
-            className={cn(
-              "hidden items-center justify-center gap-2 rounded-xl border px-2 py-1 shadow-sm lg:flex lg:justify-self-center",
-              isDarkVisualTheme
-                ? "border-slate-700 bg-slate-900"
-                : "border-slate-200 bg-white",
-            )}
-          >
+          <nav className="hidden items-center justify-center gap-2 lg:flex lg:justify-self-center">
             {nav.map((item) => renderNavItem(item, false))}
           </nav>
 
           <div className="flex items-center justify-end gap-2">
-            {!isCompactMobile && (
-              <>
-                <LanguageSwitcher lang={lang} />
-                <ThemeToggle lang={lang} initialTheme={initialTheme} />
-              </>
-            )}
+            <LanguageSwitcher lang={lang} />
+            <ThemeToggle lang={lang} initialTheme={initialTheme} />
           </div>
         </div>
 
@@ -312,16 +301,18 @@ export function Navbar({
               : "border-t border-slate-200/80",
           )}
         >
-          <div className="flex flex-wrap items-center justify-center gap-1.5">
-            {nav.map((item) => renderNavItem(item, true))}
-          </div>
-
-          {isCompactMobile && (
-            <div className="mt-2 flex items-center justify-center gap-2">
-              <LanguageSwitcher lang={lang} />
-              <ThemeToggle lang={lang} initialTheme={initialTheme} />
+          <div className="overflow-hidden">
+            <div className="flex justify-center">
+              <div
+                className={cn(
+                  "flex w-max min-w-max items-center justify-center whitespace-nowrap gap-1.5 origin-center",
+                  isCompactMobile ? "scale-[0.94]" : "scale-100",
+                )}
+              >
+                {nav.map((item) => renderNavItem(item, true))}
+              </div>
             </div>
-          )}
+          </div>
         </div>
       </Container>
 
