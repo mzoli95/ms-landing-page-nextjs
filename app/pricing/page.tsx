@@ -4,7 +4,9 @@ import { getLangFromCookies } from "@/components/lib/i18n";
 import { getDictionary } from "@/components/lib/dictionary";
 
 export const metadata = {
-  title: "Árak",
+  title: "Árak | Molnár Systems",
+  description:
+    "Átlátható csomagok egyedi belső rendszerekhez, automatizáláshoz, weboldalakhoz és kiegészítő PC segítséghez. Gyors felmérés után pontos ajánlatot adok.",
 };
 
 export default async function PricingPage() {

@@ -10,7 +10,7 @@ export function AboutSection({ lang = "hu" }: { lang?: Lang }) {
 
   return (
     <div className="space-y-12">
-      <div className="max-w-2xl space-y-4 text-base leading-7 text-slate-600">
+      <div className="max-w-3xl space-y-4 text-base leading-7 text-slate-600">
         {t.aboutSection.intro.map((line) => (
           <p key={line}>{line}</p>
         ))}

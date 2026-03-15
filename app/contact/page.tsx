@@ -6,13 +6,14 @@ import { getLangFromCookies } from "@/components/lib/i18n";
 import { getDictionary } from "@/components/lib/dictionary";
 
 export const metadata = {
-  title: "Kapcsolat",
+  title: "Kapcsolat | Molnár Systems",
   description:
-    "Kapcsolatfelvétel Siófok, Ságvár és Somogy megye területéről: webfejlesztés, programozás, automatizálás és számítógépes segítség.",
+    "Vedd fel a kapcsolatot a Molnár Systems-szel. Egyedi belső rendszerek, automatizálás, webes megoldások és digitális egyszerűsítés vállalkozásoknak.",
   keywords: [
-    "siófok programozó kapcsolat",
-    "somogy webfejlesztő kapcsolat",
-    "ságvár fejlesztés",
+    "kapcsolat molnár systems",
+    "egyedi rendszer kapcsolat",
+    "automatizálás kapcsolat",
+    "webfejlesztés kapcsolat",
   ],
 };
 
@@ -27,35 +28,69 @@ export default async function ContactPage() {
       description={t.contactPage.description}
     >
       <div className="grid gap-5 lg:grid-cols-3">
-        <div className="lg:col-span-2">
+        <div className="space-y-5 lg:col-span-2">
+          <Card className="p-6">
+            <div className="text-sm font-extrabold text-slate-900">
+              {t.contactPage.helpTitle}
+            </div>
+            <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-slate-600">
+              {t.contactPage.helpItems.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </Card>
+
           <LazyContactFormSection lang={lang} />
         </div>
 
-        <Card className="p-6">
-          <div className="text-sm font-extrabold text-slate-900">
-            {t.contactPage.contactDetails}
-          </div>
-          <div className="mt-3 space-y-2 text-sm text-slate-600">
-            <div>
-              <span className="font-semibold text-slate-900">Email:</span>{" "}
-              {site.email}
+        <div className="space-y-5">
+          <Card className="p-6">
+            <div className="text-sm font-extrabold text-slate-900">
+              {t.contactPage.contactDetails}
             </div>
-            {flags.showPhone && (
+            <div className="mt-3 space-y-3 text-sm text-slate-600">
+              <div>
+                <span className="font-semibold text-slate-900">Email:</span>{" "}
+                <a
+                  href={`mailto:${site.email}`}
+                  className="underline decoration-slate-300 underline-offset-4 hover:text-slate-900"
+                >
+                  {site.email}
+                </a>{" "}
+              </div>
+
+              {flags.showPhone && (
+                <div>
+                  <span className="font-semibold text-slate-900">
+                    <a
+                      href={`tel:${site.phone.replace(/\s+/g, "")}`}
+                      className="underline decoration-slate-300 underline-offset-4 hover:text-slate-900"
+                    >
+                      {site.phone}
+                    </a>{" "}
+                  </span>{" "}
+                  {site.phone}
+                </div>
+              )}
+
               <div>
                 <span className="font-semibold text-slate-900">
-                  {t.contactPage.phone}
+                  {t.contactPage.coverage}
                 </span>{" "}
-                {site.phone}
+                {t.contactPage.coverageValue}
               </div>
-            )}
-            <div>
-              <span className="font-semibold text-slate-900">
-                {t.contactPage.coverage}
-              </span>{" "}
-              {t.contactPage.coverageValue}
             </div>
-          </div>
-        </Card>
+          </Card>
+
+          <Card className="p-6">
+            <div className="text-sm font-extrabold text-slate-900">
+              {t.contactPage.responseTitle}
+            </div>
+            <p className="mt-3 text-sm leading-6 text-slate-600">
+              {t.contactPage.responseText}
+            </p>
+          </Card>
+        </div>
       </div>
     </Section>
   );
