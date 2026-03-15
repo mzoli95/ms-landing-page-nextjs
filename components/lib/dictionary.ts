@@ -175,6 +175,8 @@ export type Dictionary = {
     send: string;
     success: string;
     error: string;
+    validationTooShort: string;
+    validationTooLong: string;
   };
   servicesPage: {
     eyebrow: string;
@@ -1111,6 +1113,8 @@ const hu: Dictionary = {
     send: "Üzenet küldése",
     success: "Köszi! Megkaptam az üzenetet, hamarosan válaszolok.",
     error: "Hopp, valami nem ment át. Írj emailt, vagy próbáld újra.",
+    validationTooShort: "Kérlek, írj be egy kicsit hosszabb szöveget.",
+    validationTooLong: "A megadott szöveg túl hosszú.",
   },
   servicesPage: {
     eyebrow: "Szolgáltatások",
@@ -2052,6 +2056,8 @@ const en: Dictionary = {
     send: "Send message",
     success: "Thanks! I received your message and will reply soon.",
     error: "Something went wrong. Please email me or try again.",
+    validationTooShort: "Please write a slightly longer message.",
+    validationTooLong: "Your message is too long.",
   },
   servicesPage: {
     eyebrow: "Services",

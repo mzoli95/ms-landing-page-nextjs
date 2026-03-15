@@ -10,7 +10,6 @@ import { flags } from "@/components/lib/site";
 import { PcServiceSection } from "@/components/site/PcServiceSection";
 import { FAQ } from "@/components/site/FAQ";
 import { RiskReduction } from "@/components/site/RiskReduction";
-import { StickyMobileCta } from "@/components/site/StickyMobileCta";
 import { getLangFromCookies } from "@/components/lib/i18n";
 import { getDictionary } from "@/components/lib/dictionary";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";

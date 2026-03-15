@@ -11,6 +11,14 @@ function applyTheme(theme: Theme) {
   document.documentElement.style.colorScheme = theme;
 }
 
+function getThemeFromDom(fallback: Theme): Theme {
+  if (typeof document === "undefined") {
+    return fallback;
+  }
+
+  return document.documentElement.classList.contains("dark") ? "dark" : "light";
+}
+
 export function ThemeToggle({
   lang,
   initialTheme,
@@ -19,32 +27,22 @@ export function ThemeToggle({
   initialTheme: Theme;
 }) {
   const t = getDictionary(lang);
-  const [theme, setTheme] = useState<Theme>(initialTheme);
+  const [theme, setTheme] = useState<Theme>(() =>
+    getThemeFromDom(initialTheme),
+  );
 
   useEffect(() => {
-    setTheme(initialTheme);
+    const domTheme = getThemeFromDom(initialTheme);
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setTheme(domTheme);
   }, [initialTheme]);
 
-  useEffect(() => {
-    const savedTheme = localStorage.getItem(themeCookieName) as Theme | null;
-    if (savedTheme === "light" || savedTheme === "dark") {
-      setTheme(savedTheme);
-      return;
-    }
-
-    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      setTheme("dark");
-    }
-  }, []);
-
-  useEffect(() => {
-    applyTheme(theme);
-    localStorage.setItem(themeCookieName, theme);
-    document.cookie = `${themeCookieName}=${theme}; path=/; max-age=31536000; samesite=lax`;
-  }, [theme]);
-
   function onToggle() {
-    const nextTheme = theme === "dark" ? "light" : "dark";
+    const nextTheme: Theme = theme === "dark" ? "light" : "dark";
+
+    applyTheme(nextTheme);
+    localStorage.setItem(themeCookieName, nextTheme);
+    document.cookie = `${themeCookieName}=${nextTheme}; path=/; max-age=31536000; samesite=lax`;
     setTheme(nextTheme);
   }
 
@@ -52,7 +50,7 @@ export function ThemeToggle({
     <button
       type="button"
       onClick={onToggle}
-      className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-700 shadow-sm transition hover:border-slate-300 hover:text-slate-900 sm:h-8 sm:w-8"
+      className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-700 shadow-sm transition hover:border-slate-300 hover:text-slate-900 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:border-slate-600 dark:hover:text-white sm:h-8 sm:w-8"
       aria-label={
         theme === "dark"
           ? t.nav.themeToggle.switchToLight
