@@ -13,6 +13,7 @@ export default async function UseCasesPage() {
   const lang = await getLangFromCookies();
   const t = getDictionary(lang);
 
+  //TODO: impresszum, adatkezelés, cookie/analytics, opengraph social preview, pagespeed.web.dev, sitemap.xml, robots.txt, favicon, loading skeletons, error handling, accessibility audit, performance optimization, security headers, SEO optimization, analytics integration, contact form validation and spam protection, multilingual support, content management system (CMS) integration, user authentication and authorization, database integration for dynamic content, server-side rendering (SSR) or static site generation (SSG) for improved performance and SEO.
   return (
     <Section
       eyebrow={t.home.useCases.eyebrow}
