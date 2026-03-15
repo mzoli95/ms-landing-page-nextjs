@@ -270,7 +270,7 @@ const hu: Dictionary = {
       "Egyedi rendszerfejlesztés",
     ],
     title:
-      "Excelben, jegyzetekben vagy papíron vezeted a vállalkozásod? Lásd végre egy helyen a pénzed és a határidőidet.",
+      "Excel és jegyzetek helyett kezeld a folyamataid egyetlen átlátható felületen.",
     locationLine: "Molnár Systems • Siófok és Somogy megye • Országosan online",
     intro:
       "Ha eleged van abból, hogy Excelben és jegyzetekben kell keresgélned: készítek egy egyszerű, testre szabott rendszert, ami időt spórol, hibát csökkent, és láthatóvá teszi a céged működését.",
@@ -1221,7 +1221,7 @@ const en: Dictionary = {
       "Custom software",
     ],
     title:
-      "Still running your business in Excel, notes or paper? See your money and deadlines in one place.",
+      "Stop juggling Excel and notes — run your business from one clear dashboard.",
     locationLine:
       "Molnár Systems • Siófok and Somogy county • Online across Hungary",
     intro:
