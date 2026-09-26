@@ -1,44 +1,15 @@
 "use client";
-
 import Link from "next/link";
-import { useEffect, useMemo, useRef, useState } from "react";
+import Image from "next/image";
+import { useState } from "react";
 import { usePathname } from "next/navigation";
+import { Menu, X, ArrowUpRight } from "lucide-react";
 import { Container } from "@/components/ui/Container";
-import { cn } from "@/components/lib/utils";
-import { flags, site } from "../lib/site";
-import type { Lang } from "@/components/lib/i18n";
-import type { Theme } from "@/components/lib/theme.shared";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { ThemeToggle } from "./ThemeToggle";
-import { getDictionary } from "@/components/lib/dictionary";
-
-type NavItem = {
-  href: string;
-  label: string;
-};
-
-function isDarkFromDom(fallback: Theme) {
-  if (typeof document === "undefined") {
-    return fallback === "dark";
-  }
-
-  return document.documentElement.classList.contains("dark");
-}
-
-function getNextScrolledState(scrollY: number, current: boolean) {
-  const enterThreshold = 16;
-  const exitThreshold = 6;
-
-  if (!current && scrollY > enterThreshold) {
-    return true;
-  }
-
-  if (current && scrollY < exitThreshold) {
-    return false;
-  }
-
-  return current;
-}
+import type { Lang } from "@/components/lib/i18n";
+import type { Theme } from "@/components/lib/theme.shared";
+import { flags } from "@/components/lib/site";
 
 export function Navbar({
   lang,
@@ -47,362 +18,122 @@ export function Navbar({
   lang: Lang;
   initialTheme: Theme;
 }) {
-  const disabled = flags.comingSoon;
-  const t = getDictionary(lang);
-  const nav = t.nav.items as NavItem[];
+  const en = lang === "en";
   const pathname = usePathname();
+  const [open, setOpen] = useState(false);
+  const links = [
+    { href: "/services", label: en ? "How I can help" : "Miben segítek?" },
+    { href: "/portfolio", label: en ? "Projects" : "Projektek" },
+    {
+      href: "/usecases",
+      label: en ? "Solutions" : "Megoldások",
+    },
 
-  const [scrollProgress, setScrollProgress] = useState(0);
-  const [isCompactMobile, setIsCompactMobile] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isDarkVisualTheme, setIsDarkVisualTheme] = useState(() =>
-    isDarkFromDom(initialTheme),
-  );
-
-  const targetProgressRef = useRef(0);
-  const animatedProgressRef = useRef(0);
-  const rafRef = useRef<number | null>(null);
-  const scrolledRef = useRef(false);
-
-  useEffect(() => {
-    const updateTheme = () => {
-      setIsDarkVisualTheme(isDarkFromDom(initialTheme));
-    };
-
-    updateTheme();
-
-    const root = document.documentElement;
-    const observer = new MutationObserver(updateTheme);
-
-    observer.observe(root, {
-      attributes: true,
-      attributeFilter: ["class"],
-    });
-
-    return () => observer.disconnect();
-  }, [initialTheme]);
-
-  useEffect(() => {
-    const getScrollProgress = () => {
-      const doc = document.documentElement;
-      const scrollable = doc.scrollHeight - window.innerHeight;
-
-      if (scrollable <= 0) {
-        return 0;
-      }
-
-      return Math.min(1, Math.max(0, window.scrollY / scrollable));
-    };
-
-    const animate = () => {
-      const target = targetProgressRef.current;
-      const current = animatedProgressRef.current;
-      const delta = target - current;
-
-      if (Math.abs(delta) < 0.001) {
-        animatedProgressRef.current = target;
-        setScrollProgress(target);
-        rafRef.current = null;
-        return;
-      }
-
-      const next = current + delta * 0.18;
-      animatedProgressRef.current = next;
-      setScrollProgress(next);
-      rafRef.current = window.requestAnimationFrame(animate);
-    };
-
-    const requestAnimate = () => {
-      targetProgressRef.current = getScrollProgress();
-
-      const nextScrolled = getNextScrolledState(
-        window.scrollY,
-        scrolledRef.current,
-      );
-
-      if (nextScrolled !== scrolledRef.current) {
-        scrolledRef.current = nextScrolled;
-        setIsScrolled(nextScrolled);
-      }
-
-      if (rafRef.current == null) {
-        rafRef.current = window.requestAnimationFrame(animate);
-      }
-    };
-
-    requestAnimate();
-
-    window.addEventListener("scroll", requestAnimate, { passive: true });
-    window.addEventListener("resize", requestAnimate);
-
-    return () => {
-      window.removeEventListener("scroll", requestAnimate);
-      window.removeEventListener("resize", requestAnimate);
-
-      if (rafRef.current != null) {
-        window.cancelAnimationFrame(rafRef.current);
-      }
-    };
-  }, []);
-
-  useEffect(() => {
-    const media = window.matchMedia("(max-width: 370px)");
-
-    const updateCompact = () => {
-      setIsCompactMobile(media.matches);
-    };
-
-    updateCompact();
-
-    if (typeof media.addEventListener === "function") {
-      media.addEventListener("change", updateCompact);
-      return () => media.removeEventListener("change", updateCompact);
-    }
-
-    media.addListener(updateCompact);
-    return () => media.removeListener(updateCompact);
-  }, []);
-
-  const activeHref = useMemo(() => pathname || "/", [pathname]);
-
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
-
-  const handleSamePageNavigation = (
-    e: React.MouseEvent<HTMLAnchorElement>,
-    href: string,
-  ) => {
-    if (href !== pathname) return;
-
-    e.preventDefault();
-    scrollToTop();
-  };
-
-  const getNavLinkClass = ({
-    active,
-    mobile = false,
-  }: {
-    active: boolean;
-    mobile?: boolean;
-  }) => {
-    const sizeClass = mobile
-      ? isCompactMobile
-        ? isScrolled
-          ? "px-1.5 py-1 text-[10px]"
-          : "px-2 py-1.5 text-[10px]"
-        : isScrolled
-          ? "px-2 py-1 text-[10px]"
-          : "px-2.5 py-1.5 text-[11px]"
-      : isScrolled
-        ? "px-3 py-1.5 text-[13px]"
-        : "px-3.5 py-2 text-sm";
-
-    const shapeClass = mobile ? "rounded-lg" : "rounded-xl";
-
-    const baseClass =
-      "inline-flex items-center justify-center whitespace-nowrap border font-semibold transition-all duration-200 ease-out";
-
-    const darkActiveClass =
-      "border-slate-700 bg-slate-800 text-blue-300 shadow-sm";
-
-    const darkInactiveClass =
-      "border-transparent text-slate-300 hover:bg-slate-800 hover:text-blue-200";
-
-    const lightActiveClass = "border-blue-200 bg-white text-blue-700 shadow-sm";
-
-    const lightInactiveClass =
-      "border-transparent text-slate-700 hover:bg-white hover:text-blue-700";
-
-    return cn(
-      sizeClass,
-      shapeClass,
-      baseClass,
-      isDarkVisualTheme
-        ? active
-          ? darkActiveClass
-          : darkInactiveClass
-        : active
-          ? lightActiveClass
-          : lightInactiveClass,
-    );
-  };
-
-  const renderNavItem = (item: NavItem, mobile = false) => {
-    if (disabled) {
-      return (
-        <span
-          key={item.href}
-          className={cn(
-            mobile ? "rounded-lg" : "rounded-xl",
-            mobile
-              ? isCompactMobile
-                ? isScrolled
-                  ? "px-1.5 py-1 text-[10px]"
-                  : "px-2 py-1.5 text-[10px]"
-                : isScrolled
-                  ? "px-2 py-1 text-[10px]"
-                  : "px-2.5 py-1.5 text-[11px]"
-              : isScrolled
-                ? "px-3 py-1.5 text-[13px]"
-                : "px-3.5 py-2 text-sm",
-            "cursor-not-allowed whitespace-nowrap border border-transparent font-semibold opacity-60 transition-all duration-200 ease-out",
-            isDarkVisualTheme ? "text-slate-500" : "text-slate-400",
-          )}
-        >
-          {item.label}
-        </span>
-      );
-    }
-
-    const active = item.href === activeHref;
-
+    { href: "/pricing", label: en ? "Pricing" : "Árak" },
+    { href: "/about", label: en ? "About" : "Rólam" },
+  ];
+  const projectLinks = [
+    { href: "/portfolio/toyzumi", label: "ToyZumi" },
+    { href: "/portfolio/menutivo", label: "Menutivo" },
+    { href: "/portfolio/molnar-diagnostic", label: "Molnár Diagnostic" },
+  ];
+  function navLink(item: { href: string; label: string }) {
+    const active =
+      pathname === item.href ||
+      (item.href !== "/" && pathname.startsWith(item.href + "/"));
     return (
       <Link
         key={item.href}
         href={item.href}
+        onClick={() => setOpen(false)}
         aria-current={active ? "page" : undefined}
-        className={getNavLinkClass({ active, mobile })}
-        onClick={(e) => handleSamePageNavigation(e, item.href)}
+        className={
+          "rounded-lg px-3 py-3 text-sm font-semibold transition hover:bg-slate-50 " +
+          (active ? "text-blue-700 dark:text-blue-300" : "text-slate-600")
+        }
       >
         {item.label}
       </Link>
     );
-  };
-
+  }
   return (
-    <header
-      className={cn(
-        "sticky top-0 z-50 relative border-b backdrop-blur-xl transition-all duration-200",
-        isDarkVisualTheme
-          ? "border-slate-800 bg-slate-950/90"
-          : "border-slate-200 bg-[#f1f5f9]/95",
-        isScrolled &&
-          (isDarkVisualTheme ? "shadow-lg shadow-black/10" : "shadow-sm"),
-      )}
-    >
+    <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur-xl dark:bg-[#0b1020]/95">
       <Container>
-        <div
-          className={cn(
-            "grid h-auto grid-cols-[minmax(0,1fr)_auto] items-center gap-3 transition-all duration-200 lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)]",
-            isScrolled
-              ? "min-h-12 py-1.5 sm:min-h-14"
-              : "min-h-14 py-2 sm:min-h-16",
-          )}
-        >
+        <div className="flex min-h-20 items-center justify-between gap-3">
           <Link
             href="/"
-            onClick={(e) => handleSamePageNavigation(e, "/")}
-            className="flex min-w-0 items-center gap-2 sm:gap-3"
+            onClick={() => setOpen(false)}
+            className="flex shrink-0 items-center gap-2"
+            aria-label={en ? "Molnár Systems home" : "Molnár Systems főoldal"}
           >
-            <div
-              className={cn(
-                "shrink-0 overflow-hidden rounded-xl transition-all duration-200",
-                isScrolled
-                  ? "h-9 w-9 sm:h-10 sm:w-10 md:h-12 md:w-12"
-                  : "h-10 w-10 sm:h-11 sm:w-11 md:h-14 md:w-14",
-              )}
-            >
-              <img
-                src="/ms_logo.png"
-                alt="MS logo"
-                width="56"
-                height="56"
-                loading="eager"
-                decoding="async"
-                fetchPriority="high"
-                className="block h-full w-full object-contain"
-                draggable={false}
-              />
-            </div>
-
-            <div className="min-w-0 flex-1 leading-tight">
-              <div
-                className={cn(
-                  "truncate font-bold leading-tight transition-all duration-200 lg:whitespace-nowrap",
-                  isScrolled
-                    ? "text-[11px] min-[371px]:text-[13px]"
-                    : "text-[12px] min-[371px]:text-sm",
-                  isDarkVisualTheme ? "text-slate-100" : "text-slate-900",
-                )}
-              >
-                {site.name}
-              </div>
-
-              <div
-                className={cn(
-                  "truncate leading-tight transition-all duration-200 lg:whitespace-nowrap",
-                  isScrolled
-                    ? "text-[9px] sm:text-[11px]"
-                    : "text-[10px] sm:text-xs",
-                  isDarkVisualTheme ? "text-blue-400" : "text-blue-600",
-                )}
-              >
-                {t.nav.subtitle}
-              </div>
-            </div>
+            <Image
+              src="/ms_logo.png"
+              alt=""
+              width={46}
+              height={46}
+              className="h-8 w-8 object-contain sm:h-10 sm:w-10"
+            />
+            <span className="text-xs font-bold tracking-tight text-slate-900 sm:text-sm">
+              Molnár Systems
+              <span className="mt-0.5 hidden text-[10px] font-medium tracking-wider text-slate-500 sm:block">
+                DESIGN · CODE · SYSTEMS
+              </span>
+            </span>
           </Link>
-
-          <nav className="hidden items-center justify-center gap-2 lg:flex lg:justify-self-center">
-            {nav.map((item) => renderNavItem(item, false))}
-          </nav>
-
-          <div
-            className={cn(
-              "flex items-center justify-end gap-2 transition-all duration-200",
-              isScrolled && "scale-[0.97]",
-            )}
-          >
+          {!flags.comingSoon && (
+            <nav
+              aria-label={en ? "Main navigation" : "Fő navigáció"}
+              className="hidden items-center xl:flex"
+            >
+              {links.map(navLink)}
+            </nav>
+          )}
+          <div className="flex items-center gap-1 sm:gap-2">
             <LanguageSwitcher lang={lang} />
             <ThemeToggle lang={lang} initialTheme={initialTheme} />
+            <button
+              type="button"
+              aria-expanded={open}
+              aria-controls="mobile-navigation"
+              aria-label={
+                en ? "Toggle navigation" : "Menü nyitása vagy bezárása"
+              }
+              onClick={() => setOpen(!open)}
+              className="flex h-11 w-11 items-center justify-center rounded-xl border border-slate-200 text-slate-900 xl:hidden"
+            >
+              {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </button>
+            <Link
+              href="/contact"
+              className="ml-1 hidden items-center gap-2 rounded-full bg-blue-700 px-4 py-3 text-xs font-bold text-white xl:inline-flex"
+            >
+              {en ? "Contact" : "Kapcsolat"}
+              <ArrowUpRight className="h-4 w-4" />
+            </Link>
           </div>
         </div>
-
-        <div
-          className={cn(
-            "transition-all duration-200 lg:hidden",
-            isDarkVisualTheme
-              ? "border-t border-slate-800/70"
-              : "border-t border-slate-200/80",
-            isScrolled ? "pb-1.5 pt-1.5" : "pb-2 pt-2",
-          )}
-        >
-          <div className="overflow-hidden">
-            <div className="flex justify-center">
-              <div
-                className={cn(
-                  "flex w-max min-w-max items-center justify-center whitespace-nowrap origin-center transition-all duration-200",
-                  isScrolled ? "gap-1" : "gap-1.5",
-                  isCompactMobile
-                    ? isScrolled
-                      ? "scale-[0.9]"
-                      : "scale-[0.94]"
-                    : isScrolled
-                      ? "scale-[0.97]"
-                      : "scale-100",
-                )}
-              >
-                {nav.map((item) => renderNavItem(item, true))}
-              </div>
+        {open && !flags.comingSoon && (
+          <nav
+            id="mobile-navigation"
+            aria-label={en ? "Mobile navigation" : "Mobil navigáció"}
+            className="max-h-[calc(100dvh-80px)] overflow-y-auto border-t border-slate-200 py-4 xl:hidden"
+          >
+            <div className="grid grid-cols-2 gap-1">
+              {links.map(navLink)}
+              {navLink({
+                href: "/contact",
+                label: en ? "Contact" : "Kapcsolat",
+              })}
             </div>
-          </div>
-        </div>
-      </Container>
-
-      <div
-        className={cn(
-          "pointer-events-none absolute inset-x-0 bottom-0 h-px overflow-hidden",
-          isDarkVisualTheme ? "bg-slate-800/60" : "bg-slate-200/90",
+            <div className="mt-3 border-t border-slate-200 pt-3">
+              <p className="px-3 py-2 text-[10px] font-semibold tracking-widest text-slate-500 uppercase">
+                {en ? "Explore a project" : "Közvetlenül a projekthez"}
+              </p>
+              <div className="flex flex-wrap">{projectLinks.map(navLink)}</div>
+            </div>
+          </nav>
         )}
-      >
-        <div
-          className="h-full origin-left bg-blue-500 will-change-transform"
-          style={{ transform: `scaleX(${scrollProgress})` }}
-        />
-      </div>
+      </Container>
     </header>
   );
 }

@@ -1,34 +1,31 @@
 import { Section } from "@/components/ui/Section";
-import { UseCases } from "@/components/site/UseCases";
+import { CaseLinks } from "@/components/site/CaseLinks";
 import { getLangFromCookies } from "@/components/lib/i18n";
-import { getDictionary } from "@/components/lib/dictionary";
-
-export const metadata = {
-  title: "Gyakorlati példák",
-  description:
-    "Valós vállalkozói és magán felhasználói helyzetek, probléma-megoldás-eredmény bontásban.",
-};
-
+import { pageMetadata } from "@/components/lib/metadata";
+export const metadata = pageMetadata(
+  "Tipikus hibák és megoldási útmutatók",
+  "Készlettervezés keresési adatokból, éttermi rendeléskezelés és lassú számítógép diagnosztikája: gyakori hibák, javasolt lépések és kapcsolódó projektek.",
+  "/usecases",
+);
 export default async function UseCasesPage() {
   const lang = await getLangFromCookies();
-  const t = getDictionary(lang);
-
-  //TODO: impresszum, adatkezelés, cookie/analytics, opengraph social preview, pagespeed.web.dev, sitemap.xml, robots.txt, favicon, loading skeletons, error handling, accessibility audit, performance optimization, security headers, SEO optimization, analytics integration, contact form validation and spam protection, multilingual support, content management system (CMS) integration, user authentication and authorization, database integration for dynamic content, server-side rendering (SSR) or static site generation (SSG) for improved performance and SEO.
+  const en = lang === "en";
   return (
     <Section
-      eyebrow={t.home.useCases.eyebrow}
+      heading="h1"
+      eyebrow={en ? "Problems & solutions" : "Hibák és megoldások"}
       title={
-        lang === "en"
-          ? "Detailed practical scenarios"
-          : "Részletes gyakorlati példák"
+        en
+          ? "First understand it. Then solve it."
+          : "Előbb értsük meg. Aztán oldjuk meg."
       }
       description={
-        lang === "en"
-          ? "Real business and private-user situations, shown in problem-solution-impact format."
-          : "Valós vállalkozói és magán felhasználói helyzetek, probléma-megoldás-eredmény bontásban."
+        en
+          ? "Practical guides: the underlying issue, common mistakes, suggested steps and ways to verify the result. Based on my own projects, with their current limits."
+          : "Gyakorlati útmutatók: a valódi probléma, a tipikus tévutak, a javasolt lépések és az eredmény ellenőrzése. Saját projektekhez kapcsolva, a jelenlegi korlátokkal együtt."
       }
     >
-      <UseCases lang={lang} mode="full" />
+      <CaseLinks lang={lang} />
     </Section>
   );
 }

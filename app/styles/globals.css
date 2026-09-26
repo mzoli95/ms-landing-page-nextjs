@@ -1,17 +1,18 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
 
 :root {
   color-scheme: light;
-  --app-bg: #f8fbff;
+  --app-bg: #fafbf9;
   --surface-1: #ffffff;
-  --surface-2: #eef5ff;
+  --surface-2: #f0f3f5;
   --surface-3: #e1ecff;
   --surface-elevated: #f1f5f9;
   --text-1: #0f172a;
   --text-2: #334155;
   --text-3: #64748b;
   --text-inverse: #ffffff;
-  --border-1: #dbeafe;
+  --border-1: #dde3e9;
   --brand-1: #0f172a;
   --brand-1-hover: #1e293b;
   --brand-2: #1d4ed8;
@@ -156,4 +157,65 @@ html {
     transform: none;
     transition: none;
   }
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+::selection {
+  background: #bfdbfe;
+  color: #172554;
+}
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 200;
+  padding: 12px 20px;
+  background: #1d4ed8;
+  color: white;
+  border-radius: 12px;
+  transform: translateY(-160%);
+}
+.skip-link:focus {
+  transform: translateY(0);
+}
+:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 4px;
+}
+/* Content is also readable without JavaScript. */
+.reveal-on-scroll {
+  opacity: 1;
+  transform: none;
+  filter: none;
+  will-change: auto;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.portfolio-hero {
+  background: #0b1020;
+}
+.hero-grid {
+  background-image:
+    radial-gradient(ellipse at 75% 35%, #26413e70, transparent 55%),
+    linear-gradient(#ffffff03 1px, transparent 1px),
+    linear-gradient(90deg, #ffffff03 1px, transparent 1px);
+  background-size:
+    auto,
+    64px 64px,
+    64px 64px;
+}
+.case-anchor {
+  scroll-margin-top: 110px;
 }

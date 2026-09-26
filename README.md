@@ -1,4 +1,14 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Molnár Systems
+
+## Helyi előnézet és build
+
+Fejlesztéshez: `npm run dev -- --port 3000`. Az aktuális előnézet a `http://localhost:3000` címen érhető el. A fejlesztői kimenet `.next-dev`, a production build kimenete `.next`, így a `npm run build` nem írja felül a futó fejlesztői előnézet fájljait.
+
+Production próba: `npm run build`, majd `npm run start -- --port 3100`. Új production build előtt állítsd le a korábbi `next start` folyamatot, és a build után indítsd újra. Egy régi production folyamat új buildfájlokkal hiányzó JavaScript-chunkokat és böngészőhibát okozhat.
+
+Ellenőrzés: `npm run lint` és `npm run build`. A buildmappák nem kerülnek Gitbe és az ESLint figyelmen kívül hagyja őket.
+
+Az alábbiak a projekt eredeti Next.js indítási útmutatói.
 
 ## Getting Started
 

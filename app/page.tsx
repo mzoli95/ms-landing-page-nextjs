@@ -1,159 +1,114 @@
+import { PortfolioPreview } from "@/components/site/PortfolioPreview";
 import { Hero } from "@/components/site/Hero";
 import { Section } from "@/components/ui/Section";
-import { FeatureGrid } from "@/components/site/FeatureGrid";
-import { ServicesPreview } from "@/components/site/ServicesPreview";
-import { PricingGrid } from "@/components/site/PricingGrid";
+import { ServicePaths } from "@/components/site/ServicePaths";
+import { StarterRates } from "@/components/site/StarterRates";
 import { Steps } from "@/components/site/Steps";
-import { UseCases } from "@/components/site/UseCases";
+import { FAQ } from "@/components/site/FAQ";
 import { ComingSoon } from "@/components/site/ComingSoon";
 import { flags } from "@/components/lib/site";
-import { PcServiceSection } from "@/components/site/PcServiceSection";
-import { FAQ } from "@/components/site/FAQ";
-import { RiskReduction } from "@/components/site/RiskReduction";
 import { getLangFromCookies } from "@/components/lib/i18n";
 import { getDictionary } from "@/components/lib/dictionary";
-import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import { pageMetadata } from "@/components/lib/metadata";
 
-function HomeContentSection({
-  id,
-  delayMs,
-  eyebrow,
-  title,
-  description,
-  className,
-  children,
-}: {
-  id: string;
-  delayMs: number;
-  eyebrow: string;
-  title: string;
-  description: string;
-  className?: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <ScrollReveal id={id} delayMs={delayMs} className="scroll-mt-28">
-      <Section
-        eyebrow={eyebrow}
-        title={title}
-        description={description}
-        className={className}
-      >
-        {children}
-      </Section>
-    </ScrollReveal>
-  );
-}
+export const metadata = pageMetadata(
+  "Egyedi szoftver és webfejlesztés",
+  "Egyedi szoftver, weboldal, webalkalmazás és automatizálás magánszemélyeknek és cégeknek, országosan online. Személyesen Siófok és Somogy megye, távolabb egyeztetéssel.",
+  "/",
+);
 
 export default async function HomePage() {
   const lang = await getLangFromCookies();
+  const en = lang === "en";
   const t = getDictionary(lang);
-
   if (flags.comingSoon) return <ComingSoon lang={lang} />;
-
   return (
     <>
-      <ScrollReveal id="home" yOffset="sm" className="scroll-mt-28">
-        <Hero lang={lang} />
-      </ScrollReveal>
-
-      <HomeContentSection
-        id="usecases-section"
-        delayMs={40}
-        eyebrow={t.home.useCases.eyebrow}
-        title={t.home.useCases.title}
-        description={t.home.useCases.description}
-        className="bg-slate-50"
+      <Hero lang={lang} />
+      <Section
+        eyebrow={en ? "What can I help with?" : "Miben tudok segíteni?"}
+        title={
+          en
+            ? "From a small question to a custom project."
+            : "Egy apró kérdéstől a saját projektedig."
+        }
+        description={
+          en
+            ? "Help for home, hobbies and work, with the process and starting fees explained on each page."
+            : "Otthonra, hobbihoz és munkához. Minden témánál megtalálod a menetet és az induló díj tartalmát."
+        }
       >
-        <UseCases lang={lang} mode="teaser" />
-      </HomeContentSection>
-
-      <HomeContentSection
-        id="why-section"
-        delayMs={60}
-        eyebrow={t.home.why.eyebrow}
-        title={t.home.why.title}
-        description={t.home.why.description}
+        <div className="mb-8 grid gap-4 md:grid-cols-2">
+          <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6">
+            <h3 className="text-lg font-bold text-slate-900">
+              {en
+                ? "For small businesses"
+                : "KKV-knak és egyéni vállalkozóknak"}
+            </h3>
+            <p className="mt-3 text-sm leading-7 text-slate-600">
+              {en
+                ? "Merge monthly Excel exports, follow up quotes, see stock and costs in one report, or build an online service. We can start with a single recurring task."
+                : "Havi Excel-exportok összefésülése, ajánlatok követése, készlet és költségek egy kimutatásban, vagy saját online szolgáltatás. Egyetlen visszatérő feladattal is elindulhatunk."}
+            </p>
+          </div>
+          <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6">
+            <h3 className="text-lg font-bold text-slate-900">
+              {en
+                ? "For individuals and personal projects"
+                : "Magánszemélyeknek és saját ötletekhez"}
+            </h3>
+            <p className="mt-3 text-sm leading-7 text-slate-600">
+              {en
+                ? "A portfolio, a hobby tracker, an expense summary or a small custom application. You do not need a business or a finished specification to get started."
+                : "Portfólió, hobbigyűjtemény nyilvántartása, költségösszesítő vagy egy kis egyedi alkalmazás. Nem kell hozzá vállalkozás vagy kész műszaki terv."}
+            </p>
+          </div>
+        </div>
+        <ServicePaths lang={lang} />
+      </Section>
+      <Section
+        eyebrow={t.home.pricing.eyebrow}
+        title={
+          en
+            ? "Starting fees for development."
+            : "Fejlesztési díjak, induláshoz"
+        }
+        description={
+          en
+            ? "Starting prices for a focused scope. Exact deliverables and external costs are agreed in writing."
+            : "Induló árak, körülhatárolt feladatra. A pontos tartalmat és a külső költségeket írásban egyeztetjük."
+        }
       >
-        <FeatureGrid lang={lang} />
-      </HomeContentSection>
-
-      <HomeContentSection
-        id="services-section"
-        delayMs={80}
-        eyebrow={t.home.services.eyebrow}
-        title={t.home.services.title}
-        description={t.home.services.description}
-        className="bg-slate-50"
-      >
-        <ServicesPreview lang={lang} mode="teaser" />
-      </HomeContentSection>
-
-      <HomeContentSection
-        id="process-section"
-        delayMs={100}
+        <StarterRates lang={lang} />
+      </Section>
+      <Section
         eyebrow={t.home.process.eyebrow}
-        title={t.home.process.title}
-        description={t.home.process.description}
+        title={
+          en
+            ? "What happens after you get in touch?"
+            : "Mi történik a megkeresés után?"
+        }
+        description={
+          en
+            ? "We agree the next step before starting work."
+            : "A munka megkezdése előtt egyeztetjük a következő lépést."
+        }
+        className="bg-slate-50"
       >
         <Steps lang={lang} />
-      </HomeContentSection>
-
-      <ScrollReveal
-        id="pc-service-section"
-        delayMs={120}
-        className="scroll-mt-28"
+      </Section>
+      <PortfolioPreview lang={lang} />
+      <Section
+        eyebrow={en ? "Before we start" : "Mielőtt belevágunk"}
+        title={en ? "Your questions, answered." : "Gyakori kérdések."}
+        description={
+          en
+            ? "Scope, timing and support, in plain language."
+            : "Tartalom, határidők és támogatás, érthetően."
+        }
       >
-        <PcServiceSection lang={lang} />
-      </ScrollReveal>
-
-      <HomeContentSection
-        id="pricing-section"
-        delayMs={140}
-        eyebrow={t.home.pricing.eyebrow}
-        title={t.home.pricing.title}
-        description={t.home.pricing.description}
-        className="bg-slate-50"
-      >
-        <PricingGrid lang={lang} mode="link-only" />
-      </HomeContentSection>
-
-      <ScrollReveal delayMs={160} className="scroll-mt-28">
-        <Section
-          eyebrow={lang === "en" ? "No Surprises" : "Nincs zsákbamacska"}
-          title={
-            lang === "en"
-              ? "Clear commitments, clear delivery"
-              : "Garancia, transzparens költségek, gyors reakció"
-          }
-          description={
-            lang === "en"
-              ? "No hidden costs and predictable delivery from the start."
-              : "Előre tisztázott scope és árképzés, gyors válaszidővel."
-          }
-          className="bg-slate-50"
-        >
-          <RiskReduction lang={lang} />
-        </Section>
-      </ScrollReveal>
-
-      <ScrollReveal delayMs={180} className="scroll-mt-28">
-        <Section
-          eyebrow={lang === "en" ? "FAQ" : "GYIK"}
-          title={
-            lang === "en" ? "Frequently asked questions" : "Gyakori kérdések"
-          }
-          description={
-            lang === "en"
-              ? "Quick answers before you decide."
-              : "Gyors válaszok a döntés előtt."
-          }
-        >
-          <FAQ lang={lang} />
-        </Section>
-      </ScrollReveal>
-
-      {/* <StickyMobileCta lang={lang} /> */}
+        <FAQ lang={lang} />
+      </Section>
     </>
   );
 }

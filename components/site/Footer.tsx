@@ -19,7 +19,7 @@ export function Footer({ lang }: { lang: Lang }) {
             </div>
           </div>
 
-          <div className="flex gap-6 text-sm font-semibold">
+          <div className="flex flex-wrap gap-x-6 gap-y-3 text-sm font-semibold">
             {disabled ? (
               <>
                 <span className="text-slate-400 opacity-50 cursor-not-allowed">
@@ -34,6 +34,20 @@ export function Footer({ lang }: { lang: Lang }) {
               </>
             ) : (
               <>
+                <Link
+                  className="text-slate-700 hover:text-slate-900"
+                  href="/portfolio"
+                >
+                  {lang === "en" ? "Projects" : "Projektek"}
+                </Link>
+                <Link
+                  className="text-slate-700 hover:text-slate-900"
+                  href="/usecases"
+                >
+                  {lang === "en"
+                    ? "Problems & solutions"
+                    : "Hibák és megoldások"}
+                </Link>
                 <Link
                   className="text-slate-700 hover:text-slate-900"
                   href="/services"

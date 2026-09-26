@@ -23,11 +23,11 @@ export function Button({
   disabled?: boolean;
 }) {
   const base =
-    "inline-flex items-center justify-center rounded-xl px-4 py-2 text-sm font-semibold transition duration-200 ease-out focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98]";
+    "inline-flex items-center justify-center min-h-11 rounded-xl px-5 py-3 text-sm font-semibold transition duration-200 ease-out focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98]";
 
   const styles: Record<Variant, string> = {
     primary:
-      "bg-slate-900 text-white hover:bg-slate-800 focus-visible:ring-slate-400",
+      "bg-blue-700 text-white hover:bg-blue-800 focus-visible:ring-blue-400",
     secondary:
       "border border-white/20 bg-white/10 text-white hover:bg-white/15 focus-visible:ring-white/40",
     ghost:

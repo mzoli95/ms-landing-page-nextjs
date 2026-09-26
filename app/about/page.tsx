@@ -1,12 +1,19 @@
+import { pageMetadata } from "@/components/lib/metadata";
 import { Section } from "@/components/ui/Section";
-import { LazyAboutSection } from "@/components/site/LazyPageSections";
+import { AboutSection } from "@/components/site/AboutSection";
 import { getLangFromCookies } from "@/components/lib/i18n";
 import { getDictionary } from "@/components/lib/dictionary";
 
 export const metadata = {
-  title: "Rólam | Molnár Systems",
+  ...pageMetadata(
+    "Rólam",
+    "Ismerd meg Zolit, a Molnár Systems mögött álló fejlesztőt. Egyedi belső rendszerek, automatizálás, adatkezelés és egyszerű, stabil digitális megoldások magánszemélyeknek és vállalkozásoknak.",
+    "/about",
+  ),
+  alternates: { canonical: "/about" },
+  title: "Rólam",
   description:
-    "Ismerd meg Zolit, a Molnár Systems mögött álló fejlesztőt. Egyedi belső rendszerek, automatizálás, adatkezelés és egyszerű, stabil digitális megoldások vállalkozásoknak.",
+    "Ismerd meg Zolit, a Molnár Systems mögött álló fejlesztőt. Egyedi belső rendszerek, automatizálás, adatkezelés és egyszerű, stabil digitális megoldások magánszemélyeknek és vállalkozásoknak.",
 };
 
 export default async function AboutPage() {
@@ -15,6 +22,7 @@ export default async function AboutPage() {
 
   return (
     <Section
+      heading="h1"
       eyebrow={t.aboutPage.eyebrow}
       title={t.aboutPage.title}
       description={t.aboutPage.description}
@@ -23,7 +31,7 @@ export default async function AboutPage() {
         {t.aboutPage.locationLine}
       </p>
 
-      <LazyAboutSection lang={lang} />
+      <AboutSection lang={lang} />
     </Section>
   );
 }

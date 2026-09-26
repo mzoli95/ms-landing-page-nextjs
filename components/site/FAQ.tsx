@@ -1,3 +1,4 @@
+import { getDictionary } from "@/components/lib/dictionary";
 import { Card } from "@/components/ui/Card";
 import type { Lang } from "@/components/lib/i18n";
 
@@ -49,6 +50,57 @@ export function FAQ({ lang = "hu" }: { lang?: Lang }) {
           },
         ];
 
+  const firstPrice = getDictionary(lang).pricingGrid.plans[0].price;
+  faqs.unshift(
+    lang === "en"
+      ? {
+          q: "Where do you work?",
+          a: "In-person help is primarily available in Siófok and the surrounding area, and across Somogy county. Visits further afield can be arranged in advance. Remote help and development are available across Hungary.",
+        }
+      : {
+          q: "Hol érhetők el a szolgáltatások?",
+          a: "Személyesen elsősorban Siófokon és környékén, valamint Somogy megyében segítek. Távolabbi kiszállás is kérhető előzetes egyeztetéssel. Távsegítség és fejlesztés országosan elérhető.",
+        },
+  );
+  faqs.unshift(
+    lang === "en"
+      ? {
+          q: "How much does a first project cost?",
+          a:
+            "Process assessment and a focused solution starts " +
+            firstPrice +
+            ". The pricing page lists separate website, automation and maintenance packages. Scope, taxes and external costs are set out in a written quote.",
+        }
+      : {
+          q: "Mennyibe kerül egy első projekt?",
+          a:
+            "A folyamatfelmérés és célzott megoldás ára " +
+            firstPrice +
+            ". A weboldalak, automatizálás és karbantartás külön csomagjai az árlistában találhatók. A tartalmat, adótartalmat és külső költségeket írásos ajánlat rögzíti.",
+        },
+  );
+  faqs.unshift(
+    lang === "en"
+      ? {
+          q: "Can I contact you as an individual?",
+          a: "Yes. Personal ideas, hobby projects, PC builds, upgrades and device issues are welcome. Describe your request in everyday language; I will let you know what I can take on.",
+        }
+      : {
+          q: "Magánszemélyként is megkereshetlek?",
+          a: "Igen. Saját ötlettel, hobbiprojekttel, PC-építéssel, bővítéssel és eszközhibával is. Írd le hétköznapi nyelven a kérésedet; visszajelzek, mit tudok vállalni.",
+        },
+  );
+  faqs.unshift(
+    lang === "en"
+      ? {
+          q: "What does 5,000 HUF include?",
+          a: "The first 30 minutes of remote help or a basic device assessment. A simple issue may be fixed within the session, but longer repairs, parts and travel require a separate quote.",
+        }
+      : {
+          q: "Mit tartalmaz az 5 000 Ft-os segítség?",
+          a: "Az első, legfeljebb 30 perces távsegítséget vagy alapellenőrzést. Egy egyszerű hiba megoldása beleférhet, de hosszabb javítás, alkatrész és kiszállás külön egyeztetést igényel.",
+        },
+  );
   return (
     <div className="space-y-3">
       {faqs.map((f) => (

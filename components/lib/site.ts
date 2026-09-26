@@ -3,11 +3,12 @@ export const site = {
   url: "https://www.molnarsystems.hu",
   email: "info@molnarsystems.hu",
   phone: "+36707268393",
-  location: "Siófok - Somogy megye - Magyarország egész területén",
+  location:
+    "Siófok és környéke • Somogy megye • Távolabb egyeztetéssel • Online országosan",
   tagline:
-    "Excelben, jegyzetekben vagy papíron vezeted a vállalkozásod? Lásd végre egy helyen a pénzed és a határidőidet.",
+    "Egyedi szoftver, webfejlesztés és automatizálás KKV-knak és magánszemélyeknek.",
   metaDescription:
-    "Egyedi szoftverek és egyszerű digitális megoldások vállalkozásoknak Siófokon és Somogy megyében, országosan online együttműködéssel.",
+    "Egyedi szoftver, weboldal, Excel-automatizálás és kimutatások KKV-knak és magánszemélyeknek. Siófok és környéke, Somogy megye; távolabbi kiszállás egyeztetéssel, online országosan.",
 };
 
 export const flags = {

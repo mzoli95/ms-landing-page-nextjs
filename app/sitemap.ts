@@ -7,19 +7,32 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Ide listázod a publikus oldalaidat (amiket indexelhet a Google)
   const routes = [
     "",
-    "/impresszum",
-    "/adatkezeles",
+    "/portfolio",
+    "/portfolio/toyzumi",
+    "/portfolio/menutivo",
+    "/portfolio/molnar-diagnostic",
+    "/usecases",
+    "/usecases/kereslet-es-keszlet",
+    "/usecases/ettermi-rendeles",
+    "/usecases/lassu-szamitogep",
     "/services",
+    "/services/pc-hardver",
+    "/services/webfejlesztes",
+    "/services/pc-epites",
+    "/services/pc-bovites",
+    "/services/diagnosztika-tavsegitseg",
+    "/services/elektronikai-eszkozok",
+    "/services/egyedi-fejlesztes",
+    "/services/excel-automatizalas",
+    "/services/statisztikak-kimutatasok",
+    "/siofok-informatika",
     "/pricing",
     "/about",
     "/contact",
   ];
 
-  const now = new Date();
-
   return routes.map((path) => ({
     url: `${baseUrl}${path}`,
-    lastModified: now,
     changeFrequency: "weekly",
     priority: path === "" ? 1 : 0.6,
   }));

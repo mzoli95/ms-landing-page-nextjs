@@ -172,19 +172,32 @@ export function UseCases({
               <BulletList items={u.problem} />
             </div>
 
-            <div className="mt-5">
-              <div className="text-xs font-bold tracking-wider text-slate-900 uppercase">
-                {t.useCases.labels.solution}
-              </div>
-              <BulletList items={u.solution} />
-            </div>
+            <details className="group mt-5 border-t border-slate-200 pt-4">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-3 text-sm font-bold text-blue-700 marker:hidden dark:text-blue-300">
+                <span>
+                  {lang === "en"
+                    ? "Solution and outcome"
+                    : "Megoldás és eredmény"}
+                </span>
+                <span className="text-lg leading-none transition group-open:rotate-45">
+                  +
+                </span>
+              </summary>
 
-            <div className="mt-5">
-              <div className="text-xs font-bold tracking-wider text-slate-900 uppercase">
-                {t.useCases.labels.why}
+              <div className="mt-5">
+                <div className="text-xs font-bold tracking-wider text-slate-900 uppercase">
+                  {t.useCases.labels.solution}
+                </div>
+                <BulletList items={u.solution} />
               </div>
-              <BulletList items={u.why} />
-            </div>
+
+              <div className="mt-5">
+                <div className="text-xs font-bold tracking-wider text-slate-900 uppercase">
+                  {t.useCases.labels.why}
+                </div>
+                <BulletList items={u.why} />
+              </div>
+            </details>
           </Card>
         ))}
       </div>

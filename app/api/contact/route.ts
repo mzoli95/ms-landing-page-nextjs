@@ -1,10 +1,12 @@
+import { contactTopics } from "@/components/lib/contact-topics";
 import { NextResponse } from "next/server";
-import nodemailer from "nodemailer";
+import nodemailer, { type Transporter } from "nodemailer";
 import { site } from "@/components/lib/site";
 
 export const runtime = "nodejs";
 
 type ContactBody = {
+  topic?: unknown;
   name?: unknown;
   email?: unknown;
   details?: unknown;
@@ -28,7 +30,7 @@ const MAX_EMAIL_LENGTH = 320;
 const MIN_DETAILS_LENGTH = 10;
 const MAX_DETAILS_LENGTH = 2000;
 
-let cachedTransporter: nodemailer.Transporter | null = null;
+let cachedTransporter: Transporter | null = null;
 
 function jsonResponse(body: Record<string, unknown>, status = 200) {
   return NextResponse.json(body, {
@@ -125,7 +127,13 @@ function getTransporter() {
     return null;
   }
 
-  cachedTransporter = nodemailer.createTransport(smtpConfig);
+  cachedTransporter = nodemailer.createTransport({
+    ...smtpConfig,
+    dnsTimeout: 5000,
+    connectionTimeout: 5000,
+    greetingTimeout: 5000,
+    socketTimeout: 10000,
+  });
   return cachedTransporter;
 }
 
@@ -139,7 +147,7 @@ async function parseJsonBody(req: Request): Promise<ContactBody | null> {
   try {
     const body = (await req.json()) as unknown;
 
-    if (!body || typeof body !== "object") {
+    if (!body || typeof body !== "object" || Array.isArray(body)) {
       return null;
     }
 
@@ -201,6 +209,10 @@ function validateBody(body: ContactBody) {
   const details = normalizeText(body.details);
   const website = normalizeText(body.website);
   const turnstileToken = normalizeText(body.turnstileToken);
+  const topicId = normalizeText(body.topic);
+  const topic =
+    contactTopics.find((item) => item.id === topicId)?.hu ??
+    "Általános megkeresés";
 
   if (!name || !email || !details) {
     return {
@@ -248,6 +260,7 @@ function validateBody(body: ContactBody) {
       email,
       details,
       turnstileToken,
+      topic,
     },
   };
 }
@@ -280,7 +293,7 @@ export async function POST(req: Request) {
     return jsonResponse({ ok: false, error: validated.error }, 400);
   }
 
-  const { name, email, details, turnstileToken } = validated.value;
+  const { name, email, details, turnstileToken, topic } = validated.value;
 
   if (process.env.TURNSTILE_SECRET_KEY) {
     if (!turnstileToken) {
@@ -315,6 +328,7 @@ export async function POST(req: Request) {
       replyTo: email,
       subject: `Új kapcsolatfelvétel - ${safeSubjectName}`,
       text: [
+        `Téma: ${topic}`,
         `Név: ${name}`,
         `Email: ${email}`,
         ip !== "unknown" ? `IP: ${ip}` : "",
@@ -331,6 +345,7 @@ export async function POST(req: Request) {
               Új kapcsolatfelvétel
             </div>
             <div style="padding:20px;">
+              <p style="margin:0 0 12px;"><strong>Téma:</strong> ${escapeHtml(topic)}</p>
               <p style="margin:0 0 12px;"><strong>Név:</strong> ${safeName}</p>
               <p style="margin:0 0 12px;"><strong>Email:</strong> ${safeEmail}</p>
               ${

@@ -207,6 +207,7 @@ const hu: Dictionary = {
     subtitle: "digitalizálás • rendszerek",
     items: [
       { href: "/", label: "Főoldal" },
+      { href: "/portfolio", label: "Munkáim" },
       { href: "/services", label: "Szolgáltatások" },
       { href: "/pricing", label: "Árak" },
       { href: "/about", label: "Rólam" },
@@ -225,7 +226,8 @@ const hu: Dictionary = {
     },
   },
   footer: {
-    location: "Siófok - Somogy megye - Magyarország egész területén",
+    location:
+      "Siófok és környéke • Somogy megye • Távolabb egyeztetéssel • Online országosan",
     services: "Szolgáltatások",
     pricing: "Árak",
     contact: "Kapcsolat",
@@ -271,7 +273,8 @@ const hu: Dictionary = {
     ],
     title:
       "Excel és jegyzetek helyett kezeld a folyamataid egyetlen átlátható felületen.",
-    locationLine: "Molnár Systems • Siófok és Somogy megye • Országosan online",
+    locationLine:
+      "Molnár Systems • Siófok és környéke, Somogy megye • Távolabb egyeztetéssel • Online országosan",
     intro:
       "Ha eleged van abból, hogy Excelben és jegyzetekben kell keresgélned: készítek egy egyszerű, testre szabott rendszert, ami időt spórol, hibát csökkent, és láthatóvá teszi a céged működését.",
     ctaPrimary: "Kérek ingyenes konzultációt",
@@ -406,21 +409,22 @@ const hu: Dictionary = {
         ],
       },
       {
-        title: "PC karbantartás",
+        title: "Hardver és számítógépes megoldások",
         items: [
           {
-            text: "SSD/RAM bővítés, gyorsítás",
+            text: "Számítógép, nyomtató, szkenner és perifériák beállítása",
             benefit:
-              "Gyakran olcsóbb és elég gyors megoldás új gép vásárlása helyett.",
+              "Az eszközök telepítve, összekötve és kipróbálva kerülnek átadásra.",
           },
           {
-            text: "Újratelepítés + adatmentés",
+            text: "Távoli segítség szoftveres és beállítási problémákhoz",
             benefit:
-              "A fontos adatok megmaradnak, a gép tisztábban indul újra.",
+              "Sok hiba kiszállás nélkül, gyorsabban és kedvezőbb költséggel megoldható.",
           },
           {
-            text: "Vírusirtás, alap biztonsági beállítások",
-            benefit: "Kisebb kockázat adatvesztésre és leállásra.",
+            text: "Egyedi PC, alkatrészbővítés és hibafeltárás",
+            benefit:
+              "Tervezés, kompatibilitás-ellenőrzés, beépítés és tesztelés egy helyen.",
           },
           {
             text: "Lassú indulás és lefagyás okának feltárása",
@@ -433,6 +437,26 @@ const hu: Dictionary = {
           {
             text: "Otthoni vagy irodai alap hálózat rendbetétele",
             benefit: "Stabilabb internet és kevesebb megszakadás.",
+          },
+          {
+            text: "Nyomtató és szkenner telepítése, hálózati megosztása",
+            benefit:
+              "A szükséges driverek, beolvasási célok és többgépes használat is beállítható.",
+          },
+          {
+            text: "Monitor, dokkoló, webkamera és egyéb perifériák beüzemelése",
+            benefit:
+              "Az eszközök megfelelő csatlakoztatással és kipróbált beállításokkal működnek.",
+          },
+          {
+            text: "Router, Wi-Fi és vezetékes kapcsolat alap hibakeresése",
+            benefit:
+              "Segítség gyenge jel, szakadozás vagy eszközcsatlakozási problémák esetén.",
+          },
+          {
+            text: "Külső meghajtó, adattárolás és egyszerű mentés beállítása",
+            benefit:
+              "A fontos fájlok rendezettebben és kisebb adatvesztési kockázattal tárolhatók.",
           },
         ],
       },
@@ -690,6 +714,27 @@ const hu: Dictionary = {
         ],
       },
       {
+        id: "excel-workflow",
+        title: "Kinőtt Excel-nyilvántartás rendbetétele vagy kiváltása",
+        who: "Excelben dolgozó kisvállalkozások és irodai csapatok",
+        timeframeLabel: "Első használható verzió 1–3 hét alatt",
+        problem: [
+          "Több fájl és eltérő verzió kering e-mailben vagy megosztott mappákban.",
+          "A képletek könnyen sérülnek, az ismétlődő adatbevitel pedig hibákat okoz.",
+          "Nehéz megmondani, ki és mikor módosított egy fontos adatot.",
+        ],
+        solution: [
+          "A meglévő munkafüzetek és folyamatok rövid felmérése, adattisztítással.",
+          "Egységes import, ellenőrzött űrlapok, keresés és jogosultságok.",
+          "Automatikus összesítők, exportok és szükség esetén fokozatos webes kiváltás.",
+        ],
+        why: [
+          "Nem kell mindent egyszerre lecserélni: az Excel-import és -export megmaradhat.",
+          "Kevesebb kézi másolás, sérült képlet és verzióütközés.",
+          "Pontosabb adatok és gyorsabban elkészülő kimutatások.",
+        ],
+      },
+      {
         id: "admin-automation",
         title: "Adminisztráció automatizálása, hogy ne vigye el a napot",
         who: "Irodai adminisztrációt végző KKV-k",
@@ -708,6 +753,27 @@ const hu: Dictionary = {
           "Kevesebb dupla munka.",
           "Pontosabb és gyorsabb napi munka.",
           "A csapat több időt fordíthat fontos feladatokra.",
+        ],
+      },
+      {
+        id: "printer-command-line-recovery",
+        title: "Nyomtatási hiba helyreállítása parancssori diagnosztikával",
+        who: "Otthoni felhasználók és kis irodák",
+        timeframeLabel: "Célzott, gyors hibaelhárítás",
+        problem: [
+          "A nyomtató csatlakoztatva volt, de a Windows nem tudta megfelelően használni.",
+          "A szokásos újracsatlakoztatás és grafikus beállítások nem oldották meg a hibát.",
+          "A nyomtatási sor, a szolgáltatás, a port vagy az illesztőprogram beállítása hibás állapotban maradt.",
+        ],
+        solution: [
+          "A nyomtatási szolgáltatás, a várólista és az eszközbeállítások ellenőrzése parancssorból.",
+          "A hibás állapot célzott visszaállítása, majd a port és az illesztőprogram egyeztetése.",
+          "Tesztoldalas ellenőrzés a teljes rendszer újratelepítése nélkül.",
+        ],
+        why: [
+          "Nem kellett új számítógépet, nyomtatót vagy Windows-telepítést választani.",
+          "A beavatkozás a hiba okát kezelte, nem csak ideiglenesen kerülte meg.",
+          "Hasonló szoftveres és perifériaproblémák távolról is megoldhatók lehetnek.",
         ],
       },
       {
@@ -753,38 +819,38 @@ const hu: Dictionary = {
   ],
   pricingGrid: {
     labels: {
-      mostPopular: "Legnépszerűbb",
+      mostPopular: "Bővíthető alap",
       requestOffer: "Ajánlatkérés",
       development: "Fejlesztés",
-      pcAddon: "PC / számítógépes segítség (kiegészítő)",
+      pcAddon: "PC és számítógépes segítség",
       noteTitle: "Megjegyzés:",
       noteText:
-        "A fenti árak irányárak. A pontos ajánlatot egy rövid egyeztetés után adom az igények és az összetettség alapján.",
+        "Az induló árak tudatosan szűk, jól körülhatárolt tartalomra vonatkoznak. A pontos funkciókat, az adótartalmat és az esetleges külső költségeket rövid egyeztetés után, írásos ajánlatban rögzítem.",
     },
     plans: [
       {
-        name: "Felmérés + gyorsnyereség",
-        price: "149 000 Ft-tól",
-        hint: "Gyors indulás • 1 fókuszált probléma rendbetétele",
+        name: "Folyamatfelmérés + célzott megoldás",
+        price: "79 000 Ft-tól",
+        hint: "Egy jól körülhatárolt probléma felmérése és megoldása",
         features: [
-          "Rövid folyamatfelmérés és javaslatlista",
-          "1 konkrét probléma gyors javítása (pl. emlékeztető, státusz vagy összefoglaló)",
+          "Rövid folyamatfelmérés és priorizált javaslat",
+          "Egy manuális lépés kiváltása: emlékeztető, státuszkövetés vagy egyszerű összefoglaló",
           "Átadás és rövid betanítás",
         ],
       },
       {
         name: "Mini automatizálás sprint",
-        price: "229 000 Ft-tól",
+        price: "129 000 Ft-tól",
         hint: "2–3 hét • kevesebb kézi admin, gyors eredménnyel",
         features: [
-          "Űrlapok és visszatérő admin lépések egyszerűsítése",
+          "1 ismétlődő folyamat automatizálása, legfeljebb 2 adatforrással",
           "Automatikus emlékeztetők és alap státuszkövetés",
           "Rövid videós átadás és használati leírás",
         ],
       },
       {
         name: "Ajánlatkezelés alapcsomag",
-        price: "329 000 Ft-tól",
+        price: "199 000 Ft-tól",
         hint: "Tisztább értékesítési folyamat • kevesebb elvesző érdeklődő",
         features: [
           "Pipeline: érdeklődő → ajánlat → utánkövetés → lezárás",
@@ -793,40 +859,40 @@ const hu: Dictionary = {
         ],
       },
       {
-        name: "Belső rendszer (moduláris)",
-        price: "590 000 Ft-tól",
-        hint: "Első verzió (MVP) • később lépésenként bővíthető",
+        name: "Belső rendszer – induló modul",
+        price: "349 000 Ft-tól",
+        hint: "Egy fő folyamat működő első verziója • később bővíthető",
         popular: true,
         features: [
-          "Ügyfél-, munka- és státuszkövetés egy helyen",
-          "Jogosultságok és alapszintű naplózás",
-          "Összefoglalók és áttekintő felület a fontos mutatókkal",
+          "Egy kiválasztott folyamat és a hozzá tartozó alapadatok kezelése",
+          "Legfeljebb 2 szerepkör, státuszkövetés és alap naplózás",
+          "Egy áttekintő felület a legfontosabb mutatókkal",
           "Átadás és dokumentáció",
         ],
       },
       {
         name: "Weboldal induló csomag",
-        price: "290 000 Ft-tól",
+        price: "149 000 Ft-tól",
         hint: "Bemutatkozás + érdeklődőgyűjtés • gyors online induláshoz",
         features: [
-          "Reszponzív weboldal alap szerkezettel",
+          "Legfeljebb 4 tartalmi oldal, egy nyelven, hozott szöveggel",
           "Kapcsolati vagy ajánlatkérő űrlap beállítással",
           "Sebességoptimalizálás és alap SEO beállítások",
         ],
       },
       {
         name: "Landing page csomag",
-        price: "199 000 Ft-tól",
+        price: "99 000 Ft-tól",
         hint: "1 fókuszált oldal • hirdetéshez vagy ajánlatkéréshez",
         features: [
-          "Konverzióra optimalizált, mobilbarát landing oldal",
+          "1 mobilbarát oldal, legfeljebb 6 szekcióval, hozott tartalommal",
           "Űrlap, köszönőoldal és alap mérés (pl. Analytics / események)",
-          "Gyors átadás rövid módosítási körrel",
+          "1 összevont módosítási kör és átadás",
         ],
       },
       {
         name: "Landing + hirdetésindítás",
-        price: "279 000 Ft-tól",
+        price: "179 000 Ft-tól",
         hint: "Landing oldal + alap kampány setup • mérhető indulás",
         features: [
           "Landing oldal konverziós űrlappal és köszönőoldallal",
@@ -836,7 +902,7 @@ const hu: Dictionary = {
       },
       {
         name: "Adatbázis + riportok",
-        price: "390 000 Ft-tól",
+        price: "249 000 Ft-tól",
         hint: "Szétszórt adatokból tiszta alap • gyorsabb döntésekhez",
         features: [
           "Adattisztítás és ismétlődések csökkentése",
@@ -846,27 +912,27 @@ const hu: Dictionary = {
       },
       {
         name: "Weboldal karbantartás",
-        price: "39 000 Ft / hó-tól",
+        price: "19 000 Ft / hó-tól",
         hint: "Frissítés, hibajavítás és kisebb módosítások havi keretben",
         features: [
           "Rendszeres frissítések, mentések és biztonsági ellenőrzések",
-          "Kisebb tartalmi és funkcionális módosítások havi kerettel",
-          "Teljesítmény és működés folyamatos figyelése",
+          "Havi 1 óra kisebb tartalmi és funkcionális módosítás",
+          "Havi működési és teljesítmény-ellenőrzés",
         ],
       },
       {
         name: "Rendszer karbantartás",
-        price: "69 000 Ft / hó-tól",
+        price: "39 000 Ft / hó-tól",
         hint: "Meglévő egyedi rendszered stabil működéséhez",
         features: [
           "Hibajavítás és verziókövetés",
-          "Kisebb fejlesztési igények priorizált kezelése",
+          "Havi 2 óra kisebb fejlesztés vagy hibajavítás",
           "Működési riport és javaslat a következő lépésekhez",
         ],
       },
       {
         name: "SEO alapcsomag",
-        price: "79 000 Ft / hó-tól",
+        price: "39 000 Ft / hó-tól",
         hint: "Lokális + technikai SEO kisvállalkozói fókuszban",
         features: [
           "Technikai SEO alapjavítások (sebesség, meta, indexelés)",
@@ -876,7 +942,7 @@ const hu: Dictionary = {
       },
       {
         name: "SEO + tartalomfrissítés",
-        price: "119 000 Ft / hó-tól",
+        price: "69 000 Ft / hó-tól",
         hint: "Technikai SEO + tartalom + rendszeres frissítés",
         features: [
           "SEO alapcsomag + havi tartalmi frissítések",
@@ -886,7 +952,7 @@ const hu: Dictionary = {
       },
       {
         name: "Tanácsadás és tervezés",
-        price: "18 000 Ft / óra",
+        price: "12 000 Ft / óra",
         hint: "Gyors szakmai döntéstámogatás elakadás esetén",
         features: [
           "Rendszer- és folyamatátvilágítás",
@@ -896,7 +962,7 @@ const hu: Dictionary = {
       },
       {
         name: "Fejlesztési keret – 5 óra",
-        price: "85 000 Ft / csomag",
+        price: "55 000 Ft / csomag",
         hint: "Kisebb backlog, gyors javítások és mini fejlesztések",
         features: [
           "5 óra fejlesztési keret 60 napon belüli felhasználással",
@@ -906,7 +972,7 @@ const hu: Dictionary = {
       },
       {
         name: "Fejlesztési keret – 10 óra",
-        price: "165 000 Ft / csomag",
+        price: "105 000 Ft / csomag",
         hint: "Folyamatos kisebb igényekhez kedvezőbb óradíjjal",
         features: [
           "10 óra fejlesztési keret 90 napon belüli felhasználással",
@@ -916,7 +982,7 @@ const hu: Dictionary = {
       },
       {
         name: "Egyedi fejlesztés",
-        price: "18 000 Ft / óra",
+        price: "12 000 Ft / óra",
         hint: "Rugalmas elszámolás kisebb, egyedi feladatokhoz",
         features: [
           "Konkrét fejlesztés a megbeszélt feladatra",
@@ -926,7 +992,7 @@ const hu: Dictionary = {
       },
       {
         name: "Sürgős hibajavítás",
-        price: "24 000 Ft / óra",
+        price: "18 000 Ft / óra",
         hint: "Kiemelt prioritású, gyors beavatkozást igénylő hibákra",
         features: [
           "Hibaanalízis és javítás 24–48 órás célidővel",
@@ -936,7 +1002,7 @@ const hu: Dictionary = {
       },
       {
         name: "Havi support / üzemeltetés",
-        price: "49 000 Ft / hó-tól",
+        price: "29 000 Ft / hó-tól",
         hint: "Karbantartás, kisebb fejlesztések és kiszámítható működés",
         features: [
           "Frissítések, mentések és alap ellenőrzések",
@@ -947,18 +1013,18 @@ const hu: Dictionary = {
     ],
     pcPlans: [
       {
-        name: "PC gyors átvizsgálás + optimalizálás",
-        price: "9 900 Ft-tól",
-        hint: "Állapottól függ • diagnosztika és gyors rendbetétel",
+        name: "PC alapellenőrzés és hibafelmérés",
+        price: "5 000 Ft-tól",
+        hint: "Legfeljebb 30 perces első felmérés • javítás külön egyeztetéssel",
         features: [
-          "Lassulás okainak feltárása (szoftver / hardver)",
-          "Alap karbantartás (startup, takarítás, beállítások)",
+          "A panasz és az alap rendszerállapot ellenőrzése",
+          "Induló programok, tárhely és elérhető hibaadatok áttekintése",
           "Javaslat: mit érdemes javítani vagy bővíteni",
         ],
       },
       {
         name: "Windows újratelepítés + adatmentés",
-        price: "24 900–59 900 Ft",
+        price: "12 900 Ft-tól",
         hint: "Géptípustól és mentési igénytől függ",
         features: [
           "Adatmentés a megbeszélt mappák szerint",
@@ -968,17 +1034,17 @@ const hu: Dictionary = {
       },
       {
         name: "SSD vagy RAM bővítés",
-        price: "14 900 Ft-tól",
+        price: "5 000 Ft-tól",
         hint: "Munkadíj • alkatrész külön",
         features: [
-          "Kompatibilitás ellenőrzés vásárlás előtt",
+          "Kompatibilitás ellenőrzés és egyszerű RAM/SSD-beépítés",
           "Szakszerű beépítés és alap teszt",
-          "Rövid javaslat a további gyorsításhoz",
+          "Klónozás, rendszerköltöztetés és nehéz szétszerelés külön díj",
         ],
       },
       {
         name: "Új gép beüzemelés + átköltöztetés",
-        price: "19 900 Ft-tól",
+        price: "9 900 Ft-tól",
         hint: "Régi gépről újra • kisebb leállással",
         features: [
           "Felhasználói beállítások és alap programok telepítése",
@@ -988,7 +1054,7 @@ const hu: Dictionary = {
       },
       {
         name: "Kisvállalati géppark karbantartás",
-        price: "39 900 Ft / hó-tól",
+        price: "24 900 Ft / hó-tól",
         hint: "2–5 géphez • megelőző karbantartás és gyors reakció",
         features: [
           "Havi állapotellenőrzés és frissítések",
@@ -997,13 +1063,23 @@ const hu: Dictionary = {
         ],
       },
       {
-        name: "Egyedi PC összerakás + beüzemelés",
-        price: "34 900 Ft-tól",
-        hint: "Munkadíj • alkatrészek külön, igényre szabott konfigurációval",
+        name: "PC összeszerelés és alapteszt",
+        price: "12 000 Ft-tól",
+        hint: "Egyszerű asztali konfiguráció • alkatrészek külön",
         features: [
           "Konfigurációtervezés költségkeret és felhasználás alapján",
-          "Összeszerelés, kábelmenedzsment és terheléses teszt",
-          "Windows, driverek és alap szoftverek beállítása",
+          "Összeszerelés, kábelmenedzsment és alap stabilitásteszt",
+          "Operációs rendszer és adatköltöztetés külön ajánlat szerint",
+        ],
+      },
+      {
+        name: "Távoli számítógépes segítség",
+        price: "5 000 Ft-tól",
+        hint: "Első 30 perc • folytatás csak előre egyeztetett díjjal",
+        features: [
+          "Program-, e-mail-, nyomtató- és alap rendszerbeállítások",
+          "Szoftveres hibák, frissítések és lassulások ellenőrzése",
+          "Biztonságos kapcsolódás, csak az egyeztetett időtartamra",
         ],
       },
     ],
@@ -1011,11 +1087,12 @@ const hu: Dictionary = {
   pcService: {
     eyebrow: "Kiegészítő szolgáltatás",
     title: "Eseti PC szerviz és számítógépes segítség",
-    description: "Magánszemélyeknek és vállalkozásoknak Somogy megyében.",
+    description:
+      "Magánszemélyeknek és vállalkozásoknak elsősorban Siófokon és környékén, valamint Somogy megyében. Távolabbi helyszín is egyeztethető.",
     availability: "Elérhetőség",
     area: [
       "📍 Gépleadás: Siófok vagy környéke",
-      "🚗 Igény esetén kiszállás a környéken",
+      "🚗 Kiszállás Somogy megyében, távolabb előzetes egyeztetéssel",
       "💻 Távoli segítség is elérhető",
     ],
     typicalIssues: "Tipikus problémák",
@@ -1041,7 +1118,8 @@ const hu: Dictionary = {
       "Sok esetben egy SSD csere vagy rendszerkarbantartás töredék áron jelentős gyorsulást hoz egy új gép vásárlásához képest.",
   },
   comingSoon: {
-    locationLine: "Siófok - Somogy megye - Magyarország egész területén",
+    locationLine:
+      "Siófok és környéke • Somogy megye • Távolabb egyeztetéssel • Online országosan",
     title: "Hamarosan indulunk 🚀",
     description:
       "Dolgozunk az oldalon. Addig is, ha belső rendszert, automatizálást vagy átlátható összefoglaló nézetet szeretnél, írj nyugodtan emailt.",
@@ -1060,21 +1138,22 @@ const hu: Dictionary = {
     eyebrow: "Rólam",
     title: "Digitális megoldások, emberközelből",
     description:
-      "Zoli vagyok, a Molnár Systems mögött én állok. Mindig azokat a feladatokat szerettem legjobban, ahol egy bonyolult, átláthatatlan folyamatból végül egy egyszerűen használható, stabil rendszer születik.",
-    locationLine: "Siófok • Somogy megye • Országosan online",
+      "Zoli vagyok, a Molnár Systems fejlesztője. Szeretem megérteni, hogyan dolgozik valaki, és olyan szoftvert készíteni, amely illeszkedik a feladataihoz és az ötleteihez.",
+    locationLine:
+      "Siófok és környéke • Somogy megye • Távolabb egyeztetéssel • Online országosan",
   },
   aboutSection: {
     intro: [
-      "Mérnökinformatikusként abban segítek, hogy a vállalkozásod ne az adminisztrációval küzdjön, hanem valóban fejlődhessen. Hiszek a hatékony, átlátható és egyszerű digitális megoldásokban, amelyek valódi értéket teremtenek.",
-      "A Molnár Systemset azért hoztam létre, mert sok kis- és középvállalkozás még mindig Excel táblákra, papíralapú nyilvántartásokra vagy szétszórt eszközökre támaszkodik. Ezek rengeteg időt visznek el a napi működésből, pedig sokszor egy jól átgondolt belső rendszerrel vagy automatizálással jóval egyszerűbbé tehetők.",
-      "Elsősorban olyan megoldásokban segítek, mint az Excel kiváltása, belső admin rendszerek, egyszerű webes felületek, adatkezelés és riportok. Siófok környékéről dolgozom, de ügyfeleimet online egész Magyarországon támogatom.",
-      "Nekem fontos, hogy a megoldás ne csak technikailag legyen jó, hanem a gyakorlatban is kényelmesen használható legyen. Nem túlbonyolított rendszereket szeretnék építeni, hanem olyanokat, amelyek valóban időt spórolnak és átláthatóbbá teszik a működést.",
+      "Mérnökinformatikusként egyedi szoftvereket, webes felületeket és automatizálásokat készítek. Kisvállalkozásoknak és magánszemélyeknek is segítek: egy ismétlődő feladat egyszerűsítésétől egy saját alkalmazás megvalósításáig.",
+      "A Molnár Systems célja, hogy a napi munkát és a saját ötletek megvalósítását átgondolt fejlesztésekkel segítse. Ez lehet egy Excel-táblázat automatizálása, több forrásból érkező adatok összefésülése, egy rendszeresen frissülő kimutatás vagy egy egyedi nyilvántartó alkalmazás. Abból indulok ki, amit már használsz, és közösen megnézzük, min érdemes változtatni.",
+      "Fontos számomra, hogy értsd és kényelmesen tudd használni az elkészült megoldást. Előre egyeztetjük a feladatot és a díjat, fejlesztés közben megmutatom, hol tartunk, az átadáskor pedig végigvesszük a használatát. Kisebb, jól körülhatárolt kéréssel is megkereshetsz.",
+      "A fejlesztés mellett PC-építésben, bővítésben, diagnosztikában és eszközbeállításban is tudok segíteni. Online országosan dolgozom; személyesen elsősorban Siófokon és környékén, valamint Somogy megyében vagyok elérhető. Távolabbi kiszállást előzetes egyeztetéssel vállalok.",
     ],
     valuesTitle: "Amit fontosnak tartok",
     values: [
       {
         title: "Valódi problémák megoldása",
-        desc: "Nem sablonos megoldásokban gondolkodom. Először azt nézzük meg, hol akad el a működés, és csak utána építünk olyan rendszert, ami tényleg segít.",
+        desc: "Először megértem a feladatot és a jelenlegi munkamenetet. Így olyan változtatást tudok javasolni, amelynek a mindennapi használatban is értelme van.",
       },
       {
         title: "Mérnöki szemlélet és stabilitás",
@@ -1082,32 +1161,33 @@ const hu: Dictionary = {
       },
       {
         title: "Egyszerűség és átláthatóság",
-        desc: "Hiszek abban, hogy a jó rendszer nem bonyolult. Az ajánlatadás, a közös munka és maga a kész megoldás is akkor jó, ha világos, logikus és könnyen követhető.",
+        desc: "Világos feladatleírással, egyeztetett díjjal és követhető lépésekkel dolgozom. A kész megoldás mellé érthető használati útmutatót adok.",
       },
       {
         title: "Személyes hozzáállás",
-        desc: "Nálam a projekted nem csak egy újabb feladat. Fontos, hogy megértsem, mire van valóban szükséged, és olyan megoldást adjak, ami a saját működésedhez illik.",
+        desc: "Közvetlenül velem egyeztetsz, és én dolgozom a megoldáson. A kérdéseidet és a használat közben felmerülő észrevételeidet is átbeszéljük.",
       },
     ],
     ctaTitle: "Dolgoznál velem?",
     ctaDesc:
-      "Írj pár sort a jelenlegi helyzetről, és 15 percben átbeszéljük, milyen irány lenne érdemes.",
+      "Írd le az ötletedet vagy azt a feladatot, amit egyszerűsítenél. Az első egyeztetésen megnézzük, hogyan tudok segíteni.",
     ctaButton: "Kapcsolatfelvétel",
   },
   contactPage: {
     eyebrow: "Kapcsolat",
-    title: "Van egy ötleted vagy elakadt egy folyamat?",
+    title: "Ötleted van, vagy segítségre van szükséged?",
     description:
       "Írd meg röviden, miben lenne szükséged segítségre, és megnézzük, hogyan lehet belőle egy egyszerűen használható, működő megoldás. Az első egyeztetés kötetlen.",
     contactDetails: "Elérhetőségek",
     phone: "Telefon:",
     coverage: "Terület:",
-    coverageValue: "Siófok • Somogy megye • Országosan online",
+    coverageValue:
+      "Siófok és környéke • Somogy megye • Távolabb egyeztetéssel • Online országosan",
     helpTitle: "Ez segít, ha megírod",
     helpItems: [
-      "mivel foglalkozik a vállalkozásod",
-      "hol akad el most a folyamat",
-      "mit szeretnél egyszerűsíteni vagy kiváltani",
+      "milyen ötlettel vagy problémával keresel meg",
+      "eszközhiba esetén a pontos típust és a tünetet",
+      "mit szeretnél elérni, és van-e kereted vagy határidőd",
     ],
     responseTitle: "Mire számíthatsz?",
     responseText:
@@ -1117,12 +1197,12 @@ const hu: Dictionary = {
     name: "Név",
     namePlaceholder: "Pl. Kiss Péter",
     emailLabel: "Email",
-    emailPlaceholder: "pl. kiss.peter@ceg.hu",
+    emailPlaceholder: "pl. peter@example.com",
     helpLabel: "Miben segíthetek?",
     helpTooltip:
       "Írd le, mi a probléma és mi a cél, kb. hány felhasználó érintett, van-e határidő. Minél több infó, annál jobb javaslatot tudok adni!",
     detailsPlaceholder:
-      "Írd le röviden a helyzetet: mi a probléma, mi a cél, kb. mennyi felhasználó, van-e határidő.",
+      "Írd le a kérésedet: saját ötlet, weboldal, PC-építés, bővítés vagy eszközhiba. Ha tudod, add meg a típust, a keretet és a határidőt.",
     validationRequired: "Kérlek töltsd ki ezt a mezőt.",
     validationEmail: "Kérlek adj meg egy érvényes email címet.",
     sending: "Küldés...",
@@ -1134,15 +1214,15 @@ const hu: Dictionary = {
   },
   servicesPage: {
     eyebrow: "Szolgáltatások",
-    title: "Gyakori munkák",
+    title: "Digitális és hardveres megoldások",
     description:
-      "Belső rendszerek, automatizálás, rendezett adatkezelés és összefoglalók – plusz PC szerviz.",
+      "Egyedi rendszerek, automatizálás, webes és hardveres segítség — a stabil adatkezeléstől és mentéstől a kereső- és AI-láthatóságig.",
   },
   pricingPage: {
     eyebrow: "Árak",
-    title: "Átlátható csomagok",
+    title: "Kiinduló csomagok, érthető keretek",
     description:
-      "Gyors döntés és eredmény. Pár kérdés után pontos ajánlatot adok.",
+      "Néhány tipikus megoldás irányára. A pontos műszaki tartalmat és költséget rövid felmérés után rögzítjük.",
   },
   notFound: {
     eyebrow: "404",
@@ -1159,6 +1239,7 @@ const en: Dictionary = {
     subtitle: "digitalization • systems",
     items: [
       { href: "/", label: "Home" },
+      { href: "/portfolio", label: "Portfolio" },
       { href: "/services", label: "Services" },
       { href: "/pricing", label: "Pricing" },
       { href: "/about", label: "About" },
@@ -1177,7 +1258,8 @@ const en: Dictionary = {
     },
   },
   footer: {
-    location: "Siófok - Somogy county - Across Hungary",
+    location:
+      "Siófok area • Somogy county • Further afield by arrangement • Online across Hungary",
     services: "Services",
     pricing: "Pricing",
     contact: "Contact",
@@ -1223,7 +1305,7 @@ const en: Dictionary = {
     title:
       "Stop juggling Excel and notes — run your business from one clear dashboard.",
     locationLine:
-      "Molnár Systems • Siófok and Somogy county • Online across Hungary",
+      "Molnár Systems • Siófok area and Somogy county • Further afield by arrangement • Online across Hungary",
     intro:
       "If you are tired of searching through spreadsheets and notes, I build a simple custom system that saves time, reduces errors, and makes operations visible.",
     ctaPrimary: "Book a free consultation",
@@ -1354,19 +1436,22 @@ const en: Dictionary = {
         ],
       },
       {
-        title: "PC maintenance",
+        title: "Hardware and computer solutions",
         items: [
           {
-            text: "SSD/RAM upgrades and speed-up",
-            benefit: "Often cheaper and faster than buying a new computer.",
+            text: "Computer, printer, scanner and peripheral setup",
+            benefit:
+              "Devices are installed, connected and tested before handover.",
           },
           {
-            text: "OS reinstall + data backup",
-            benefit: "Important files stay safe while the system is refreshed.",
+            text: "Remote help for software and configuration problems",
+            benefit:
+              "Many issues can be resolved faster without an on-site visit.",
           },
           {
-            text: "Malware cleanup and baseline security setup",
-            benefit: "Lower risk of data loss and downtime.",
+            text: "Custom PCs, component upgrades and diagnostics",
+            benefit:
+              "Planning, compatibility checks, installation and testing in one place.",
           },
           {
             text: "Startup slowdown and freeze diagnostics",
@@ -1379,6 +1464,26 @@ const en: Dictionary = {
           {
             text: "Basic home or office network cleanup",
             benefit: "More stable internet and fewer connection issues.",
+          },
+          {
+            text: "Printer and scanner installation and network sharing",
+            benefit:
+              "Drivers, scan destinations and shared use across multiple computers can be configured.",
+          },
+          {
+            text: "Monitor, docking station, webcam and peripheral setup",
+            benefit:
+              "Devices are connected correctly and handed over with tested settings.",
+          },
+          {
+            text: "Basic router, Wi-Fi and wired network troubleshooting",
+            benefit:
+              "Help with weak signal, dropouts and device connection problems.",
+          },
+          {
+            text: "External storage and simple backup configuration",
+            benefit:
+              "Important files are stored more clearly with a lower risk of data loss.",
           },
         ],
       },
@@ -1642,6 +1747,28 @@ const en: Dictionary = {
         ],
       },
       {
+        id: "excel-workflow",
+        title:
+          "Clean up or replace an Excel workflow that has outgrown spreadsheets",
+        who: "Small businesses and office teams working in Excel",
+        timeframeLabel: "First usable version in 1–3 weeks",
+        problem: [
+          "Multiple files and conflicting versions circulate by email or shared folders.",
+          "Formulas are fragile and repeated data entry creates avoidable errors.",
+          "It is difficult to see who changed an important value and when.",
+        ],
+        solution: [
+          "Short review of current workbooks and processes, including data cleanup.",
+          "Consistent imports, validated forms, search and access control.",
+          "Automatic summaries, exports and a gradual move to a web app when useful.",
+        ],
+        why: [
+          "Excel import and export can remain, so everything does not change at once.",
+          "Less copying, fewer broken formulas and fewer version conflicts.",
+          "Cleaner data and faster reporting.",
+        ],
+      },
+      {
         id: "admin-automation",
         title: "Automate admin tasks so they do not consume your day",
         who: "SMEs with office-heavy administration",
@@ -1660,6 +1787,27 @@ const en: Dictionary = {
           "Less duplicate work.",
           "Better speed and accuracy together.",
           "More time spent on value-creating work.",
+        ],
+      },
+      {
+        id: "printer-command-line-recovery",
+        title: "Printer failure recovered with command-line diagnostics",
+        who: "Home users and small offices",
+        timeframeLabel: "Focused, fast troubleshooting",
+        problem: [
+          "The printer was connected, but Windows could not use it correctly.",
+          "Normal reconnection and graphical settings did not resolve the issue.",
+          "The print queue, service, port or driver configuration remained in a broken state.",
+        ],
+        solution: [
+          "Inspect the print service, queue and device configuration from the command line.",
+          "Reset the faulty state and align the port and driver configuration.",
+          "Verify with a test page without reinstalling the complete system.",
+        ],
+        why: [
+          "No replacement computer, printer or Windows installation was needed.",
+          "The intervention addressed the cause instead of temporarily bypassing it.",
+          "Similar software and peripheral issues may also be resolved remotely.",
         ],
       },
       {
@@ -1707,38 +1855,38 @@ const en: Dictionary = {
   ],
   pricingGrid: {
     labels: {
-      mostPopular: "Most popular",
+      mostPopular: "Built to grow",
       requestOffer: "Request quote",
       development: "Development",
-      pcAddon: "PC / computer support (add-on)",
+      pcAddon: "PC and computer support",
       noteTitle: "Note:",
       noteText:
-        "The prices above are indicative. I provide an exact quote after a short discussion based on your needs and the complexity of the work.",
+        "Starting prices intentionally cover a narrow, clearly defined scope. Exact features, tax treatment and external costs are confirmed in a written quote after a short assessment.",
     },
     plans: [
       {
-        name: "Assessment + quick win",
-        price: "from 149,000 HUF",
-        hint: "Fast start • solve 1 focused problem first",
+        name: "Workflow assessment + focused solution",
+        price: "from 79,000 HUF",
+        hint: "Assess and solve one clearly defined operational problem",
         features: [
-          "Short workflow assessment and recommendation list",
-          "Quick improvement for 1 specific issue (for example reminder, status or summary)",
+          "Short workflow assessment with prioritized recommendation",
+          "Replace one manual step: reminder, status tracking or a simple summary",
           "Handover and short onboarding",
         ],
       },
       {
         name: "Mini automation sprint",
-        price: "from 229,000 HUF",
+        price: "from 129,000 HUF",
         hint: "2–3 weeks • reduce manual admin with quick practical gains",
         features: [
-          "Simplify forms and recurring admin steps",
+          "1 recurring workflow with up to 2 data sources",
           "Automatic reminders and basic status tracking",
           "Short video handover and usage notes",
         ],
       },
       {
         name: "Quote management starter package",
-        price: "from 329,000 HUF",
+        price: "from 199,000 HUF",
         hint: "Cleaner sales workflow • fewer lost leads",
         features: [
           "Pipeline: lead → quote → follow-up → close",
@@ -1747,40 +1895,40 @@ const en: Dictionary = {
         ],
       },
       {
-        name: "Internal system (modular)",
-        price: "from 590,000 HUF",
-        hint: "First version (MVP) • expandable step by step later",
+        name: "Internal system – starter module",
+        price: "from 349,000 HUF",
+        hint: "A working first version of one core workflow • expandable later",
         popular: true,
         features: [
-          "Client, work and status tracking in one place",
-          "Permissions and basic logging",
-          "Reports and dashboard with the key metrics you need",
+          "One selected workflow and its core business data",
+          "Up to 2 roles, status tracking and basic activity logging",
+          "One overview screen with the most important metrics",
           "Handover and documentation",
         ],
       },
       {
         name: "Website starter package",
-        price: "from 290,000 HUF",
+        price: "from 149,000 HUF",
         hint: "Company presence + lead generation for a fast online start",
         features: [
-          "Responsive website with core structure",
+          "Up to 4 content pages in one language, supplied copy",
           "Contact or quote request form setup",
           "Speed optimization and basic SEO setup",
         ],
       },
       {
         name: "Landing page package",
-        price: "from 199,000 HUF",
+        price: "from 99,000 HUF",
         hint: "One focused page for ads or lead generation",
         features: [
-          "Conversion-focused, mobile-friendly landing page",
+          "1 mobile-friendly page, up to 6 sections, supplied content",
           "Form, thank-you page and basic tracking setup",
-          "Fast delivery with a short revision round",
+          "1 consolidated revision round and handover",
         ],
       },
       {
         name: "Landing page + ad launch",
-        price: "from 279,000 HUF",
+        price: "from 179,000 HUF",
         hint: "Landing page plus basic campaign setup for a measurable start",
         features: [
           "Landing page with conversion form and thank-you page",
@@ -1790,7 +1938,7 @@ const en: Dictionary = {
       },
       {
         name: "Database cleanup + reporting",
-        price: "from 390,000 HUF",
+        price: "from 249,000 HUF",
         hint: "Turn scattered data into a clean base for faster decisions",
         features: [
           "Data cleanup and duplicate reduction",
@@ -1800,27 +1948,27 @@ const en: Dictionary = {
       },
       {
         name: "Website maintenance",
-        price: "from 39,000 HUF / month",
+        price: "from 19,000 HUF / month",
         hint: "Updates, bug fixes and smaller changes in a monthly scope",
         features: [
           "Regular updates, backups and security checks",
-          "Smaller content and functional changes within the monthly scope",
-          "Continuous monitoring of performance and reliability",
+          "1 hour of smaller content and functional changes per month",
+          "Monthly performance and reliability check",
         ],
       },
       {
         name: "System maintenance",
-        price: "from 69,000 HUF / month",
+        price: "from 39,000 HUF / month",
         hint: "For keeping your custom system stable and usable",
         features: [
           "Bug fixing and version maintenance",
-          "Prioritized handling of smaller development requests",
+          "2 hours of smaller improvements or fixes per month",
           "Operational summary and recommended next steps",
         ],
       },
       {
         name: "SEO starter package",
-        price: "from 79,000 HUF / month",
+        price: "from 39,000 HUF / month",
         hint: "Local + technical SEO with small-business focus",
         features: [
           "Technical SEO fixes (speed, meta, indexing)",
@@ -1830,7 +1978,7 @@ const en: Dictionary = {
       },
       {
         name: "SEO + content updates",
-        price: "from 119,000 HUF / month",
+        price: "from 69,000 HUF / month",
         hint: "Technical SEO, content and regular updates together",
         features: [
           "SEO starter package + monthly content updates",
@@ -1840,7 +1988,7 @@ const en: Dictionary = {
       },
       {
         name: "Consulting and planning",
-        price: "18,000 HUF / hour",
+        price: "12,000 HUF / hour",
         hint: "Fast expert input when you are blocked",
         features: [
           "Review of workflows and systems",
@@ -1850,7 +1998,7 @@ const en: Dictionary = {
       },
       {
         name: "Development block – 5 hours",
-        price: "85,000 HUF / package",
+        price: "55,000 HUF / package",
         hint: "For smaller backlog items, quick fixes and mini improvements",
         features: [
           "5 development hours usable within 60 days",
@@ -1860,7 +2008,7 @@ const en: Dictionary = {
       },
       {
         name: "Development block – 10 hours",
-        price: "165,000 HUF / package",
+        price: "105,000 HUF / package",
         hint: "Better effective hourly rate for recurring small requests",
         features: [
           "10 development hours usable within 90 days",
@@ -1870,7 +2018,7 @@ const en: Dictionary = {
       },
       {
         name: "Custom development",
-        price: "18,000 HUF / hour",
+        price: "12,000 HUF / hour",
         hint: "Flexible billing for smaller custom tasks",
         features: [
           "Actual implementation for the agreed task",
@@ -1880,7 +2028,7 @@ const en: Dictionary = {
       },
       {
         name: "Urgent bug fixing",
-        price: "24,000 HUF / hour",
+        price: "18,000 HUF / hour",
         hint: "Priority handling for issues that require fast intervention",
         features: [
           "Issue analysis and fix with a 24–48 hour target window",
@@ -1890,7 +2038,7 @@ const en: Dictionary = {
       },
       {
         name: "Monthly support / operations",
-        price: "from 49,000 HUF / month",
+        price: "from 29,000 HUF / month",
         hint: "Maintenance, small improvements and predictable operation",
         features: [
           "Updates, backups and basic checks",
@@ -1901,18 +2049,18 @@ const en: Dictionary = {
     ],
     pcPlans: [
       {
-        name: "PC quick audit + optimization",
-        price: "from 9,900 HUF",
-        hint: "Depends on condition • diagnostics and quick cleanup",
+        name: "PC basic check and fault assessment",
+        price: "from 5,000 HUF",
+        hint: "Initial assessment up to 30 minutes; repairs quoted separately",
         features: [
-          "Identify the causes of slowdown (software / hardware)",
-          "Basic maintenance (startup, cleanup, settings)",
+          "Check the reported symptom and basic system state",
+          "Review startup tasks, storage and available error data",
           "Recommendation on what to repair or upgrade",
         ],
       },
       {
         name: "Windows reinstall + data backup",
-        price: "24,900–59,900 HUF",
+        price: "from 12,900 HUF",
         hint: "Depends on device type and backup needs",
         features: [
           "Data backup based on the agreed folders",
@@ -1922,17 +2070,17 @@ const en: Dictionary = {
       },
       {
         name: "SSD or RAM upgrade",
-        price: "from 14,900 HUF",
+        price: "from 5,000 HUF",
         hint: "Labour only • parts billed separately",
         features: [
-          "Compatibility check before purchase",
+          "Compatibility check and straightforward RAM/SSD installation",
           "Professional installation and basic testing",
-          "Short recommendation for further speed improvements",
+          "Cloning, migration and complex disassembly quoted separately",
         ],
       },
       {
         name: "New PC setup + migration",
-        price: "from 19,900 HUF",
+        price: "from 9,900 HUF",
         hint: "From old device to new one with minimal downtime",
         features: [
           "User setup and installation of basic software",
@@ -1942,7 +2090,7 @@ const en: Dictionary = {
       },
       {
         name: "Small business device maintenance",
-        price: "from 39,900 HUF / month",
+        price: "from 24,900 HUF / month",
         hint: "For 2–5 devices • preventive maintenance and fast response",
         features: [
           "Monthly health check and updates",
@@ -1951,13 +2099,23 @@ const en: Dictionary = {
         ],
       },
       {
-        name: "Custom PC build + setup",
-        price: "from 34,900 HUF",
-        hint: "Labour only • parts priced separately, based on needs",
+        name: "PC assembly and basic testing",
+        price: "from 12,000 HUF",
+        hint: "Straightforward desktop configuration • parts separate",
         features: [
           "Configuration planning based on budget and intended use",
-          "Assembly, cable management and stress testing",
-          "Windows, drivers and basic software setup",
+          "Assembly, cable management and basic stability tests",
+          "Operating-system installation and migration quoted separately",
+        ],
+      },
+      {
+        name: "Remote computer support",
+        price: "from 5,000 HUF",
+        hint: "First 30 minutes; further work priced in advance",
+        features: [
+          "Software, email, printer and basic system configuration",
+          "Software errors, updates and slowdown checks",
+          "Secure connection limited to the agreed support session",
         ],
       },
     ],
@@ -1965,11 +2123,12 @@ const en: Dictionary = {
   pcService: {
     eyebrow: "Add-on service",
     title: "Occasional PC service and computer support",
-    description: "For individuals and businesses in Somogy county.",
+    description:
+      "For individuals and businesses primarily in the Siófok area and Somogy county. Visits further afield can also be arranged.",
     availability: "Availability",
     area: [
       "📍 Drop-off: Siófok or nearby",
-      "🚗 On-site support available in the area",
+      "🚗 Visits across Somogy county; further afield by prior arrangement",
       "💻 Remote help is also available",
     ],
     typicalIssues: "Typical issues",
@@ -1995,7 +2154,8 @@ const en: Dictionary = {
       "In many cases, an SSD upgrade or proper system maintenance can deliver a major speed boost at a fraction of the cost of buying a new machine.",
   },
   comingSoon: {
-    locationLine: "Siófok - Somogy county - Across Hungary",
+    locationLine:
+      "Siófok area • Somogy county • Further afield by arrangement • Online across Hungary",
     title: "Launching soon 🚀",
     description:
       "We are currently polishing the site. Meanwhile, if you need an internal system, automation or reporting dashboard, feel free to email me.",
@@ -2014,21 +2174,22 @@ const en: Dictionary = {
     eyebrow: "About",
     title: "Digital solutions with a human approach",
     description:
-      "I'm Zoli, the person behind Molnár Systems. I’ve always enjoyed the kind of work where a complex, hard-to-follow process becomes a simple, stable and easy-to-use system.",
-    locationLine: "Siófok • Somogy county • Online across Hungary",
+      "I’m Zoli, the developer behind Molnár Systems. I enjoy understanding how someone works and building software that fits their tasks and ideas.",
+    locationLine:
+      "Siófok area • Somogy county • Further afield by arrangement • Online across Hungary",
   },
   aboutSection: {
     intro: [
-      "As a software engineer, I help businesses focus less on administration and more on real growth. I believe in clear, efficient and simple digital solutions that create real value.",
-      "I started Molnár Systems because many small and medium-sized businesses still rely on spreadsheets, paper-based records or disconnected tools. These setups often consume a lot of time in daily operations, even though a well-designed internal system or a few smart automations could make things much simpler.",
-      "I mainly help with solutions such as replacing spreadsheet-based workflows, building internal admin tools, simple web interfaces, data handling and reporting. I work from the Siófok area but support clients online across Hungary.",
-      "For me, it is important that a solution is not only technically sound but also comfortable to use in everyday work. I prefer building simple, stable systems that actually save time and make operations easier to understand.",
+      "I develop custom software, web interfaces and automations. I work with small businesses and individuals, from simplifying a recurring task to building a personal application.",
+      "Molnár Systems helps people with everyday work and personal ideas through thoughtful development. That might mean automating an Excel workbook, combining data from several sources, creating a regularly updated report or building a custom tracking application. I start with the tools you already use, and we work out what is worth changing.",
+      "I want you to understand the finished solution and feel comfortable using it. We agree the task and fee in advance, I show you progress during development, and we go through how to use it at handover. Small, clearly defined requests are welcome too.",
+      "Alongside development, I also help with PC building, upgrades, diagnostics and device setup. I work online across Hungary; in-person help is primarily available in Siófok and the surrounding area, and across Somogy county. Visits further afield can be arranged in advance.",
     ],
     valuesTitle: "What matters to me",
     values: [
       {
         title: "Solving real problems",
-        desc: "I do not believe in generic templates. First we identify what is actually slowing the workflow down, then we build a solution that truly helps.",
+        desc: "I first understand the task and your current workflow. That helps me suggest changes that make sense in everyday use.",
       },
       {
         title: "Engineering mindset and stability",
@@ -2036,32 +2197,33 @@ const en: Dictionary = {
       },
       {
         title: "Simplicity and transparency",
-        desc: "I believe good systems should be clear and easy to use. The offer, the collaboration and the final product should all feel logical and easy to follow.",
+        desc: "I work with a clear scope, an agreed fee and visible steps. The finished solution comes with understandable instructions.",
       },
       {
         title: "Personal commitment",
-        desc: "Your project is not just another task to me. I want to understand what you really need and build something that fits the way your business actually works.",
+        desc: "You discuss the task directly with me, and I develop the solution. We also go through your questions and feedback from using it.",
       },
     ],
     ctaTitle: "Would you like to work together?",
     ctaDesc:
-      "Send me a short message about your situation, and in 15 minutes we can discuss the best direction.",
+      "Describe your idea or the task you would like to simplify. In our first conversation, we will work out how I can help.",
     ctaButton: "Get in touch",
   },
   contactPage: {
     eyebrow: "Contact",
-    title: "Do you have an idea or a workflow that is getting stuck?",
+    title: "Have an idea or need technical help?",
     description:
       "Send me a short message about what you need help with, and we can look at how to turn it into a simple, practical solution. The first discussion is informal and without obligation.",
     contactDetails: "Contact details",
     phone: "Phone:",
     coverage: "Coverage:",
-    coverageValue: "Siófok • Somogy county • Online across Hungary",
+    coverageValue:
+      "Siófok area • Somogy county • Further afield by arrangement • Online across Hungary",
     helpTitle: "It helps if you include",
     helpItems: [
-      "what your business does",
-      "which workflow is causing friction right now",
-      "what you would like to simplify or replace",
+      "what idea or problem you would like help with",
+      "the exact device model and symptom, if relevant",
+      "your goal, budget and timeframe if known",
     ],
     responseTitle: "What happens next?",
     responseText:
@@ -2071,12 +2233,12 @@ const en: Dictionary = {
     name: "Name",
     namePlaceholder: "e.g. John Smith",
     emailLabel: "Email",
-    emailPlaceholder: "e.g. john@company.com",
+    emailPlaceholder: "e.g. john@example.com",
     helpLabel: "How can I help?",
     helpTooltip:
       "Describe the challenge and the goal, approx. user count, and any deadline. The more detail you share, the better suggestion I can give.",
     detailsPlaceholder:
-      "Briefly describe your situation: what is the problem, what is the goal, approx. user count, and any deadline.",
+      "Describe your request: a personal idea, website, PC build, upgrade or device issue. Include the model, budget and timeframe if you know them.",
     validationRequired: "Please fill out this field.",
     validationEmail: "Please enter a valid email address.",
     sending: "Sending...",
@@ -2088,15 +2250,15 @@ const en: Dictionary = {
   },
   servicesPage: {
     eyebrow: "Services",
-    title: "Common projects for SMEs",
+    title: "Digital and hardware solutions",
     description:
-      "Internal systems, automation, database work and reporting – plus optional PC support.",
+      "Custom systems, automation, web and hardware support — from reliable data and backups to search and AI visibility.",
   },
   pricingPage: {
     eyebrow: "Pricing",
-    title: "Transparent packages",
+    title: "Starting packages with clear scope",
     description:
-      "Fast decisions and practical outcomes. After a few questions, you get a precise offer.",
+      "Indicative prices for typical solutions. The exact technical scope and cost are confirmed after a short assessment.",
   },
   notFound: {
     eyebrow: "404",

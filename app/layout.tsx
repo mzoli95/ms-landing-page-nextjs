@@ -11,11 +11,11 @@ import { getThemeFromCookies } from "@/components/lib/theme.server";
 
 export const metadata: Metadata = {
   title: {
-    default: `${site.name} – Belső rendszerek, automatizálás, riportok`,
+    default: `${site.name} – Fejlesztés és műszaki segítség`,
     template: `%s – ${site.name}`,
   },
   description:
-    "Siófoki és Somogy megyei webfejlesztés, programozás, automatizálás és PC karbantartás: egyedi belső rendszerek KKV-knak, országos online együttműködéssel.",
+    "Webfejlesztés és PC-segítség magánszemélyeknek és cégeknek. Személyesen Siófok és környéke, Somogy megye; távolabbi kiszállás egyeztetéssel, online országosan.",
   metadataBase: new URL(`${site.url}`),
   alternates: {
     canonical: "/",
@@ -38,7 +38,6 @@ export const metadata: Metadata = {
     "siófok fejlesztés",
     "siófok webfejlesztés",
     "siófoki programozó",
-    "ságvár programozó",
     "somogy megye webfejlesztő",
     "somogy megye programozó",
     "siófok pc szerviz",
@@ -51,9 +50,9 @@ export const metadata: Metadata = {
     "szoftverfejlesztő Siófok",
   ],
   openGraph: {
-    title: `${site.name} – Egyedi rendszerek, kevesebb admin, jobb átláthatóság`,
+    title: `${site.name} – Egyedi fejlesztés és számítógépes segítség`,
     description:
-      "Siófok, Ságvár és Somogy megye: webfejlesztés, programozás, automatizálás és számítógépes/PC segítség KKV-knak.",
+      "Siófok és környéke, Somogy megye; távolabbi kiszállás egyeztetéssel: webfejlesztés, programozás, automatizálás és számítógépes/PC segítség magánszemélyeknek és cégeknek.",
     url: site.url,
     siteName: site.name,
     locale: "hu_HU",
@@ -69,12 +68,24 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${site.name} – Egyedi rendszerek, kevesebb admin`,
+    title: `${site.name} – Egyedi fejlesztés és műszaki segítség`,
     description:
-      "Siófoki webfejlesztés és programozás KKV-knak, automatizálással és riportokkal.",
+      "Siófoki webfejlesztés és programozás magánszemélyeknek és cégeknek, automatizálással és riportokkal.",
     images: ["/twitter-image.png"],
   },
   manifest: "/manifest.webmanifest",
+  verification: {
+    ...(process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+      ? { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION }
+      : {}),
+    ...(process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION
+      ? {
+          other: {
+            "msvalidate.01": process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION,
+          },
+        }
+      : {}),
+  },
 };
 
 export default async function RootLayout({
@@ -89,9 +100,14 @@ export default async function RootLayout({
   return (
     <html lang={lang} className={theme === "dark" ? "dark" : ""}>
       <body className="flex min-h-dvh flex-col bg-(--app-bg) text-(--text-1) antialiased">
-        <JsonLd />
+        <JsonLd lang={lang} />
+        <a href="#main-content" className="skip-link">
+          {lang === "en" ? "Skip to content" : "Ugrás a tartalomra"}
+        </a>
         <Navbar lang={lang} initialTheme={theme} />
-        <main className="flex-1">{children}</main>
+        <main id="main-content" tabIndex={-1} className="flex-1">
+          {children}
+        </main>
         <Footer lang={lang} />
         <GoogleAnalytics gaId={gaId} />
         <ScrollDepthTracker />

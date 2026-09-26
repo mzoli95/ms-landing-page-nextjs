@@ -1,14 +1,22 @@
+import { contactTopics } from "@/components/lib/contact-topics";
+import { pageMetadata } from "@/components/lib/metadata";
 import { Section } from "@/components/ui/Section";
-import { LazyContactFormSection } from "@/components/site/LazyPageSections";
+import { ContactForm } from "@/components/site/ContactForm";
 import { Card } from "@/components/ui/Card";
 import { flags, site } from "@/components/lib/site";
 import { getLangFromCookies } from "@/components/lib/i18n";
 import { getDictionary } from "@/components/lib/dictionary";
 
 export const metadata = {
-  title: "Kapcsolat | Molnár Systems",
+  ...pageMetadata(
+    "Kapcsolat",
+    "Írj egyedi szoftver, weboldal, Excel-automatizálás, kimutatás vagy PC-s segítség kapcsán. KKV-knak és magánszemélyeknek; díjmentes első egyeztetés.",
+    "/contact",
+  ),
+  alternates: { canonical: "/contact" },
+  title: "Kapcsolat",
   description:
-    "Vedd fel a kapcsolatot a Molnár Systems-szel. Egyedi belső rendszerek, automatizálás, webes megoldások és digitális egyszerűsítés vállalkozásoknak.",
+    "Írj egyedi szoftver, weboldal, Excel-automatizálás, kimutatás vagy PC-s segítség kapcsán. KKV-knak és magánszemélyeknek; díjmentes első egyeztetés.",
   keywords: [
     "kapcsolat molnár systems",
     "egyedi rendszer kapcsolat",
@@ -17,18 +25,31 @@ export const metadata = {
   ],
 };
 
-export default async function ContactPage() {
+export default async function ContactPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ topic?: string }>;
+}) {
+  const requestedTopic = (await searchParams).topic;
+  const initialTopic = contactTopics.some((item) => item.id === requestedTopic)
+    ? requestedTopic
+    : "";
   const lang = await getLangFromCookies();
   const t = getDictionary(lang);
 
   return (
     <Section
+      heading="h1"
       eyebrow={t.contactPage.eyebrow}
       title={t.contactPage.title}
       description={t.contactPage.description}
     >
       <div className="grid gap-5 lg:grid-cols-3">
         <div className="space-y-5 lg:col-span-2">
+          <ContactForm lang={lang} initialTopic={initialTopic} />
+        </div>
+
+        <div className="space-y-5">
           <Card className="p-6">
             <div className="text-sm font-extrabold text-slate-900">
               {t.contactPage.helpTitle}
@@ -39,11 +60,6 @@ export default async function ContactPage() {
               ))}
             </ul>
           </Card>
-
-          <LazyContactFormSection lang={lang} />
-        </div>
-
-        <div className="space-y-5">
           <Card className="p-6">
             <div className="text-sm font-extrabold text-slate-900">
               {t.contactPage.contactDetails}
@@ -69,7 +85,6 @@ export default async function ContactPage() {
                       {site.phone}
                     </a>{" "}
                   </span>{" "}
-                  {site.phone}
                 </div>
               )}
 
