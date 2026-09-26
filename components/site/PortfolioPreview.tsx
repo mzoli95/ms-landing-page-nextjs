@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import type { Lang } from "@/components/lib/i18n";
+import { getProjects } from "@/components/lib/projects";
 
 export function PortfolioPreview({ lang }: { lang: Lang }) {
   const en = lang === "en";
@@ -82,6 +83,13 @@ export function PortfolioPreview({ lang }: { lang: Lang }) {
                 </h3>
                 <p className="mt-1 text-sm leading-5 text-slate-600">
                   {project.text}
+                </p>
+                <p className="mt-2 text-xs leading-5 text-slate-500">
+                  {en ? "Independent project" : "Saját fejlesztés"} ·{" "}
+                  {
+                    getProjects(lang).find((p) => p.slug === project.slug)
+                      ?.status
+                  }
                 </p>
               </div>
               <ArrowUpRight className="mr-2 h-4 w-4 shrink-0 text-slate-500 transition group-hover:translate-x-0.5" />

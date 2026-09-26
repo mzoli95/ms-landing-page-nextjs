@@ -1,8 +1,9 @@
+import { localizedMetadata } from "@/components/lib/localized-metadata";
 import { Section } from "@/components/ui/Section";
 import { CaseLinks } from "@/components/site/CaseLinks";
 import { getLangFromCookies } from "@/components/lib/i18n";
 import { pageMetadata } from "@/components/lib/metadata";
-export const metadata = pageMetadata(
+const hungarianMetadata = pageMetadata(
   "Tipikus hibák és megoldási útmutatók",
   "Készlettervezés keresési adatokból, éttermi rendeléskezelés és lassú számítógép diagnosztikája: gyakori hibák, javasolt lépések és kapcsolódó projektek.",
   "/usecases",
@@ -28,4 +29,8 @@ export default async function UseCasesPage() {
       <CaseLinks lang={lang} />
     </Section>
   );
+}
+
+export async function generateMetadata() {
+  return localizedMetadata(hungarianMetadata, "/usecases");
 }

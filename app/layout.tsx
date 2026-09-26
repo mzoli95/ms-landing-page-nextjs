@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { localizedMetadata } from "@/components/lib/localized-metadata";
 import "./styles/globals.css";
 import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
@@ -9,7 +10,7 @@ import { site } from "@/components/lib/site";
 import { getLangFromCookies } from "@/components/lib/i18n";
 import { getThemeFromCookies } from "@/components/lib/theme.server";
 
-export const metadata: Metadata = {
+const baseMetadata: Metadata = {
   title: {
     default: `${site.name} – Fejlesztés és műszaki segítség`,
     template: `%s – ${site.name}`,
@@ -87,6 +88,18 @@ export const metadata: Metadata = {
       : {}),
   },
 };
+
+export async function generateMetadata(): Promise<Metadata> {
+  const localized = await localizedMetadata(baseMetadata, "/");
+  const en = (await getLangFromCookies()) === "en";
+  return {
+    ...localized,
+    title: {
+      default: `${site.name} – ${en ? "Software development and PC support" : "Fejlesztés és műszaki segítség"}`,
+      template: `%s – ${site.name}`,
+    },
+  };
+}
 
 export default async function RootLayout({
   children,

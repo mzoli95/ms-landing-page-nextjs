@@ -1,3 +1,4 @@
+import { localizedMetadata } from "@/components/lib/localized-metadata";
 import { pageMetadata } from "@/components/lib/metadata";
 import { getLangFromCookies } from "@/components/lib/i18n";
 import { Container } from "@/components/ui/Container";
@@ -5,7 +6,7 @@ import { Section } from "@/components/ui/Section";
 import { ProjectGrid } from "@/components/site/ProjectGrid";
 import { ToyzumiDemo } from "@/components/site/ToyzumiDemo";
 import { CaseLinks } from "@/components/site/CaseLinks";
-export const metadata = pageMetadata(
+const hungarianMetadata = pageMetadata(
   "Portfólió – ToyZumi, Menutivo és Molnár Diagnostic",
   "Saját fejlesztésű rendszerek működés közben: keresletvezérelt webshop, éttermi QR-rendelés és Windows-diagnosztika. Problémák, megoldások és részletes projektbemutatók.",
   "/portfolio",
@@ -97,4 +98,8 @@ export default async function PortfolioPage() {
       </Section>
     </>
   );
+}
+
+export async function generateMetadata() {
+  return localizedMetadata(hungarianMetadata, "/portfolio");
 }

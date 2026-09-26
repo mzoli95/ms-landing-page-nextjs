@@ -1,10 +1,11 @@
+import { localizedMetadata } from "@/components/lib/localized-metadata";
 import Link from "next/link";
 import { pageMetadata } from "@/components/lib/metadata";
 import { Section } from "@/components/ui/Section";
 import { ServicePaths } from "@/components/site/ServicePaths";
 import { ServicesPreview } from "@/components/site/ServicesPreview";
 import { getLangFromCookies } from "@/components/lib/i18n";
-export const metadata = pageMetadata(
+const hungarianMetadata = pageMetadata(
   "Egyedi szoftver, webfejlesztés és automatizálás – szolgáltatások",
   "Egyedi szoftver, weboldal, webalkalmazás és automatizálás magánszemélyeknek és vállalkozásoknak. Kiegészítő PC-s és műszaki segítség is kérhető.",
   "/services",
@@ -92,4 +93,8 @@ export default async function ServicesPage() {
       </Section>
     </>
   );
+}
+
+export async function generateMetadata() {
+  return localizedMetadata(hungarianMetadata, "/services");
 }

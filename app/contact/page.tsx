@@ -1,3 +1,4 @@
+import { localizedMetadata } from "@/components/lib/localized-metadata";
 import { contactTopics } from "@/components/lib/contact-topics";
 import { pageMetadata } from "@/components/lib/metadata";
 import { Section } from "@/components/ui/Section";
@@ -7,7 +8,7 @@ import { flags, site } from "@/components/lib/site";
 import { getLangFromCookies } from "@/components/lib/i18n";
 import { getDictionary } from "@/components/lib/dictionary";
 
-export const metadata = {
+const hungarianMetadata = {
   ...pageMetadata(
     "Kapcsolat",
     "Írj egyedi szoftver, weboldal, Excel-automatizálás, kimutatás vagy PC-s segítség kapcsán. KKV-knak és magánszemélyeknek; díjmentes első egyeztetés.",
@@ -109,4 +110,8 @@ export default async function ContactPage({
       </div>
     </Section>
   );
+}
+
+export async function generateMetadata() {
+  return localizedMetadata(hungarianMetadata, "/contact");
 }

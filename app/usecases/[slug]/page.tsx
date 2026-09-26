@@ -10,9 +10,16 @@ import { site } from "@/components/lib/site";
 type Props = { params: Promise<{ slug: string }> };
 export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
-  const item = getCases("hu").find((item) => item.slug === slug);
+  const lang = await getLangFromCookies();
+  const item = getCases(lang).find((item) => item.slug === slug);
   return item
-    ? pageMetadata(item.title, item.summary, `/usecases/${slug}`)
+    ? pageMetadata(
+        item.title,
+        item.summary,
+        `/usecases/${slug}`,
+        undefined,
+        lang,
+      )
     : {};
 }
 export default async function CasePage({ params }: Props) {

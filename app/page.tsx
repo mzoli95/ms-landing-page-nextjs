@@ -1,3 +1,4 @@
+import { localizedMetadata } from "@/components/lib/localized-metadata";
 import { PortfolioPreview } from "@/components/site/PortfolioPreview";
 import { Hero } from "@/components/site/Hero";
 import { Section } from "@/components/ui/Section";
@@ -10,8 +11,9 @@ import { flags } from "@/components/lib/site";
 import { getLangFromCookies } from "@/components/lib/i18n";
 import { getDictionary } from "@/components/lib/dictionary";
 import { pageMetadata } from "@/components/lib/metadata";
+import Link from "next/link";
 
-export const metadata = pageMetadata(
+const hungarianMetadata = pageMetadata(
   "Egyedi szoftver és webfejlesztés",
   "Egyedi szoftver, weboldal, webalkalmazás és automatizálás magánszemélyeknek és cégeknek, országosan online. Személyesen Siófok és Somogy megye, távolabb egyeztetéssel.",
   "/",
@@ -42,25 +44,51 @@ export default async function HomePage() {
           <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6">
             <h3 className="text-lg font-bold text-slate-900">
               {en
-                ? "For small businesses"
-                : "KKV-knak és egyéni vállalkozóknak"}
+                ? "Software and automation"
+                : "Szoftverfejlesztés és automatizálás"}
             </h3>
             <p className="mt-3 text-sm leading-7 text-slate-600">
               {en
                 ? "Merge monthly Excel exports, follow up quotes, see stock and costs in one report, or build an online service. We can start with a single recurring task."
                 : "Havi Excel-exportok összefésülése, ajánlatok követése, készlet és költségek egy kimutatásban, vagy saját online szolgáltatás. Egyetlen visszatérő feladattal is elindulhatunk."}
             </p>
+            <Link
+              href="/contact?topic=development"
+              className="mt-5 inline-flex min-h-11 items-center font-semibold text-blue-700 underline underline-offset-4 dark:text-blue-300"
+            >
+              {en
+                ? "Describe the task you would simplify →"
+                : "Leírom, melyik feladatot egyszerűsíteném →"}
+            </Link>
+            <p className="mt-3 text-xs text-slate-500">
+              {en
+                ? "For businesses, individuals and personal ideas."
+                : "Vállalkozásoknak, magánszemélyeknek és saját ötletekhez."}
+            </p>
           </div>
           <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6">
             <h3 className="text-lg font-bold text-slate-900">
               {en
-                ? "For individuals and personal projects"
-                : "Magánszemélyeknek és saját ötletekhez"}
+                ? "PC service and device support"
+                : "PC-szerviz és eszközbeállítás"}
             </h3>
             <p className="mt-3 text-sm leading-7 text-slate-600">
               {en
-                ? "A portfolio, a hobby tracker, an expense summary or a small custom application. You do not need a business or a finished specification to get started."
-                : "Portfólió, hobbigyűjtemény nyilvántartása, költségösszesítő vagy egy kis egyedi alkalmazás. Nem kell hozzá vállalkozás vagy kész műszaki terv."}
+                ? "A slow computer, an upgrade, a new PC build or a device that needs setting up. We start with the symptoms and agree the next step and fee before work begins."
+                : "Lassú számítógép, bővítés, új PC építése vagy egy beállításra váró eszköz. A tünetekből indulunk ki, és a munka előtt egyeztetjük a következő lépést és a díjat."}
+            </p>
+            <Link
+              href="/contact?topic=hardware"
+              className="mt-5 inline-flex min-h-11 items-center font-semibold text-blue-700 underline underline-offset-4 dark:text-blue-300"
+            >
+              {en
+                ? "Describe my PC or device issue →"
+                : "Leírom a gépem vagy eszközöm problémáját →"}
+            </Link>
+            <p className="mt-3 text-xs text-slate-500">
+              {en
+                ? "Siófok area and Somogy county; remote help across Hungary."
+                : "Siófok és környéke, Somogy megye; távsegítség országosan."}
             </p>
           </div>
         </div>
@@ -111,4 +139,8 @@ export default async function HomePage() {
       </Section>
     </>
   );
+}
+
+export async function generateMetadata() {
+  return localizedMetadata(hungarianMetadata, "/");
 }

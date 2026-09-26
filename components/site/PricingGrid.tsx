@@ -15,11 +15,13 @@ function PlanCard({
   plan,
   lang,
   hardware = false,
+  topic = "development",
   showDetails = true,
 }: {
   plan: Plan;
   lang: Lang;
   hardware?: boolean;
+  topic?: string;
   showDetails?: boolean;
 }) {
   const t = getDictionary(lang);
@@ -65,7 +67,7 @@ function PlanCard({
           <div className="mt-4 rounded-xl bg-slate-50 p-4 text-sm leading-6 text-slate-600">
             {hardware
               ? lang === "en"
-                ? "The listed price is the service fee. Parts are quoted separately after compatibility checks and a short assessment; no component is purchased without approval."
+                ? "The listed price is the service fee. Parts are quoted separately after compatibility checks and a short assessment; no component is purchased without approval. For printers, scanners, network and other electronic devices, we agree whether a specialist repair is needed after setup and diagnosis."
                 : "A feltüntetett összeg munkadíj. Az alkatrészekre kompatibilitás-ellenőrzés és rövid felmérés után külön ajánlat készül; jóváhagyás nélkül nem történik beszerzés. Nyomtató, szkenner, hálózati és egyéb elektronikai eszköznél a beállítás és hibafeltárás után egyeztetjük, ha szakszervizes alkatrészjavítás szükséges."
               : lang === "en"
                 ? "The starting price covers the listed baseline scope. Data sources, users, integrations, delivery criteria and any external subscription fees are confirmed before work begins."
@@ -75,7 +77,7 @@ function PlanCard({
       )}
 
       <div className="mt-auto pt-6">
-        <Button href="/contact" className="w-full">
+        <Button href={`/contact?topic=${topic}`} className="w-full">
           {t.pricingGrid.labels.requestOffer}
         </Button>
       </div>
@@ -91,224 +93,158 @@ export function PricingGrid({
   mode?: "full" | "teaser" | "link-only";
 }) {
   const t = getDictionary(lang);
-  const isTeaser = mode === "teaser";
-  const isLinkOnly = mode === "link-only";
-  const plans = isTeaser
-    ? [t.pricingGrid.plans[5], t.pricingGrid.plans[1], t.pricingGrid.plans[3]]
-    : t.pricingGrid.plans.slice(0, 8);
-  const pc = isTeaser ? [] : t.pricingGrid.pcPlans;
-  const recurring = t.pricingGrid.plans.filter((p) => /hó|month/.test(p.price));
-  const additional = t.pricingGrid.plans
-    .slice(12)
-    .filter((p) => !/hó|month/.test(p.price));
-  const fullPricingLabel =
-    lang === "en" ? "Go to pricing" : "Tovább az árakhoz";
-
-  if (isLinkOnly) {
+  const en = lang === "en";
+  const { plans, pcPlans } = t.pricingGrid;
+  const topicFor = (plan: Plan) => {
+    const index = plans.indexOf(plan);
+    if ([4, 5, 6, 8, 10, 11].includes(index)) return "web";
+    if (index === 1) return "excel";
+    if (index === 7) return "reports";
+    return "development";
+  };
+  const featured = [
+    { plan: plans[15], topic: "development", hardware: false },
+    { plan: plans[5], topic: "web", hardware: false },
+    { plan: plans[1], topic: "excel", hardware: false },
+    { plan: pcPlans[6], topic: "hardware", hardware: true },
+  ];
+  const groups = [
+    {
+      id: "development",
+      title: en
+        ? "Software, websites and automation"
+        : "Szoftver, weboldal és automatizálás",
+      items: plans.slice(0, 8),
+      hardware: false,
+    },
+    {
+      id: "hardware",
+      title: en
+        ? "PC service, device setup and remote help"
+        : "PC-szerviz, eszközbeállítás és távsegítség",
+      items: pcPlans,
+      hardware: true,
+    },
+    {
+      id: "support",
+      title: en
+        ? "Monthly maintenance and visibility"
+        : "Havi karbantartás és láthatóság",
+      items: plans.filter((p) => /hó|month/.test(p.price)),
+      hardware: false,
+    },
+    {
+      id: "consulting",
+      title: en
+        ? "Consulting and development hours"
+        : "Tanácsadás és fejlesztési órakeretek",
+      items: plans.slice(12).filter((p) => !/hó|month/.test(p.price)),
+      hardware: false,
+    },
+  ];
+  if (mode === "link-only")
     return (
-      <div className="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8">
-        <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
-          <p className="max-w-2xl text-sm leading-7 text-slate-600">
-            {lang === "en"
-              ? "You can start with a package, or request a fully custom quote. Full details are on the Pricing page."
-              : "Indulhatsz csomaggal, de teljesen egyedi ajánlatot is kérhetsz. A teljes részletek az Ár oldalon vannak."}
-          </p>
-          <div className="flex flex-wrap items-center gap-3 sm:justify-end">
-            <Button href="/pricing">{fullPricingLabel}</Button>
-            <Button href="/contact" variant="ghost">
-              {lang === "en"
-                ? "Request a custom quote"
-                : "Egyedi ajánlatot kérek"}
-            </Button>
-          </div>
-        </div>
-      </div>
+      <Button href="/pricing">
+        {en ? "View all prices" : "Teljes árlista"}
+      </Button>
     );
-  }
-
   return (
     <div className="space-y-10">
-      {!isTeaser && (
-        <div className="rounded-2xl border border-blue-200 bg-blue-50 p-6 dark:border-blue-900 dark:bg-blue-950/40">
-          <h2 className="text-lg font-bold text-slate-900">
-            {lang === "en"
-              ? "What do these prices mean?"
-              : "Hogyan olvasd az árakat?"}
-          </h2>
-          <p className="mt-3 max-w-3xl text-sm leading-7 text-slate-600">
-            {lang === "en"
-              ? "Project packages are one-time fees for the listed baseline scope. Monthly packages are recurring services; hourly work is billed by the agreed time allowance. Hosting, domains, licences, advertising budgets and hardware are quoted separately where needed."
-              : "A fejlesztési csomagok egyszeri díjak a felsorolt alaptartalomra. A havi csomagok rendszeres szolgáltatások, az óradíjas feladatoknál egyeztetett időkerettel dolgozunk. A tárhely, domain, licencek, hirdetési keret és alkatrészek szükség esetén külön tételként szerepelnek az ajánlatban."}
-          </p>
-          <p className="mt-3 text-sm leading-6 text-slate-600">
-            {t.pricingGrid.labels.noteText}
-          </p>
-        </div>
-      )}
-
-      <div>
-        <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <div className="text-lg font-extrabold text-slate-900">
-              {t.pricingGrid.labels.development}
-            </div>
-            <p className="mt-1 text-sm text-slate-600">
-              {lang === "en"
-                ? "Choose by outcome; the exact scope is finalized together."
-                : "Eredmény alapján válassz; a pontos tartalmat közösen véglegesítjük."}
-            </p>
-          </div>
-          <span className="w-fit rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-bold text-blue-700 dark:border-blue-800 dark:bg-blue-950 dark:text-blue-200">
-            {lang === "en" ? "One-time projects" : "Egyszeri fejlesztés"}
-          </span>
-        </div>
-        <div
-          className={
-            isTeaser
-              ? "mt-4 grid gap-5 lg:grid-cols-3"
-              : "mt-4 grid gap-5 md:grid-cols-2"
-          }
-        >
-          {plans.map((p) => (
+      <section aria-labelledby="starting-options">
+        <h2 id="starting-options" className="text-xl font-bold text-slate-900">
+          {en ? "Four ways to get started" : "Négy lehetőség az induláshoz"}
+        </h2>
+        <p className="mt-3 text-sm leading-7 text-slate-600">
+          {en
+            ? "Choose a starting point. You do not need to know the technical solution yet."
+            : "Válassz kiindulópontot. A műszaki megoldást még nem kell tudnod."}
+        </p>
+        <div className="mt-5 grid gap-5 md:grid-cols-2">
+          {featured.map(({ plan, topic, hardware }) => (
             <PlanCard
-              key={p.name}
-              plan={p}
+              key={plan.name}
+              plan={plan}
               lang={lang}
-              showDetails={!isTeaser}
+              topic={topic}
+              hardware={hardware}
+              showDetails={false}
             />
           ))}
         </div>
+      </section>
+      <div className="rounded-2xl border border-blue-200 bg-blue-50 p-6 dark:border-blue-900 dark:bg-blue-950/40">
+        <h2 className="text-lg font-bold text-slate-900">
+          {en ? "What the prices cover" : "Mit tartalmaznak az árak?"}
+        </h2>
+        <p className="mt-3 text-sm leading-7 text-slate-600">
+          {en
+            ? "Project fees cover the listed scope. Monthly services recur; hourly work uses an agreed time allowance. Hosting, domains, licences, advertising budgets, parts and travel are separate where applicable. We agree the scope and total fee before work begins."
+            : "A projektdíj a felsorolt tartalmat fedezi. A havi szolgáltatások ismétlődő díjak, az óradíjas munkákhoz időkeretet egyeztetünk. A tárhely, domain, licencek, hirdetési keret, alkatrészek és kiszállás szükség esetén külön tételek. A tartalmat és a végösszeget a munka előtt rögzítjük."}
+        </p>
+        <p className="mt-3 text-sm leading-6 text-slate-600">
+          {t.pricingGrid.labels.noteText}
+        </p>
       </div>
-
-      {!isTeaser && (
-        <div className="space-y-5">
-          {[
-            {
-              title:
-                lang === "en"
-                  ? "Monthly support and visibility"
-                  : "Havi támogatás és láthatóság",
-              items: recurring,
-            },
-            {
-              title:
-                lang === "en"
-                  ? "Consulting and development hours"
-                  : "Tanácsadás és fejlesztési órakeretek",
-              items: additional,
-            },
-          ].map((group) => (
+      {mode === "full" ? (
+        <section aria-labelledby="all-prices" className="space-y-4">
+          <h2 id="all-prices" className="text-xl font-bold text-slate-900">
+            {en
+              ? "Full price list by service"
+              : "Teljes árlista, szolgáltatásonként"}
+          </h2>
+          {groups.map((group) => (
             <details
-              key={group.title}
-              className="rounded-2xl border border-slate-200 bg-white p-6"
+              key={group.id}
+              id={`pricing-${group.id}`}
+              className="group rounded-2xl border border-slate-200 bg-white p-5 sm:p-6"
             >
-              <summary className="cursor-pointer text-lg font-bold text-slate-900">
-                {group.title}{" "}
-                <span className="ml-2 text-sm font-normal text-slate-500">
-                  ({group.items.length})
+              <summary className="flex min-h-11 cursor-pointer items-center justify-between gap-4 text-lg font-bold text-slate-900">
+                <span>
+                  {group.title}{" "}
+                  <span className="text-sm font-normal text-slate-500">
+                    ({group.items.length})
+                  </span>
+                </span>
+                <span aria-hidden="true" className="group-open:rotate-45">
+                  +
                 </span>
               </summary>
-              <p className="mt-4 text-sm leading-6 text-slate-600">
-                {lang === "en"
-                  ? "Monthly allowances, response times and external costs are agreed in the quote."
-                  : "A havi keretet, a vállalt válaszidőt és a külső költségeket az ajánlatban rögzítjük."}
-              </p>
               <div className="mt-6 grid gap-5 md:grid-cols-2">
                 {group.items.map((plan) => (
-                  <PlanCard key={plan.name} plan={plan} lang={lang} />
+                  <PlanCard
+                    key={plan.name}
+                    plan={plan}
+                    lang={lang}
+                    hardware={group.hardware}
+                    topic={group.hardware ? "hardware" : topicFor(plan)}
+                  />
                 ))}
               </div>
+              {group.hardware && (
+                <p className="mt-5 rounded-xl bg-slate-50 p-5 text-sm leading-7 text-slate-600">
+                  {en
+                    ? "Visits: primarily Siófok and Somogy county, further afield by arrangement. Siófok and the surrounding 10 km: HUF 4,900. Beyond that: an additional HUF 180/km for the return journey. Parking and tolls are agreed in advance. Travel does not include labour."
+                    : "Kiszállás: elsősorban Siófok és Somogy megye, távolabb egyeztetéssel. Siófok és 10 km-es körzete: 4 900 Ft. Ezen túl +180 Ft/km az oda-vissza útra. A parkolást és útdíjat előre egyeztetjük. A kiszállás a munkadíjat nem tartalmazza."}
+                </p>
+              )}
             </details>
           ))}
-        </div>
+        </section>
+      ) : (
+        <Button href="/pricing" variant="ghost">
+          {en ? "View all prices" : "Teljes árlista"}
+        </Button>
       )}
-
-      {isTeaser && (
-        <div className="rounded-2xl border border-slate-200 bg-white p-6">
-          <p className="text-sm text-slate-600">
-            {lang === "en"
-              ? "You can find all package scopes, add-ons, and notes on the dedicated pricing page."
-              : "Az összes csomag tartalma, kiegészítő opció és megjegyzés a külön Ár oldalra került."}
-          </p>
-          <div className="mt-4">
-            <Button href="/pricing" variant="ghost">
-              {fullPricingLabel}
-            </Button>
-          </div>
-        </div>
-      )}
-
-      {!isTeaser && (
-        <>
-          <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6 text-sm text-slate-600">
-            <span className="font-semibold text-slate-900">
-              {t.pricingGrid.labels.noteTitle}
-            </span>{" "}
-            {t.pricingGrid.labels.noteText}
-          </div>
-
-          <div className="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8">
-            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-              <p className="max-w-2xl text-sm leading-7 text-slate-600">
-                {lang === "en"
-                  ? "Need a custom scope? Send a short brief and I will prepare a tailored quote."
-                  : "Nem illik rád egyik csomag sem? Írj pár sort az igényedről, és küldök egyedi ajánlatot."}
-              </p>
-              <Button href="/contact">
-                {lang === "en"
-                  ? "Request a custom quote"
-                  : "Egyedi ajánlatot kérek"}
-              </Button>
-            </div>
-          </div>
-        </>
-      )}
-      {!isTeaser && (
-        <div>
-          <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <div className="text-lg font-extrabold text-slate-900">
-                {lang === "en"
-                  ? "Additional PC and device support"
-                  : "Kiegészítő PC-s és műszaki segítség"}
-              </div>
-              <p className="mt-1 text-sm text-slate-600">
-                {lang === "en"
-                  ? "Remote help, device setup, upgrades or a complete custom-built computer."
-                  : "Távsegítség, eszközbeállítás, célzott bővítés vagy teljes, egyedi számítógép."}
-              </p>
-            </div>
-            <span className="w-fit rounded-full border border-cyan-200 bg-cyan-50 px-3 py-1 text-xs font-bold text-cyan-800 dark:border-cyan-900 dark:bg-cyan-950 dark:text-cyan-200">
-              {lang === "en"
-                ? "Parts quoted separately"
-                : "Alkatrész külön árajánlat"}
-            </span>
-          </div>
-          <div className="mt-4 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-            {pc.map((p) => (
-              <PlanCard
-                key={p.name}
-                plan={p}
-                lang={lang}
-                hardware
-                showDetails={!isTeaser}
-              />
-            ))}
-          </div>
-          {!isTeaser && (
-            <div className="mt-5 rounded-2xl border border-cyan-200 bg-cyan-50 p-5 dark:border-cyan-900 dark:bg-cyan-950/50">
-              <div className="font-bold text-slate-900">
-                {lang === "en" ? "On-site visit" : "Kiszállás"}
-              </div>
-              <p className="mt-2 text-sm leading-6 text-slate-600">
-                {lang === "en"
-                  ? "Visits are primarily available in the Siófok area and Somogy county; locations further afield and timing can be arranged in advance. Siófok and the surrounding 10 km: fixed 4,900 HUF. Beyond that: +180 HUF/km, calculated for the return journey. Parking or toll fees are agreed in advance. The travel fee does not include labour."
-                  : "Elsősorban Siófokon és környékén, valamint Somogy megyében vállalok kiszállást; távolabbi helyszín és időpont is egyeztethető. Siófok és 10 km-es körzete: fix 4 900 Ft. Ezen túl +180 Ft/km, az oda-vissza útra számolva. A parkolási vagy útdíjat előre egyeztetjük. A kiszállási díj a munkadíjat nem tartalmazza."}
-              </p>
-            </div>
-          )}
-        </div>
-      )}
+      <div className="flex flex-wrap items-center justify-between gap-5 rounded-2xl border border-slate-200 bg-white p-6">
+        <p className="max-w-2xl text-sm leading-7 text-slate-600">
+          {en
+            ? "Does your request fall outside these packages? Describe the task or the issue with your device, and we will work out a suitable scope."
+            : "Nem illik rád egyik csomag sem? Írd le a feladatot vagy az eszközöd hibáját, és közösen meghatározzuk a szükséges munkát."}
+        </p>
+        <Button href="/contact?topic=other">
+          {en ? "Request a custom quote" : "Egyedi ajánlatot kérek"}
+        </Button>
+      </div>
     </div>
   );
 }

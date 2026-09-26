@@ -1,3 +1,4 @@
+import { localizedMetadata } from "@/components/lib/localized-metadata";
 import Link from "next/link";
 import { pageMetadata } from "@/components/lib/metadata";
 import { getLangFromCookies } from "@/components/lib/i18n";
@@ -6,7 +7,7 @@ import { Container } from "@/components/ui/Container";
 import { ServicePaths } from "@/components/site/ServicePaths";
 import { Breadcrumbs } from "@/components/site/Breadcrumbs";
 
-export const metadata = pageMetadata(
+const hungarianMetadata = pageMetadata(
   "PC-építés, bővítés és diagnosztika Siófok környékén",
   "PC-építés, RAM/SSD-bővítés, diagnosztika és távsegítség magánszemélyeknek és KKV-knak. Siófok és Somogy megye, távolabb egyeztetéssel. Alapellenőrzés 5 000 Ft-tól.",
   "/services/pc-hardver",
@@ -90,4 +91,8 @@ export default async function HardwarePage() {
       </Section>
     </>
   );
+}
+
+export async function generateMetadata() {
+  return localizedMetadata(hungarianMetadata, "/services/pc-hardver");
 }

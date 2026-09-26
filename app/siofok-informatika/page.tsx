@@ -1,3 +1,5 @@
+import { localizedMetadata } from "@/components/lib/localized-metadata";
+import { getLangFromCookies } from "@/components/lib/i18n";
 import { pageMetadata } from "@/components/lib/metadata";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -5,7 +7,7 @@ import { Card } from "@/components/ui/Card";
 import { Section } from "@/components/ui/Section";
 import { site } from "@/components/lib/site";
 
-export const metadata: Metadata = {
+const hungarianMetadata: Metadata = {
   ...pageMetadata(
     "Informatikai segítség és programozó Siófok környékén",
     "Webfejlesztés, egyedi szoftver, adatbázis, automatizálás, PC-, nyomtató- és hálózati segítség elsősorban Siófokon és környékén, valamint Somogy megyében. Távolabbi kiszállás előzetes egyeztetéssel, online segítség országosan.",
@@ -33,45 +35,77 @@ export const metadata: Metadata = {
   },
 };
 
-const groups = [
+const getGroups = (en: boolean) => [
   {
-    title: "Egyedi fejlesztés és programozás",
-    text: "Belső adminrendszerek, kisebb webalkalmazások, Excel-folyamatok kiváltása, ajánlat- és munkanyilvántartás, automatizált értesítések.",
+    title: en
+      ? "Custom development and programming"
+      : "Egyedi fejlesztés és programozás",
+    text: en
+      ? "Internal administration systems, small web applications, replacing manual Excel workflows, tracking quotes and jobs, and automated notifications."
+      : "Belső adminrendszerek, kisebb webalkalmazások, Excel-folyamatok kiváltása, ajánlat- és munkanyilvántartás, automatizált értesítések.",
   },
   {
-    title: "Weboldal és online láthatóság",
-    text: "Gyors, mobilbarát weboldal, technikai SEO, helyi keresési alapok és AI-keresők számára is világos, strukturált tartalom.",
+    title: en
+      ? "Websites and online visibility"
+      : "Weboldal és online láthatóság",
+    text: en
+      ? "Fast, mobile-friendly websites, technical SEO, local search foundations and clear, structured content for AI search engines too."
+      : "Gyors, mobilbarát weboldal, technikai SEO, helyi keresési alapok és AI-keresők számára is világos, strukturált tartalom.",
   },
   {
-    title: "Adatbázis és adatrendezés",
-    text: "SQL vagy NoSQL adatmodell, Excel- és CSV-import, adattisztítás, migráció, keresés, jogosultságok és biztonsági mentés.",
+    title: en ? "Databases and data organisation" : "Adatbázis és adatrendezés",
+    text: en
+      ? "SQL or NoSQL data models, Excel and CSV imports, data cleaning, migration, search, permissions and backups."
+      : "SQL vagy NoSQL adatmodell, Excel- és CSV-import, adattisztítás, migráció, keresés, jogosultságok és biztonsági mentés.",
   },
   {
-    title: "PC, nyomtató és hálózat",
-    text: "Hibafeltárás, gépgyorsítás, alkatrészbővítés, Windows-beállítás, nyomtató és szkenner telepítése, Wi-Fi és alap hálózati segítség.",
+    title: en ? "PCs, printers and networks" : "PC, nyomtató és hálózat",
+    text: en
+      ? "Troubleshooting, performance improvements, hardware upgrades, Windows configuration, printer and scanner setup, Wi-Fi and basic network support."
+      : "Hibafeltárás, gépgyorsítás, alkatrészbővítés, Windows-beállítás, nyomtató és szkenner telepítése, Wi-Fi és alap hálózati segítség.",
   },
 ];
 
-const faqs = [
+const getFaqs = (en: boolean) => [
   [
-    "Hol érhető el helyszíni segítség?",
-    "Személyesen elsősorban Siófokon és környékén, valamint Somogy megyében segítek. Távolabbi kiszállás is kérhető előzetes egyeztetéssel. Távsegítség és fejlesztés országosan elérhető.",
+    en
+      ? "Where is on-site help available?"
+      : "Hol érhető el helyszíni segítség?",
+    en
+      ? "In-person help is primarily available in Siófok and the surrounding area, and across Somogy county. Visits further afield can be arranged in advance. Remote help and development are available across Hungary."
+      : "Személyesen elsősorban Siófokon és környékén, valamint Somogy megyében segítek. Távolabbi kiszállás is kérhető előzetes egyeztetéssel. Távsegítség és fejlesztés országosan elérhető.",
   ],
   [
-    "Vállalsz kisebb fejlesztési feladatot is?",
-    "Igen. Egy jól körülhatárolt Excel-rendbetétel, automatizálás, űrlap, riport vagy kisebb belső program is lehet önálló projekt.",
+    en
+      ? "Do you take on small development tasks?"
+      : "Vállalsz kisebb fejlesztési feladatot is?",
+    en
+      ? "Yes. A clearly defined Excel cleanup, automation, form, report or small internal application can be a project in its own right."
+      : "Igen. Egy jól körülhatárolt Excel-rendbetétel, automatizálás, űrlap, riport vagy kisebb belső program is lehet önálló projekt.",
   ],
   [
-    "SQL és NoSQL adatbázissal is dolgozol?",
-    "Igen, de nem technológia alapján választok: az adatok szerkezete, a keresések, a terhelés és a későbbi bővíthetőség dönti el a megfelelő megoldást.",
+    en
+      ? "Do you work with both SQL and NoSQL databases?"
+      : "SQL és NoSQL adatbázissal is dolgozol?",
+    en
+      ? "Yes. The choice depends on your data structure, queries, workload and future needs rather than a preference for a particular technology."
+      : "Igen, de nem technológia alapján választok: az adatok szerkezete, a keresések, a terhelés és a későbbi bővíthetőség dönti el a megfelelő megoldást.",
   ],
   [
-    "Hardveres és szoftveres hibával is lehet keresni?",
-    "Igen. PC, laptop, nyomtató, szkenner és alap hálózati probléma mellett webes és egyedi szoftveres feladatokkal is foglalkozom.",
+    en
+      ? "Can I contact you about hardware and software issues?"
+      : "Hardveres és szoftveres hibával is lehet keresni?",
+    en
+      ? "Yes. Alongside PC, laptop, printer, scanner and basic network issues, I also work on web and custom software projects."
+      : "Igen. PC, laptop, nyomtató, szkenner és alap hálózati probléma mellett webes és egyedi szoftveres feladatokkal is foglalkozom.",
   ],
 ];
 
-export default function LocalItPage() {
+export default async function LocalItPage() {
+  const lang = await getLangFromCookies();
+  const en = lang === "en";
+  const groups = getGroups(en);
+  const faqs = getFaqs(en);
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -79,9 +113,11 @@ export default function LocalItPage() {
         "@type": "WebPage",
         "@id": `${site.url}/siofok-informatika#page`,
         url: `${site.url}/siofok-informatika`,
-        name: "Informatikai segítség és programozó Siófok környékén",
+        name: en
+          ? "IT support and software development around Siófok"
+          : "Informatikai segítség és programozó Siófok környékén",
         about: { "@id": `${site.url}#service` },
-        inLanguage: "hu-HU",
+        inLanguage: lang,
       },
       {
         "@type": "FAQPage",
@@ -102,9 +138,21 @@ export default function LocalItPage() {
       />
       <Section
         heading="h1"
-        eyebrow="Siófok és környéke • Somogy megye"
-        title="Informatikai segítség és egyedi fejlesztés a közelből"
-        description="Hardveres segítség helyszínen, szoftveres támogatás és egyedi fejlesztés személyesen vagy távolról — érthetően, a tényleges problémához igazítva."
+        eyebrow={
+          en
+            ? "Siófok area • Somogy county"
+            : "Siófok és környéke • Somogy megye"
+        }
+        title={
+          en
+            ? "Local IT support and custom development"
+            : "Informatikai segítség és egyedi fejlesztés a közelből"
+        }
+        description={
+          en
+            ? "On-site hardware help, software support and custom development in person or remotely, explained clearly and tailored to the actual problem."
+            : "Hardveres segítség helyszínen, szoftveres támogatás és egyedi fejlesztés személyesen vagy távolról — érthetően, a tényleges problémához igazítva."
+        }
       >
         <div className="grid gap-5 md:grid-cols-2">
           {groups.map((group) => (
@@ -121,29 +169,28 @@ export default function LocalItPage() {
 
         <div className="mt-10 rounded-2xl border border-slate-200 bg-slate-50 p-6 dark:border-slate-700 dark:bg-slate-900">
           <h2 className="text-xl font-black text-slate-950 dark:text-white">
-            Helyi segítség Siófok környékén
+            {en
+              ? "Local help around Siófok"
+              : "Helyi segítség Siófok környékén"}
           </h2>
           <p className="mt-3 max-w-3xl text-sm leading-7 text-slate-600 dark:text-slate-300">
-            Eszközbeállításnál és hardverhibánál gyakran a helyszíni segítség
-            célszerű. Beállítási, webes, adatkezelési és programozási feladatok
-            nagy része távolról is hatékonyan elvégezhető. Személyesen
-            elsősorban Siófokon és környékén, valamint Somogy megyében segítek.
-            Ha távolabb van szükséged segítségre, keress bátran: a helyszínt,
-            időpontot és kiszállási díjat előre egyeztetjük. Siófok 10 km-es
-            körzetében fix kiszállási díjjal, azon kívül előre egyeztetett
-            kilométerdíjjal dolgozom.
+            {en
+              ? "On-site help is often useful for device setup and hardware problems. Many configuration, web, data and programming tasks can be handled remotely. I primarily visit Siófok and the surrounding area, and Somogy county. For locations further afield, we agree the place, time and travel fee in advance. Visits within 10 km of Siófok have a fixed travel fee; beyond that, an agreed per-kilometre fee applies."
+              : "Eszközbeállításnál és hardverhibánál gyakran a helyszíni segítség célszerű. Beállítási, webes, adatkezelési és programozási feladatok nagy része távolról is hatékonyan elvégezhető. Személyesen elsősorban Siófokon és környékén, valamint Somogy megyében segítek. Ha távolabb van szükséged segítségre, keress bátran: a helyszínt, időpontot és kiszállási díjat előre egyeztetjük. Siófok 10 km-es körzetében fix kiszállási díjjal, azon kívül előre egyeztetett kilométerdíjjal dolgozom."}
           </p>
           <Link
             href="/pricing"
             className="mt-4 inline-flex text-sm font-bold text-blue-700 dark:text-blue-300"
           >
-            Árak és kiszállási feltételek →
+            {en
+              ? "Prices and travel terms →"
+              : "Árak és kiszállási feltételek →"}
           </Link>
         </div>
 
         <div className="mt-12">
           <h2 className="text-2xl font-black text-slate-950 dark:text-white">
-            Gyakori kérdések
+            {en ? "Frequently asked questions" : "Gyakori kérdések"}
           </h2>
           <div className="mt-5 grid gap-4 md:grid-cols-2">
             {faqs.map(([question, answer]) => (
@@ -164,16 +211,20 @@ export default function LocalItPage() {
             href="/contact"
             className="rounded-xl bg-blue-600 px-5 py-3 text-sm font-bold text-white hover:bg-blue-700"
           >
-            Leírom a problémát
+            {en ? "Describe my problem" : "Leírom a problémát"}
           </Link>
           <Link
             href="/portfolio"
             className="rounded-xl border border-slate-300 px-5 py-3 text-sm font-bold text-slate-800 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-100 dark:hover:bg-slate-800"
           >
-            Munkáim megtekintése
+            {en ? "Explore my work" : "Munkáim megtekintése"}
           </Link>
         </div>
       </Section>
     </>
   );
+}
+
+export async function generateMetadata() {
+  return localizedMetadata(hungarianMetadata, "/siofok-informatika");
 }

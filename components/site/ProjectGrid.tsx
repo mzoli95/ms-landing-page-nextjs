@@ -60,6 +60,14 @@ export function ProjectGrid({
             <p className="mt-8 text-xs font-bold tracking-wider text-slate-500 uppercase">
               {project.category}
             </p>
+            <div className="mt-3 flex flex-wrap gap-2 text-xs font-semibold text-slate-600">
+              <span className="rounded-full bg-slate-100 px-3 py-1">
+                {lang === "en" ? "Independent project" : "Saját fejlesztés"}
+              </span>
+              <span className="rounded-full bg-blue-50 px-3 py-1 text-blue-700 dark:text-blue-300">
+                {project.status}
+              </span>
+            </div>
             <h3 className="mt-2 text-2xl font-bold tracking-tight text-slate-900">
               {project.name}
             </h3>
@@ -67,7 +75,9 @@ export function ProjectGrid({
               {project.summary}
             </p>
             <div className="mt-7 flex items-center justify-between gap-3 border-t border-slate-200 pt-5">
-              <span className="text-xs text-slate-500">{project.status}</span>
+              <span className="text-xs font-semibold text-blue-700 dark:text-blue-300">
+                {lang === "en" ? "Explore the project" : "Projekt bemutatása"}
+              </span>
               <ArrowUpRight className="h-5 w-5 text-blue-700 transition group-hover:translate-x-1 dark:text-blue-400" />
             </div>
           </Link>

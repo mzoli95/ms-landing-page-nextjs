@@ -19,6 +19,11 @@ export function ProjectScreens({ slug, lang }: { slug: string; lang: Lang }) {
             ? "Archived development screenshots from versions 0.5 and 0.3. They illustrate the interface and workflow, not the latest release or a customer's service result."
             : "Korábbi fejlesztői képernyők a 0.5-ös és 0.3-as verzióból. A felületet és a vizsgálati menetet mutatják, nem a legfrissebb kiadást vagy egy ügyfél javítási eredményét."}
       </p>
+      <p className="mt-2 text-xs leading-6 text-slate-500">
+        {en
+          ? "The original application screenshots retain the language of the captured interface; their captions are translated."
+          : "Az alkalmazásképek az eredeti felület nyelvét őrzik; a képaláírások a kiválasztott nyelven olvashatók."}
+      </p>
       <div className="mt-7 grid items-start gap-6 lg:grid-cols-2">
         <PortfolioScreenshotSlot
           folder={slug}

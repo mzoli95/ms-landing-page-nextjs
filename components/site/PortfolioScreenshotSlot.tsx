@@ -90,7 +90,9 @@ export function PortfolioScreenshotSlot({
             </div>
             <div className="mt-4 text-sm font-bold text-slate-900">{label}</div>
             <div className="mt-1 text-xs text-slate-500">
-              A képernyőkép jelenleg nem érhető el.
+              {lang === "en"
+                ? "This screenshot is currently unavailable."
+                : "A képernyőkép jelenleg nem érhető el."}
             </div>
           </div>
         )}

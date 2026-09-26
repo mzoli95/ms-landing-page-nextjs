@@ -10,7 +10,9 @@ export function getProjects(lang: Lang) {
       summary: en
         ? "A collector-focused webshop: demand signals for procurement, loyalty for returning customers and connected operations."
         : "Gyűjtőkre hangolt webshop: keresleti jelzések a beszerzéshez, hűségprogram a visszatéréshez és összekapcsolt napi működés.",
-      status: en ? "Staging · In development" : "Staging · Fejlesztés alatt",
+      status: en
+        ? "Staging demo · In development"
+        : "Staging demó · Fejlesztés alatt",
       features: en
         ? [
             "Storefront and checkout",

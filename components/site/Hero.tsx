@@ -97,19 +97,17 @@ export function Hero({ lang = "hu" }: { lang?: Lang }) {
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
-                href="/contact"
+                href="/contact?topic=development"
                 className="inline-flex min-h-12 items-center gap-4 rounded-xl bg-[#dbeafe] px-6 py-3 text-sm font-bold text-[#142432] hover:bg-[#eff6ff]"
               >
-                {en
-                  ? "Describe your request"
-                  : "Leírom, miben kérek segítséget"}
+                {en ? "Discuss my software idea" : "Fejlesztésről egyeztetek"}
                 <ArrowUpRight className="h-4 w-4" />
               </Link>
               <Link
-                href="/pricing"
+                href="/contact?topic=hardware"
                 className="inline-flex min-h-12 items-center rounded-xl border border-white/25 px-5 py-3 text-sm font-semibold text-[#f6f8fd] hover:bg-white/10"
               >
-                {en ? "Prices" : "Megnézem az árakat"}
+                {en ? "Get PC support" : "PC-s segítséget kérek"}
               </Link>
             </div>
             <p className="mt-6 text-xs leading-6 text-[#a9b5cd]">

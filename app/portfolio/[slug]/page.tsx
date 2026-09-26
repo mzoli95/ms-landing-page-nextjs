@@ -12,12 +12,15 @@ import { Container } from "@/components/ui/Container";
 type Props = { params: Promise<{ slug: string }> };
 export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
-  const project = getProjects("hu").find((p) => p.slug === slug);
+  const lang = await getLangFromCookies();
+  const project = getProjects(lang).find((p) => p.slug === slug);
   if (!project) return {};
   return pageMetadata(
     `${project.name} – ${project.category}`,
     project.summary,
     `/portfolio/${slug}`,
+    undefined,
+    lang,
   );
 }
 
@@ -57,7 +60,7 @@ export default async function ProjectPage({ params }: Props) {
       </Container>
       <Section
         heading="h1"
-        eyebrow={project.category}
+        eyebrow={`${en ? "Independent project" : "Saját fejlesztés"} · ${project.category}`}
         title={project.name}
         description={project.summary}
       >

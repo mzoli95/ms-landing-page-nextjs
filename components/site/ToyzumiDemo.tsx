@@ -48,7 +48,9 @@ export function ToyzumiDemo({ lang }: { lang: Lang }) {
       <div className="grid lg:grid-cols-[0.65fr_1.35fr]">
         <div className="flex flex-col p-6 sm:p-9">
           <p className="text-[10px] font-bold tracking-[0.2em] text-[#c6f36b] uppercase">
-            {en ? "A guided look at ToyZumi" : "ToyZumi · vezetett bemutató"}
+            {en
+              ? "ToyZumi · independent project · staging demo"
+              : "ToyZumi · saját fejlesztés · staging demó"}
           </p>
           <div
             role="tablist"

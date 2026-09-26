@@ -11,9 +11,16 @@ import { site } from "@/components/lib/site";
 type Props = { params: Promise<{ slug: string }> };
 export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
-  const service = getServices("hu").find((s) => s.slug === slug);
+  const lang = await getLangFromCookies();
+  const service = getServices(lang).find((s) => s.slug === slug);
   return service
-    ? pageMetadata(service.title, service.summary, `/services/${slug}`)
+    ? pageMetadata(
+        service.title,
+        service.summary,
+        `/services/${slug}`,
+        undefined,
+        lang,
+      )
     : {};
 }
 export default async function ServicePage({ params }: Props) {

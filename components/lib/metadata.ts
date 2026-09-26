@@ -6,6 +6,7 @@ export function pageMetadata(
   description: string,
   path: string,
   image = "/og-image.png",
+  lang: "hu" | "en" = "hu",
 ): Metadata {
   return {
     title,
@@ -16,7 +17,7 @@ export function pageMetadata(
       description,
       url: path,
       siteName: site.name,
-      locale: "hu_HU",
+      locale: lang === "en" ? "en_GB" : "hu_HU",
       type: "website",
       images: [{ url: image, alt: title }],
     },
