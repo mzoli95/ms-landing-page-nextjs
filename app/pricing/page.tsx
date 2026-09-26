@@ -17,7 +17,12 @@ const hungarianMetadata = {
     "Egyedi szoftverfejlesztés, weboldalak és automatizálás induló díjai magánszemélyeknek és cégeknek. Kiegészítő távsegítség és alapellenőrzés 5 000 Ft-tól.",
 };
 
-export default async function PricingPage() {
+export default async function PricingPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ category?: string | string[] }>;
+}) {
+  const { category } = await searchParams;
   const lang = await getLangFromCookies();
   const t = getDictionary(lang);
 
@@ -33,10 +38,13 @@ export default async function PricingPage() {
       description={
         lang === "en"
           ? "Custom development, websites and automation, from small tasks to ongoing support. PC and device support fees are listed below."
-          : "Egyedi fejlesztés, weboldalak és automatizálás, kisebb feladattól a folyamatos támogatásig. Lejjebb a kiegészítő PC-s és műszaki segítség díjait is megtalálod."
+          : "Egyedi fejlesztés, weboldalak és automatizálás, kisebb feladattól a folyamatos támogatásig. A PC-szerviz, eszközbeállítás és távsegítség díjait is megtalálod."
       }
     >
-      <PricingGrid lang={lang} />
+      <PricingGrid
+        lang={lang}
+        expandedCategory={typeof category === "string" ? category : undefined}
+      />
     </Section>
   );
 }

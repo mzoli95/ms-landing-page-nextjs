@@ -12,12 +12,14 @@ type Plan = {
 };
 
 function PlanCard({
+  id,
   plan,
   lang,
   hardware = false,
   topic = "development",
   showDetails = true,
 }: {
+  id?: string;
   plan: Plan;
   lang: Lang;
   hardware?: boolean;
@@ -28,9 +30,10 @@ function PlanCard({
 
   return (
     <Card
-      className={`relative flex h-full flex-col p-6 ${plan.popular ? "border-blue-300 ring-2 ring-blue-100 dark:border-blue-700 dark:ring-blue-950" : ""}`}
+      id={id}
+      className={`case-anchor relative flex h-full flex-col p-6 target:ring-2 target:ring-blue-500 ${plan.popular ? "border-blue-300 ring-2 ring-blue-100 dark:border-blue-700 dark:ring-blue-950" : ""}`}
     >
-      <div className="flex items-center justify-between">
+      <div className="flex flex-wrap items-center justify-between gap-2">
         <div className="text-base font-extrabold text-slate-900">
           {plan.name}
         </div>
@@ -88,9 +91,11 @@ function PlanCard({
 export function PricingGrid({
   lang = "hu",
   mode = "full",
+  expandedCategory,
 }: {
   lang?: Lang;
   mode?: "full" | "teaser" | "link-only";
+  expandedCategory?: string;
 }) {
   const t = getDictionary(lang);
   const en = lang === "en";
@@ -196,6 +201,7 @@ export function PricingGrid({
             <details
               key={group.id}
               id={`pricing-${group.id}`}
+              open={expandedCategory === group.id}
               className="group rounded-2xl border border-slate-200 bg-white p-5 sm:p-6"
             >
               <summary className="flex min-h-11 cursor-pointer items-center justify-between gap-4 text-lg font-bold text-slate-900">
@@ -213,6 +219,11 @@ export function PricingGrid({
                 {group.items.map((plan) => (
                   <PlanCard
                     key={plan.name}
+                    id={
+                      group.hardware
+                        ? `price-pc-${pcPlans.indexOf(plan)}`
+                        : `price-plan-${plans.indexOf(plan)}`
+                    }
                     plan={plan}
                     lang={lang}
                     hardware={group.hardware}

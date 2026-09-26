@@ -9,6 +9,7 @@ export function LanguageSwitcher({ lang }: { lang: Lang }) {
   const t = getDictionary(lang);
 
   function setLang(nextLang: Lang) {
+    if (nextLang === lang) return;
     document.cookie = `site_lang=${nextLang}; path=/; max-age=31536000; samesite=lax`;
     router.refresh();
   }
@@ -18,7 +19,9 @@ export function LanguageSwitcher({ lang }: { lang: Lang }) {
       <button
         type="button"
         onClick={() => setLang("hu")}
-        className={`rounded-md px-2 py-1 text-xs font-bold transition ${
+        aria-pressed={lang === "hu"}
+        lang="hu"
+        className={`min-h-11 min-w-10 rounded-md px-2 py-1 text-xs font-bold transition ${
           lang === "hu"
             ? "bg-slate-900 text-white"
             : "text-slate-600 hover:text-slate-900"
@@ -30,7 +33,9 @@ export function LanguageSwitcher({ lang }: { lang: Lang }) {
       <button
         type="button"
         onClick={() => setLang("en")}
-        className={`rounded-md px-2 py-1 text-xs font-bold transition ${
+        aria-pressed={lang === "en"}
+        lang="en"
+        className={`min-h-11 min-w-10 rounded-md px-2 py-1 text-xs font-bold transition ${
           lang !== "hu"
             ? "bg-slate-900 text-white"
             : "text-slate-600 hover:text-slate-900"

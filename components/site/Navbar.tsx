@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 import { Container } from "@/components/ui/Container";
@@ -21,6 +21,30 @@ export function Navbar({
   const en = lang === "en";
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const menuButton = useRef<HTMLButtonElement>(null);
+  const header = useRef<HTMLElement>(null);
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+        menuButton.current?.focus();
+      }
+    };
+    const onPointer = (event: PointerEvent) => {
+      if (
+        event.target instanceof Node &&
+        !header.current?.contains(event.target)
+      )
+        setOpen(false);
+    };
+    document.addEventListener("keydown", onKey);
+    document.addEventListener("pointerdown", onPointer);
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.removeEventListener("pointerdown", onPointer);
+    };
+  }, [open]);
   const links = [
     { href: "/services", label: en ? "How I can help" : "Miben segítek?" },
     { href: "/portfolio", label: en ? "Projects" : "Projektek" },
@@ -57,7 +81,10 @@ export function Navbar({
     );
   }
   return (
-    <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur-xl dark:bg-[#0b1020]/95">
+    <header
+      ref={header}
+      className="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur-xl dark:bg-[#0b1020]/95"
+    >
       <Container>
         <div className="flex min-h-20 items-center justify-between gap-3">
           <Link
@@ -73,7 +100,7 @@ export function Navbar({
               height={46}
               className="h-8 w-8 object-contain sm:h-10 sm:w-10"
             />
-            <span className="text-xs font-bold tracking-tight text-slate-900 sm:text-sm">
+            <span className="hidden text-xs font-bold tracking-tight text-slate-900 min-[360px]:inline sm:text-sm">
               Molnár Systems
               <span className="mt-0.5 hidden text-[10px] font-medium tracking-wider text-slate-500 sm:block">
                 DESIGN · CODE · SYSTEMS
@@ -92,6 +119,7 @@ export function Navbar({
             <LanguageSwitcher lang={lang} />
             <ThemeToggle lang={lang} initialTheme={initialTheme} />
             <button
+              ref={menuButton}
               type="button"
               aria-expanded={open}
               aria-controls="mobile-navigation"

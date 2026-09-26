@@ -25,10 +25,13 @@ export function ContactForm({
 }) {
   const [topic, setTopic] = useState(initialTopic);
   const [details, setDetails] = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const busy = useRef(false);
   const en = lang === "en";
   const t = getDictionary(lang);
   const [state, setState] = useState<State>("idle");
+  const emailDraft = `mailto:${site.email}?subject=${encodeURIComponent("Molnár Systems – " + (contactTopics.find((item) => item.id === topic)?.[lang] || (en ? "Contact" : "Kapcsolat")))}&body=${encodeURIComponent([details, name, email].filter(Boolean).join("\n\n"))}`;
 
   const message =
     state === "sent"
@@ -69,16 +72,30 @@ export function ContactForm({
     e: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) {
     e.currentTarget.setCustomValidity("");
+    if (state === "sent" || state === "error") setState("idle");
   }
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
     if (busy.current) return;
+    const formElement = e.currentTarget;
+    for (const [fieldName, value, minimum] of [
+      ["name", name, MIN_NAME_LENGTH],
+      ["details", details, MIN_DETAILS_LENGTH],
+    ] as const) {
+      if (value.trim().length < minimum) {
+        const field = formElement.elements.namedItem(fieldName) as
+          | HTMLInputElement
+          | HTMLTextAreaElement;
+        field.setCustomValidity(t.contactForm.validationTooShort);
+        field.reportValidity();
+        return;
+      }
+    }
     busy.current = true;
 
     setState("sending");
-    const formElement = e.currentTarget;
     const form = new FormData(formElement);
 
     const payload = {
@@ -109,6 +126,8 @@ export function ContactForm({
       setState("sent");
       formElement.reset();
       setDetails("");
+      setName("");
+      setEmail("");
       setTopic("");
       trackEvent("form_submit", { form: "contact" });
     } catch {
@@ -168,6 +187,8 @@ export function ContactForm({
             </div>
             <input
               name="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
               autoComplete="name"
               disabled={state === "sending"}
               required
@@ -187,6 +208,8 @@ export function ContactForm({
             <input
               type="email"
               name="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               autoComplete="email"
               disabled={state === "sending"}
               required
@@ -275,7 +298,7 @@ export function ContactForm({
             {state === "sending" ? t.contactForm.sending : t.contactForm.send}
           </Button>
           <a
-            href={`mailto:${site.email}`}
+            href={emailDraft}
             className="text-sm font-semibold text-blue-700 underline underline-offset-4 dark:text-blue-300"
           >
             {en ? "Prefer email?" : "Inkább e-mailt írok"}
@@ -291,7 +314,7 @@ export function ContactForm({
         </div>
         {state === "error" && (
           <a
-            href={`mailto:${site.email}?subject=${encodeURIComponent("Molnár Systems – " + (contactTopics.find((item) => item.id === topic)?.[lang] || "Kapcsolat"))}&body=${encodeURIComponent(details)}`}
+            href={emailDraft}
             className="inline-block text-sm font-semibold text-blue-700 underline dark:text-blue-300"
           >
             {en
