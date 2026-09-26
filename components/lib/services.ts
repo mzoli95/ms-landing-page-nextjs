@@ -63,13 +63,13 @@ export function getServices(lang: Lang) {
         : "Nem kell kész alkatrészlistával érkezned. Elég, ha elmondod, milyen programokat vagy játékokat használnál, milyen monitorod van, és mennyit szánsz a gépre. Meglévő listát is átnézek, és hozott alkatrészekből is összeállítható a konfiguráció.",
       examples: en
         ? [
-            "A first gaming PC within a set budget",
+            "A gaming PC matched to your games and budget",
             "Quiet home, study or office computer",
             "A machine for editing, development or creative work",
             "Compatibility review of a planned parts list",
           ]
         : [
-            "Első gamer PC meghatározott költségkerettel",
+            "Gamer PC a választott játékokhoz és költségkerethez",
             "Csendes otthoni, tanulós vagy irodai gép",
             "Vágáshoz, fejlesztéshez vagy kreatív munkához választott konfiguráció",
             "Összeállított alkatrészlista kompatibilitási ellenőrzése",

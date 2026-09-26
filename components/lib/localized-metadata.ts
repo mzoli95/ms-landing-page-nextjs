@@ -4,7 +4,7 @@ import { pageMetadata } from "./metadata";
 
 const english: Record<string, [string, string]> = {
   "/": [
-    "Custom software, automation and PC support",
+    "Software development and PC service in Siófok",
     "Custom software, websites, Excel automation and PC support for individuals and businesses. Online across Hungary; on-site around Siófok and in Somogy county, further afield by arrangement.",
   ],
   "/about": [

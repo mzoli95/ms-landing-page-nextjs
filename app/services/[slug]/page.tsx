@@ -7,16 +7,18 @@ import { pageMetadata } from "@/components/lib/metadata";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { site } from "@/components/lib/site";
+import { getServiceSearch } from "@/components/lib/service-search";
 
 type Props = { params: Promise<{ slug: string }> };
 export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
   const lang = await getLangFromCookies();
   const service = getServices(lang).find((s) => s.slug === slug);
+  const search = getServiceSearch(slug, lang);
   return service
     ? pageMetadata(
-        service.title,
-        service.summary,
+        search?.title ?? service.title,
+        search?.description ?? service.summary,
         `/services/${slug}`,
         undefined,
         lang,
@@ -29,13 +31,22 @@ export default async function ServicePage({ params }: Props) {
   const en = lang === "en";
   const service = getServices(lang).find((s) => s.slug === slug);
   if (!service) notFound();
+  const search = getServiceSearch(slug, lang);
+  const url = `${site.url}/services/${slug}`;
   const schema = {
     "@context": "https://schema.org",
     "@type": "Service",
     "@id": `${site.url}/services/${slug}#service`,
     name: service.title,
     serviceType: service.title,
-    areaServed: { "@type": "Country", name: "Magyarország" },
+    areaServed: [
+      { "@type": "City", name: "Siófok" },
+      {
+        "@type": "AdministrativeArea",
+        name: en ? "Somogy county" : "Somogy megye",
+      },
+      { "@type": "Country", name: en ? "Hungary" : "Magyarország" },
+    ],
     mainEntityOfPage: `${site.url}/services/${slug}`,
     description: service.summary,
     url: `${site.url}/services/${slug}`,
@@ -46,7 +57,37 @@ export default async function ServicePage({ params }: Props) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(schema).replace(/</g, "\\u003c"),
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@graph": [
+              schema,
+              {
+                "@type": "WebPage",
+                "@id": `${url}#page`,
+                url,
+                name: search?.title ?? service.title,
+                description: search?.description ?? service.summary,
+                inLanguage: lang,
+                mainEntity: { "@id": `${url}#service` },
+                isPartOf: { "@id": `${site.url}#website` },
+              },
+              ...(search
+                ? [
+                    {
+                      "@type": "FAQPage",
+                      "@id": `${url}#questions`,
+                      inLanguage: lang,
+                      isPartOf: { "@id": `${url}#page` },
+                      mainEntity: search.faq.map(([name, text]) => ({
+                        "@type": "Question",
+                        name,
+                        acceptedAnswer: { "@type": "Answer", text },
+                      })),
+                    },
+                  ]
+                : []),
+            ],
+          }).replace(/</g, "\\u003c"),
         }}
       />
       <Container className="pt-8">
@@ -130,6 +171,37 @@ export default async function ServicePage({ params }: Props) {
             </p>
           </aside>
         </div>
+        {search && (
+          <section
+            id="questions"
+            aria-labelledby="service-questions-title"
+            className="case-anchor mt-12 border-t border-slate-200 pt-10"
+          >
+            <h2
+              id="service-questions-title"
+              className="text-2xl font-bold text-slate-900"
+            >
+              {en
+                ? "Before you get in touch"
+                : "Gyakori kérdések a szolgáltatásról"}
+            </h2>
+            <div className="mt-5 grid items-start gap-4 md:grid-cols-2">
+              {search.faq.map(([question, answer]) => (
+                <details
+                  key={question}
+                  className="rounded-2xl border border-slate-200 bg-white p-6"
+                >
+                  <summary className="cursor-pointer font-semibold leading-7 text-slate-900">
+                    {question}
+                  </summary>
+                  <p className="mt-4 text-sm leading-7 text-slate-600">
+                    {answer}
+                  </p>
+                </details>
+              ))}
+            </div>
+          </section>
+        )}
         <div className="mt-10 flex flex-wrap gap-5 border-t border-slate-200 pt-6">
           <Link
             href={service.related}
@@ -142,6 +214,15 @@ export default async function ServicePage({ params }: Props) {
             className="text-sm font-bold text-blue-700 dark:text-blue-300"
           >
             {en ? "Full price list" : "Teljes árlista"} →
+          </Link>
+          <Link
+            href="/siofok-informatika"
+            className="text-sm font-bold text-blue-700 dark:text-blue-300"
+          >
+            {en
+              ? "On-site help around Siófok"
+              : "Személyes segítség Siófok környékén"}{" "}
+            →
           </Link>
         </div>
       </Section>

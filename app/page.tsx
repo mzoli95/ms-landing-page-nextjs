@@ -14,8 +14,8 @@ import { pageMetadata } from "@/components/lib/metadata";
 import Link from "next/link";
 
 const hungarianMetadata = pageMetadata(
-  "Egyedi szoftver és webfejlesztés",
-  "Egyedi szoftver, weboldal, webalkalmazás és automatizálás magánszemélyeknek és cégeknek, országosan online. Személyesen Siófok és Somogy megye, távolabb egyeztetéssel.",
+  "Szoftverfejlesztés és PC-szerviz Siófokon",
+  "Egyedi szoftver, weboldal, Excel-automatizálás és PC-szerviz magánszemélyeknek és cégeknek. Siófok és Somogy megye; fejlesztés és távsegítség országosan.",
   "/",
 );
 
