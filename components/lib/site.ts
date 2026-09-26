@@ -1,7 +1,7 @@
 export const site = {
   name: "Molnár Systems",
   url: "https://www.molnarsystems.hu",
-  email: "info@molnarsystems.hu",
+  email: "zoltan@toyzumi.hu",
   phone: "+36707268393",
   location:
     "Siófok és környéke • Somogy megye • Távolabb egyeztetéssel • Online országosan",

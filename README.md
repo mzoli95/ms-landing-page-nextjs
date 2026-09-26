@@ -28,7 +28,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Contact form email setup
 
-The contact form sends emails through SMTP to `info@molnarsystems.hu`.
+The contact form currently sends emails through SMTP to `zoltan@toyzumi.hu`, while the Molnár Systems mailbox is being set up. The recipient and all public email links share `site.email` in `components/lib/site.ts`. Change that value when switching mailboxes; legacy `CONTACT_TO` environment values are deliberately ignored.
 
 1. Copy `.env.example` to `.env.local`
 2. Fill in SMTP credentials:
@@ -39,11 +39,11 @@ SMTP_PORT=
 SMTP_SECURE=
 SMTP_USER=
 SMTP_PASS=your-app-password
-SMTP_FROM="Molnár Systems <info@molnarsystems.hu>"
-CONTACT_TO=info@molnarsystems.hu
+SMTP_FROM="Molnár Systems <mailer@your-domain.com>"
 ```
 
-3. Restart the dev server
+3. Use a sender address authorized by your SMTP provider for `SMTP_FROM`; changing the recipient does not configure SMTP authentication or sender-domain verification.
+4. Restart the dev server (or redeploy production).
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 

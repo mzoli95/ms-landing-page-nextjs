@@ -312,7 +312,9 @@ export async function POST(req: Request) {
     return jsonResponse({ ok: false, error: "Service unavailable." }, 500);
   }
 
-  const to = process.env.CONTACT_TO || site.email;
+  // Keep the form and all visible contact links on the same active mailbox.
+  // An old CONTACT_TO deployment variable must not route messages to the inactive domain.
+  const to = site.email;
   const from = process.env.SMTP_FROM || process.env.SMTP_USER || site.email;
 
   const safeName = escapeHtml(name);
