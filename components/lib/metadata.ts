@@ -8,7 +8,7 @@ export function pageMetadata(
   image?: string,
   lang: "hu" | "en" = "hu",
 ): Metadata {
-  const shareImage = image ?? `/social/share-${lang}-v3.png`;
+  const shareImage = image ?? `/social/share-${lang}-v4.png`;
   return {
     title,
     description,

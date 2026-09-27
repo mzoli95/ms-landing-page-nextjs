@@ -14,8 +14,8 @@ import { pageMetadata } from "@/components/lib/metadata";
 import Link from "next/link";
 
 const hungarianMetadata = pageMetadata(
-  "Weboldalak, egyedi programok és számítógépes segítség",
-  "Weboldalak, programok számítógépre, egyszerűbb Excel-munka. Hibajavítás és lassú gépek gyorsítása is. Siófok és környéke, online országosan.",
+  "Weboldal, saját program, PC-javítás",
+  "Programok és egyszerűbb Excel-munka. PC-javítás, gyorsítás, gépépítés. Cégeknek és magánszemélyeknek, Siófok környékén és online.",
   "/",
 );
 

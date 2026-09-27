@@ -14,7 +14,7 @@
       background: #080f20;
       color: #f5f8ff;
       font-family: Arial, sans-serif;
-      padding: 54px 64px;
+      padding: 42px 56px;
       background-image: radial-gradient(
         ellipse at 100% 0%,
         #153d54,
@@ -25,7 +25,7 @@
       display: flex;
       align-items: center;
       gap: 24px;
-      font-size: 32px;
+      font-size: 36px;
       font-weight: 700;
     }
     header img {
@@ -36,47 +36,37 @@
       border-left: 1px solid #3c536a;
       padding-left: 24px;
     }
-    .eyebrow {
-      margin-top: 44px;
-      color: #8fd6f6;
-      font-size: 20px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
     h1 {
-      margin: 18px 0 24px;
-      font-size: 70px;
-      line-height: 1.06;
+      margin: 40px 0 12px;
+      font-size: 76px;
+      line-height: 1.1;
       letter-spacing: -2px;
     }
-    h1 span {
-      color: #94dfff;
-    }
     .services {
-      font-size: 25px;
+      font-size: 34px;
       line-height: 1.5;
       color: #e0eafa;
       margin: 0;
     }
     .hardware {
-      display: inline-block;
-      border: 1px solid #38526c;
-      border-radius: 12px;
-      padding: 15px 20px;
-      margin-top: 18px;
-      font-size: 23px;
-      color: #c7d9ed;
+      border-top: 1px solid #38526c;
+      padding-top: 26px;
+      margin: 28px 0 8px;
+      font-size: 58px;
+      line-height: 1.15;
+      letter-spacing: -1px;
+      color: #94dfff;
     }
     footer {
       position: absolute;
       bottom: 40px;
-      left: 64px;
-      right: 64px;
+      left: 56px;
+      right: 56px;
       border-top: 1px solid #324259;
       padding-top: 22px;
       display: flex;
       justify-content: space-between;
-      font-size: 20px;
+      font-size: 28px;
       color: #adc3db;
     }
     footer strong {
@@ -86,34 +76,31 @@
   <header>
     <img src="../public/ms_logo.png" alt="" /><span>Molnár Systems</span>
   </header>
-  <div class="eyebrow" id="audience">Vállalkozásoknak és magánszemélyeknek</div>
-  <h1 id="headline">
-    Saját ötletből program.<br /><span>Egyszerűbb mindennapok.</span>
-  </h1>
+  <h1 id="headline">Weboldal. Saját program.</h1>
   <p class="services" id="services">
-    Weboldalak · Egyedi programok számítógépre<br />
-    Excel-feladatok egyszerűsítése · Átlátható kimutatások
+    Számítógépre is · Excel-feladatok · Kimutatások
   </p>
-  <div class="hardware" id="hardware">
-    Gépépítés és bővítés · Hibajavítás · Lassú gép gyorsítása
-  </div>
+  <h2 class="hardware" id="hardware">PC-javítás és gyorsítás</h2>
+  <p class="services" id="hardware-details">
+    Gépépítés · Bővítés · Segítség távolról is
+  </p>
   <footer>
-    <span id="area">Siófok és környéke · Online országosan</span
+    <span id="area">Siófok környékén · Online országosan</span
     ><strong>molnarsystems.hu</strong>
   </footer>
   <script>
     if (new URLSearchParams(location.search).get("lang") === "en") {
       document.documentElement.lang = "en";
-      document.querySelector("#audience").textContent =
-        "For businesses and individuals";
-      document.querySelector("#headline").innerHTML =
-        "Your idea. Your software.<br><span>Simpler everyday work.</span>";
-      document.querySelector("#services").innerHTML =
-        "Websites · Custom desktop apps<br>Simpler Excel tasks · Clear reports";
+      document.querySelector("#headline").textContent =
+        "Websites. Custom apps.";
+      document.querySelector("#services").textContent =
+        "Desktop apps too · Excel tasks · Reports";
       document.querySelector("#hardware").textContent =
-        "PC builds and upgrades · Repairs · Speeding up slow computers";
+        "PC repairs and speed-ups";
+      document.querySelector("#hardware-details").textContent =
+        "PC builds · Upgrades · Remote help too";
       document.querySelector("#area").textContent =
-        "Around Siófok · Remote across Hungary";
+        "Siófok area · Online across Hungary";
     }
   </script>
 </html>
