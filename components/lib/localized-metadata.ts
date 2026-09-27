@@ -4,8 +4,8 @@ import { pageMetadata } from "./metadata";
 
 const english: Record<string, [string, string]> = {
   "/": [
-    "Software development and PC service in Siófok",
-    "Custom software, websites, Excel automation and PC support for individuals and businesses. Online across Hungary; on-site around Siófok and in Somogy county, further afield by arrangement.",
+    "Custom software, automation and PC support",
+    "Websites, Excel automation or PC problems? Solutions for businesses and individuals. Around Siófok and remotely across Hungary.",
   ],
   "/about": [
     "About me",
@@ -56,7 +56,7 @@ export async function localizedMetadata(
   const image =
     path === "/portfolio/toyzumi"
       ? "/portfolio/toyzumi/00-portfolio-cover.png"
-      : "/og-image.png";
+      : undefined;
   return {
     ...original,
     ...pageMetadata(entry[0], entry[1], path, image, "en"),

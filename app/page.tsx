@@ -14,8 +14,8 @@ import { pageMetadata } from "@/components/lib/metadata";
 import Link from "next/link";
 
 const hungarianMetadata = pageMetadata(
-  "Szoftverfejlesztés és PC-szerviz Siófokon",
-  "Egyedi szoftver, weboldal, Excel-automatizálás és PC-szerviz magánszemélyeknek és cégeknek. Siófok és Somogy megye; fejlesztés és távsegítség országosan.",
+  "Egyedi szoftver, automatizálás és PC-segítség",
+  "Weboldal, Excel-automatizálás vagy PC-hiba? Megoldások cégeknek és magánszemélyeknek. Siófok és környéke, online országosan.",
   "/",
 );
 

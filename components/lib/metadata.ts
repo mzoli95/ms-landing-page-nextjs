@@ -5,9 +5,10 @@ export function pageMetadata(
   title: string,
   description: string,
   path: string,
-  image = "/og-image.png",
+  image?: string,
   lang: "hu" | "en" = "hu",
 ): Metadata {
+  const shareImage = image ?? `/social/share-${lang}-v2.png`;
   return {
     title,
     description,
@@ -19,13 +20,19 @@ export function pageMetadata(
       siteName: site.name,
       locale: lang === "en" ? "en_GB" : "hu_HU",
       type: "website",
-      images: [{ url: image, alt: title }],
+      images: [
+        {
+          url: shareImage,
+          alt: title,
+          ...(!image ? { width: 1200, height: 630, type: "image/png" } : {}),
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: [image],
+      images: [shareImage],
     },
   };
 }

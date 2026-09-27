@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="hu">
+  <meta charset="utf-8" />
+  <title>Molnár Systems — social card source, 1200 × 630</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      width: 1200px;
+      height: 630px;
+      overflow: hidden;
+      background: #080f20;
+      color: #f5f8ff;
+      font-family: Arial, sans-serif;
+      padding: 54px 64px;
+      background-image: radial-gradient(
+        ellipse at 100% 0%,
+        #153d54,
+        transparent 65%
+      );
+    }
+    header {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-size: 32px;
+      font-weight: 700;
+    }
+    header img {
+      width: 116px;
+      height: auto;
+    }
+    header span {
+      border-left: 1px solid #3c536a;
+      padding-left: 24px;
+    }
+    .eyebrow {
+      margin-top: 44px;
+      color: #8fd6f6;
+      font-size: 20px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    h1 {
+      margin: 18px 0 24px;
+      font-size: 70px;
+      line-height: 1.06;
+      letter-spacing: -2px;
+    }
+    h1 span {
+      color: #94dfff;
+    }
+    .services {
+      font-size: 26px;
+      color: #e0eafa;
+      margin: 0;
+    }
+    .hardware {
+      display: inline-block;
+      border: 1px solid #38526c;
+      border-radius: 12px;
+      padding: 15px 20px;
+      margin-top: 25px;
+      font-size: 23px;
+      color: #c7d9ed;
+    }
+    footer {
+      position: absolute;
+      bottom: 40px;
+      left: 64px;
+      right: 64px;
+      border-top: 1px solid #324259;
+      padding-top: 22px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 20px;
+      color: #adc3db;
+    }
+    footer strong {
+      color: #f5f8ff;
+    }
+  </style>
+  <header>
+    <img src="../public/ms_logo.png" alt="" /><span>Molnár Systems</span>
+  </header>
+  <div class="eyebrow" id="audience">Vállalkozásoknak és magánszemélyeknek</div>
+  <h1 id="headline">
+    Egyedi szoftver.<br /><span>Egyszerűbb mindennapok.</span>
+  </h1>
+  <p class="services" id="services">
+    Webfejlesztés · Excel-automatizálás · Kimutatások
+  </p>
+  <div class="hardware" id="hardware">
+    PC-építés, bővítés és hibafeltárás is.
+  </div>
+  <footer>
+    <span id="area">Siófok és környéke · Online országosan</span
+    ><strong>molnarsystems.hu</strong>
+  </footer>
+  <script>
+    if (new URLSearchParams(location.search).get("lang") === "en") {
+      document.documentElement.lang = "en";
+      document.querySelector("#audience").textContent =
+        "For businesses and individuals";
+      document.querySelector("#headline").innerHTML =
+        "Custom software.<br><span>Simpler everyday work.</span>";
+      document.querySelector("#services").textContent =
+        "Web development · Excel automation · Reports";
+      document.querySelector("#hardware").textContent =
+        "PC builds, upgrades and troubleshooting too.";
+      document.querySelector("#area").textContent =
+        "Around Siófok · Remote across Hungary";
+    }
+  </script>
+</html>
