@@ -60,7 +60,7 @@ const baseMetadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/social/share-hu-v2.png",
+        url: "/social/share-hu-v3.png",
         width: 1200,
         height: 630,
         alt: "Molnár Systems – Szoftverfejlesztés, automatizálás és PC-segítség",
@@ -72,7 +72,7 @@ const baseMetadata: Metadata = {
     title: `${site.name} – Egyedi fejlesztés és műszaki segítség`,
     description:
       "Siófoki webfejlesztés és programozás magánszemélyeknek és cégeknek, automatizálással és riportokkal.",
-    images: ["/social/share-hu-v2.png"],
+    images: ["/social/share-hu-v3.png"],
   },
   manifest: "/manifest.webmanifest",
   verification: {

@@ -53,7 +53,8 @@
       color: #94dfff;
     }
     .services {
-      font-size: 26px;
+      font-size: 25px;
+      line-height: 1.5;
       color: #e0eafa;
       margin: 0;
     }
@@ -62,7 +63,7 @@
       border: 1px solid #38526c;
       border-radius: 12px;
       padding: 15px 20px;
-      margin-top: 25px;
+      margin-top: 18px;
       font-size: 23px;
       color: #c7d9ed;
     }
@@ -87,13 +88,14 @@
   </header>
   <div class="eyebrow" id="audience">Vállalkozásoknak és magánszemélyeknek</div>
   <h1 id="headline">
-    Egyedi szoftver.<br /><span>Egyszerűbb mindennapok.</span>
+    Saját ötletből program.<br /><span>Egyszerűbb mindennapok.</span>
   </h1>
   <p class="services" id="services">
-    Webfejlesztés · Excel-automatizálás · Kimutatások
+    Weboldalak · Egyedi programok számítógépre<br />
+    Excel-feladatok egyszerűsítése · Átlátható kimutatások
   </p>
   <div class="hardware" id="hardware">
-    PC-építés, bővítés és hibafeltárás is.
+    Gépépítés és bővítés · Hibajavítás · Lassú gép gyorsítása
   </div>
   <footer>
     <span id="area">Siófok és környéke · Online országosan</span
@@ -105,11 +107,11 @@
       document.querySelector("#audience").textContent =
         "For businesses and individuals";
       document.querySelector("#headline").innerHTML =
-        "Custom software.<br><span>Simpler everyday work.</span>";
-      document.querySelector("#services").textContent =
-        "Web development · Excel automation · Reports";
+        "Your idea. Your software.<br><span>Simpler everyday work.</span>";
+      document.querySelector("#services").innerHTML =
+        "Websites · Custom desktop apps<br>Simpler Excel tasks · Clear reports";
       document.querySelector("#hardware").textContent =
-        "PC builds, upgrades and troubleshooting too.";
+        "PC builds and upgrades · Repairs · Speeding up slow computers";
       document.querySelector("#area").textContent =
         "Around Siófok · Remote across Hungary";
     }
