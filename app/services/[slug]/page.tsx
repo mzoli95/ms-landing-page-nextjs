@@ -9,6 +9,7 @@ import { Container } from "@/components/ui/Container";
 import { site } from "@/components/lib/site";
 import { getServiceSearch } from "@/components/lib/service-search";
 import { getFocusedOffers } from "@/components/lib/focused-offers";
+import { OfferExamples } from "@/components/site/OfferExamples";
 
 type Props = { params: Promise<{ slug: string }> };
 export async function generateMetadata({ params }: Props) {
@@ -133,6 +134,7 @@ export default async function ServicePage({ params }: Props) {
                     <li key={feature}>{feature}</li>
                   ))}
                 </ul>
+                <OfferExamples examples={focusedOffer.examples} lang={lang} />
                 <Link
                   href={`/contact?topic=${focusedOffer.topic}`}
                   className="mt-5 inline-flex min-h-11 items-center text-sm font-bold text-blue-700 dark:text-blue-300"

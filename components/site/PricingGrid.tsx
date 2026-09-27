@@ -3,6 +3,8 @@ import { Button } from "@/components/ui/Button";
 import type { Lang } from "@/components/lib/i18n";
 import { getDictionary } from "@/components/lib/dictionary";
 import { getFocusedOffers } from "@/components/lib/focused-offers";
+import type { OfferExample } from "@/components/lib/focused-offers";
+import { OfferExamples } from "@/components/site/OfferExamples";
 
 type Plan = {
   name: string;
@@ -10,6 +12,7 @@ type Plan = {
   hint: string;
   popular?: boolean;
   features: string[];
+  examples?: OfferExample[];
 };
 
 function PlanCard({
@@ -59,6 +62,8 @@ function PlanCard({
           </li>
         ))}
       </ul>
+
+      <OfferExamples examples={plan.examples} lang={lang} />
 
       {showDetails && (
         <details className="group mt-5 border-t border-slate-200 pt-4">
