@@ -8,6 +8,7 @@ import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { site } from "@/components/lib/site";
 import { getServiceSearch } from "@/components/lib/service-search";
+import { getFocusedOffers } from "@/components/lib/focused-offers";
 
 type Props = { params: Promise<{ slug: string }> };
 export async function generateMetadata({ params }: Props) {
@@ -33,6 +34,9 @@ export default async function ServicePage({ params }: Props) {
   if (!service) notFound();
   const search = getServiceSearch(slug, lang);
   const url = `${site.url}/services/${slug}`;
+  const focusedOffer = getFocusedOffers(lang).find((offer) =>
+    offer.services.includes(slug),
+  );
   const schema = {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -113,6 +117,30 @@ export default async function ServicePage({ params }: Props) {
         <div className="grid items-start gap-10 lg:grid-cols-[1.35fr_0.85fr]">
           <article className="space-y-9">
             <p className="text-lg leading-8 text-slate-600">{service.intro}</p>
+            {focusedOffer && (
+              <section className="rounded-2xl border border-blue-200 bg-blue-50 p-6 dark:border-blue-900 dark:bg-blue-950/40">
+                <h2 className="text-xl font-bold text-slate-900">
+                  {focusedOffer.name}
+                </h2>
+                <p className="mt-3 text-2xl font-bold text-slate-900">
+                  {focusedOffer.price}
+                </p>
+                <p className="mt-3 text-sm leading-7 text-slate-600">
+                  {focusedOffer.hint}
+                </p>
+                <ul className="mt-4 list-disc space-y-3 pl-5 text-sm leading-7 text-slate-600">
+                  {focusedOffer.features.map((feature) => (
+                    <li key={feature}>{feature}</li>
+                  ))}
+                </ul>
+                <Link
+                  href={`/contact?topic=${focusedOffer.topic}`}
+                  className="mt-5 inline-flex min-h-11 items-center text-sm font-bold text-blue-700 dark:text-blue-300"
+                >
+                  {en ? "Ask about this task" : "Ilyen feladattal kereslek"} →
+                </Link>
+              </section>
+            )}
             <div>
               <h2 className="text-2xl font-bold text-slate-900">
                 {en ? "When can I help?" : "Mivel kereshetsz meg?"}

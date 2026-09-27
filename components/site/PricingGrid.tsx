@@ -2,6 +2,7 @@ import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import type { Lang } from "@/components/lib/i18n";
 import { getDictionary } from "@/components/lib/dictionary";
+import { getFocusedOffers } from "@/components/lib/focused-offers";
 
 type Plan = {
   name: string;
@@ -107,12 +108,7 @@ export function PricingGrid({
     if (index === 7) return "reports";
     return "development";
   };
-  const featured = [
-    { plan: plans[15], topic: "development", hardware: false },
-    { plan: plans[5], topic: "web", hardware: false },
-    { plan: plans[1], topic: "excel", hardware: false },
-    { plan: pcPlans[6], topic: "hardware", hardware: true },
-  ];
+  const featured = getFocusedOffers(lang);
   const groups = [
     {
       id: "development",
@@ -161,17 +157,18 @@ export function PricingGrid({
         </h2>
         <p className="mt-3 text-sm leading-7 text-slate-600">
           {en
-            ? "Choose a starting point. You do not need to know the technical solution yet."
-            : "Válassz kiindulópontot. A műszaki megoldást még nem kell tudnod."}
+            ? "Start with a specific task. These are indicative ranges: we confirm the scope, fee and delivery criteria before work begins. Additional work needs a separate agreement."
+            : "Induljunk egy konkrét feladattal. Az ársávok irányadóak: a tartalmat, díjat és az átadás feltételeit a munka előtt rögzítjük. További munka csak külön egyeztetéssel indul."}
         </p>
         <div className="mt-5 grid gap-5 md:grid-cols-2">
-          {featured.map(({ plan, topic, hardware }) => (
+          {featured.map((plan) => (
             <PlanCard
-              key={plan.name}
+              key={plan.id}
+              id={`offer-${plan.id}`}
               plan={plan}
               lang={lang}
-              topic={topic}
-              hardware={hardware}
+              topic={plan.topic}
+              hardware={plan.topic === "hardware"}
               showDetails={false}
             />
           ))}
