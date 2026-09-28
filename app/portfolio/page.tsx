@@ -6,9 +6,10 @@ import { Section } from "@/components/ui/Section";
 import { ProjectGrid } from "@/components/site/ProjectGrid";
 import { ToyzumiDemo } from "@/components/site/ToyzumiDemo";
 import { CaseLinks } from "@/components/site/CaseLinks";
+import Link from "next/link";
 const hungarianMetadata = pageMetadata(
-  "Portfólió – ToyZumi, Menutivo és Molnár Diagnostic",
-  "Saját fejlesztésű rendszerek működés közben: keresletvezérelt webshop, éttermi QR-rendelés és Windows-diagnosztika. Problémák, megoldások és részletes projektbemutatók.",
+  "Portfólió – saját rendszerek és üzleti demók",
+  "Saját fejlesztésű rendszerek: webshop, éttermi QR-rendelés, Windows-diagnosztika, foglalási demók és szakipari árkalkulátor. Képek, problémák és megoldások.",
   "/portfolio",
 );
 export default async function PortfolioPage() {
@@ -73,7 +74,7 @@ export default async function PortfolioPage() {
         </div>
       </Section>
       <Section
-        eyebrow={en ? "02–03 / More projects" : "02–03 / További projektek"}
+        eyebrow={en ? "02 / More projects" : "02 / További projektek"}
         title={
           en
             ? "Different worlds. The same curiosity."
@@ -81,12 +82,25 @@ export default async function PortfolioPage() {
         }
         description={
           en
-            ? "Restaurant operations and evidence-based diagnostics, with clearly stated development status."
-            : "Éttermi működés és mérésre épülő diagnosztika, a jelenlegi fejlesztési állapot bemutatásával."
+            ? "Restaurant operations, Windows diagnostics, booking demos and trade estimates. Explore the projects through larger screenshots."
+            : "Éttermi működés, Windows-diagnosztika, foglalási demók és szakipari árkalkuláció. Ismerd meg a projekteket képeken és a részletes bemutatókban."
         }
         className="bg-slate-50"
       >
-        <ProjectGrid lang={lang} includeToyzumi={false} />
+        <ProjectGrid lang={lang} includeToyzumi={false} includeDemos />
+        <div className="mt-7 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <p className="max-w-2xl text-xs leading-6 text-slate-500">
+            {en
+              ? "The five local demos use fictional businesses and sample data. Personal walkthroughs are available by arrangement."
+              : "Az öt helyi demó kitalált vállalkozásokat és mintaadatokat használ. Működés közben egyeztetett bemutatón nézheted meg őket."}
+          </p>
+          <Link
+            href="/portfolio/demok"
+            className="inline-flex min-h-11 shrink-0 items-center text-sm font-semibold text-blue-700 hover:underline dark:text-blue-300"
+          >
+            {en ? "Explore the demo apps →" : "Demóalkalmazások részletesen →"}
+          </Link>
+        </div>
       </Section>
       <Section
         eyebrow={en ? "How I think" : "Így gondolkodom"}

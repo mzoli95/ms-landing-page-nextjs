@@ -8,6 +8,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
     "",
     "/portfolio",
+    "/portfolio/demok",
     "/portfolio/toyzumi",
     "/portfolio/menutivo",
     "/portfolio/molnar-diagnostic",
@@ -15,6 +16,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/usecases/kereslet-es-keszlet",
     "/usecases/ettermi-rendeles",
     "/usecases/lassu-szamitogep",
+    "/usecases/idopontfoglalas",
+    "/usecases/helyszini-arkalkulacio",
     "/services",
     "/services/pc-hardver",
     "/services/webfejlesztes",

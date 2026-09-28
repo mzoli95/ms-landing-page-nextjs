@@ -14,6 +14,10 @@ export function ProjectNavigation({ lang }: { lang: Lang }) {
     { href: "/portfolio/toyzumi", name: "ToyZumi" },
     { href: "/portfolio/menutivo", name: "Menutivo" },
     { href: "/portfolio/molnar-diagnostic", name: "Molnár Diagnostic" },
+    {
+      href: "/portfolio/demok",
+      name: en ? "Demo apps" : "Demóalkalmazások",
+    },
   ];
   return (
     <div className="border-b border-slate-200 bg-slate-50">

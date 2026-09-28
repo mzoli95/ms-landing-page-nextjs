@@ -10,6 +10,7 @@ export function PortfolioScreenshotSlot({
   lang = "hu",
   label,
   filename,
+  imagePath,
   description,
   badge,
   className = "aspect-[16/10]",
@@ -20,6 +21,7 @@ export function PortfolioScreenshotSlot({
   lang?: "hu" | "en";
   label: string;
   filename: string;
+  imagePath?: string;
   description?: string;
   badge?: string;
   className?: string;
@@ -30,7 +32,7 @@ export function PortfolioScreenshotSlot({
   const triggerRef = useRef<HTMLButtonElement>(null);
   const [missing, setMissing] = useState(false);
   const [open, setOpen] = useState(false);
-  const src = `/portfolio/${folder}/${filename}`;
+  const src = imagePath ?? `/portfolio/${folder}/${filename}`;
 
   useEffect(() => {
     if (!open) return;

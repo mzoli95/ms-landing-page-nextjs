@@ -5,7 +5,7 @@ import type { Lang } from "@/components/lib/i18n";
 
 export function CaseLinks({ lang }: { lang: Lang }) {
   return (
-    <div className="grid gap-5 lg:grid-cols-3">
+    <div className="grid gap-5 md:grid-cols-2">
       {getCases(lang).map((item, i) => (
         <Link
           key={item.slug}

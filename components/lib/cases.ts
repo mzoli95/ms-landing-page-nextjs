@@ -138,5 +138,95 @@ export function getCases(lang: Lang) {
         ? "Compare the symptom and relevant measurements. A successful single test is not a guarantee that every component is fault-free."
         : "A panasz változását és a hozzá tartozó mérési adatokat hasonlítsd össze. Egy sikeres részteszt nem jelenti, hogy minden alkatrész hibátlan.",
     },
+    {
+      slug: "idopontfoglalas",
+      category: en ? "Appointment booking" : "Időpontfoglalás",
+      project: en ? "Booking demos" : "Foglalási demók",
+      href: "/portfolio/demok",
+      title: en
+        ? "Calls, messages, notes. Who is coming when?"
+        : "Hívások, üzenetek, cetlik. Ki mikor jön?",
+      summary: en
+        ? "Bookings, customer records and reminders in one place, with a clear way to handle cancellations."
+        : "Foglalások, ügyféladatok és emlékeztetők egy helyen, a lemondások követhető kezelésével.",
+      problem: en
+        ? "Appointments arrive by phone and in several message threads. Finding an available time, recalling a customer's preferences and filling a cancelled slot all interrupt the work you are doing."
+        : "Az időpontok telefonon és több üzenetváltásban érkeznek. A szabad helyek keresése, a vendég korábbi igényeinek felidézése és a lemondott időpont pótlása újra meg újra megszakítja a munkát.",
+      mistakes: en
+        ? [
+            "Offering appointments without accounting for the full service duration",
+            "Keeping customer notes and booking changes in separate conversations",
+            "Sending a return reminder when the customer already has another appointment",
+          ]
+        : [
+            "A kezelés vagy munka teljes időtartama nélkül kiosztani az időpontokat",
+            "Külön beszélgetésekben vezetni az ügyféladatokat és az időpontváltozásokat",
+            "Újabb alkalomra hívni azt, akinek már van kapcsolódó foglalása",
+          ],
+      steps: en
+        ? [
+            "Set service durations and opening hours so only available appointments can be selected.",
+            "Link the booking to the customer and, where relevant, their pet or vehicle record.",
+            "Give the customer a private link to reschedule or cancel; use the waitlist to find a suitable replacement after agreeing with them.",
+            "Offer optional appointment and return reminders, checking whether the visit or maintenance is still due before sending.",
+          ]
+        : [
+            "Állítsd be a szolgáltatások hosszát és a nyitvatartást, hogy csak szabad időpontot lehessen választani.",
+            "Kapcsold a foglalást az ügyfélhez, és ahol szükséges, a kedvenc vagy jármű adatlapjához.",
+            "A vendég saját linken módosíthasson vagy mondhasson le; a felszabadult helyre a várólistából, egyeztetés után kerülhessen új foglalás.",
+            "Kínálj választható időpont- és visszatérési emlékeztetőket, küldés előtt ellenőrizve, hogy az alkalom vagy karbantartás még aktuális-e.",
+          ],
+      evidence: en
+        ? "Four local demos show booking and record keeping for pet grooming, hair, nails and lashes, and vehicle maintenance. All include internal cancellation alerts and a waitlist. The hair, beauty and workshop demos also include email previews and an SMTP delivery option. The pet demo does not send emails."
+        : "Négy helyi demó mutatja be a foglalást és nyilvántartást kutyakozmetikához, fodrászathoz, köröm- és pillakezeléshez, illetve autóműhelyhez. Mindegyikben van belső lemondási jelzés és várólista. A fodrász-, szépségszalon- és autós demó e-mail-előnézetet és SMTP-küldési lehetőséget is tartalmaz; a kutyás változat nem küld e-mailt.",
+      check: en
+        ? "Try choosing the same slot twice, rescheduling, cancelling and booking a replacement from the waitlist. Check that customer records stay linked and an outdated reminder is skipped. The demos run locally; public booking and real email delivery require deployment and mail configuration."
+        : "Próbáld ki ugyanannak az időpontnak a dupla foglalását, a módosítást, a lemondást és a várólistás pótlást. Ellenőrizd, hogy az ügyféladatok összekapcsolva maradnak, az elavult emlékeztető pedig kimarad. A demók helyben futnak; nyilvános foglaláshoz telepítés, valódi levelezéshez e-mail-beállítás szükséges.",
+    },
+    {
+      slug: "helyszini-arkalkulacio",
+      category: en ? "Trade estimates" : "Árkalkuláció és készlet",
+      project: "SZIKRA",
+      href: "/portfolio/demok#trade-estimator",
+      title: en
+        ? "Survey done. The quote still takes all evening."
+        : "A felmérés kész. Az ajánlat még estig vár.",
+      summary: en
+        ? "Material quantities, labour and stock come together in a saved, itemised estimate."
+        : "Anyagmennyiségek, munkadíj és készlet egy helyen, menthető, tételes ajánlatban.",
+      problem: en
+        ? "Materials are noted on site, prices live in separate lists, and labour is estimated from memory. Missing travel costs or a stock shortage can change the job after a price has already been given."
+        : "A helyszínen felírt anyagokhoz külön árlistából keresel árakat, a munkadíjat fejben becsülöd. Egy kimaradt kiszállási díj vagy későn észrevett készlethiány már az átadott ajánlat után módosíthatja a munkát.",
+      mistakes: en
+        ? [
+            "Leaving labour, travel or contingency outside the calculation",
+            "Reducing stock for every draft quote",
+            "Letting later catalogue changes overwrite past quotes",
+          ]
+        : [
+            "Kihagyni a munkadíjat, kiszállást vagy tartalékot a számításból",
+            "Minden piszkozatnál levonni a készletet",
+            "Utólagos árlista-változással átírni a korábbi ajánlatot",
+          ],
+      steps: en
+        ? [
+            "Maintain material units, net prices and actual stock in one catalogue.",
+            "Enter quantities and total labour hours, then review markup, travel, contingency and tax separately.",
+            "Save the itemised estimate with its own prices and quantities; print it or save it as a PDF.",
+            "After acceptance, issue materials as a separate recorded action only if sufficient stock is available.",
+          ]
+        : [
+            "Vezesd egy helyen az anyagok mértékegységét, nettó árát és tényleges készletét.",
+            "Add meg a mennyiségeket és összes munkaórát, majd külön ellenőrizd a felárat, kiszállást, tartalékot és adókulcsot.",
+            "Mentsd el a tételes becslést a saját áraival és mennyiségeivel; nyomtasd vagy mentsd PDF-be.",
+            "Elfogadás után külön, naplózott művelettel add ki az anyagokat, ha rendelkezésre áll a szükséges készlet.",
+          ],
+      evidence: en
+        ? "The SZIKRA demo combines 20 metres of cable, 12 sockets and 4.5 hours of labour. It flags four missing sockets, preserves the saved price breakdown and prevents a second stock issue for the same quote. All prices are fictional."
+        : "A SZIKRA demó 20 méter kábelből, 12 konnektorból és 4,5 munkaórából készít kalkulációt. Jelzi a 4 hiányzó konnektort, megőrzi a mentett árbontást, és ugyanahhoz az ajánlathoz nem enged második anyagkiadást. Minden ár kitalált mintaadat.",
+      check: en
+        ? "Change the quantities and prices, save a quote, then update the catalogue: the saved document must remain unchanged. Try issuing with insufficient stock, receive the missing materials and issue once. Supplier prices are maintained manually; quotes are estimates, not invoices."
+        : "Módosítsd a mennyiséget és az árat, ments ajánlatot, majd változtasd meg az árlistát: a mentett dokumentumnak változatlannak kell maradnia. Próbálj készlethiánynál kiadni, vételezd be a hiányt, majd add ki egyszer. A beszállítói árak kézzel kezelhetők; az ajánlat becslés, nem számla.",
+    },
   ];
 }

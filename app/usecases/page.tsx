@@ -5,7 +5,7 @@ import { getLangFromCookies } from "@/components/lib/i18n";
 import { pageMetadata } from "@/components/lib/metadata";
 const hungarianMetadata = pageMetadata(
   "Tipikus hibák és megoldási útmutatók",
-  "Készlettervezés keresési adatokból, éttermi rendeléskezelés és lassú számítógép diagnosztikája: gyakori hibák, javasolt lépések és kapcsolódó projektek.",
+  "Készlettervezés, éttermi működés, számítógépes hibakeresés, időpontfoglalás és árkalkuláció: gyakori problémák, javasolt lépések és kapcsolódó projektek.",
   "/usecases",
 );
 export default async function UseCasesPage() {

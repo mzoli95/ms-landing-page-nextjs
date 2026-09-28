@@ -20,8 +20,12 @@ const english: Record<string, [string, string]> = {
     "Starting fees for custom development, websites, automation and PC services. Remote help and basic diagnostics from HUF 5,000, with the scope agreed in advance.",
   ],
   "/portfolio": [
-    "Projects – ToyZumi, Menutivo and Molnár Diagnostic",
-    "Explore independently developed software: a collector webshop, restaurant QR ordering and Windows diagnostics. Screenshots, project decisions and clear development status.",
+    "Projects – independent software and business demos",
+    "Explore independently developed software: a webshop, restaurant QR ordering, Windows diagnostics, booking demos and trade estimates. Screenshots, problems and solutions.",
+  ],
+  "/portfolio/demok": [
+    "Demo web apps – booking and trade estimates",
+    "Five customisable demos: appointments, customer records and the SZIKRA trade estimator with inventory. Screenshot walkthroughs and practical business workflows.",
   ],
   "/portfolio/toyzumi": [
     "ToyZumi – custom commerce and operations platform",
@@ -41,7 +45,7 @@ const english: Record<string, [string, string]> = {
   ],
   "/usecases": [
     "Common problems and practical solutions",
-    "Explore practical examples of demand planning, restaurant ordering and computer troubleshooting, with clear next steps and links to the projects behind them.",
+    "Explore demand planning, restaurant ordering, computer troubleshooting and appointment booking, with practical steps and links to the projects behind them.",
   ],
 };
 
