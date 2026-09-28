@@ -91,6 +91,16 @@ const examples: Record<string, { hu: [string, string]; en: [string, string] }> =
         "Phone capture, document versions and traceable approvals in one place.",
       ],
     },
+    "warehouse-desktop": {
+      hu: [
+        "A táblázat és a polcon lévő készlet nem egyezik.",
+        "Vonalkódos azonosítás, naplózott készletmozgások és ellenőrzött leltárlezárás.",
+      ],
+      en: [
+        "The spreadsheet and the shelf disagree.",
+        "Barcode lookup, recorded stock movements and a controlled stocktake closing process.",
+      ],
+    },
     "roadside-rescue": {
       hu: [
         "Lerobbant az autó. Kit hívj, és mennyibe kerül?",

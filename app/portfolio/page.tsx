@@ -83,7 +83,7 @@ export default async function PortfolioPage() {
         description={
           en
             ? "From a roadside breakdown to a document awaiting approval: see the problem each project addresses and how the workflow helps."
-            : "Lerobbant autó, jóváhagyásra váró irat vagy szétszórt foglalások. Nézd meg, melyik projekt milyen helyzetre ad megoldást."
+            : "Lerobbant autó, jóváhagyásra váró irat, készleteltérés vagy szétszórt foglalások. Nézd meg, melyik projekt milyen helyzetre ad megoldást."
         }
         className="bg-slate-50"
       >
@@ -91,8 +91,8 @@ export default async function PortfolioPage() {
         <div className="mt-7 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <p className="max-w-2xl text-xs leading-6 text-slate-500">
             {en
-              ? "The seven local demos use fictional businesses and sample data. Personal walkthroughs are available by arrangement."
-              : "A hét helyi demó kitalált vállalkozásokat és mintaadatokat használ. Működés közben egyeztetett bemutatón nézheted meg őket."}
+              ? "The eight local demos use fictional businesses and sample data. Personal walkthroughs are available by arrangement."
+              : "A nyolc helyi demó kitalált vállalkozásokat és mintaadatokat használ. Működés közben egyeztetett bemutatón nézheted meg őket."}
           </p>
           <Link
             href="/portfolio/demok"

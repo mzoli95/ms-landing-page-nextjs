@@ -17,8 +17,8 @@ import { LocalDemoScreens } from "@/components/site/LocalDemoScreens";
 import { getProjectExample } from "@/components/lib/project-examples";
 
 const hungarianMetadata = pageMetadata(
-  "Demó webalkalmazások – foglalás, kalkuláció és iratkezelés",
-  "Hét személyre szabható demó: foglalás, árkalkuláció, IratRend dokumentumkezelés és ÚtTárs autómentés. Képes problémák és megoldások.",
+  "Demóalkalmazások – foglalás, iratok és raktárkezelés",
+  "Nyolc személyre szabható demó: foglalás, kalkuláció, dokumentumkezelés, autómentés és Windows-raktárkezelés. Képes problémák és megoldások.",
   "/portfolio/demok",
 );
 
@@ -48,8 +48,8 @@ export default async function LocalDemosPage() {
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-[#bec9dd]">
             {en
-              ? "A booking, an estimate, a document awaiting approval or a roadside breakdown. Seven examples show how a web application connects the people and information involved."
-              : "Foglalás, árkalkuláció, jóváhagyásra váró dokumentum vagy lerobbant autó. Hét példán mutatom meg, hogyan kerülhetnek egy helyre az érintettek és a szükséges információk."}
+              ? "Bookings, estimates, document approvals, roadside assistance and stocktaking. Eight web and Windows applications connect the people and information involved."
+              : "Foglalás, árkalkuláció, iratjóváhagyás, autómentés és leltár. Nyolc webes és Windows-alkalmazáson mutatom meg, hogyan kerülhetnek egy helyre az érintettek és a szükséges információk."}
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             {demos.map((demo) => (
@@ -96,8 +96,8 @@ export default async function LocalDemosPage() {
                 ? "Local today, online when ready"
                 : "Most helyben, később online",
               text: en
-                ? "The core runs locally. A public launch needs hosting, a domain and production settings; email delivery needs a connected mail service."
-                : "Az alap helyben működik. A nyilvános induláshoz tárhely, domain és éles beállítások kellenek; az e-mail-küldéshez levelezőszolgáltatás kapcsolható.",
+                ? "Web demos can move to hosting with production settings. The inventory app runs directly on Windows, with a local database and optional data imports."
+                : "A webes demók tárhelyre költöztethetők éles beállításokkal. A raktárkezelő közvetlenül Windowson fut, helyi adatbázissal és választható adatimporttal.",
             },
           ].map((item) => (
             <div key={item.title} className="min-w-0">
@@ -188,7 +188,8 @@ export default async function LocalDemosPage() {
                 <p className="mt-2 text-sm leading-7 text-slate-600">
                   {demo.reminder}
                 </p>
-                {demo.id !== "pet-grooming" &&
+                {demo.id !== "warehouse-desktop" &&
+                  demo.id !== "pet-grooming" &&
                   demo.id !== "trade-estimator" &&
                   demo.id !== "roadside-rescue" &&
                   demo.id !== "document-management" && (
@@ -199,6 +200,13 @@ export default async function LocalDemosPage() {
                     </p>
                   )}
               </div>
+              {demo.id === "warehouse-desktop" && (
+                <p className="mt-4 text-xs leading-6 text-slate-500">
+                  {en
+                    ? "Windows desktop demo with fictional stock. External sources are read only; imports create local copies, not live synchronisation. Designed for one operator. Barcode readers must use keyboard (HID) mode."
+                    : "Windows asztali demó fiktív készlettel. A külső forrást csak olvassa; az import helyi másolatot készít, nem élő szinkronizáció. Egy kezelőre tervezett minta. A vonalkódolvasó billentyűzetként, HID módban használható."}
+                </p>
+              )}
               {demo.id === "document-management" && (
                 <p className="mt-4 text-xs leading-6 text-slate-500">
                   {en
@@ -233,6 +241,7 @@ export default async function LocalDemosPage() {
               name={demo.name}
               lang={lang}
               coverImage={demo.coverImage}
+              imagePrefix={demo.imagePrefix}
             />
           </Container>
         </section>

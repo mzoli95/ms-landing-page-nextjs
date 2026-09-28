@@ -8,9 +8,11 @@ export type LocalDemo = {
     | "auto-workshop"
     | "trade-estimator"
     | "document-management"
-    | "roadside-rescue";
+    | "roadside-rescue"
+    | "warehouse-desktop";
   name: string;
   coverImage?: string;
+  imagePrefix?: string;
   sector: string;
   headline: string;
   description: string;
@@ -164,7 +166,9 @@ export function getLocalDemos(lang: Lang): LocalDemo[] {
     },
     {
       id: "document-management",
-      name: "IratRend",
+      name: "Molnár Documents",
+      coverImage: "/images/demos/molnar-documents-landing.jpg",
+      imagePrefix: "molnar-documents",
       sector: en ? "Document management" : "Dokumentumkezelés",
       headline: en
         ? "Every document has a clear next step."
@@ -198,8 +202,9 @@ export function getLocalDemos(lang: Lang): LocalDemo[] {
     },
     {
       id: "roadside-rescue",
-      name: "ÚtTárs",
-      coverImage: "/images/demos/roadside-rescue-landing-google.jpg",
+      name: "Molnár Roadside",
+      coverImage: "/images/demos/molnar-roadside-landing.jpg",
+      imagePrefix: "molnar-roadside",
       sector: en ? "Roadside assistance" : "Autómentés és egyeztetés",
       headline: en
         ? "The right help, with the details already shared."
@@ -230,6 +235,44 @@ export function getLocalDemos(lang: Lang): LocalDemo[] {
         ? "A request reaches eligible providers, not every account. The demo opens the notified provider by name, so the quote and chat stay attached to the right rescue."
         : "A riasztást az alkalmas mentők kapják, nem minden fiók. A demó név szerint nyitja meg az értesített szolgáltatót, így az ajánlat és a chat is a megfelelő mentéshez kapcsolódik.",
       accent: "#367665",
+    },
+    {
+      id: "warehouse-desktop",
+      name: "Molnár Inventory",
+      coverImage: "/images/demos/molnar-inventory-landing.jpg",
+      imagePrefix: "molnar-inventory",
+      sector: en ? "Windows inventory application" : "Windows raktárkezelő",
+      headline: en
+        ? "Know what is on the shelf."
+        : "Tudd, mi van ténylegesen a polcon.",
+      description: en
+        ? "A native Windows application for stock records, barcode scanning and stocktakes. Physical, reserved and available quantities are shown separately, with an audit trail for receipts and issues."
+        : "Natív Windows-alkalmazás készletnyilvántartáshoz, vonalkódos beolvasáshoz és leltárhoz. A fizikai, foglalt és szabad mennyiség külön látszik, a bevételezés és kiadás naplózott.",
+      problem: en
+        ? "The spreadsheet says there are twelve items, but the shelf holds eight. Nobody can trace the difference, and stocktaking means starting another list."
+        : "A táblázat szerint tizenkét darab van, a polcon csak nyolc. Az eltérés oka nem követhető, a leltár pedig megint egy külön listában készül.",
+      solution: en
+        ? "Identify items by barcode, record movements with a reason and save counts as you go. Closing a complete stocktake posts the explained differences to stock."
+        : "Azonosítsd a terméket vonalkóddal, rögzítsd a készletmozgás indokát, és mentsd a számlálást menet közben. A teljes leltár lezárása az indokolt eltérésekkel korrigálja a készletet.",
+      features: en
+        ? [
+            "Searchable products, storage locations and minimum stock",
+            "USB/Bluetooth HID barcode readers and manual code entry",
+            "Saved stocktakes with differences and counted quantities",
+            "Movement statistics, stock value and reorder lists",
+            "SQLite / SQL Server source previews, local import and CSV export",
+          ]
+        : [
+            "Kereshető termékek, tárhelyek és minimumkészlet",
+            "USB/Bluetooth HID vonalkódolvasó és kézi kódbeírás",
+            "Menthető leltár, számolt mennyiségek és eltérésindoklás",
+            "Mozgásstatisztika, készletérték és utánrendelési lista",
+            "SQLite / SQL Server előnézet, helyi import és CSV-export",
+          ],
+      reminder: en
+        ? "Eight sockets are available against a minimum of twelve. The reorder list flags the missing four. Scanning alone never changes stock."
+        : "Nyolc dugalj érhető el a tizenkét darabos minimumhoz képest. Az utánrendelési lista jelzi a hiányzó négyet. A sima beolvasás önmagában nem módosít készletet.",
+      accent: "#cb693b",
     },
   ];
 }

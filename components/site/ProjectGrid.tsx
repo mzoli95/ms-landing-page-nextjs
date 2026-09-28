@@ -40,7 +40,11 @@ export function ProjectGrid({
         status: en ? "Working local demo" : "Kipróbálható helyi demó",
         href: `/portfolio/demok#${d.id}`,
         image: d.coverImage ?? `/images/demos/${d.id}-landing.jpg`,
-        featured: ["roadside-rescue", "document-management"].includes(d.id),
+        featured: [
+          "roadside-rescue",
+          "document-management",
+          "warehouse-desktop",
+        ].includes(d.id),
       }))
     : [];
   const featured = [...demos.filter((p) => p.featured)].reverse();

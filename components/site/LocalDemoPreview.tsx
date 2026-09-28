@@ -16,7 +16,7 @@ export function LocalDemoPreview({ lang }: { lang: Lang }) {
         <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
           <div className="max-w-2xl">
             <p className="text-xs font-semibold tracking-widest text-slate-500 uppercase">
-              {en ? "3 examples · 7 local demos" : "3 példa · 7 helyi demó"}
+              {en ? "4 examples · 8 local demos" : "4 példa · 8 helyi demó"}
             </p>
             <h2
               id="local-demo-preview-title"
@@ -28,8 +28,8 @@ export function LocalDemoPreview({ lang }: { lang: Lang }) {
             </h2>
             <p className="mt-4 text-base leading-7 text-slate-600">
               {en
-                ? "A roadside breakdown, a document awaiting approval or a quote to prepare. Three examples from the seven-app collection, ready to be tailored to a business."
-                : "Lerobbant autó, jóváhagyásra váró irat vagy elkészítendő árajánlat. Három példa a hét alkalmazásból álló gyűjteményből, cégenként alakítható megjelenéssel."}
+                ? "A roadside breakdown, a document awaiting approval, a quote or a stock discrepancy. Four examples from eight local applications, ready to be tailored to a business."
+                : "Lerobbant autó, jóváhagyásra váró irat, árajánlat vagy készleteltérés. Négy példa nyolc helyi alkalmazásból, cégenként alakítható megjelenéssel."}
             </p>
           </div>
           <Link
@@ -40,13 +40,14 @@ export function LocalDemoPreview({ lang }: { lang: Lang }) {
             <ArrowRight aria-hidden="true" className="h-4 w-4" />
           </Link>
         </div>
-        <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 grid gap-5 sm:grid-cols-2">
           {getLocalDemos(lang)
             .filter((d) =>
               [
                 "roadside-rescue",
                 "document-management",
                 "trade-estimator",
+                "warehouse-desktop",
               ].includes(d.id),
             )
             .reverse()
@@ -63,11 +64,11 @@ export function LocalDemoPreview({ lang }: { lang: Lang }) {
                     }
                     alt={
                       en
-                        ? `${demo.name} website preview`
-                        : `${demo.name} weboldalának előnézete`
+                        ? `${demo.name} application preview`
+                        : `${demo.name} alkalmazás előnézete`
                     }
                     fill
-                    sizes="(min-width: 1280px) 360px, (min-width: 1024px) 30vw, (min-width: 640px) 45vw, 90vw"
+                    sizes="(min-width: 1280px) 550px, (min-width: 640px) 45vw, 90vw"
                     className="object-cover object-top transition duration-300 group-hover:scale-[1.025]"
                   />
                 </div>
