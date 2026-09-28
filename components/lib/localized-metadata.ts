@@ -24,8 +24,8 @@ const english: Record<string, [string, string]> = {
     "Explore independently developed software: a webshop, restaurant QR ordering, Windows diagnostics, booking demos and trade estimates. Screenshots, problems and solutions.",
   ],
   "/portfolio/demok": [
-    "Demo web apps – booking and trade estimates",
-    "Five customisable demos: appointments, customer records and the SZIKRA trade estimator with inventory. Screenshot walkthroughs and practical business workflows.",
+    "Demo web apps – bookings, estimates and documents",
+    "Six customisable demos: bookings, estimates, inventory and DOKK document management with OCR and approvals. Screenshot walkthroughs of practical workflows.",
   ],
   "/portfolio/toyzumi": [
     "ToyZumi – custom commerce and operations platform",

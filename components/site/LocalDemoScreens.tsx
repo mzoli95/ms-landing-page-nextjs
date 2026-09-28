@@ -23,67 +23,94 @@ export function LocalDemoScreens({
 }) {
   const en = lang === "en";
   const views =
-    id === "trade-estimator"
+    id === "document-management"
       ? [
           {
             id: "landing",
             label: en ? "Website" : "Weboldal",
             icon: LayoutTemplate,
             caption: en
-              ? "A presentation page explains the problem, workflow and benefits."
-              : "Bemutatóoldal a problémáról, a folyamatról és a kalkulátor előnyeiről.",
+              ? "From incoming paperwork to a searchable, approved record."
+              : "A beérkező papírtól a kereshető, jóváhagyott adatlapig.",
           },
           {
-            id: "calculator",
-            label: en ? "Estimate" : "Kalkuláció",
-            icon: Calculator,
-            caption: en
-              ? "Material quantities and labour hours with a live cost breakdown."
-              : "Anyagmennyiségek és munkaórák, tételes árösszesítéssel.",
-          },
-          {
-            id: "stock",
-            label: en ? "Stock" : "Készlet",
-            icon: Package,
-            caption: en
-              ? "Editable prices, stock levels and recorded inventory movements."
-              : "Szerkeszthető árak, készletszintek és naplózott anyagmozgások.",
-          },
-          {
-            id: "quote",
-            label: en ? "Quote" : "Ajánlat",
-            icon: FileText,
-            caption: en
-              ? "A saved itemised estimate with its original prices, ready to print."
-              : "Mentett, nyomtatható tételes ajánlat, a mentéskori árak megőrzésével.",
-          },
-        ]
-      : [
-          {
-            id: "landing",
-            label: en ? "Website" : "Weboldal",
-            icon: LayoutTemplate,
-            caption: en
-              ? "Services, prices and a first impression of the business."
-              : "Szolgáltatások, árak és a vállalkozás első benyomása.",
-          },
-          {
-            id: "booking",
-            label: en ? "Booking" : "Foglalás",
-            icon: CalendarDays,
-            caption: en
-              ? "The guest chooses a service and an available appointment."
-              : "A vendég szolgáltatást és szabad időpontot választ.",
-          },
-          {
-            id: "admin",
-            label: en ? "Management" : "Kezelőfelület",
+            id: "registry",
+            label: en ? "Register" : "Nyilvántartás",
             icon: PanelsTopLeft,
             caption: en
-              ? "The business keeps track of bookings and customer records."
-              : "A vállalkozás egy helyen követheti a foglalásokat és ügyféladatokat.",
+              ? "Documents, partners, deadlines and current approval status in one table."
+              : "Dokumentumok, partnerek, határidők és jóváhagyási állapot egy táblázatban.",
           },
-        ];
+          {
+            id: "approval",
+            label: en ? "Approval" : "Jóváhagyás",
+            icon: FileText,
+            caption: en
+              ? "Separate review and approval steps with a traceable decision history."
+              : "Külön ellenőrzési és jóváhagyási lépések, visszakereshető döntésekkel.",
+          },
+        ]
+      : id === "trade-estimator"
+        ? [
+            {
+              id: "landing",
+              label: en ? "Website" : "Weboldal",
+              icon: LayoutTemplate,
+              caption: en
+                ? "A presentation page explains the problem, workflow and benefits."
+                : "Bemutatóoldal a problémáról, a folyamatról és a kalkulátor előnyeiről.",
+            },
+            {
+              id: "calculator",
+              label: en ? "Estimate" : "Kalkuláció",
+              icon: Calculator,
+              caption: en
+                ? "Material quantities and labour hours with a live cost breakdown."
+                : "Anyagmennyiségek és munkaórák, tételes árösszesítéssel.",
+            },
+            {
+              id: "stock",
+              label: en ? "Stock" : "Készlet",
+              icon: Package,
+              caption: en
+                ? "Editable prices, stock levels and recorded inventory movements."
+                : "Szerkeszthető árak, készletszintek és naplózott anyagmozgások.",
+            },
+            {
+              id: "quote",
+              label: en ? "Quote" : "Ajánlat",
+              icon: FileText,
+              caption: en
+                ? "A saved itemised estimate with its original prices, ready to print."
+                : "Mentett, nyomtatható tételes ajánlat, a mentéskori árak megőrzésével.",
+            },
+          ]
+        : [
+            {
+              id: "landing",
+              label: en ? "Website" : "Weboldal",
+              icon: LayoutTemplate,
+              caption: en
+                ? "Services, prices and a first impression of the business."
+                : "Szolgáltatások, árak és a vállalkozás első benyomása.",
+            },
+            {
+              id: "booking",
+              label: en ? "Booking" : "Foglalás",
+              icon: CalendarDays,
+              caption: en
+                ? "The guest chooses a service and an available appointment."
+                : "A vendég szolgáltatást és szabad időpontot választ.",
+            },
+            {
+              id: "admin",
+              label: en ? "Management" : "Kezelőfelület",
+              icon: PanelsTopLeft,
+              caption: en
+                ? "The business keeps track of bookings and customer records."
+                : "A vállalkozás egy helyen követheti a foglalásokat és ügyféladatokat.",
+            },
+          ];
   const [selected, setSelected] = useState("landing");
   const view = views.find((item) => item.id === selected)!;
   return (

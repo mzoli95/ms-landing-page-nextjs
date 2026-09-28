@@ -6,7 +6,8 @@ export type LocalDemo = {
     | "hair-studio"
     | "beauty-studio"
     | "auto-workshop"
-    | "trade-estimator";
+    | "trade-estimator"
+    | "document-management";
   name: string;
   sector: string;
   headline: string;
@@ -158,6 +159,40 @@ export function getLocalDemos(lang: Lang): LocalDemo[] {
         ? "The sample needs 12 sockets but only 8 are in stock. The missing 4 are flagged during calculation. Saving does not reduce or reserve stock; issuing requires sufficient stock."
         : "A mintamunkához 12 konnektor kell, de csak 8 van készleten. A hiányzó 4 darabot már a kalkulációnál jelzi. A mentés nem csökkenti és nem foglalja a készletet; kiadáshoz elegendő anyagnak kell rendelkezésre állnia.",
       accent: "#315de4",
+    },
+    {
+      id: "document-management",
+      name: "DOKK",
+      sector: en ? "Document management" : "Dokumentumkezelés",
+      headline: en
+        ? "Every document has a clear next step."
+        : "Minden iratnak követhető útja van.",
+      description: en
+        ? "A document register with manual entry, phone photos and PDF attachments. Local text recognition helps prepare the data, while separate reviewers and managers handle approval."
+        : "Dokumentumnyilvántartás kézi rögzítéssel, telefonos fotóval és PDF-mellékletekkel. A helyi szövegfelismerés segít az adatok előkészítésében, az ellenőrzés és jóváhagyás külön szerepkörökhöz tartozik.",
+      problem: en
+        ? "Documents arrive on paper, by email or as phone photos. A separate spreadsheet does not show who is reviewing the current version or why an item was returned."
+        : "Az iratok papíron, e-mailben vagy telefonos fotóként érkeznek. A külön táblázatból nem látszik, ki ellenőrzi az aktuális változatot, és miért küldték vissza.",
+      solution: en
+        ? "Capture a document, check the recognised fields and send it through two approval steps. The original file, searchable record and decision history stay together."
+        : "Rögzítsd az iratot, ellenőrizd a felismert mezőket, majd küldd végig a kétlépcsős jóváhagyáson. Az eredeti fájl, a kereshető adatlap és a döntések története együtt marad.",
+      features: en
+        ? [
+            "Phone upload via a short-lived QR link; photos and PDFs",
+            "Local Hungarian/English OCR with human verification",
+            "Review, approval and returns with a reason",
+            "Search, deadlines, audit history and CSV/JSON exports",
+          ]
+        : [
+            "Telefonos feltöltés lejáró QR-linkkel; fotók és PDF-ek",
+            "Helyi magyar/angol OCR, emberi adatellenőrzéssel",
+            "Ellenőrzés, jóváhagyás és indokolt visszaküldés",
+            "Keresés, határidők, műveleti napló és CSV/JSON-export",
+          ],
+      reminder: en
+        ? "A returned document shows what needs correcting. Overdue items can be filtered in the register, and submitted records stay locked until returned for changes."
+        : "Visszaküldéskor látszik, mit kell javítani. A lejárt iratok külön szűrhetők, a beküldött adatlap pedig csak visszaküldés után módosítható.",
+      accent: "#176b63",
     },
   ];
 }

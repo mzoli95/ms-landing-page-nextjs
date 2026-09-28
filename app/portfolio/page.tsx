@@ -82,8 +82,8 @@ export default async function PortfolioPage() {
         }
         description={
           en
-            ? "Restaurant operations, Windows diagnostics, booking demos and trade estimates. Explore the projects through larger screenshots."
-            : "Éttermi működés, Windows-diagnosztika, foglalási demók és szakipari árkalkuláció. Ismerd meg a projekteket képeken és a részletes bemutatókban."
+            ? "Restaurant operations, Windows diagnostics, booking demos, trade estimates and document management. Explore the projects through larger screenshots."
+            : "Éttermi működés, Windows-diagnosztika, foglalási demók, szakipari árkalkuláció és dokumentumkezelés. Ismerd meg a projekteket képeken és a részletes bemutatókban."
         }
         className="bg-slate-50"
       >
@@ -91,8 +91,8 @@ export default async function PortfolioPage() {
         <div className="mt-7 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <p className="max-w-2xl text-xs leading-6 text-slate-500">
             {en
-              ? "The five local demos use fictional businesses and sample data. Personal walkthroughs are available by arrangement."
-              : "Az öt helyi demó kitalált vállalkozásokat és mintaadatokat használ. Működés közben egyeztetett bemutatón nézheted meg őket."}
+              ? "The six local demos use fictional businesses and sample data. Personal walkthroughs are available by arrangement."
+              : "A hat helyi demó kitalált vállalkozásokat és mintaadatokat használ. Működés közben egyeztetett bemutatón nézheted meg őket."}
           </p>
           <Link
             href="/portfolio/demok"

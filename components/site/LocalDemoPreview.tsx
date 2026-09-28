@@ -16,7 +16,7 @@ export function LocalDemoPreview({ lang }: { lang: Lang }) {
         <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
           <div className="max-w-2xl">
             <p className="text-xs font-semibold tracking-widest text-slate-500 uppercase">
-              {en ? "5 examples · local demos" : "5 példa · helyi demók"}
+              {en ? "6 examples · local demos" : "6 példa · helyi demók"}
             </p>
             <h2
               id="local-demo-preview-title"
@@ -28,8 +28,8 @@ export function LocalDemoPreview({ lang }: { lang: Lang }) {
             </h2>
             <p className="mt-4 text-base leading-7 text-slate-600">
               {en
-                ? "Websites, bookings, customer records and trade estimates. Explore five working local examples through screenshots, each ready to be tailored to a business."
-                : "Weboldal, időpontfoglalás, ügyféladatok és szakipari árkalkuláció. Öt működő helyi mintát mutatok be képekkel, cégenként alakítható megjelenéssel."}
+                ? "Websites, bookings, trade estimates and document management. Explore six working local examples through screenshots, each ready to be tailored to a business."
+                : "Weboldal, időpontfoglalás, árkalkuláció és dokumentumkezelés. Hat működő helyi mintát mutatok be képekkel, cégenként alakítható megjelenéssel."}
             </p>
           </div>
           <Link

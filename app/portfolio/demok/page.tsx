@@ -16,8 +16,8 @@ import { Section } from "@/components/ui/Section";
 import { LocalDemoScreens } from "@/components/site/LocalDemoScreens";
 
 const hungarianMetadata = pageMetadata(
-  "Demó webalkalmazások – foglalás és árkalkuláció",
-  "Öt személyre szabható demó: időpontfoglalás, ügyfélnyilvántartás és SZIKRA szakipari árkalkulátor készletkezeléssel. Képes bemutatók és konkrét munkafolyamatok.",
+  "Demó webalkalmazások – foglalás, kalkuláció és iratkezelés",
+  "Hat személyre szabható demó: időpontfoglalás, árkalkuláció, készlet és DOKK dokumentumkezelés szövegfelismeréssel, jóváhagyással. Képes bemutatók.",
   "/portfolio/demok",
 );
 
@@ -44,8 +44,8 @@ export default async function LocalDemosPage() {
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-[#bec9dd]">
             {en
-              ? "A booking, a customer record or a site survey that becomes a quote. Five examples show how a web application can help with the day-to-day running of a business."
-              : "Foglalás, ügyféladatlap vagy egy felmérésből készülő ajánlat. Öt példán mutatom meg, hogyan segíthet egy webalkalmazás a vállalkozás mindennapi működésében."}
+              ? "A booking, an estimate or a document awaiting approval. Six examples show how a web application can help with the day-to-day running of a business."
+              : "Foglalás, árkalkuláció vagy jóváhagyásra váró dokumentum. Hat példán mutatom meg, hogyan segíthet egy webalkalmazás a vállalkozás mindennapi működésében."}
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             {demos.map((demo) => (
@@ -74,8 +74,8 @@ export default async function LocalDemosPage() {
               icon: Monitor,
               title: en ? "See the complete flow" : "Lásd a teljes folyamatot",
               text: en
-                ? "Website and workflow screenshots for each demo: bookings, records, estimates and stock. Select a view below and click the image to enlarge it."
-                : "Weboldal és munkafolyamatok képei: foglalás, nyilvántartás, kalkuláció és készlet. Válts az alábbi nézetek között, majd kattints a képre a nagyításhoz.",
+                ? "Website and workflow screenshots for each demo: bookings, estimates, stock and document approvals. Select a view below and click the image to enlarge it."
+                : "Weboldal és munkafolyamatok képei: foglalás, kalkuláció, készlet és dokumentumjóváhagyás. Válts az alábbi nézetek között, majd kattints a képre a nagyításhoz.",
             },
             {
               icon: Palette,
@@ -185,7 +185,8 @@ export default async function LocalDemosPage() {
                   {demo.reminder}
                 </p>
                 {demo.id !== "pet-grooming" &&
-                  demo.id !== "trade-estimator" && (
+                  demo.id !== "trade-estimator" &&
+                  demo.id !== "document-management" && (
                     <p className="mt-3 text-xs leading-6 text-slate-500">
                       {en
                         ? "Emails are stored as local previews in this demo. Actual delivery can be enabled through SMTP; optional reminders require the guest's consent."
@@ -193,6 +194,13 @@ export default async function LocalDemosPage() {
                     </p>
                   )}
               </div>
+              {demo.id === "document-management" && (
+                <p className="mt-4 text-xs leading-6 text-slate-500">
+                  {en
+                    ? "Fictional sample documents. Recognised fields require human checking. Approval is an internal workflow, not an electronic signature. Deadline alerts appear in the app; automatic email delivery is not included."
+                    : "Fiktív mintairatok. A felismert mezőket ember ellenőrzi. A jóváhagyás belső munkafolyamat, nem elektronikus aláírás. A határidőjelzés a felületen látható; automatikus e-mail-küldés nincs bekötve."}
+                </p>
+              )}
               {demo.id === "trade-estimator" && (
                 <p className="mt-4 text-xs leading-6 text-slate-500">
                   {en
