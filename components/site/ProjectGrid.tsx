@@ -39,7 +39,7 @@ export function ProjectGrid({
         category: d.sector,
         status: en ? "Working local demo" : "Kipróbálható helyi demó",
         href: `/portfolio/demok#${d.id}`,
-        image: `/images/demos/${d.id}-landing.jpg`,
+        image: d.coverImage ?? `/images/demos/${d.id}-landing.jpg`,
         featured: ["roadside-rescue", "document-management"].includes(d.id),
       }))
     : [];

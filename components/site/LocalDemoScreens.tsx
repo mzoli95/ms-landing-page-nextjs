@@ -16,10 +16,12 @@ export function LocalDemoScreens({
   id,
   name,
   lang,
+  coverImage,
 }: {
   id: string;
   name: string;
   lang: Lang;
+  coverImage?: string;
 }) {
   const en = lang === "en";
   const views =
@@ -171,7 +173,11 @@ export function LocalDemoScreens({
       <PortfolioScreenshotSlot
         key={view.id}
         filename={`${id}-${view.id}.jpg`}
-        imagePath={`/images/demos/${id}-${view.id}.jpg`}
+        imagePath={
+          view.id === "landing" && coverImage
+            ? coverImage
+            : `/images/demos/${id}-${view.id}.jpg`
+        }
         lang={lang}
         label={`${name} · ${view.label}`}
         description={view.caption}

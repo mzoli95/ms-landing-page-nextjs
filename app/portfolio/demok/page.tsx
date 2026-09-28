@@ -228,7 +228,12 @@ export default async function LocalDemosPage() {
                 <ArrowRight aria-hidden="true" className="h-4 w-4" />
               </Link>
             </div>
-            <LocalDemoScreens id={demo.id} name={demo.name} lang={lang} />
+            <LocalDemoScreens
+              id={demo.id}
+              name={demo.name}
+              lang={lang}
+              coverImage={demo.coverImage}
+            />
           </Container>
         </section>
       ))}

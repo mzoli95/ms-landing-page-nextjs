@@ -58,7 +58,9 @@ export function LocalDemoPreview({ lang }: { lang: Lang }) {
               >
                 <div className="relative aspect-[16/10] overflow-hidden border-b border-slate-200 bg-slate-100">
                   <Image
-                    src={`/images/demos/${demo.id}-landing.jpg`}
+                    src={
+                      demo.coverImage ?? `/images/demos/${demo.id}-landing.jpg`
+                    }
                     alt={
                       en
                         ? `${demo.name} website preview`

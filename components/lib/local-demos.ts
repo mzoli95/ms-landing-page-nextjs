@@ -10,6 +10,7 @@ export type LocalDemo = {
     | "document-management"
     | "roadside-rescue";
   name: string;
+  coverImage?: string;
   sector: string;
   headline: string;
   description: string;
@@ -198,6 +199,7 @@ export function getLocalDemos(lang: Lang): LocalDemo[] {
     {
       id: "roadside-rescue",
       name: "ÚtTárs",
+      coverImage: "/images/demos/roadside-rescue-landing-google.jpg",
       sector: en ? "Roadside assistance" : "Autómentés és egyeztetés",
       headline: en
         ? "The right help, with the details already shared."
