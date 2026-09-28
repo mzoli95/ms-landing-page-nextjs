@@ -35,6 +35,45 @@
   --brand-2: #3b82f6;
 }
 
+.project-status {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  border: 1px solid #c8d9f2;
+  border-radius: 999px;
+  background: #edf4ff;
+  color: #234980;
+  padding: 4px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+.dark .project-status {
+  background: #182b46;
+  color: #bed8ff;
+  border-color: #334c70;
+}
+.project-step-label {
+  color: var(--text-3);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.project-solution-label {
+  color: #286157;
+}
+.dark .project-solution-label {
+  color: #9edbd0;
+}
+.project-example {
+  transition: border-color 180ms;
+}
+.project-example:focus-within,
+.project-example:hover {
+  border-color: var(--brand-2);
+}
+
 * {
   -webkit-tap-highlight-color: transparent;
 }

@@ -14,17 +14,21 @@ import { getLocalDemos } from "@/components/lib/local-demos";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { LocalDemoScreens } from "@/components/site/LocalDemoScreens";
+import { getProjectExample } from "@/components/lib/project-examples";
 
 const hungarianMetadata = pageMetadata(
   "Demó webalkalmazások – foglalás, kalkuláció és iratkezelés",
-  "Hat személyre szabható demó: időpontfoglalás, árkalkuláció, készlet és DOKK dokumentumkezelés szövegfelismeréssel, jóváhagyással. Képes bemutatók.",
+  "Hét személyre szabható demó: foglalás, árkalkuláció, IratRend dokumentumkezelés és ÚtTárs autómentés. Képes problémák és megoldások.",
   "/portfolio/demok",
 );
 
 export default async function LocalDemosPage() {
   const lang = await getLangFromCookies();
   const en = lang === "en";
-  const demos = getLocalDemos(lang);
+  const demos = getLocalDemos(lang).map((d) => ({
+    ...getProjectExample(d.id, lang),
+    ...d,
+  }));
   return (
     <>
       <section className="portfolio-hero relative overflow-hidden">
@@ -44,8 +48,8 @@ export default async function LocalDemosPage() {
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-[#bec9dd]">
             {en
-              ? "A booking, an estimate or a document awaiting approval. Six examples show how a web application can help with the day-to-day running of a business."
-              : "Foglalás, árkalkuláció vagy jóváhagyásra váró dokumentum. Hat példán mutatom meg, hogyan segíthet egy webalkalmazás a vállalkozás mindennapi működésében."}
+              ? "A booking, an estimate, a document awaiting approval or a roadside breakdown. Seven examples show how a web application connects the people and information involved."
+              : "Foglalás, árkalkuláció, jóváhagyásra váró dokumentum vagy lerobbant autó. Hét példán mutatom meg, hogyan kerülhetnek egy helyre az érintettek és a szükséges információk."}
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             {demos.map((demo) => (
@@ -186,6 +190,7 @@ export default async function LocalDemosPage() {
                 </p>
                 {demo.id !== "pet-grooming" &&
                   demo.id !== "trade-estimator" &&
+                  demo.id !== "roadside-rescue" &&
                   demo.id !== "document-management" && (
                     <p className="mt-3 text-xs leading-6 text-slate-500">
                       {en
@@ -199,6 +204,13 @@ export default async function LocalDemosPage() {
                   {en
                     ? "Fictional sample documents. Recognised fields require human checking. Approval is an internal workflow, not an electronic signature. Deadline alerts appear in the app; automatic email delivery is not included."
                     : "Fiktív mintairatok. A felismert mezőket ember ellenőrzi. A jóváhagyás belső munkafolyamat, nem elektronikus aláírás. A határidőjelzés a felületen látható; automatikus e-mail-küldés nincs bekötve."}
+                </p>
+              )}
+              {demo.id === "roadside-rescue" && (
+                <p className="mt-4 text-xs leading-6 text-slate-500">
+                  {en
+                    ? "Fictional providers and prices; no real rescue alerts or payments. Distances are estimates, not live road routing. Chat works while the app is open; background push is not connected. Google Maps requires internet."
+                    : "Fiktív szolgáltatók és mintaárak, valódi mentőriasztás és fizetés nélkül. A távolság becslés, nem élő közúti útvonal. A chat nyitott alkalmazásban működik; háttérbeli push nincs bekötve. A Google-térkép internetet igényel."}
                 </p>
               )}
               {demo.id === "trade-estimator" && (

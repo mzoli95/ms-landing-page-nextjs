@@ -25,7 +25,7 @@ const english: Record<string, [string, string]> = {
   ],
   "/portfolio/demok": [
     "Demo web apps – bookings, estimates and documents",
-    "Six customisable demos: bookings, estimates, inventory and DOKK document management with OCR and approvals. Screenshot walkthroughs of practical workflows.",
+    "Seven customisable demos: bookings, estimates, IratRend document versions and approvals, and ÚtTárs roadside assistance. Problems, solutions and screenshots.",
   ],
   "/portfolio/toyzumi": [
     "ToyZumi – custom commerce and operations platform",

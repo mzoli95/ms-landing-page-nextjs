@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { getProjects } from "@/components/lib/projects";
 import { getLocalDemos } from "@/components/lib/local-demos";
+import { getProjectExample } from "@/components/lib/project-examples";
 import type { Lang } from "@/components/lib/i18n";
 
 export function ProjectGrid({
@@ -16,82 +17,109 @@ export function ProjectGrid({
 }) {
   const en = lang === "en";
   const projects = getProjects(lang)
-    .filter((project) => includeToyzumi || project.slug !== "toyzumi")
-    .map((project) => ({
-      id: project.slug,
-      name: project.name,
-      category: project.category,
-      summary: project.summary,
-      status: project.status,
-      href: `/portfolio/${project.slug}`,
+    .filter((p) => includeToyzumi || p.slug !== "toyzumi")
+    .map((p) => ({
+      id: p.slug,
+      name: p.name,
+      category: p.category,
+      status: p.status,
+      href: `/portfolio/${p.slug}`,
       image:
-        project.slug === "menutivo"
+        p.slug === "menutivo"
           ? "/portfolio/menutivo/01-discover-v2.png"
-          : project.slug === "molnar-diagnostic"
+          : p.slug === "molnar-diagnostic"
             ? "/portfolio/molnar-diagnostic/01-assessment.png"
             : "/portfolio/toyzumi/00-portfolio-cover.png",
-      linkLabel: en ? "Explore the project" : "Projekt bemutatása",
+      featured: false,
     }));
   const demos = includeDemos
-    ? getLocalDemos(lang).map((demo) => ({
-        id: demo.id,
-        name: demo.name,
-        category: demo.sector,
-        summary: demo.description,
-        status: en ? "Local demo" : "Helyi demó",
-        href: `/portfolio/demok#${demo.id}`,
-        image: `/images/demos/${demo.id}-landing.jpg`,
-        linkLabel: en ? "View screenshots" : "Képes bemutató",
+    ? getLocalDemos(lang).map((d) => ({
+        id: d.id,
+        name: d.name,
+        category: d.sector,
+        status: en ? "Working local demo" : "Kipróbálható helyi demó",
+        href: `/portfolio/demok#${d.id}`,
+        image: `/images/demos/${d.id}-landing.jpg`,
+        featured: ["roadside-rescue", "document-management"].includes(d.id),
       }))
     : [];
-
+  const featured = [...demos.filter((p) => p.featured)].reverse();
+  const entries = [
+    ...featured,
+    ...projects,
+    ...demos.filter((p) => !p.featured),
+  ];
   return (
-    <div className="grid gap-6 md:grid-cols-2" data-project-grid>
-      {[...projects, ...demos].map((project) => (
-        <Link
-          key={project.id}
-          href={project.href}
-          className="group flex min-w-0 flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white transition hover:border-blue-400 hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-600 dark:hover:border-blue-500"
-        >
-          <div className="relative aspect-[16/10] overflow-hidden border-b border-slate-200 bg-slate-50">
-            <Image
-              src={project.image}
-              alt={`${project.name} ${en ? "project screenshot" : "képernyőképe"}`}
-              fill
-              sizes="(min-width: 1280px) 550px, (min-width: 768px) 45vw, 90vw"
-              className="object-cover object-top transition duration-300 group-hover:scale-[1.02]"
-            />
-          </div>
-          <div className="flex flex-1 flex-col p-6 sm:p-7">
-            <p className="text-xs font-bold tracking-wider text-slate-500 uppercase">
-              {project.category}
-            </p>
-            <div className="mt-3 flex flex-wrap gap-2 text-xs font-semibold text-slate-600">
-              <span className="rounded-full bg-slate-100 px-3 py-1">
-                {en ? "Independent project" : "Saját fejlesztés"}
-              </span>
-              <span className="rounded-full bg-blue-50 px-3 py-1 text-blue-700 dark:text-blue-300">
-                {project.status}
-              </span>
-            </div>
-            <h3 className="mt-3 text-2xl font-bold tracking-tight text-slate-900">
-              {project.name}
-            </h3>
-            <p className="mt-3 flex-1 text-sm leading-7 text-slate-600">
-              {project.summary}
-            </p>
-            <div className="mt-7 flex items-center justify-between gap-3 border-t border-slate-200 pt-5">
-              <span className="text-sm font-semibold text-blue-700 dark:text-blue-300">
-                {project.linkLabel}
-              </span>
-              <ArrowUpRight
-                aria-hidden="true"
-                className="h-5 w-5 text-blue-700 transition group-hover:translate-x-1 dark:text-blue-400"
+    <div
+      className="project-showcase grid gap-6 md:grid-cols-2"
+      data-project-grid
+    >
+      {entries.map((project) => {
+        const example = getProjectExample(project.id, lang);
+        return (
+          <article
+            key={project.id}
+            className={`project-example overflow-hidden rounded-2xl border border-slate-200 bg-white ${project.featured ? "md:col-span-2 lg:grid lg:grid-cols-[1.2fr_1fr]" : "flex flex-col"}`}
+          >
+            <Link
+              href={project.href}
+              tabIndex={-1}
+              aria-hidden="true"
+              className={`project-image relative block overflow-hidden border-b border-slate-200 bg-slate-50 ${project.featured ? "aspect-[16/10] lg:aspect-auto lg:border-r lg:border-b-0" : "aspect-[16/10]"}`}
+            >
+              <Image
+                src={project.image}
+                alt=""
+                fill
+                sizes={
+                  project.featured
+                    ? "(min-width: 1024px) 620px, 90vw"
+                    : "(min-width: 768px) 550px, 90vw"
+                }
+                className={`${project.featured ? "object-contain" : "object-cover"} object-top transition duration-300 hover:scale-[1.02]`}
               />
+            </Link>
+            <div className="flex flex-1 flex-col p-6 sm:p-8">
+              <div className="flex flex-wrap items-center gap-3">
+                <p className="text-xs font-bold tracking-wider text-slate-500 uppercase">
+                  {project.category}
+                </p>
+                <span className="project-status">{project.status}</span>
+              </div>
+              <h3 className="mt-4 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+                <Link href={project.href} className="hover:underline">
+                  {project.name}
+                </Link>
+              </h3>
+              <dl className="mt-6 flex-1 space-y-5">
+                <div>
+                  <dt className="project-step-label">
+                    {en ? "The problem" : "A probléma"}
+                  </dt>
+                  <dd className="mt-1.5 text-base font-semibold leading-7 text-slate-900">
+                    {example.problem}
+                  </dd>
+                </div>
+                <div>
+                  <dt className="project-step-label project-solution-label">
+                    {en ? "The solution" : "A megoldás"}
+                  </dt>
+                  <dd className="mt-1.5 text-sm leading-7 text-slate-600">
+                    {example.solution}
+                  </dd>
+                </div>
+              </dl>
+              <Link
+                href={project.href}
+                className="mt-7 inline-flex min-h-11 items-center justify-between gap-3 border-t border-slate-200 pt-4 text-sm font-semibold text-blue-700 hover:underline dark:text-blue-300"
+              >
+                {en ? "See how it works" : "Megnézem, hogyan működik"}
+                <ArrowUpRight size={19} aria-hidden="true" />
+              </Link>
             </div>
-          </div>
-        </Link>
-      ))}
+          </article>
+        );
+      })}
     </div>
   );
 }

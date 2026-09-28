@@ -7,7 +7,8 @@ export type LocalDemo = {
     | "beauty-studio"
     | "auto-workshop"
     | "trade-estimator"
-    | "document-management";
+    | "document-management"
+    | "roadside-rescue";
   name: string;
   sector: string;
   headline: string;
@@ -162,7 +163,7 @@ export function getLocalDemos(lang: Lang): LocalDemo[] {
     },
     {
       id: "document-management",
-      name: "DOKK",
+      name: "IratRend",
       sector: en ? "Document management" : "Dokumentumkezelés",
       headline: en
         ? "Every document has a clear next step."
@@ -181,18 +182,52 @@ export function getLocalDemos(lang: Lang): LocalDemo[] {
             "Phone upload via a short-lived QR link; photos and PDFs",
             "Local Hungarian/English OCR with human verification",
             "Review, approval and returns with a reason",
-            "Search, deadlines, audit history and CSV/JSON exports",
+            "Document versions, change history and CSV/JSON exports",
           ]
         : [
             "Telefonos feltöltés lejáró QR-linkkel; fotók és PDF-ek",
             "Helyi magyar/angol OCR, emberi adatellenőrzéssel",
             "Ellenőrzés, jóváhagyás és indokolt visszaküldés",
-            "Keresés, határidők, műveleti napló és CSV/JSON-export",
+            "Dokumentumverziók, változástörténet és CSV/JSON-export",
           ],
       reminder: en
         ? "A returned document shows what needs correcting. Overdue items can be filtered in the register, and submitted records stay locked until returned for changes."
         : "Visszaküldéskor látszik, mit kell javítani. A lejárt iratok külön szűrhetők, a beküldött adatlap pedig csak visszaküldés után módosítható.",
       accent: "#176b63",
+    },
+    {
+      id: "roadside-rescue",
+      name: "ÚtTárs",
+      sector: en ? "Roadside assistance" : "Autómentés és egyeztetés",
+      headline: en
+        ? "The right help, with the details already shared."
+        : "A megfelelő segítség, előre tisztázott részletekkel.",
+      description: en
+        ? "A responsive driver and rescue-provider app. Vehicle details, shared location, comparable quotes and a private conversation follow the same request from breakdown to transport."
+        : "Reszponzív autós és autómentős alkalmazás. Járműadatok, megosztott helyszín, összehasonlítható ajánlatok és privát beszélgetés kísérik végig a kérést a lerobbanástól a szállításig.",
+      problem: en
+        ? "The car has broken down. You call several providers, repeat the location and vehicle details, and still do not know who can help or what it will cost."
+        : "Lerobbant az autó. Több mentőt hívsz, újra elmondod a helyszínt és a jármű adatait, de még nem látod, ki tud segíteni és mennyiért.",
+      solution: en
+        ? "Share the details once. Suitable nearby demo providers receive the request, send quotes and answer in chat. Choose a destination and a provider, then follow the rescue status."
+        : "Egyszer adod meg az adatokat. A közeli, megfelelő demó mentők megkapják a kérést, ajánlatot adnak és chaten válaszolnak. Célt és szolgáltatót választasz, majd követheted a mentés állapotát.",
+      features: en
+        ? [
+            "Vehicle profiles and location on Google Maps",
+            "Home, workshop or parking destination",
+            "Itemised estimates and provider quotes",
+            "Private chat and a separate provider workspace",
+          ]
+        : [
+            "Járműadatlapok és helyszín a Google-térképen",
+            "Hazaszállítás, műhely vagy parkoló választása",
+            "Tételes becslések és szolgáltatói ajánlatok",
+            "Privát chat és külön autómentős munkafelület",
+          ],
+      reminder: en
+        ? "A request reaches eligible providers, not every account. The demo opens the notified provider by name, so the quote and chat stay attached to the right rescue."
+        : "A riasztást az alkalmas mentők kapják, nem minden fiók. A demó név szerint nyitja meg az értesített szolgáltatót, így az ajánlat és a chat is a megfelelő mentéshez kapcsolódik.",
+      accent: "#367665",
     },
   ];
 }
