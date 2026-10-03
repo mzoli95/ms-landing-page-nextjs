@@ -1,116 +1,142 @@
+import Link from "next/link";
+import { ArrowDown, ArrowRight, ArrowUpRight } from "lucide-react";
 import { localizedMetadata } from "@/components/lib/localized-metadata";
 import { pageMetadata } from "@/components/lib/metadata";
 import { getLangFromCookies } from "@/components/lib/i18n";
 import { Container } from "@/components/ui/Container";
-import { Section } from "@/components/ui/Section";
 import { ProjectGrid } from "@/components/site/ProjectGrid";
-import { ToyzumiDemo } from "@/components/site/ToyzumiDemo";
-import { CaseLinks } from "@/components/site/CaseLinks";
-import Link from "next/link";
+import { FeaturedProjects } from "@/components/site/FeaturedProjects";
+import { featuredProjectIds } from "@/components/site/ProjectEngineering";
+import styles from "@/components/site/PortfolioShowcase.module.css";
+
 const hungarianMetadata = pageMetadata(
-  "Portfólió – saját rendszerek és üzleti demók",
-  "Saját fejlesztésű rendszerek: webshop, éttermi QR-rendelés, Windows-diagnosztika, foglalási demók és szakipari árkalkulátor. Képek, problémák és megoldások.",
+  "Portfólió – ToyZumi és saját fejlesztésű alkalmazások",
+  "ToyZumi, Inventory, Documents, Menutivo és Mancs Műhely: saját fejlesztésű alkalmazások képernyőképekkel, technológiákkal és megoldott technikai feladatokkal.",
   "/portfolio",
 );
+
 export default async function PortfolioPage() {
   const lang = await getLangFromCookies();
   const en = lang === "en";
   return (
-    <>
-      <section className="portfolio-hero relative overflow-hidden">
-        <div aria-hidden="true" className="hero-grid absolute inset-0" />
-        <Container className="relative py-16 sm:py-24">
-          <p className="text-xs font-bold tracking-[0.2em] text-[#c6f36b] uppercase">
+    <div className={styles.portfolio}>
+      <section
+        className={styles.introduction}
+        aria-labelledby="portfolio-title"
+      >
+        <Container>
+          <p className={styles.eyebrow}>
             {en
-              ? "Selected work / independent development"
-              : "Válogatott munkák / saját fejlesztés"}
+              ? "Developer portfolio / Molnár Systems"
+              : "Fejlesztői portfólió / Molnár Systems"}
           </p>
-          <h1 className="mt-7 max-w-4xl text-5xl leading-[1.05] font-semibold tracking-[-0.055em] text-[#f6f8fd] sm:text-7xl">
-            {en ? "Every project starts" : "Minden projekt mögött"}
-            <br />
-            <span className="text-[#c6f36b]">
-              {en ? "with a real question." : "egy valódi kérdés."}
-            </span>
-          </h1>
-          <p className="mt-7 max-w-2xl text-lg leading-8 text-[#bec9dd]">
+          <div className={styles.introGrid}>
+            <h1 id="portfolio-title" className={styles.heroTitle}>
+              {en ? "Independent projects." : "Saját fejlesztések."}
+              <span>
+                {en ? "Thoughtful software." : "Átgondolt rendszerek."}
+              </span>
+            </h1>
+            <div className={styles.heroAside}>
+              <p>
+                {en
+                  ? ".NET-powered commerce, business web apps and Windows software. From the interface to the database."
+                  : ".NET-alapú webshop, üzleti webalkalmazások és Windows-szoftverek. A felülettől az adatbázisig."}
+              </p>
+              <div className={styles.introLinks}>
+                <Link href="#kiemelt-projektek">
+                  <ArrowDown size={16} aria-hidden="true" />
+                  {en ? "View projects" : "Projektek megtekintése"}
+                </Link>
+                <Link href="/about">
+                  {en ? "About me" : "Rólam"}
+                  <ArrowUpRight size={15} aria-hidden="true" />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      <FeaturedProjects lang={lang} />
+
+      <section
+        className={styles.archiveSection}
+        aria-labelledby="more-projects-title"
+      >
+        <Container>
+          <div className={styles.sectionHeading}>
+            <div>
+              <p className={styles.eyebrow}>
+                {en ? "Project archive" : "További munkák"}
+              </p>
+              <h2 id="more-projects-title" className={styles.heading}>
+                {en ? "More ideas, built." : "További ötletek, megvalósítva."}
+              </h2>
+            </div>
+            <p className={styles.sectionAside}>
+              {en
+                ? "Diagnostics, roadside assistance and more business demos."
+                : "Diagnosztika, autómentés és további üzleti demók."}
+            </p>
+          </div>
+          <ProjectGrid
+            lang={lang}
+            includeDemos
+            excludeIds={featuredProjectIds}
+            compact
+          />
+          <p className={styles.footnote}>
             {en
-              ? "What should we stock? How do we keep guests connected? Why is this computer slow? Explore the systems I build around these questions."
-              : "Miből rendeljünk? Hogyan maradjon egyben az asztal rendelése? Mitől lassú a gép? Nézd meg, milyen rendszereket építek ezek köré."}
+              ? "Local demos use fictional businesses and sample data."
+              : "A helyi demók kitalált vállalkozásokat és mintaadatokat használnak."}
           </p>
         </Container>
       </section>
-      <Section
-        eyebrow={en ? "01 / Featured project" : "01 / Kiemelt projekt"}
-        title={
-          en ? "ToyZumi. More than a catalogue." : "ToyZumi. A katalóguson túl."
-        }
-        description={
-          en
-            ? "A collector-focused commerce platform with loyalty, demand signals and connected operations."
-            : "Gyűjtőkre hangolt kereskedelmi platform, hűségprogrammal, keresleti jelzésekkel és összekapcsolt háttérfolyamatokkal."
-        }
+
+      <section
+        className={styles.contactSection}
+        aria-labelledby="work-together-title"
       >
-        <ToyzumiDemo lang={lang} />
-        <div className="mt-6 grid gap-4 md:grid-cols-3">
-          {(en
-            ? [
-                "Demand signals before procurement",
-                "Loyalty tools for returning collectors",
-                "Storefront and back office together",
-              ]
-            : [
-                "Keresleti jelzések a beszerzés előtt",
-                "Hűségprogram a visszatérő gyűjtőknek",
-                "Vásárlói felület és back office együtt",
-              ]
-          ).map((text) => (
-            <p
-              key={text}
-              className="rounded-xl border border-slate-200 p-5 text-sm font-semibold text-slate-900"
-            >
-              {text}
-            </p>
-          ))}
-        </div>
-      </Section>
-      <Section
-        eyebrow={en ? "02 / More projects" : "02 / További projektek"}
-        title={
-          en
-            ? "Everyday problems. Working examples."
-            : "Hétköznapi problémák. Működő példák."
-        }
-        description={
-          en
-            ? "From a roadside breakdown to a document awaiting approval: see the problem each project addresses and how the workflow helps."
-            : "Lerobbant autó, jóváhagyásra váró irat, készleteltérés vagy szétszórt foglalások. Nézd meg, melyik projekt milyen helyzetre ad megoldást."
-        }
-        className="bg-slate-50"
-      >
-        <ProjectGrid lang={lang} includeToyzumi={false} includeDemos />
-        <div className="mt-7 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <p className="max-w-2xl text-xs leading-6 text-slate-500">
-            {en
-              ? "The eight local demos use fictional businesses and sample data. Personal walkthroughs are available by arrangement."
-              : "A nyolc helyi demó kitalált vállalkozásokat és mintaadatokat használ. Működés közben egyeztetett bemutatón nézheted meg őket."}
-          </p>
-          <Link
-            href="/portfolio/demok"
-            className="inline-flex min-h-11 shrink-0 items-center text-sm font-semibold text-blue-700 hover:underline dark:text-blue-300"
-          >
-            {en ? "Explore the demo apps →" : "Demóalkalmazások részletesen →"}
-          </Link>
-        </div>
-      </Section>
-      <Section
-        eyebrow={en ? "How I think" : "Így gondolkodom"}
-        title={
-          en ? "From a symptom to a solution." : "A tünettől a megoldásig."
-        }
-      >
-        <CaseLinks lang={lang} />
-      </Section>
-    </>
+        <Container>
+          <div className={styles.contactBanner}>
+            <div>
+              <p className={styles.eyebrow}>
+                {en ? "The next project" : "A következő közös munka"}
+              </p>
+              <h2 id="work-together-title" className={styles.contactTitle}>
+                {en ? "Let's build something together." : "Dolgozzunk együtt."}
+              </h2>
+              <p className={styles.intro}>
+                {en
+                  ? "Have a project in mind, or looking for a developer for your team? Let's talk."
+                  : "Egyedi fejlesztést tervezel, vagy fejlesztőt keresel a csapatodba? Beszéljünk róla."}
+              </p>
+            </div>
+            <div className={styles.contactActions}>
+              <Link href="/contact?topic=development">
+                <span>
+                  <small>{en ? "For your business" : "Vállalkozásodnak"}</small>
+                  {en
+                    ? "Discuss a development project"
+                    : "Fejlesztési megbízás"}
+                </span>
+                <ArrowRight size={21} aria-hidden="true" />
+              </Link>
+              <Link href="/contact?topic=career">
+                <span>
+                  <small>{en ? "For your team" : "Csapatodba"}</small>
+                  {en
+                    ? "Discuss a developer role"
+                    : "Fejlesztői álláslehetőség"}
+                </span>
+                <ArrowRight size={21} aria-hidden="true" />
+              </Link>
+            </div>
+          </div>
+        </Container>
+      </section>
+    </div>
   );
 }
 

@@ -20,8 +20,8 @@ const english: Record<string, [string, string]> = {
     "Starting fees for custom development, websites, automation and PC services. Remote help and basic diagnostics from HUF 5,000, with the scope agreed in advance.",
   ],
   "/portfolio": [
-    "Projects – independent software and business demos",
-    "Explore independently developed software: a webshop, restaurant QR ordering, Windows diagnostics, booking demos and trade estimates. Screenshots, problems and solutions.",
+    "Portfolio – ToyZumi and custom applications",
+    "ToyZumi, Inventory, Documents, Menutivo and Mancs Műhely: independent projects with screenshots, technologies, development contributions and technical challenges.",
   ],
   "/portfolio/demok": [
     "Demo apps – bookings, documents and inventory",

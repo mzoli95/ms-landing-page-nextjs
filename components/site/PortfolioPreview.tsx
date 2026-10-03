@@ -3,30 +3,43 @@ import Link from "next/link";
 import { ArrowUpRight, ArrowRight } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import type { Lang } from "@/components/lib/i18n";
-import { getProjects } from "@/components/lib/projects";
+import { getLocalDemos } from "@/components/lib/local-demos";
 
 export function PortfolioPreview({ lang }: { lang: Lang }) {
   const en = lang === "en";
-  const projects = getProjects(lang);
+  const demos = getLocalDemos(lang);
   const previews = [
     {
       slug: "toyzumi",
-      image: "00-portfolio-cover.png",
-      text: en ? "A webshop for collectors" : "Webshop gyűjtőknek",
+      name: "ToyZumi",
+      href: "https://staging.toyzumi.hu/",
+      image: "/portfolio/toyzumi/02-products.png",
+      text: en
+        ? "A custom webshop with customer and admin interfaces"
+        : "Saját fejlesztésű webshop vásárlói és adminisztrációs felülettel",
+      status: en
+        ? "Staging demo · In development"
+        : "Staging demó · Fejlesztés alatt",
     },
     {
       slug: "menutivo",
-      image: "01-discover-v2.png",
+      name: "Menutivo",
+      href: "/portfolio/menutivo",
+      image: "/portfolio/menutivo/03-kitchen-board.png",
+      status: en ? "In development" : "Fejlesztés alatt",
       text: en
-        ? "Ordering around a shared table"
-        : "Rendelés egy közös asztalnál",
+        ? "Shared table orders with guest, waiter and kitchen views"
+        : "Közös asztali rendelés vendég-, pincér- és konyhai nézettel",
     },
     {
-      slug: "molnar-diagnostic",
-      image: "01-assessment.png",
+      slug: "pet-grooming",
+      name: "Mancs Műhely",
+      href: "/portfolio#featured-pet-grooming",
+      image: demos.find((d) => d.id === "pet-grooming")!.previewImage,
+      status: en ? "Working local demo" : "Kipróbálható helyi demó",
       text: en
-        ? "Understanding a computer's condition"
-        : "Egy számítógép állapotának megértése",
+        ? "Appointment booking with linked owner and pet profiles"
+        : "Időpontfoglalás összekapcsolt gazdi- és kedvencadatlapokkal",
     },
   ];
   return (
@@ -51,8 +64,8 @@ export function PortfolioPreview({ lang }: { lang: Lang }) {
             </h2>
             <p className="mt-4 text-base leading-7 text-slate-600">
               {en
-                ? "Explore ToyZumi live, or take a closer look at Menutivo and Molnár Diagnostic through their demo walkthroughs."
-                : "Próbáld ki a ToyZumit élőben, vagy nézz bele a Menutivo és a Molnár Diagnostic működésébe a képes demókon keresztül."}
+                ? "Start with ToyZumi, then explore Menutivo and Mancs Műhely. Screenshots and engineering details are available in the portfolio."
+                : "Kezdd a ToyZumival, majd nézz bele a Menutivo és a Mancs Műhely működésébe. A portfólióban képernyőképek és fejlesztői részletek is várnak."}
             </p>
           </div>
           <Link
@@ -65,11 +78,9 @@ export function PortfolioPreview({ lang }: { lang: Lang }) {
         </div>
         <div className="mt-9 grid gap-6 lg:grid-cols-3">
           {previews.map((preview) => {
-            const project = projects.find((p) => p.slug === preview.slug)!;
+            const project = preview;
             const live = project.slug === "toyzumi";
-            const href = live
-              ? "https://staging.toyzumi.hu/"
-              : "/portfolio/" + project.slug;
+            const href = project.href;
             const label = live
               ? en
                 ? "Open live demo"
@@ -95,7 +106,7 @@ export function PortfolioPreview({ lang }: { lang: Lang }) {
                   className="relative block aspect-[16/10] overflow-hidden border-b border-slate-200 bg-slate-100 dark:border-slate-700 dark:bg-slate-950"
                 >
                   <Image
-                    src={"/portfolio/" + project.slug + "/" + preview.image}
+                    src={preview.image}
                     alt={
                       en
                         ? project.name + " application preview"
@@ -105,9 +116,7 @@ export function PortfolioPreview({ lang }: { lang: Lang }) {
                     sizes="(min-width: 1280px) 352px, (min-width: 1024px) 30vw, (min-width: 640px) 90vw, 100vw"
                     className={
                       "transition duration-300 group-hover:scale-[1.02] " +
-                      (project.slug === "molnar-diagnostic"
-                        ? "object-contain p-3"
-                        : "object-cover object-top")
+                      (!live ? "object-contain p-3" : "object-cover object-top")
                     }
                   />
                 </a>

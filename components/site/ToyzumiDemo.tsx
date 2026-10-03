@@ -1,61 +1,91 @@
 "use client";
 
-import { useRef, useState } from "react";
-import Image from "next/image";
+import { useId, useRef, useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import type { Lang } from "@/components/lib/i18n";
+import { PortfolioScreenshotSlot } from "./PortfolioScreenshotSlot";
+import styles from "./ToyzumiDemo.module.css";
 
-export function ToyzumiDemo({ lang }: { lang: Lang }) {
+export function ToyzumiDemo({
+  lang,
+  featured = false,
+}: {
+  lang: Lang;
+  featured?: boolean;
+}) {
   const en = lang === "en";
+  const demoId = useId();
   const [active, setActive] = useState(0);
   const buttons = useRef<(HTMLButtonElement | null)[]>([]);
   const scenes = [
     {
-      label: en ? "Discover" : "Felfedezés",
-      image: "00-portfolio-cover.png",
-      title: en
-        ? "A place for the next collectible."
-        : "A következő kedvencnek is legyen helye.",
+      label: en ? "Catalogue" : "Katalógus",
+      image: "02-products.png",
+      title: en ? "The customer experience." : "A vásárlói felület.",
       text: en
-        ? "A browsable catalogue, wishlists and preorder interest connect discovery with purchase intent."
-        : "Kereshető katalógus, kívánságlista és előrendelési érdeklődés kapcsolja össze a böngészést a vásárlási szándékkal.",
+        ? "Searchable products, wishlists and preorder interest."
+        : "Kereshető termékek, kívánságlisták és előrendelési érdeklődés.",
     },
     {
-      label: en ? "Return" : "Visszatérés",
+      label: en ? "Loyalty" : "Hűségprogram",
       image: "07-loyalty-account.png",
-      title: en
-        ? "Give collectors a reason to return."
-        : "Legyen miért visszatérni.",
+      title: en ? "A reason to return." : "Vásárlói fiók és jutalmak.",
       text: en
-        ? "Levels, XP, points and redeemable rewards support an ongoing relationship with collectors."
-        : "Szintek, XP, pontok és beváltható jutalmak segítik a gyűjtőkkel kialakított hosszabb távú kapcsolatot.",
+        ? "Customer accounts with levels, points and redeemable rewards."
+        : "Vásárlói szintek, gyűjthető pontok és beváltható jutalmak.",
     },
     {
-      label: en ? "Decide" : "Döntés",
+      label: "Admin",
       image: "09-statistics.png",
-      title: en
-        ? "See the signals behind demand."
-        : "Lásd az érdeklődést a rendelések mögött.",
+      title: en ? "A view of daily operations." : "Rálátás a napi működésre.",
       text: en
-        ? "The analytics screen provides operational context. The current code also evaluates searches, clicks and stock when preparing procurement suggestions."
-        : "Az elemzési felület működési áttekintést ad. A jelenlegi kód a kereséseket, kattintásokat és készletet is értékeli a beszerzési javaslatokhoz.",
+        ? "Sales, demand and stock information in the admin interface."
+        : "Értékesítési, keresleti és készletinformációk az adminisztrációban.",
     },
   ];
   const scene = scenes[active];
   return (
-    <div className="overflow-hidden rounded-3xl border border-white/15 bg-[#10192b]">
-      <div className="grid lg:grid-cols-[0.65fr_1.35fr]">
-        <div className="flex flex-col p-6 sm:p-9">
-          <p className="text-[10px] font-bold tracking-[0.2em] text-[#c6f36b] uppercase">
-            {en
-              ? "ToyZumi · independent project · staging demo"
-              : "ToyZumi · saját fejlesztés · staging demó"}
-          </p>
+    <div className={styles.showcase} data-toyzumi-showcase>
+      <div className={styles.copy}>
+        <p className={styles.eyebrow}>
+          <span>{featured ? "01" : "TZ"}</span>
+          {en
+            ? "Independent project / E-commerce"
+            : "Saját fejlesztés / E-kereskedelem"}
+        </p>
+        {featured ? (
+          <h2 id="toyzumi-feature-title" className={styles.title}>
+            ToyZumi<span aria-hidden="true">.</span>
+          </h2>
+        ) : (
+          <h3 className={styles.title}>
+            ToyZumi<span aria-hidden="true">.</span>
+          </h3>
+        )}
+        <p className={styles.lead}>
+          {en
+            ? "A collector's webshop. An entire system behind it."
+            : "Gyűjtői webshop. Teljes háttérrendszerrel."}
+        </p>
+        <p className={styles.description}>
+          {en
+            ? "A custom storefront, admin workspace and .NET backend. Designed and built together, from the catalogue to order management."
+            : "Egyedi vásárlói felület, adminisztráció és .NET backend. Együtt tervezve és megépítve, a katalógustól a rendeléskezelésig."}
+        </p>
+        <p className={styles.scope}>
+          {en
+            ? "Storefront · Admin · Integrations"
+            : "Vásárlói felület · Admin · Integrációk"}
+        </p>
+      </div>
+
+      <div className={styles.media}>
+        <div className={styles.mediaHeader}>
           <div
             role="tablist"
             aria-label={en ? "Demo chapters" : "Bemutató fejezetei"}
-            className="mt-6 flex flex-wrap gap-2"
+            className={styles.tabs}
           >
             {scenes.map((item, i) => (
               <button
@@ -63,11 +93,11 @@ export function ToyzumiDemo({ lang }: { lang: Lang }) {
                 ref={(el) => {
                   buttons.current[i] = el;
                 }}
-                id={`demo-tab-${i}`}
+                id={`${demoId}-tab-${i}`}
                 role="tab"
                 type="button"
                 aria-selected={active === i}
-                aria-controls="demo-panel"
+                aria-controls={`${demoId}-panel`}
                 tabIndex={active === i ? 0 : -1}
                 onClick={() => setActive(i)}
                 onKeyDown={(event) => {
@@ -83,58 +113,75 @@ export function ToyzumiDemo({ lang }: { lang: Lang }) {
                   setActive(next);
                   buttons.current[next]?.focus();
                 }}
-                className={`min-h-11 rounded-full border px-4 py-2 text-xs font-semibold ${active === i ? "border-[#c6f36b] bg-[#c6f36b] text-[#101827]" : "border-white/20 text-[#cbd5e1] hover:bg-white/10"}`}
               >
-                {String(i + 1).padStart(2, "0")} / {item.label}
+                {item.label}
               </button>
             ))}
           </div>
-          <div
-            id="demo-panel"
-            role="tabpanel"
-            aria-labelledby={`demo-tab-${active}`}
-            tabIndex={0}
-            className="mt-8"
-          >
-            <h3 className="text-3xl leading-tight font-semibold tracking-tight text-[#f6f8fd]">
-              {scene.title}
-            </h3>
-            <p className="mt-5 text-sm leading-7 text-[#bec9dd]">
-              {scene.text}
-            </p>
+          <span className={styles.sceneNumber} aria-hidden="true">
+            0{active + 1} / 03
+          </span>
+        </div>
+        <div
+          id={`${demoId}-panel`}
+          role="tabpanel"
+          aria-labelledby={`${demoId}-tab-${active}`}
+          tabIndex={0}
+          className={styles.panel}
+        >
+          <div className={styles.screen}>
+            <PortfolioScreenshotSlot
+              key={scene.image}
+              lang={lang}
+              filename={scene.image}
+              label={`ToyZumi · ${scene.label}`}
+              className="aspect-[16/10]"
+              fit="cover"
+              objectPosition="top"
+              presentation="embedded"
+              preload={featured && active === 0}
+            />
           </div>
-          <a
-            href="https://staging.toyzumi.hu/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-7 inline-flex min-h-11 items-center justify-center gap-3 rounded-xl bg-[#c6f36b] px-4 py-3 text-sm font-bold text-[#101827] hover:bg-[#d8ff8a]"
-          >
-            {en ? "Open ToyZumi demo ↗" : "ToyZumi demó megnyitása ↗"}
-          </a>
-          <Link
-            href="/portfolio/toyzumi#uzleti-ertek"
-            className="mt-7 inline-flex items-center gap-3 text-sm font-semibold text-[#c6f36b]"
-          >
-            {en ? "Read the full story" : "A teljes történet"}
-            <ArrowUpRight className="h-4 w-4" />
-          </Link>
-          <p className="mt-auto pt-8 text-[11px] leading-5 text-[#94a3b8]">
-            {en
-              ? "Screenshot walkthrough · 1.1.5 staging · sample data. This is not a live checkout."
-              : "Képernyőképes bemutató · 1.1.5 staging · mintaadatok. Nem élő vásárlási felület."}
-          </p>
+          <div className={styles.caption}>
+            <p>{scene.title}</p>
+            <span>{scene.text}</span>
+          </div>
         </div>
-        <div className="relative flex min-h-64 items-center border-t border-white/10 bg-[#080e1b] p-4 sm:p-6 lg:border-t-0 lg:border-l">
-          <Image
-            key={scene.image}
-            src={`/portfolio/toyzumi/${scene.image}`}
-            alt={scene.title}
-            width={1552}
-            height={1020}
-            sizes="(min-width: 1024px) 65vw, 100vw"
-            className="h-auto max-h-[560px] w-full rounded-xl object-contain"
-          />
-        </div>
+      </div>
+
+      <div className={styles.actions}>
+        <a
+          href="https://staging.toyzumi.hu/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.demoLink}
+        >
+          {en ? "Try the demo" : "Demó kipróbálása"}
+          <ArrowUpRight size={17} aria-hidden="true" />
+        </a>
+        <Link
+          href={
+            featured
+              ? "/portfolio/toyzumi"
+              : "/portfolio/toyzumi#mernoki-hatter"
+          }
+          className={styles.projectLink}
+        >
+          {featured
+            ? en
+              ? "Explore the project"
+              : "A projekt részletesen"
+            : en
+              ? "Engineering and testing"
+              : "Fejlesztés és tesztelés"}
+          <ArrowUpRight size={15} aria-hidden="true" />
+        </Link>
+        <p className={styles.demoNote}>
+          <span aria-hidden="true" />
+          {en
+            ? "Demo environment · sample data"
+            : "Demókörnyezet · mintaadatok"}
+        </p>
       </div>
     </div>
   );

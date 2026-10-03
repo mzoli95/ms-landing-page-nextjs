@@ -1,6 +1,7 @@
 import { localizedMetadata } from "@/components/lib/localized-metadata";
 import { ToyzumiStory } from "@/components/site/ToyzumiStory";
 import { ToyzumiStatus } from "@/components/site/ToyzumiStatus";
+import { ProjectEngineering } from "@/components/site/ProjectEngineering";
 import { site } from "@/components/lib/site";
 import { pageMetadata } from "@/components/lib/metadata";
 import type { Metadata } from "next";
@@ -283,6 +284,9 @@ export default async function ToyzumiCaseStudyPage() {
         </div>
       </Container>
       <ToyzumiStatus lang={lang} />
+      <Container className="py-8">
+        <ProjectEngineering id="toyzumi" lang={lang} />
+      </Container>
       <ToyzumiStory lang={lang} />
       <div id="technikai-reszletek" className="case-anchor" />
       <Section
@@ -1103,6 +1107,7 @@ export default async function ToyzumiCaseStudyPage() {
         </div>
       </Section>
 
+      <div id="mernoki-hatter" className="case-anchor" />
       <Section
         eyebrow={en ? "Engineering background" : "Mérnöki háttér"}
         title={

@@ -1,0 +1,442 @@
+.portfolio {
+  --folio-ink: #203830;
+  --folio-muted: #5b6b63;
+  --folio-line: #dce3db;
+  --folio-accent: #647b57;
+  background: #f8f9f6;
+}
+.introduction {
+  padding: 64px 0 40px;
+}
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--folio-muted, var(--text-3));
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+.eyebrow::before {
+  content: "";
+  width: 20px;
+  height: 1px;
+  background: currentColor;
+}
+.introGrid {
+  display: grid;
+  gap: 28px;
+  margin-top: 24px;
+}
+.heroTitle {
+  color: var(--folio-ink);
+  font-size: clamp(34px, 4.3vw, 60px);
+  font-weight: 550;
+  line-height: 1.1;
+  letter-spacing: -0.055em;
+}
+.heroTitle span {
+  display: block;
+  color: var(--folio-accent);
+}
+.heroAside {
+  max-width: 360px;
+}
+.heroAside > p {
+  color: var(--folio-muted);
+  font-size: 14px;
+  line-height: 1.8;
+}
+.introLinks {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-top: 20px;
+}
+.introLinks a {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 44px;
+  color: var(--folio-ink);
+  font-size: 12px;
+  font-weight: 600;
+}
+.introLinks a:hover {
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+.flagshipSection {
+  padding-bottom: 32px;
+}
+.section {
+  padding: 48px 0 64px;
+}
+.archiveSection {
+  padding: 32px 0 64px;
+}
+.sectionHeading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 30px;
+}
+.heading {
+  margin-top: 12px;
+  color: var(--folio-ink, var(--text-1));
+  font-size: clamp(28px, 3vw, 38px);
+  font-weight: 550;
+  line-height: 1.15;
+  letter-spacing: -0.045em;
+}
+.intro {
+  max-width: 420px;
+  margin-top: 18px;
+  color: var(--folio-muted, var(--text-2));
+  font-size: 14px;
+  line-height: 1.8;
+}
+.sectionAside {
+  max-width: 265px;
+  color: var(--folio-muted);
+  font-size: 12px;
+  line-height: 1.8;
+}
+.pair {
+  display: grid;
+  gap: 24px;
+  align-items: start;
+}
+.projectCard {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--folio-line);
+  border-radius: 18px;
+  background: var(--surface-1);
+  transition:
+    border-color 180ms,
+    box-shadow 180ms;
+}
+.projectCard:hover,
+.projectCard:focus-within {
+  border-color: #a8b9a5;
+  box-shadow: 0 12px 32px rgb(30 55 35 / 0.05);
+}
+.cardTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 18px 24px;
+  color: var(--text-3);
+  font-size: 10px;
+  font-weight: 500;
+}
+.cardTop span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.projectNumber {
+  margin-right: 4px;
+  color: var(--folio-muted);
+  font-weight: 500;
+}
+.statusDot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #68875a;
+}
+.screenStage {
+  padding: 24px 24px 0;
+  overflow: hidden;
+  background: #e5ebdf;
+}
+.documents .screenStage {
+  background: #e6e9ef;
+}
+.restaurant .screenStage {
+  background: #eae9db;
+}
+.grooming .screenStage {
+  background: #efe7df;
+}
+.screenFrame {
+  overflow: hidden;
+  border: 1px solid rgb(36 66 52 / 0.12);
+  border-bottom: 0;
+  border-radius: 8px 8px 0 0;
+  box-shadow: 0 6px 28px rgb(18 47 34 / 0.09);
+}
+.cardBody {
+  padding: 26px 26px 0;
+}
+.cardTitle {
+  color: var(--folio-ink);
+  font-size: 27px;
+  font-weight: 550;
+  line-height: 1.2;
+  letter-spacing: -0.035em;
+}
+.cardDescription {
+  max-width: 370px;
+  margin-top: 12px;
+  color: var(--text-2);
+  font-size: 14px;
+  line-height: 1.85;
+}
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+}
+.tag {
+  border: 1px solid var(--border-1);
+  border-radius: 5px;
+  padding: 5px 8px;
+  color: var(--text-2);
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 1.3;
+}
+.engineering {
+  margin: 22px 26px 0;
+  border-top: 1px solid var(--border-1);
+}
+.engineering summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  min-height: 50px;
+  cursor: pointer;
+  color: var(--text-2);
+  font-size: 12px;
+  font-weight: 500;
+  list-style: none;
+}
+.engineering summary::-webkit-details-marker {
+  display: none;
+}
+.engineering summary svg {
+  flex-shrink: 0;
+  transition: transform 180ms;
+}
+.engineering[open] summary svg {
+  transform: rotate(45deg);
+}
+.engineering[open] {
+  padding-bottom: 20px;
+}
+.cardAction {
+  display: flex;
+  min-height: 58px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border-top: 1px solid var(--border-1);
+  padding: 16px 26px;
+  color: var(--folio-ink);
+  font-size: 12px;
+  font-weight: 600;
+  transition: background 180ms;
+}
+.cardAction:hover {
+  background: var(--surface-2);
+}
+.footnote {
+  margin-top: 20px;
+  color: var(--text-3);
+  font-size: 11px;
+  line-height: 1.8;
+}
+.engineeringStrip {
+  border-bottom: 1px solid var(--folio-line);
+  padding-inline: 4px;
+}
+.contactSection {
+  padding: 0 0 72px;
+}
+.contactBanner {
+  display: grid;
+  align-items: center;
+  gap: 32px;
+  padding: 44px;
+  border-radius: 18px;
+  background: #e9efdf;
+}
+.contactTitle {
+  max-width: 460px;
+  margin-top: 20px;
+  color: var(--folio-ink);
+  font-size: clamp(34px, 3.5vw, 46px);
+  font-weight: 550;
+  line-height: 1.1;
+  letter-spacing: -0.05em;
+}
+.contactActions {
+  display: grid;
+}
+.contactActions a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  min-height: 94px;
+  border-bottom: 1px solid #c6d2ba;
+  color: var(--folio-ink);
+  font-size: 15px;
+  font-weight: 600;
+}
+.contactActions a:first-child {
+  border-top: 1px solid #c6d2ba;
+}
+.contactActions a small {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--folio-muted);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+.contactActions a svg {
+  flex-shrink: 0;
+  transition: transform 180ms;
+}
+.contactActions a:hover svg {
+  transform: translateX(5px);
+}
+.contactActions a:hover span {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+:global(.dark) .portfolio {
+  --folio-ink: #e1ece2;
+  --folio-muted: #a0b0a6;
+  --folio-line: #2a3a33;
+  --folio-accent: #b9cea2;
+  background: #101a17;
+}
+:global(.dark) .projectCard {
+  background: #16221e;
+}
+:global(.dark) .screenStage {
+  background: #283a2c;
+}
+:global(.dark) .documents .screenStage {
+  background: #2b343f;
+}
+:global(.dark) .restaurant .screenStage {
+  background: #363829;
+}
+:global(.dark) .grooming .screenStage {
+  background: #3b322c;
+}
+:global(.dark) .contactBanner {
+  background: #243326;
+}
+:global(.dark) .contactActions a {
+  border-color: #40533c;
+}
+@media (min-width: 1024px) {
+  .introGrid {
+    grid-template-columns: 1.8fr 1fr;
+    align-items: end;
+    gap: 36px;
+  }
+  .heroAside {
+    padding-bottom: 3px;
+  }
+  .pair {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .cardDescription {
+    min-height: 52px;
+  }
+  .contactBanner {
+    grid-template-columns: 1.2fr 1fr;
+    gap: 80px;
+  }
+}
+@media (max-width: 639px) {
+  .introduction {
+    padding: 36px 0 28px;
+  }
+  .introGrid {
+    margin-top: 20px;
+    gap: 20px;
+  }
+  .heroTitle {
+    font-size: clamp(30px, 8.8vw, 40px);
+  }
+  .heroAside > p {
+    font-size: 13px;
+    line-height: 1.8;
+  }
+  .introLinks {
+    margin-top: 12px;
+  }
+  .flagshipSection {
+    padding-bottom: 20px;
+  }
+  .section {
+    padding: 26px 0 40px;
+  }
+  .archiveSection {
+    padding: 24px 0 40px;
+  }
+  .sectionHeading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 22px;
+  }
+  .projectCard {
+    border-radius: 14px;
+  }
+  .cardTop {
+    padding: 16px 18px;
+  }
+  .screenStage {
+    padding: 18px 16px 0;
+  }
+  .cardBody {
+    padding: 22px 20px 0;
+  }
+  .cardTitle {
+    font-size: 25px;
+  }
+  .engineering {
+    margin-inline: 20px;
+  }
+  .cardAction {
+    padding-inline: 20px;
+  }
+  .contactSection {
+    padding-bottom: 40px;
+  }
+  .contactBanner {
+    padding: 28px 22px;
+    gap: 24px;
+    border-radius: 14px;
+  }
+  .contactTitle {
+    font-size: 34px;
+  }
+  .contactActions a {
+    font-size: 14px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .projectCard,
+  .engineering summary svg,
+  .cardAction,
+  .contactActions a svg {
+    transition: none;
+  }
+}

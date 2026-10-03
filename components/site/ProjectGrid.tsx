@@ -5,15 +5,20 @@ import { getProjects } from "@/components/lib/projects";
 import { getLocalDemos } from "@/components/lib/local-demos";
 import { getProjectExample } from "@/components/lib/project-examples";
 import type { Lang } from "@/components/lib/i18n";
+import styles from "./ProjectArchive.module.css";
 
 export function ProjectGrid({
   lang,
   includeToyzumi = true,
   includeDemos = false,
+  excludeIds = [],
+  compact = false,
 }: {
   lang: Lang;
   includeToyzumi?: boolean;
   includeDemos?: boolean;
+  excludeIds?: string[];
+  compact?: boolean;
 }) {
   const en = lang === "en";
   const projects = getProjects(lang)
@@ -26,10 +31,10 @@ export function ProjectGrid({
       href: `/portfolio/${p.slug}`,
       image:
         p.slug === "menutivo"
-          ? "/portfolio/menutivo/01-discover-v2.png"
+          ? "/portfolio/menutivo/02-table-order.png"
           : p.slug === "molnar-diagnostic"
             ? "/portfolio/molnar-diagnostic/01-assessment.png"
-            : "/portfolio/toyzumi/00-portfolio-cover.png",
+            : "/portfolio/toyzumi/02-products.png",
       featured: false,
     }));
   const demos = includeDemos
@@ -39,7 +44,7 @@ export function ProjectGrid({
         category: d.sector,
         status: en ? "Working local demo" : "Kipróbálható helyi demó",
         href: `/portfolio/demok#${d.id}`,
-        image: d.coverImage ?? `/images/demos/${d.id}-landing.jpg`,
+        image: d.previewImage,
         featured: [
           "roadside-rescue",
           "document-management",
@@ -52,7 +57,52 @@ export function ProjectGrid({
     ...featured,
     ...projects,
     ...demos.filter((p) => !p.featured),
-  ];
+  ].filter((project) => !excludeIds.includes(project.id));
+  if (compact) {
+    return (
+      <div className={styles.grid} data-project-grid>
+        {entries.map((project) => (
+          <article
+            key={project.id}
+            className={styles.item}
+            data-compact-project
+          >
+            <Link
+              href={project.href}
+              aria-label={
+                en ? `View ${project.name}` : `${project.name} megtekintése`
+              }
+              className={styles.link}
+            >
+              <div className={styles.thumbnail}>
+                <Image
+                  src={project.image}
+                  alt=""
+                  fill
+                  sizes="(min-width: 1280px) 132px, (min-width: 640px) 112px, 88px"
+                  className={`${styles.image} ${project.id === "menutivo" ? styles.croppedImage : ""}`}
+                />
+              </div>
+              <div className={styles.heading}>
+                <p className={styles.category}>{project.category}</p>
+                <h3 className={styles.title}>{project.name}</h3>
+              </div>
+              <p className={styles.description}>
+                {getProjectExample(project.id, lang).solution}
+              </p>
+              <div className={styles.status}>
+                <span aria-hidden="true" className={styles.statusDot} />
+                {project.status}
+              </div>
+              <span className={styles.arrow} aria-hidden="true">
+                <ArrowUpRight size={17} />
+              </span>
+            </Link>
+          </article>
+        ))}
+      </div>
+    );
+  }
   return (
     <div
       className="project-showcase grid gap-6 md:grid-cols-2"

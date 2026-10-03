@@ -21,4 +21,9 @@ export const contactTopics = [
     hu: "Más kérés / még nem tudom",
     en: "Another request / not sure yet",
   },
+  {
+    id: "career",
+    hu: "Fejlesztői állás / szakmai megkeresés",
+    en: "Developer role / professional enquiry",
+  },
 ] as const;

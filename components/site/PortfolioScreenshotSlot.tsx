@@ -16,6 +16,8 @@ export function PortfolioScreenshotSlot({
   className = "aspect-[16/10]",
   objectPosition = "center",
   fit = "cover",
+  presentation = "card",
+  preload = false,
 }: {
   folder?: "toyzumi" | "menutivo" | "molnar-diagnostic";
   lang?: "hu" | "en";
@@ -27,6 +29,8 @@ export function PortfolioScreenshotSlot({
   className?: string;
   objectPosition?: string;
   fit?: "cover" | "contain";
+  presentation?: "card" | "embedded";
+  preload?: boolean;
 }) {
   const closeRef = useRef<HTMLButtonElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
@@ -59,7 +63,13 @@ export function PortfolioScreenshotSlot({
   }, [open]);
 
   return (
-    <figure className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm shadow-slate-900/5">
+    <figure
+      className={
+        presentation === "embedded"
+          ? "overflow-hidden"
+          : "overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm shadow-slate-900/5"
+      }
+    >
       <div className={`${className} relative overflow-hidden bg-slate-950`}>
         {!missing ? (
           <button
@@ -76,7 +86,8 @@ export function PortfolioScreenshotSlot({
               width={1600}
               height={1000}
               sizes="(min-width: 1024px) 50vw, 100vw"
-              loading="lazy"
+              preload={preload}
+              loading={preload ? undefined : "lazy"}
               onError={() => setMissing(true)}
               className={`absolute inset-0 h-full w-full transition duration-500 ease-out group-hover:scale-[1.045] ${fit === "contain" ? "object-contain" : "object-cover"}`}
               style={{ objectPosition }}
@@ -99,7 +110,7 @@ export function PortfolioScreenshotSlot({
           </div>
         )}
       </div>
-      <figcaption className="p-5">
+      <figcaption className={presentation === "embedded" ? "sr-only" : "p-5"}>
         <div className="flex flex-wrap items-center gap-2">
           {badge && (
             <span className="rounded-full bg-blue-50 px-2.5 py-1 text-[10px] font-black uppercase tracking-wider text-blue-700">

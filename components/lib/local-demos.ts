@@ -12,6 +12,7 @@ export type LocalDemo = {
     | "warehouse-desktop";
   name: string;
   coverImage?: string;
+  previewImage: string;
   imagePrefix?: string;
   sector: string;
   headline: string;
@@ -28,6 +29,7 @@ export function getLocalDemos(lang: Lang): LocalDemo[] {
   return [
     {
       id: "pet-grooming",
+      previewImage: "/images/demos/pet-grooming-booking.jpg",
       name: "Mancs Műhely",
       sector: en ? "Pet grooming" : "Kutyakozmetika",
       headline: en
@@ -54,6 +56,7 @@ export function getLocalDemos(lang: Lang): LocalDemo[] {
     },
     {
       id: "hair-studio",
+      previewImage: "/images/demos/hair-studio-admin.jpg",
       name: "FORMA Hair Studio",
       sector: en ? "Hair studio" : "Fodrászat",
       headline: en
@@ -80,6 +83,7 @@ export function getLocalDemos(lang: Lang): LocalDemo[] {
     },
     {
       id: "beauty-studio",
+      previewImage: "/images/demos/beauty-studio-booking.jpg",
       name: "LUNE Nails & Lashes",
       sector: en ? "Nails & lashes" : "Köröm és pilla",
       headline: en
@@ -106,6 +110,7 @@ export function getLocalDemos(lang: Lang): LocalDemo[] {
     },
     {
       id: "auto-workshop",
+      previewImage: "/images/demos/auto-workshop-booking.jpg",
       name: "FORDULAT Autóműhely",
       sector: en ? "Auto workshop" : "Autóműhely",
       headline: en
@@ -132,6 +137,7 @@ export function getLocalDemos(lang: Lang): LocalDemo[] {
     },
     {
       id: "trade-estimator",
+      previewImage: "/images/demos/trade-estimator-calculator.jpg",
       name: "SZIKRA",
       sector: en ? "Trade estimates & inventory" : "Szakipari árkalkulátor",
       headline: en
@@ -166,6 +172,7 @@ export function getLocalDemos(lang: Lang): LocalDemo[] {
     },
     {
       id: "document-management",
+      previewImage: "/images/demos/molnar-documents-registry.jpg",
       name: "Molnár Documents",
       coverImage: "/images/demos/molnar-documents-landing.jpg",
       imagePrefix: "molnar-documents",
@@ -202,6 +209,7 @@ export function getLocalDemos(lang: Lang): LocalDemo[] {
     },
     {
       id: "roadside-rescue",
+      previewImage: "/images/demos/molnar-roadside-offers.jpg",
       name: "Molnár Roadside",
       coverImage: "/images/demos/molnar-roadside-landing.jpg",
       imagePrefix: "molnar-roadside",
@@ -238,6 +246,7 @@ export function getLocalDemos(lang: Lang): LocalDemo[] {
     },
     {
       id: "warehouse-desktop",
+      previewImage: "/images/demos/molnar-inventory-stock.jpg",
       name: "Molnár Inventory",
       coverImage: "/images/demos/molnar-inventory-landing.jpg",
       imagePrefix: "molnar-inventory",

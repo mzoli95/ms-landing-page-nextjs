@@ -1,6 +1,5 @@
 import { localizedMetadata } from "@/components/lib/localized-metadata";
 import { PortfolioPreview } from "@/components/site/PortfolioPreview";
-import { LocalDemoPreview } from "@/components/site/LocalDemoPreview";
 import { Hero } from "@/components/site/Hero";
 import { Section } from "@/components/ui/Section";
 import { ServicePaths } from "@/components/site/ServicePaths";
@@ -28,6 +27,7 @@ export default async function HomePage() {
   return (
     <>
       <Hero lang={lang} />
+      <PortfolioPreview lang={lang} />
       <Section
         eyebrow={en ? "What can I help with?" : "Miben tudok segíteni?"}
         title={
@@ -126,8 +126,6 @@ export default async function HomePage() {
       >
         <Steps lang={lang} />
       </Section>
-      <PortfolioPreview lang={lang} />
-      <LocalDemoPreview lang={lang} />
       <Section
         eyebrow={en ? "Before we start" : "Mielőtt belevágunk"}
         title={en ? "Your questions, answered." : "Gyakori kérdések."}

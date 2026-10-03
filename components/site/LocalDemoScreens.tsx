@@ -18,12 +18,14 @@ export function LocalDemoScreens({
   lang,
   coverImage,
   imagePrefix,
+  initialView = "landing",
 }: {
   id: string;
   name: string;
   lang: Lang;
   coverImage?: string;
   imagePrefix?: string;
+  initialView?: string;
 }) {
   const en = lang === "en";
   const views =
@@ -201,7 +203,9 @@ export function LocalDemoScreens({
                     : "A vállalkozás egy helyen követheti a foglalásokat és ügyféladatokat.",
                 },
               ];
-  const [selected, setSelected] = useState("landing");
+  const [selected, setSelected] = useState(() =>
+    views.some((item) => item.id === initialView) ? initialView : "landing",
+  );
   const view = views.find((item) => item.id === selected)!;
   return (
     <div className="min-w-0">
