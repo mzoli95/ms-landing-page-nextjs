@@ -1,5 +1,5 @@
 .grid {
-  --archive-accent: #577560;
+  --archive-accent: #426da9;
   display: grid;
   column-gap: 40px;
 }
@@ -134,7 +134,7 @@
 }
 
 :global(.dark) .grid {
-  --archive-accent: #a4c6b1;
+  --archive-accent: #9fc5ff;
 }
 
 @media (min-width: 640px) {

@@ -31,7 +31,7 @@ export function ProjectNavigation({ lang }: { lang: Lang }) {
               key={project.href}
               href={project.href}
               aria-current={pathname === project.href ? "page" : undefined}
-              className={`flex min-h-[52px] shrink-0 items-center border-b-2 px-1 text-xs font-medium ${pathname === project.href ? "border-[#617653] text-slate-900 dark:border-[#b9cea2]" : "border-transparent text-slate-500 hover:border-slate-300 hover:text-slate-900"}`}
+              className={`flex min-h-[52px] shrink-0 items-center border-b-2 px-1 text-xs font-medium ${pathname === project.href ? "border-[#4b75b3] text-slate-900 dark:border-[#9fc5ff]" : "border-transparent text-slate-500 hover:border-slate-300 hover:text-slate-900"}`}
             >
               {project.name}
             </Link>

@@ -1,9 +1,9 @@
 .portfolio {
-  --folio-ink: #203830;
-  --folio-muted: #5b6b63;
-  --folio-line: #dce3db;
-  --folio-accent: #647b57;
-  background: #f8f9f6;
+  --folio-ink: #172b4d;
+  --folio-muted: #53657f;
+  --folio-line: #dae3ef;
+  --folio-accent: #426da9;
+  background: #f7f9fc;
 }
 .introduction {
   padding: 64px 0 40px;
@@ -122,8 +122,8 @@
 }
 .projectCard:hover,
 .projectCard:focus-within {
-  border-color: #a8b9a5;
-  box-shadow: 0 12px 32px rgb(30 55 35 / 0.05);
+  border-color: #96b4dc;
+  box-shadow: 0 12px 32px rgb(15 37 75 / 0.05);
 }
 .cardTop {
   display: flex;
@@ -149,28 +149,28 @@
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background: #68875a;
+  background: #4f78b8;
 }
 .screenStage {
   padding: 24px 24px 0;
   overflow: hidden;
-  background: #e5ebdf;
+  background: #e5ecf7;
 }
 .documents .screenStage {
-  background: #e6e9ef;
+  background: #e8edf6;
 }
 .restaurant .screenStage {
-  background: #eae9db;
+  background: #e6edf8;
 }
 .grooming .screenStage {
-  background: #efe7df;
+  background: #e9eef8;
 }
 .screenFrame {
   overflow: hidden;
-  border: 1px solid rgb(36 66 52 / 0.12);
+  border: 1px solid rgb(36 65 106 / 0.12);
   border-bottom: 0;
   border-radius: 8px 8px 0 0;
-  box-shadow: 0 6px 28px rgb(18 47 34 / 0.09);
+  box-shadow: 0 6px 28px rgb(18 37 70 / 0.09);
 }
 .cardBody {
   padding: 26px 26px 0;
@@ -268,7 +268,7 @@
   gap: 32px;
   padding: 44px;
   border-radius: 18px;
-  background: #e9efdf;
+  background: #e8effa;
 }
 .contactTitle {
   max-width: 460px;
@@ -288,13 +288,13 @@
   justify-content: space-between;
   gap: 20px;
   min-height: 94px;
-  border-bottom: 1px solid #c6d2ba;
+  border-bottom: 1px solid #c3d2e8;
   color: var(--folio-ink);
   font-size: 15px;
   font-weight: 600;
 }
 .contactActions a:first-child {
-  border-top: 1px solid #c6d2ba;
+  border-top: 1px solid #c3d2e8;
 }
 .contactActions a small {
   display: block;
@@ -316,32 +316,32 @@
   text-underline-offset: 4px;
 }
 :global(.dark) .portfolio {
-  --folio-ink: #e1ece2;
-  --folio-muted: #a0b0a6;
-  --folio-line: #2a3a33;
-  --folio-accent: #b9cea2;
-  background: #101a17;
+  --folio-ink: #e4edfa;
+  --folio-muted: #a7b7cf;
+  --folio-line: #263954;
+  --folio-accent: #9fc5ff;
+  background: #080f20;
 }
 :global(.dark) .projectCard {
-  background: #16221e;
+  background: #111d33;
 }
 :global(.dark) .screenStage {
-  background: #283a2c;
+  background: #1b2c49;
 }
 :global(.dark) .documents .screenStage {
-  background: #2b343f;
+  background: #1d2b44;
 }
 :global(.dark) .restaurant .screenStage {
-  background: #363829;
+  background: #1b2c49;
 }
 :global(.dark) .grooming .screenStage {
-  background: #3b322c;
+  background: #202c43;
 }
 :global(.dark) .contactBanner {
-  background: #243326;
+  background: #152643;
 }
 :global(.dark) .contactActions a {
-  border-color: #40533c;
+  border-color: #354c70;
 }
 @media (min-width: 1024px) {
   .introGrid {

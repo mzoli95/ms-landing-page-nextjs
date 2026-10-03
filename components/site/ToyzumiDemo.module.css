@@ -3,11 +3,11 @@
   gap: 28px;
   padding: 38px;
   overflow: hidden;
-  border: 1px solid #294438;
+  border: 1px solid #2c4268;
   border-radius: 22px;
   background:
-    radial-gradient(ellipse at 85% 0%, #294337 0, transparent 60%), #14281f;
-  color: #f2f6ed;
+    radial-gradient(ellipse at 85% 0%, #223b63 0, transparent 60%), #101e38;
+  color: #f1f6ff;
 }
 .copy {
   min-width: 0;
@@ -16,7 +16,7 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  color: #c0cdb9;
+  color: #bbcce6;
   font-size: 9px;
   font-weight: 500;
   letter-spacing: 0.1em;
@@ -24,7 +24,7 @@
   text-transform: uppercase;
 }
 .eyebrow > span {
-  color: #bdd69b;
+  color: #adcfff;
   font-size: 11px;
   letter-spacing: 0;
 }
@@ -36,7 +36,7 @@
   letter-spacing: -0.065em;
 }
 .title > span {
-  color: #cae69f;
+  color: #b8d5ff;
 }
 .lead {
   max-width: 320px;
@@ -49,13 +49,13 @@
 .description {
   max-width: 310px;
   margin-top: 18px;
-  color: #b8c8bd;
+  color: #b8cae5;
   font-size: 14px;
   line-height: 1.85;
 }
 .scope {
   margin-top: 24px;
-  color: #b8c8bd;
+  color: #b8cae5;
   font-size: 11px;
   line-height: 1.8;
 }
@@ -75,13 +75,13 @@
   gap: 3px;
   padding: 4px;
   border-radius: 10px;
-  background: rgb(9 26 17 / 0.35);
+  background: rgb(9 20 42 / 0.35);
 }
 .tabs button {
   min-height: 38px;
   padding: 7px 13px;
   border-radius: 7px;
-  color: #c5d1c7;
+  color: #c5d5ec;
   font-size: 11px;
   font-weight: 500;
   cursor: pointer;
@@ -94,24 +94,24 @@
   background: rgb(255 255 255 / 0.07);
 }
 .tabs button[aria-selected="true"] {
-  color: #183024;
-  background: #e1edcf;
+  color: #182f51;
+  background: #d9e8ff;
   box-shadow: 0 2px 6px rgb(0 0 0 / 0.08);
 }
 .sceneNumber {
-  color: #adc1ac;
+  color: #afc4e3;
   font-size: 10px;
   letter-spacing: 0.08em;
   white-space: nowrap;
 }
 .screen {
   overflow: hidden;
-  border: 1px solid rgb(230 244 215 / 0.16);
+  border: 1px solid rgb(215 231 255 / 0.16);
   border-radius: 10px;
   box-shadow: 0 18px 40px rgb(0 0 0 / 0.18);
 }
 .panel:focus-visible {
-  outline: 2px solid #cae69f;
+  outline: 2px solid #b8d5ff;
   outline-offset: 6px;
   border-radius: 10px;
 }
@@ -120,14 +120,14 @@
   padding-top: 18px;
 }
 .caption p {
-  color: #ecf3e7;
+  color: #ecf4ff;
   font-size: 13px;
   font-weight: 500;
 }
 .caption span {
   display: block;
   margin-top: 5px;
-  color: #b6c6b8;
+  color: #b6c8e3;
   font-size: 12px;
   line-height: 1.65;
 }
@@ -146,21 +146,21 @@
   gap: 22px;
   padding: 12px 18px;
   border-radius: 8px;
-  background: #d1eba8;
-  color: #1b3020;
+  background: #c3dcff;
+  color: #142a4b;
   font-size: 12px;
   font-weight: 600;
   transition: background 180ms;
 }
 .demoLink:hover {
-  background: #e0f6be;
+  background: #d8e8ff;
 }
 .projectLink {
   display: inline-flex;
   min-height: 44px;
   align-items: center;
   gap: 10px;
-  color: #e0edda;
+  color: #deebff;
   font-size: 11px;
   font-weight: 500;
 }
@@ -173,7 +173,7 @@
   align-items: center;
   gap: 7px;
   flex-basis: 100%;
-  color: #acbdaf;
+  color: #acbfdc;
   font-size: 10px;
   line-height: 1.8;
 }
@@ -181,11 +181,11 @@
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background: #c3d9a1;
+  background: #a9ceff;
 }
 .showcase a:focus-visible,
 .showcase button:focus-visible {
-  outline-color: #d1eba8;
+  outline-color: #c3dcff;
   outline-offset: 4px;
 }
 @media (min-width: 1024px) {
